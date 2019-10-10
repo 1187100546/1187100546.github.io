@@ -3,7 +3,8 @@ title: test
 date: 2019-10-10 20:56:07
 tags: [test]
 ---
-'''
+<!--more-->
+```
 #include<bits/stdc++.h>
 using namespace std;
 int days[13] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
@@ -36,4 +37,4 @@ int main()
     }
     return 0;
 }
-'''
+```
