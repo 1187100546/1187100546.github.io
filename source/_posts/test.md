@@ -3,6 +3,7 @@ title: test
 date: 2019-10-10 20:56:07
 tags: [test]
 ---
+code test
 <!--more-->
 ```
 #include<bits/stdc++.h>
