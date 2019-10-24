@@ -90,3 +90,14 @@
   {% include '_third-party/exturl.swig' %}
 </body>
 </html>
+{% include '_third-party/exturl.swig' %}
+</body>
+</html>
++ <!-- 页面点击小红心 -->
++ <script type="text/javascript" src="/js/src/love.js"></script>
+<!-- 雪花特效 -->
+<script type="text/javascript" src="/js/src/snow.js"></script>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/src/FunnyTitle.js"></script>
+
+
