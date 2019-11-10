@@ -1,7 +1,7 @@
 ---
 title: DVWA-Brute_Force暴力破解
 date: 2019-10-22 20:53:42
-tags: [Brute_Force]
+tags: [暴力破解]
 categories: 暴力破解
 ---
 

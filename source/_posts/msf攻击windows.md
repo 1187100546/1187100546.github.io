@@ -1,8 +1,8 @@
 ---
 title: msf攻击windows
 date: 2019-10-11 13:55:25
-tags: [msf,渗透]
-categories: msf渗透攻击
+tags: [渗透攻击]
+categories: 渗透攻击
 ---
 
 利用msf对windows进行渗透攻击。

@@ -1,7 +1,7 @@
 ---
 title: 简单sql注入环境搭建及注入
 date: 2019-10-12 15:31:12
-tags: [sql注入，wampserver]
+tags: [sql注入]
 categories: sql注入
 ---
 

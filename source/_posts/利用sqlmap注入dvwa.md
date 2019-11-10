@@ -1,7 +1,7 @@
 ---
 title: 利用sqlmap注入dvwa
 date: 2019-10-13 11:17:30
-tags: [sqlmap，sql注入，dvwa]
+tags: [sql注入]
 categories: sql注入
 ---
 
