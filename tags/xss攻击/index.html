@@ -82,7 +82,7 @@
 <meta name="description" content="我告诉你我喜欢你，并不是一定要和你在一起，只是希望今后的你，在遭遇人生低谷的时候，不要灰心，至少曾经有人被你的魅力所吸引，曾经是，以后也会是。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="花花的blog">
-<meta property="og:url" content="https://1187100546.github.io/tags/XSS攻击/index.html">
+<meta property="og:url" content="https://1187100546.github.io/tags/xss攻击/index.html">
 <meta property="og:site_name" content="花花的blog">
 <meta property="og:description" content="我告诉你我喜欢你，并不是一定要和你在一起，只是希望今后的你，在遭遇人生低谷的时候，不要灰心，至少曾经有人被你的魅力所吸引，曾经是，以后也会是。">
 <meta property="og:locale" content="zh-Hans">
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="https://1187100546.github.io/tags/XSS攻击/">
+  <link rel="canonical" href="https://1187100546.github.io/tags/xss攻击/">
 
 
 
 
 
-  <title>标签: XSS攻击 | 花花的blog</title>
+  <title>标签: xss攻击 | 花花的blog</title>
   
 
 
@@ -296,7 +296,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>XSS攻击<small>标签</small>
+        <h1>xss攻击<small>标签</small>
         </h1>
       </div>
 
@@ -308,17 +308,43 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2019/10/13/XSS攻击简单示例/" itemprop="url">
+            <a class="post-title-link" href="/2019/11/14/xss-stored/" itemprop="url">
               
-                <span itemprop="name">XSS攻击简单示例</span>
+                <span itemprop="name">DVWA--xss_stored</span>
               
             </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-13T19:06:06+08:00" content="2019-10-13">
-          10-13
+        <time class="post-time" itemprop="dateCreated" datetime="2019-11-14T21:12:02+08:00" content="2019-11-14">
+          11-14
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2019/11/14/xss-reflected/" itemprop="url">
+              
+                <span itemprop="name">DVWA--xss_reflected</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-11-14T19:14:53+08:00" content="2019-11-14">
+          11-14
         </time>
       </div>
 
@@ -920,50 +946,6 @@
     $('.popup-btn-close').click(onPopupClose);
     $('.popup').click(function(e){
       e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
-
-
-
-
-+ <!-- 页面点击小红心 -->
-+ <script type="text/javascript" src="/js/src/love.js"></script>
-<!-- 雪花特效 -->
-<script type="text/javascript" src="/js/src/snow.js"></script>
-<!--浏览器搞笑标题-->
-<script type="text/javascript" src="/js/src/FunnyTitle.js"></script>
-
-
-stopPropagation();
     });
     $(document).on('keyup', function (event) {
       var shouldDismissSearchPopup = event.which === 27 &&
