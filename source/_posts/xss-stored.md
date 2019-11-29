@@ -48,7 +48,7 @@ if( isset( $_POST[ 'btnSign' ] ) ) {
 
  `mysqli_real_escape_string() ` 函数会对字符串中的特殊号`(\x00，\n，\r，\，'，"，\x1a) ` 进行转义 
 
- 在代码中对message，name输入框内容  `没有进行XSS方面的过滤和检查 `
+ 在代码中对message，name输入框内容  没有进行XSS方面的过滤和检查 
 
  且通过  `query ` 语句插入到数据库中。所以存在存储型XSS漏洞 
 
