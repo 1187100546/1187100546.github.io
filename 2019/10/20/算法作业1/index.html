@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="huahua">
+
+
+
+<meta name="description" content="算法作业一。">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法作业（一）">
+<meta property="og:url" content="https://1187100546.github.io/2019/10/20/算法作业1/index.html">
+<meta property="og:site_name" content="花花的blog">
+<meta property="og:description" content="算法作业一。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://192.168.173.163/JudgeOnline/upload/image/20180914/20180914130647_85638.png">
+<meta property="og:updated_time" content="2019-11-09T08:51:43.687Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法作业（一）">
+<meta name="twitter:description" content="算法作业一。">
+<meta name="twitter:image" content="http://192.168.173.163/JudgeOnline/upload/image/20180914/20180914130647_85638.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="花花的blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>算法作业（一） | 花花的blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">huahua</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">厚积薄发</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS攻击/">XSS攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss攻击/">xss攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作业/">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动漫/">动漫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新闻/">新闻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力破解/">暴力破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/渗透攻击/">渗透攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">huahua</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">huahua</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">厚积薄发</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-算法作业1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/10/20/算法作业1/" class="article-date">
+      <time datetime="2019-10-20T07:41:44.000Z" itemprop="datePublished">2019-10-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      算法作业（一）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>算法作业一。</p>
+<a id="more"></a>
+
+<h2 id="问题-A-小雏鸟的成人式-2"><a href="#问题-A-小雏鸟的成人式-2" class="headerlink" title="问题 A: 小雏鸟的成人式 2"></a>问题 A: 小雏鸟的成人式 2</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>陶行知先生说：“我们要活的书，不要死的书 ”。</p>
+<p>小雏鸟们从书上都是对的到现在能去伪存真的去使用书籍，证明你们长大了。总之就是要有自己的主见，自己的思考。</p>
+<p>大白希望大家都能拿到一百分，所以对100这个数以及他的倍数很喜欢。</p>
+<p>大白发现，从1开始，一定能找出一个序列从小到大排列，使得每一项都是 <strong>恰好能且仅能</strong> 被100整除D次。</p>
+<p>请你编写程序，找到这个数列里第N个数。</p>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p> 多行。每行输入两个整数，表示D和N，N范围[1,100]，D范围[0,2] </p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p> 每行对应输入，给出一个符合题意的整数 </p>
+<h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0 5</span><br><span class="line">1 11</span><br><span class="line">2 85</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1100</span><br><span class="line">850000</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> d,n;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;d&gt;&gt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(n&gt;=<span class="number">1</span>&amp;&amp;n&lt;<span class="number">100</span>&amp;&amp;d&gt;=<span class="number">0</span>&amp;&amp;d&lt;=<span class="number">2</span>)</span><br><span class="line">            cout&lt;&lt;n*int(pow(100,d))&lt;&lt;endl;   </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n==<span class="number">100</span>)</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="number">101</span>*<span class="keyword">int</span>(<span class="built_in">pow</span>(<span class="number">100</span>,d))&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题-B-小雏鸟的成人式-3"><a href="#问题-B-小雏鸟的成人式-3" class="headerlink" title="问题 B: 小雏鸟的成人式 3"></a>问题 B: 小雏鸟的成人式 3</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>陶行知先生说：“因为道德是做人的根本。根本一坏，纵然使你有一些学问和本领，也无甚用处。”</p>
+<p>小雏鸟们需要时刻铭记在心，不管你长成什么样的的攻城狮，都必须三观正确。</p>
+<p>涛涛轰这一天带着爱美酱来到了一个风景如画的地方游玩。艳阳高照，他俩玩的很尽兴，但是现在他们口渴了。</p>
+<p>涛涛轰：“我要买饮料！”</p>
+<p>店主：“我们这里有三种饮料，矿泉水1.5元一瓶，可乐2元一瓶，橙汁3.5元一瓶。”</p>
+<p>涛涛轰：“好的，给我一瓶矿泉水。”</p>
+<p>说完他掏出一张N元的大钞递给店主。</p>
+<p>店主：“我忘了提醒你了，我们这里没有找客人钱的习惯的，多的钱我们都当小费收了的，嘿嘿。”</p>
+<p>涛涛轰：“……”</p>
+<p>涛涛轰环顾四周，就这一家商店，况且实在太渴了，看着脸热的粉扑扑的一头汗的爱美酱，就决定在这买了。不过涛涛轰想，与其把钱当小费送给他还不如自己多买一点饮料，反正早晚都要喝，但是要尽量少让他赚小费。</p>
+<p>现在涛涛轰希望你能帮他计算一下，最少他要给店主多少小费。</p>
+<h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h3><p>输入数据的第一行是一个整数T(1&lt;=T&lt;=100)，代表测试数据的数量。然后是T行测试数据，每个测试数据只包含一个正整数N（1&lt;=N&lt;=10000），N代表小明手中钞票的面值，以分为单位。<br>注意：商店里只有题中描述的三种饮料。</p>
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><p>对于每组测试数据，请你输出小明最少要浪费多少钱给店主作为小费，以分为单位。</p>
+<h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">900</span><br><span class="line">250</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">50</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;<span class="number">150</span>)</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;x&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x&lt;=<span class="number">200</span>||x&gt;<span class="number">300</span>)</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;(x%<span class="number">50</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;x<span class="number">-200</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,x;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">        test(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题-C-大白just大白"><a href="#问题-C-大白just大白" class="headerlink" title="问题 C: 大白just大白"></a>问题 C: 大白just大白</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>大家都知道，大白对学术要求是很严格的。抄作业、考试作弊神马的在大白这简直不能忍。</p>
+<p>这不刚刚过去的期末考试。有n个学生被查出来有问题。</p>
+<p>大白给了他们申辩的机会，每个学生可以提交一段文字，作为申辩理由。但是大白发现来的人总会有一些奇怪的理由。</p>
+<p>大白提前列了m个常见借口关键字。他想看看来申辩的学生中最烂的申辩理由是什么。</p>
+<p>所谓最烂申辩理由就是，申辩里，含有常见借口关键字最多的。</p>
+<p>含有关键字，指的是，理由中出现了一串和关键字完全匹配的字符串，如果出现大写小写不同，也认为匹配。比如，关键字是 bed 理由中出现Bedroom算含有一个关键字。</p>
+<h3 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h3><p>一个输入可能有多个case，每个case第一行两个数。分别代表n 和 m</p>
+<p>接下来m行，每行一个关键字（字符串）</p>
+<p>再接下来n行字符串。m和n都不大于20</p>
+<p>每一个借口和借口关键字只会包含大小写字母，长度不会超过4000个字符。</p>
+<h3 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h3><p>对于每个case输出一行字符串，表示最烂的理由。若有多个理由包含相同数目的关键字，按输入顺序输出靠前的那个。</p>
+<h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">2 3</span><br><span class="line">love</span><br><span class="line">cumt</span><br><span class="line">ACM</span><br><span class="line">ILoveCUMTACM</span><br><span class="line">cumtAACM</span><br><span class="line">2 2</span><br><span class="line">A</span><br><span class="line">b</span><br><span class="line">Ab</span><br><span class="line">bA</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ILoveCUMTACM</span><br><span class="line">Ab</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">string</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(<span class="built_in">string</span> str,<span class="built_in">string</span> sub)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">if</span>((i = str.find(sub, i)) != <span class="built_in">std</span>::<span class="built_in">string</span>::npos)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m,n,k=<span class="number">0</span>,local=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> key[m],ca[n],key1[m],ca1[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;key[i];</span><br><span class="line">            key1[i]=key[i];</span><br><span class="line">            transform(key1[i].begin(),key1[i].end(),key1[i].begin(),::<span class="built_in">tolower</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;ca[i];</span><br><span class="line">            ca1[i]=ca[i];</span><br><span class="line">            transform(ca1[i].begin(),ca1[i].end(),ca1[i].begin(),::<span class="built_in">tolower</span>);</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(search(ca1[i],key1[j]))</span><br><span class="line">                    num++;</span><br><span class="line">                <span class="comment">//cout&lt;&lt;search(ca1[i],key1[j])&lt;&lt;endl;</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(num&gt;k)</span><br><span class="line">            &#123;</span><br><span class="line">                k=num;</span><br><span class="line">                local=i;</span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//cout&lt;&lt;local&lt;&lt;endl;</span></span><br><span class="line">        <span class="comment">//cout&lt;&lt;k&lt;&lt;endl;</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ca[local]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题-D-小雏鸟的计算"><a href="#问题-D-小雏鸟的计算" class="headerlink" title="问题 D: 小雏鸟的计算"></a>问题 D: 小雏鸟的计算</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>小雏鸟们的三角形翅膀终于长出健壮的肌肉和丰满的羽毛，已经跃跃欲试的去准备尝试挑战新的难题了。</p>
+<p>考虑以下的算法：<br>\1.     输入 n<br>\2.     印出 n<br>\3.     如果 n = 1 结束<br>\4.     如果 n 是奇数 那么 n=3*n+1<br>\5.     否则 n=n/2<br>\6.     GOTO 2<br>例如输入 22 得到的数列： 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1<br>据推测此算法对任何整数而言会终止 (当打印出 1 的时候)。虽然此算法很简单，但以上的推测是否真实却无法知道。然而对所有的n ( 0 &lt; n &lt; 1000000 )来说，以上的推测已经被验证是正确的。<br>给一个输入 n 透过以上的算法我们可以得到一个数列（1作为结尾）。此数列的长度称为n的cycle length。上面提到的例子 22的 cycle length为 16.<br>问题来了：对任2个整数i，j我们想要知道介于i，j（包含i，j）之间的数所产生的数列中最大的cycle length是多少。</p>
+<h3 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h3><p>输入可能包含了好几行测试数据，每一行有一对整数 i，j 。 </p>
+<p>0&lt; i，j &lt; 1000000</p>
+<h3 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h3><p>对每一对输入 i j你应该要输出 i j和介于i j之间的数所产生的数列中最大的cycle length。</p>
+<h3 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 10</span><br><span class="line">10 1</span><br><span class="line">100 200</span><br><span class="line">201 210</span><br><span class="line">900 1000</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 10 20</span><br><span class="line">10 1 20</span><br><span class="line">100 200 125</span><br><span class="line">201 210 89</span><br><span class="line">900 1000 174</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示-3"><a href="#提示-3" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n!=<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">if</span>(n%<span class="number">2</span>!=<span class="number">0</span>)</span><br><span class="line">            n=<span class="number">3</span>*n+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            n=n/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    count++;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;i&gt;&gt;j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>&lt;&lt;j&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        <span class="keyword">int</span> max=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> m;</span><br><span class="line">            m=i;</span><br><span class="line">            i=j;</span><br><span class="line">            j=m;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;=j;k++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(test(k)&gt;max)</span><br><span class="line">                max=test(k);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;max&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题-E-进制转换"><a href="#问题-E-进制转换" class="headerlink" title="问题 E: 进制转换"></a>问题 E: 进制转换</h2><h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p>输入一个十进制正整数，然后输出它所对应的八进制数。</p>
+<h3 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h3><p>输入一个十进制正整数n(1≤n≤10<sup>6</sup>) 。</p>
+<h3 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h3><p>输出n对应的八进制数，输出在一行。</p>
+<h3 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">12</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示-4"><a href="#提示-4" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">transform</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">stack</span> &lt;<span class="keyword">int</span>&gt; stk;</span><br><span class="line">    <span class="keyword">while</span>(x!=<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        stk.push(x%<span class="number">8</span>);</span><br><span class="line">        x=x/<span class="number">8</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!stk.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;stk.top();</span><br><span class="line">        stk.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    transform(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题-F-排列问题"><a href="#问题-F-排列问题" class="headerlink" title="问题 F: 排列问题"></a>问题 F: 排列问题</h2><h3 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h3><p>  输入一个可能含有重复字符的字符串，打印出该字符串中所有字符的全排列。</p>
+<h3 id="输入-5"><a href="#输入-5" class="headerlink" title="输入"></a>输入</h3><p>单组测试数据，输入数据是一个长度不超过10个字符的字符串，以逗号结尾。</p>
+<h3 id="输出-5"><a href="#输出-5" class="headerlink" title="输出"></a>输出</h3><p>打印出该字符串中所有字符的全排列。以字典序顺序输出，用空格分隔。</p>
+<h3 id="样例输入-5"><a href="#样例输入-5" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abc,</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-5"><a href="#样例输出-5" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abc acb bac bca cab cba</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示-5"><a href="#提示-5" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="built_in">string</span> str;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; str;  </span><br><span class="line">    str = str.substr(<span class="number">0</span>, str.length() - <span class="number">1</span>);</span><br><span class="line">    sort(str.begin(),str.end());</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; str &lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(str.begin(),str.end()));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题-G-快速幂"><a href="#问题-G-快速幂" class="headerlink" title="问题 G: 快速幂"></a>问题 G: 快速幂</h2><h3 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h3><p><img src="http://192.168.173.163/JudgeOnline/upload/image/20180914/20180914130647_85638.png" alt="img"></p>
+<h3 id="输入-6"><a href="#输入-6" class="headerlink" title="输入"></a>输入</h3><p>多组测试样例，最多50组。每组测试样例给定一个整数x(1&lt;=x&lt;=25000)</p>
+<h3 id="输出-6"><a href="#输出-6" class="headerlink" title="输出"></a>输出</h3><p>对每个样例，输出一行，代表f(x)对100000007取余的结果。</p>
+<h3 id="样例输入-6"><a href="#样例输入-6" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-6"><a href="#样例输出-6" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">33</span><br><span class="line">289</span><br><span class="line">3414</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示-6"><a href="#提示-6" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-6"><a href="#代码-6" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> n=<span class="number">100000007</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">poww</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span> != <span class="number">0</span>)</span><br><span class="line">            ans=ans*a%n;</span><br><span class="line">        a=a*a%n;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n=<span class="number">100000007</span>;</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;x)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=x;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum+=(poww(i,i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;(sum+<span class="number">1</span>)%n&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题-H-求第k小"><a href="#问题-H-求第k小" class="headerlink" title="问题 H: 求第k小"></a>问题 H: 求第k小</h2><h3 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定n(1&lt;=n&lt;=1000000)个元素，求第k小数(1&lt;=k&lt;=n)。</p>
+<h3 id="输入-7"><a href="#输入-7" class="headerlink" title="输入"></a>输入</h3><p>一组样例。第一行输入两个整数n和k。第二行输入n个不同的int范围内的数。</p>
+<h3 id="输出-7"><a href="#输出-7" class="headerlink" title="输出"></a>输出</h3><p>输出一行，输出第k小数。</p>
+<h3 id="样例输入-7"><a href="#样例输入-7" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5 2</span><br><span class="line">1 5 3 2 4</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-7"><a href="#样例输出-7" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示-7"><a href="#提示-7" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-7"><a href="#代码-7" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1000010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,k;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a,a+n);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;a[k<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题-I-沙子的质量"><a href="#问题-I-沙子的质量" class="headerlink" title="问题 I: 沙子的质量"></a>问题 I: 沙子的质量</h2><h3 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h3><p>设有N堆沙子排成一排，其编号为1，2，3，…，N（N&lt; =300）。每堆沙子有一定的数量，可以用一个整数来描述，现在要将N堆沙子合并成为一堆，每次只能合并相邻的两堆，合并的代价为这两堆沙子的数量之和，合并后与这两堆沙子相邻的沙子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同，如有4堆沙子分别为1 3 5 2我们可以先合并1、2堆，代价为4，得到4 5 2又合并1，2堆，代价为9，得到9 2，再合并得到11，总代价为4+9+11=24，如果第二步是先合并2，3堆，则代价为7，得到4 7，最后一次合并代价为11，总代价为4+7+11=22；问题是：找出一种合理的方法，使总的代价最小。输出最小代价。</p>
+<h3 id="输入-8"><a href="#输入-8" class="headerlink" title="输入"></a>输入</h3><p>第一行一个数N表示沙子的堆数N。 第二行N个数，表示每堆沙子的质量。 a[i]&lt; =1000。</p>
+<h3 id="输出-8"><a href="#输出-8" class="headerlink" title="输出"></a>输出</h3><p>合并的最小代价。</p>
+<h3 id="样例输入-8"><a href="#样例输入-8" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 3 5 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-8"><a href="#样例输出-8" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">22</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示-8"><a href="#提示-8" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-8"><a href="#代码-8" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> num[<span class="number">305</span>];</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">305</span>][<span class="number">305</span>]; <span class="comment">//合并a堆到b堆的最小代价 </span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="built_in">memset</span>(f,<span class="number">127</span>/<span class="number">3</span>,<span class="keyword">sizeof</span>(f)); <span class="comment">//初始化为一个较大值，注意memset的用法！ </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;num[i];</span><br><span class="line">        num[i]+=num[i<span class="number">-1</span>];</span><br><span class="line">        f[i][i]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++) <span class="comment">//求1到i堆的最小代价 </span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i<span class="number">-1</span>; j&gt;=<span class="number">1</span>; j--) <span class="comment">//求j到i堆的最小代价 </span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=j; k&lt;=i; k++) <span class="comment">//找到j到i堆的最小代价 </span></span><br><span class="line">            &#123;</span><br><span class="line">                f[j][i]=min(f[j][i],f[j][k]+f[k+<span class="number">1</span>][i]+num[i]-num[j<span class="number">-1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;f[<span class="number">1</span>][n];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题-J-最长公共子序列"><a href="#问题-J-最长公共子序列" class="headerlink" title="问题 J: 最长公共子序列"></a>问题 J: 最长公共子序列</h2><h3 id="题目描述-9"><a href="#题目描述-9" class="headerlink" title="题目描述"></a>题目描述</h3><p>一个字符串A的子串被定义成从A中顺次选出若干个字符构成的串。如A=“cdaad” ,顺次选1，3，5个字符就构成子串” cad” ,现给定两个字符串，求它们的最长共公子串。</p>
+<h3 id="输入-9"><a href="#输入-9" class="headerlink" title="输入"></a>输入</h3><p>第一行两个字符串用空格分开。两个串的长度均小于2000 。</p>
+<h3 id="输出-9"><a href="#输出-9" class="headerlink" title="输出"></a>输出</h3><p>最长子串的长度。</p>
+<h3 id="样例输入-9"><a href="#样例输入-9" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abccd aecd</span><br></pre></td></tr></table></figure>
+
+<h3 id="样例输出-9"><a href="#样例输出-9" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h3 id="提示-9"><a href="#提示-9" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxx</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (a&gt;=b)  <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">return</span> b; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> a,b;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b;</span><br><span class="line">    <span class="keyword">int</span> n,m,max=<span class="number">0</span>;</span><br><span class="line">    n=a.size();</span><br><span class="line">    m=b.size();</span><br><span class="line">    <span class="keyword">int</span> lcm[n+<span class="number">1</span>][m+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; ++i)</span><br><span class="line">        lcm[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; ++i)</span><br><span class="line">        lcm[<span class="number">0</span>][i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i<span class="number">-1</span>]==b[j<span class="number">-1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                lcm[i][j]=lcm[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                lcm[i][j]=maxx(lcm[i][j<span class="number">-1</span>],lcm[i<span class="number">-1</span>][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;lcm[n][m];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/10/20/算法作业1/">算法作业（一）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">huahua</a></p>
+        <p><span>发布时间:</span>2019-10-20, 15:41:44</p>
+        <p><span>最后更新:</span>2019-11-09, 16:51:43</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/10/20/算法作业1/" title="算法作业（一）">https://1187100546.github.io/2019/10/20/算法作业1/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://1187100546.github.io/2019/10/20/算法作业1/　　作者: huahua" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/10/21/算法作业2/">
+                    算法作业（二）
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/10/13/XSS攻击简单示例/">
+                    XSS攻击简单示例
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-A-小雏鸟的成人式-2"><span class="toc-number">1.</span> <span class="toc-text">问题 A: 小雏鸟的成人式 2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述"><span class="toc-number">1.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入"><span class="toc-number">1.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出"><span class="toc-number">1.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示"><span class="toc-number">1.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">1.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-B-小雏鸟的成人式-3"><span class="toc-number">2.</span> <span class="toc-text">问题 B: 小雏鸟的成人式 3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-1"><span class="toc-number">2.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-1"><span class="toc-number">2.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-1"><span class="toc-number">2.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-number">2.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-C-大白just大白"><span class="toc-number">3.</span> <span class="toc-text">问题 C: 大白just大白</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-2"><span class="toc-number">3.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-2"><span class="toc-number">3.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-2"><span class="toc-number">3.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-2"><span class="toc-number">3.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-2"><span class="toc-number">3.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-2"><span class="toc-number">3.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-2"><span class="toc-number">3.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-D-小雏鸟的计算"><span class="toc-number">4.</span> <span class="toc-text">问题 D: 小雏鸟的计算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-3"><span class="toc-number">4.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-3"><span class="toc-number">4.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-3"><span class="toc-number">4.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-3"><span class="toc-number">4.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-3"><span class="toc-number">4.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-3"><span class="toc-number">4.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-3"><span class="toc-number">4.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-E-进制转换"><span class="toc-number">5.</span> <span class="toc-text">问题 E: 进制转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-4"><span class="toc-number">5.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-4"><span class="toc-number">5.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-4"><span class="toc-number">5.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-4"><span class="toc-number">5.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-4"><span class="toc-number">5.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-4"><span class="toc-number">5.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-4"><span class="toc-number">5.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-F-排列问题"><span class="toc-number">6.</span> <span class="toc-text">问题 F: 排列问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-5"><span class="toc-number">6.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-5"><span class="toc-number">6.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-5"><span class="toc-number">6.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-5"><span class="toc-number">6.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-5"><span class="toc-number">6.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-5"><span class="toc-number">6.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-5"><span class="toc-number">6.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-G-快速幂"><span class="toc-number">7.</span> <span class="toc-text">问题 G: 快速幂</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-6"><span class="toc-number">7.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-6"><span class="toc-number">7.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-6"><span class="toc-number">7.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-6"><span class="toc-number">7.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-6"><span class="toc-number">7.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-6"><span class="toc-number">7.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-6"><span class="toc-number">7.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-H-求第k小"><span class="toc-number">8.</span> <span class="toc-text">问题 H: 求第k小</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-7"><span class="toc-number">8.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-7"><span class="toc-number">8.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-7"><span class="toc-number">8.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-7"><span class="toc-number">8.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-7"><span class="toc-number">8.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-7"><span class="toc-number">8.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-7"><span class="toc-number">8.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-I-沙子的质量"><span class="toc-number">9.</span> <span class="toc-text">问题 I: 沙子的质量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-8"><span class="toc-number">9.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-8"><span class="toc-number">9.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-8"><span class="toc-number">9.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-8"><span class="toc-number">9.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-8"><span class="toc-number">9.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-8"><span class="toc-number">9.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-8"><span class="toc-number">9.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-J-最长公共子序列"><span class="toc-number">10.</span> <span class="toc-text">问题 J: 最长公共子序列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-9"><span class="toc-number">10.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-9"><span class="toc-number">10.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-9"><span class="toc-number">10.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-9"><span class="toc-number">10.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-9"><span class="toc-number">10.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-9"><span class="toc-number">10.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-9"><span class="toc-number">10.7.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"算法作业（一）　| 花花的blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/10/21/算法作业2/" title="上一篇: 算法作业（二）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/10/13/XSS攻击简单示例/" title="下一篇: XSS攻击简单示例">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/29/java-fujia/">java继承实现多态的例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-3/">java实验三</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-2/">java实验二</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/24/spawn-failed/">hexo发生error：spawn failed错误的解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/19/网安作业3/">网安作业3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-stored/">DVWA--xss_stored</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-reflected/">DVWA--xss_reflected</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/DVWA-SQL-Injection-Blind/">DVWA-SQL_Injection_Blind（sql盲注）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/DVWA-SQL-Injection/">DVWA-SQL_Injection(SQL注入)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/算法实验考试/">算法实验考试</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/算法实验作业/">算法实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/25/算法实验4/">算法实验（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/算法实验3/">算法实验（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/算法实验2/">算法实验（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/Brute_Force/">DVWA-Brute_Force暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/算法实验1/">算法实验（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/21/算法作业2/">算法作业（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/20/算法作业1/">算法作业（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/XSS攻击简单示例/">XSS攻击简单示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/教育部取消毕业前补考的意见/">教育部取消毕业前补考的意见(某人的毛概作业)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/利用sqlmap注入dvwa/">利用sqlmap注入dvwa</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/12/简单sql注入环境搭建及注入/">简单sql注入环境搭建及注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/msf攻击windows/">msf攻击windows</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/一天是不良人，一辈子都是不良人/">一天是不良人，一辈子都是不良人</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 huahua
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

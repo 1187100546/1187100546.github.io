@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="huahua">
+
+
+
+<meta name="description" content="Java实验三。">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java实验三">
+<meta property="og:url" content="https://1187100546.github.io/2019/11/26/java-shiyan-3/index.html">
+<meta property="og:site_name" content="花花的blog">
+<meta property="og:description" content="Java实验三。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/26/QScZwt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/26/QSc77t.png">
+<meta property="og:updated_time" content="2019-11-26T12:40:02.335Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java实验三">
+<meta name="twitter:description" content="Java实验三。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/26/QScZwt.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="花花的blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>java实验三 | 花花的blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">huahua</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">厚积薄发</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS攻击/">XSS攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss攻击/">xss攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作业/">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动漫/">动漫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新闻/">新闻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力破解/">暴力破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/渗透攻击/">渗透攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">huahua</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">huahua</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">厚积薄发</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-java-shiyan-3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/26/java-shiyan-3/" class="article-date">
+      <time datetime="2019-11-26T12:09:39.000Z" itemprop="datePublished">2019-11-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java实验三
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/java/">java</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Java实验三。</p>
+<a id="more"></a>
+
+<h3 id="问题1、"><a href="#问题1、" class="headerlink" title="问题1、"></a>问题1、</h3><p>编一程序，求两个正整数m、n的最大公约数。要求程序中有两个方法，分别使用循环和递归求最大公约数，最后在主方法中分别调用这两个方法求解56与91的最大公约数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">one</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">cyc</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(x%y!=<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> s=x%y;</span><br><span class="line">			x=y;</span><br><span class="line">			y=s;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> y;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rec</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%y==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> y;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> rec(y,x%y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		one o=<span class="keyword">new</span> one();</span><br><span class="line">		<span class="keyword">int</span> m,n;</span><br><span class="line">		m=<span class="number">56</span>;</span><br><span class="line">		n=<span class="number">91</span>;</span><br><span class="line">		System.out.println(o.cyc(m,n));</span><br><span class="line">		System.out.println(o.rec(m,n));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题2、"><a href="#问题2、" class="headerlink" title="问题2、"></a>问题2、</h3><p>编写一个完整的Java Application程序，其中设计一个复数类Complex，利用它验证两个复数 1+2i 和3+4i 相加产生一个新的复数 4+6i 。复数类Complex的设计必须满足如下要求：<br>1）Complex 的属性有：<br>realPart：int型，代表复数的实数部分；<br>maginPart：int型，代表复数的虚数部分。<br>2）Complex 的方法有：<br>Complex()：构造方法，将复数的实部和虚部都置0；<br>Complex(int r , int i )：构造方法，形参 r 为实部的初值，i为虚部的初值。<br>3）Complex complexAdd(Complex a)：将当前复数对象与形参复数对象相加，最后的结果仍是一个复数对象，返回给此方法的调用者。<br>4）String toString(): 把当前复数对象的实部、虚部组合成 a+bi 的字符串形式，其中a 和 b分别为实部和虚部的数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">complex</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> rp,mp;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">complex</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		rp=mp=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">complex</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		rp=i;</span><br><span class="line">		mp=j;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> complex <span class="title">complexadd</span><span class="params">(complex a)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.rp=<span class="keyword">this</span>.rp+a.rp;</span><br><span class="line">		<span class="keyword">this</span>.mp=<span class="keyword">this</span>.mp+a.mp;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		String s=rp+<span class="string">"+"</span>+mp+<span class="string">"i"</span>;</span><br><span class="line">		<span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		complex c1=<span class="keyword">new</span> complex(<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">		complex c2=<span class="keyword">new</span> complex(<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">		c1.complexadd(c2);</span><br><span class="line">		System.out.println(c1.toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题3、"><a href="#问题3、" class="headerlink" title="问题3、"></a>问题3、</h3><p>编写一个包含圆类的程序，并为圆类设计几个构造方法和一般方法，在主方法中创建一个圆类对象并输出它的周长和面积。<br>要求：<br>    属性有3个：x,y,r，分别放置圆心坐标和半径；<br>    构造方法有2个。一个是无参的，用于设置3个属性的值都为0；另一个有参的，用于设置3个属性的值，以确定一个具体的圆。<br>    计算周长的方法：double zc()；<br>计算面积的方法：double mj()。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">yuan</span> </span>&#123;</span><br><span class="line">	<span class="keyword">double</span> x,y,r;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">yuan</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		x=y=r=<span class="number">0.0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">yuan</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y,<span class="keyword">double</span> r)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.x=x;</span><br><span class="line">		<span class="keyword">this</span>.y=y;</span><br><span class="line">		<span class="keyword">this</span>.r=r;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">zc</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">2</span>*Math.PI*<span class="keyword">this</span>.r;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">mj</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> Math.PI*Math.pow(<span class="keyword">this</span>.r, <span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题4、"><a href="#问题4、" class="headerlink" title="问题4、"></a>问题4、</h3><p>编写一个程序，它含有一个圆类、圆柱类和主类。<br>要求：<br>    1）圆类参考上一题中的圆类；<br>    2）圆柱类：继承圆类，并加入一个属性h(高)；<br>              构造方法(给4个属性赋值)；<br>              计算面积的方法(double mj())；<br>              计算体积的方法(double tj())。<br>       注意，要充分利用父类的方法。<br>    3）主类：在主方法中创建圆和圆柱类的对象，然后计算并输出它们的面积及圆柱的体积。</p>
+<p>yuanzhu类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">yuanzhu</span> <span class="keyword">extends</span> <span class="title">yuan</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> h;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">yuanzhu</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y,<span class="keyword">double</span> r,<span class="keyword">double</span> h)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(x,y,r);</span><br><span class="line">		<span class="keyword">this</span>.h=h;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">mj</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.zc()*<span class="keyword">this</span>.h+<span class="number">2</span>*<span class="keyword">super</span>.mj();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">tj</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.mj()*<span class="keyword">this</span>.h;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>main类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">main_yz</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		yuan yuan1=<span class="keyword">new</span> yuan(<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>);</span><br><span class="line">		yuanzhu yuanzhu1=<span class="keyword">new</span> yuanzhu(<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">2</span>);</span><br><span class="line">		System.out.println(<span class="string">"圆的面积是："</span>+yuan1.mj());</span><br><span class="line">		System.out.println(<span class="string">"圆柱的面积是："</span>+yuanzhu1.mj());</span><br><span class="line">		System.out.println(<span class="string">"圆柱的体积是："</span>+yuanzhu1.tj());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/11/26/QScZwt.png" alt="QScZwt.png"></p>
+<h3 id="问题6、"><a href="#问题6、" class="headerlink" title="问题6、"></a>问题6、</h3><p>编写一个含有5个类的程序：<br>      类Person:<br>          属性：编号、姓名、性别；<br>          构造方法：确定编号和姓名；<br>          一般方法：修改编号、姓名，获取编号、姓名。<br>      类Teacher：继承类Person并增加：<br>          属性：系别；<br>          构造方法：调用父类的构造方法；<br>          一般方法：修改、获取系别。<br>      类Student：继承类Person并增加：<br>          属性：班级；<br>          构造方法：调用父类的构造方法；<br>          一般方法：修改、获取班级属性值。<br>      类Classes：<br>          属性：班级名称，学生名单(Student类对象的数组)；<br>          构造方法：确定班级名称；<br>          一般方法：建立学生名单，输出学生名单。<br>      类Main：<br>主类。主方法中创建一个班级，然后建立该班级的学生名单，最后<br>输出学生名单。 </p>
+<p>person类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">person</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> id;</span><br><span class="line">	String name,gender;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">person</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">person</span><span class="params">(<span class="keyword">int</span> id,String name)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id=id;</span><br><span class="line">		<span class="keyword">this</span>.name=name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">revise_id</span><span class="params">(<span class="keyword">int</span> id)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id=id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">revise_name</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name=name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get_id</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">get_name</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>teacher类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">teacher</span> <span class="keyword">extends</span> <span class="title">person</span> </span>&#123;</span><br><span class="line">	String faculty;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">teacher</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">teacher</span><span class="params">(<span class="keyword">int</span> id,String name,String faculty)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(id,name);</span><br><span class="line">		<span class="keyword">this</span>.faculty=faculty;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">revise_facilty</span><span class="params">(String Faculty)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.faculty=faculty;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">get_faculty</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.faculty;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>student类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">student</span> <span class="keyword">extends</span> <span class="title">person</span> </span>&#123;</span><br><span class="line">	String class_number;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">student</span><span class="params">(<span class="keyword">int</span> id,String name,String class_number)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(id,name);</span><br><span class="line">		<span class="keyword">this</span>.class_number=class_number;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">revise_class_number</span><span class="params">(String class_number)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.class_number=class_number;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">get_class_number</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.class_number;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>classes类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">classes</span> </span>&#123;</span><br><span class="line">	String class_name;</span><br><span class="line">	student student_list[];</span><br><span class="line">	<span class="keyword">int</span> student_number;</span><br><span class="line">	teacher teacher;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">classes</span><span class="params">(String class_name,teacher tec)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.class_name=class_name;</span><br><span class="line">		<span class="keyword">this</span>.teacher=tec;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set_student_list</span><span class="params">(student student_list[],<span class="keyword">int</span> student_number)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.student_list=student_list;</span><br><span class="line">		<span class="keyword">this</span>.student_number=student_number;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print_student_list</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"班级名称是："</span>+<span class="string">"\t"</span>+<span class="keyword">this</span>.class_name);</span><br><span class="line">		System.out.println(<span class="string">"任课教师是："</span>+<span class="string">"\t"</span>+<span class="keyword">this</span>.teacher.name);</span><br><span class="line">		System.out.println(<span class="string">"学生名单如下："</span>);</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="keyword">this</span>.student_number;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"\t"</span>+<span class="string">"姓名："</span>+<span class="string">"\t"</span>+<span class="keyword">this</span>.student_list[i].name+<span class="string">"\t"</span>+<span class="string">"学号:"</span>+<span class="string">"\t"</span>+<span class="keyword">this</span>.student_list[i].id);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>main类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">main_class</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner s=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入班级名称："</span>);</span><br><span class="line">		String cn=s.nextLine();</span><br><span class="line">		System.out.println(<span class="string">"请输入任课老师姓名和院系"</span>);</span><br><span class="line">		teacher tec=<span class="keyword">new</span> teacher();</span><br><span class="line">		tec.revise_name(s.nextLine());</span><br><span class="line">		tec.revise_facilty(s.nextLine());</span><br><span class="line">		classes banji=<span class="keyword">new</span> classes(cn,tec);</span><br><span class="line">		System.out.println(<span class="string">"请输入学生人数："</span>);</span><br><span class="line">		<span class="keyword">int</span> n;</span><br><span class="line">		n=s.nextInt();</span><br><span class="line">		student stu[]=<span class="keyword">new</span> student[n];</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		System.out.println(<span class="string">"请输入学生学号和姓名:"</span>);</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			stu[i]=<span class="keyword">new</span> student(s.nextInt(),s.nextLine(),cn);</span><br><span class="line">		&#125;</span><br><span class="line">		banji.set_student_list(stu, n);</span><br><span class="line">		banji.print_student_list();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/11/26/QSc77t.png" alt="QSc77t.png"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/11/26/java-shiyan-3/">java实验三</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">huahua</a></p>
+        <p><span>发布时间:</span>2019-11-26, 20:09:39</p>
+        <p><span>最后更新:</span>2019-11-26, 20:40:02</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/11/26/java-shiyan-3/" title="java实验三">https://1187100546.github.io/2019/11/26/java-shiyan-3/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://1187100546.github.io/2019/11/26/java-shiyan-3/　　作者: huahua" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/11/29/java-fujia/">
+                    java继承实现多态的例子
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/11/26/java-shiyan-2/">
+                    java实验二
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题1、"><span class="toc-number">1.</span> <span class="toc-text">问题1、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题2、"><span class="toc-number">2.</span> <span class="toc-text">问题2、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题3、"><span class="toc-number">3.</span> <span class="toc-text">问题3、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题4、"><span class="toc-number">4.</span> <span class="toc-text">问题4、</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题6、"><span class="toc-number">5.</span> <span class="toc-text">问题6、</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"java实验三　| 花花的blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/11/29/java-fujia/" title="上一篇: java继承实现多态的例子">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/11/26/java-shiyan-2/" title="下一篇: java实验二">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/29/java-fujia/">java继承实现多态的例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-3/">java实验三</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-2/">java实验二</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/24/spawn-failed/">hexo发生error：spawn failed错误的解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/19/网安作业3/">网安作业3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-stored/">DVWA--xss_stored</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-reflected/">DVWA--xss_reflected</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/DVWA-SQL-Injection-Blind/">DVWA-SQL_Injection_Blind（sql盲注）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/DVWA-SQL-Injection/">DVWA-SQL_Injection(SQL注入)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/算法实验考试/">算法实验考试</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/算法实验作业/">算法实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/25/算法实验4/">算法实验（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/算法实验3/">算法实验（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/算法实验2/">算法实验（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/Brute_Force/">DVWA-Brute_Force暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/算法实验1/">算法实验（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/21/算法作业2/">算法作业（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/20/算法作业1/">算法作业（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/XSS攻击简单示例/">XSS攻击简单示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/教育部取消毕业前补考的意见/">教育部取消毕业前补考的意见(某人的毛概作业)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/利用sqlmap注入dvwa/">利用sqlmap注入dvwa</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/12/简单sql注入环境搭建及注入/">简单sql注入环境搭建及注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/msf攻击windows/">msf攻击windows</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/一天是不良人，一辈子都是不良人/">一天是不良人，一辈子都是不良人</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 huahua
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
