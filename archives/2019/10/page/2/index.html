@@ -24,7 +24,7 @@
     <link rel="alternative" href="/atom.xml" title="花花的blog" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/img/avatar.jpg">
   
   
     <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png">
@@ -48,6 +48,9 @@
 
 
   
+    <script src="/lib/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  
 
 </head>
 
@@ -58,11 +61,11 @@
       
 
 
-<div class="overlay" style="background: #4d4d4d;"></div>
+<div class="overlay" style="background: #4d4d4d;background: url('/img/biubiubiu.gif') no-repeat ;"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/img/head.jpg" class="js-avatar">
+			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 			<h1 class="header-author"><a href="/">huahua</a></h1>
@@ -104,11 +107,23 @@
 				
 					<a class="gitee" href="#" title="码云" target="_blank"><i class="icon-gitee"></i></a>
 				
-					<a class="jianshu" href="#" title="简书" target="_blank"><i class="icon-jianshu"></i></a>
-				
 					<a class="cnblog" href="#" title="博客园" target="_blank"><i class="icon-cnblog"></i></a>
 				
+					<a class="mail" href="mailto:1187100546@qq.com" title="NULL" target="_blank"><i class="icon-mail"></i></a>
+				
 			</div>
+		
+			
+			
+			
+			
+			<div>
+				<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="240" height="86" src="//music.163.com/outchain/player?type=2&id=1334445174&auto=1&height=66"></iframe>
+			</div>
+			
+				
+				<p style="font-size: 12px;">这似乎是首纯音乐，请尽情的欣赏它吧！<p>
+			
 		
 		</nav>
 	</header>		
@@ -133,7 +148,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 				<a href="/">
-					<img src="/img/head.jpg" class="js-avatar">
+					<img src="/img/avatar.jpg" class="js-avatar">
 				</a>
 			</div>
 			<hgroup>
@@ -159,9 +174,9 @@
 			        
 						<a class="gitee" target="_blank" href="#" title="码云"><i class="icon-gitee"></i></a>
 			        
-						<a class="jianshu" target="_blank" href="#" title="简书"><i class="icon-jianshu"></i></a>
-			        
 						<a class="cnblog" target="_blank" href="#" title="博客园"><i class="icon-cnblog"></i></a>
+			        
+						<a class="mail" target="_blank" href="mailto:1187100546@qq.com" title="NULL"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -705,7 +720,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">XSS攻击</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -713,7 +728,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">XSS攻击</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -721,7 +740,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color1">xss攻击</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -730,10 +749,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">记录</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">xss攻击</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -930,6 +945,35 @@
   </div>
 
   
+<script type="text/javascript" src="/plugins/TweenMax/TweenMax.min.js"></script>
+<script type="text/javascript" src="/plugins/TweenMax/HoverImg.js"></script>
+
+<script>
+
+
+  var hoverEffect = {
+     "subNav": ".left-col .social a", 
+  }
+
+
+  for (var x in hoverEffect) {
+    // 初始化data-img属性值
+    let $em = document.querySelectorAll(hoverEffect[x]);
+    $em.forEach(($a) => {
+      //console.log($a.href);
+      if (isImageType($a.href)) {
+        $a.setAttribute("data-img", $a.href)
+      }
+    })
+    // 实现悬停元素预览图片效果
+    let $a = document.querySelectorAll(hoverEffect[x] + "[data-img]");
+    $a.forEach(($em) => {
+      new HoverImgFx1($em)
+    })
+  }
+
+</script>
+
   
 <script type="text/javascript" src="/plugins/activate-power-mode/activate-power-mode.js"></script>
 <script>
