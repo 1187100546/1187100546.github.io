@@ -9,6 +9,8 @@ categories: 暴力破解
 
 <!--more-->
 
+## 级别：low
+
 ### 一、配置burpsuite
 
 打开火狐浏览器，工具栏里找到preferences,找到network proxy,点击settings,填写如下配置
@@ -89,4 +91,128 @@ Cluster bomb – 这种模式会使用多个payload组。每个定义的位置�
 
 攻击成功，密码为password
 
-此法适用各个安全等级
+~~此法适用各个安全等级~~
+
+**`之前说法有误，此法并不适合各个等级`**
+
+## 级别：medium
+
+### Brute Force Source
+
+```php
+<?php
+
+if( isset( $_GET[ 'Login' ] ) ) {
+    // Sanitise username input
+    $user = $_GET[ 'username' ];
+    $user = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"],  $user ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.", E_USER_ERROR)) ? "" : ""));
+
+    // Sanitise password input
+    $pass = $_GET[ 'password' ];
+    $pass = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"],  $pass ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.", E_USER_ERROR)) ? "" : ""));
+    $pass = md5( $pass );
+
+    // Check the database
+    $query  = "SELECT * FROM `users` WHERE user = '$user' AND password = '$pass';";
+    $result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ) or die( '<pre>' . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '</pre>' );
+
+    if( $result && mysqli_num_rows( $result ) == 1 ) {
+        // Get users details
+        $row    = mysqli_fetch_assoc( $result );
+        $avatar = $row["avatar"];
+
+        // Login successful
+        echo "<p>Welcome to the password protected area {$user}</p>";
+        echo "<img src=\"{$avatar}\" />";
+    }
+    else {
+        // Login failed
+        sleep( 2 );
+        echo "<pre><br />Username and/or password incorrect.</pre>";
+    }
+
+    ((is_null($___mysqli_res = mysqli_close($GLOBALS["___mysqli_ston"]))) ? false : $___mysqli_res);
+}
+
+?>
+```
+
+medium加了错误密码延迟，low级别的方法还是适用，就是花费时间更长
+
+## 级别：high
+
+### Brute Force Source
+
+```php
+<?php
+
+if( isset( $_GET[ 'Login' ] ) ) {
+    // Check Anti-CSRF token
+    checkToken( $_REQUEST[ 'user_token' ], $_SESSION[ 'session_token' ], 'index.php' );
+
+    // Sanitise username input
+    $user = $_GET[ 'username' ];
+    $user = stripslashes( $user );
+    $user = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"],  $user ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.", E_USER_ERROR)) ? "" : ""));
+
+    // Sanitise password input
+    $pass = $_GET[ 'password' ];
+    $pass = stripslashes( $pass );
+    $pass = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"],  $pass ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.", E_USER_ERROR)) ? "" : ""));
+    $pass = md5( $pass );
+
+    // Check database
+    $query  = "SELECT * FROM `users` WHERE user = '$user' AND password = '$pass';";
+    $result = mysqli_query($GLOBALS["___mysqli_ston"],  $query ) or die( '<pre>' . ((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . '</pre>' );
+
+    if( $result && mysqli_num_rows( $result ) == 1 ) {
+        // Get users details
+        $row    = mysqli_fetch_assoc( $result );
+        $avatar = $row["avatar"];
+
+        // Login successful
+        echo "<p>Welcome to the password protected area {$user}</p>";
+        echo "<img src=\"{$avatar}\" />";
+    }
+    else {
+        // Login failed
+        sleep( rand( 0, 3 ) );
+        echo "<pre><br />Username and/or password incorrect.</pre>";
+    }
+
+    ((is_null($___mysqli_res = mysqli_close($GLOBALS["___mysqli_ston"]))) ? false : $___mysqli_res);
+}
+
+// Generate Anti-CSRF token
+generateSessionToken();
+
+?>
+
+```
+
+加了 user_token 一个随机值，来防止用户多次提交
+
+抓包，选择Pitchfork攻击类型，添加爆破的参数 ![Qm0Bb8.png](https://s2.ax1x.com/2019/12/01/Qm0Bb8.png)
+
+options中选择单线程
+
+![Qm022n.png](https://s2.ax1x.com/2019/12/01/Qm022n.png)
+
+ Options中找到Rediections模块，选择always，允许重定向 
+
+![Qm0q2R.png](https://s2.ax1x.com/2019/12/01/Qm0q2R.png)
+
+ 在Options中找到Grep-Extract模块，点击Add，并设置筛选条件，得到user_token 
+
+![QmB8s0.png](https://s2.ax1x.com/2019/12/01/QmB8s0.png)
+
+ 在Payloads中为选择的参数设置字典 
+
+![QmBtdU.png](https://s2.ax1x.com/2019/12/01/QmBtdU.png)
+
+![QmBrsx.png](https://s2.ax1x.com/2019/12/01/QmBrsx.png)
+
+开始攻击
+
+![QmBcdO.png](https://s2.ax1x.com/2019/12/01/QmBcdO.png)
+

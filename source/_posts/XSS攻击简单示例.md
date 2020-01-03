@@ -30,7 +30,10 @@ xss
 	
 			<?php
 			//php防注入和XSS攻击通用过滤
-//$_GET     && SafeFilter($_GET);
+$_GET     && SafeFilter($_GET);
+$_POST    && SafeFilter($_POST);
+$_COOKIE  && SafeFilter($_COOKIE);
+  
 function SafeFilter (&$arr) 
 {
    $ra=Array('/([\x00-\x08,\x0b-\x0c,\x0e-\x19])/','/script/','/javascript/','/vbscript/','/expression/','/applet/'
@@ -80,7 +83,6 @@ function SafeFilter (&$arr)
 
 	</body>
 </html>
-
 ```
 
 在浏览器输入http://localhost/xss.php/
