@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
   
-  <title>古典密码 | 花花的blog</title>
-
-  <!-- keywords -->
-  
-
+  <title>古典密码 - 花花的blog</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="我告诉你我喜欢你，并不是一定要和你在一起，只是希望今后的你，在遭遇人生低谷的时候，不要灰心，至少曾经有人被你的魅力所吸引，曾经是，以后也会是。">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png">
   <meta name="description" content="密码学中的古典密码。">
 <meta name="keywords" content="密码学">
 <meta property="og:type" content="article">
@@ -31,199 +33,232 @@
 <meta name="twitter:title" content="古典密码">
 <meta name="twitter:description" content="密码学中的古典密码。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2020/01/03/laA81K.png">
-  
-    <link rel="alternative" href="/atom.xml" title="花花的blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
-  
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
   
   
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1578720655503">
+</head>
 
-  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
-  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-
+<body class="mdui-drawer-body-left">
   
-</head></html>
-<body>
-  <div id="container">
-    <div id="particles-js"></div>
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
-			
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">huahua</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">厚积薄发</p>
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						<div class="icon-wrap icon-link hide" data-idx="2">
-							<div class="loopback_l"></div>
-							<div class="loopback_r"></div>
-						</div>
-						
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						<li>友情链接</li>
-						
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/XSS攻击/" style="font-size: 10px;">XSS攻击</a> <a href="/tags/java/" style="font-size: 18px;">java</a> <a href="/tags/sql注入/" style="font-size: 16px;">sql注入</a> <a href="/tags/xss攻击/" style="font-size: 12px;">xss攻击</a> <a href="/tags/作业/" style="font-size: 10px;">作业</a> <a href="/tags/动漫/" style="font-size: 10px;">动漫</a> <a href="/tags/密码学/" style="font-size: 14px;">密码学</a> <a href="/tags/新闻/" style="font-size: 10px;">新闻</a> <a href="/tags/暴力破解/" style="font-size: 10px;">暴力破解</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/渗透攻击/" style="font-size: 10px;">渗透攻击</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
-					</div>
-				</section>
-				
-				
-				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
-			        
-			        </div>
-				</section>
-				
-
-				
-			</div>
-		</div>
-	</header>				
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/01/13/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="huahua" class="mdui-btn mdui-btn-icon"><img src="/images/avatar.png"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="huahua">
+            <img src="/images/avatar.png" alt="huahua">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>31</div>
+        <div><span>Tags</span>13</div>
+        <div><span>Categories</span>12</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Social</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
 </div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/XSS攻击/">XSS攻击</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/java/">java</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/sql注入/">sql注入</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/xss攻击/">xss攻击</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/作业/">作业</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/密码学/">密码学</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/新闻点评/">新闻点评</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/暴力破解/">暴力破解</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/渗透攻击/">渗透攻击</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/生活日常/">生活日常</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">8</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/记录/">记录</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
     </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">huahua</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">huahua</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">厚积薄发</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-gudianmima" class="article article-type-post" itemscope itemprop="blogPost">
+  </div>
+
+
   
-    <div class="article-meta">
-      <a href="/2020/01/03/gudianmima/" class="article-date">
-  	<time datetime="2020-01-03T08:35:15.000Z" itemprop="datePublished">2020-01-03</time>
-</a>
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Tagcloud</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/XSS攻击/" style="font-size: 10px;">XSS攻击</a> <a href="/tags/java/" style="font-size: 18px;">java</a> <a href="/tags/sql注入/" style="font-size: 16px;">sql注入</a> <a href="/tags/xss攻击/" style="font-size: 12px;">xss攻击</a> <a href="/tags/作业/" style="font-size: 10px;">作业</a> <a href="/tags/动漫/" style="font-size: 10px;">动漫</a> <a href="/tags/密码学/" style="font-size: 14px;">密码学</a> <a href="/tags/新闻/" style="font-size: 10px;">新闻</a> <a href="/tags/暴力破解/" style="font-size: 10px;">暴力破解</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/渗透攻击/" style="font-size: 10px;">渗透攻击</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
     </div>
+    
+  </div>
+
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
   
-    <h1 class="article-title" itemprop="name">
-      古典密码
-      
-    </h1>
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
   
-
-      </header>
-      
-      <div class="article-info article-info-post">
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2020 huahua
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
         
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/密码学/">密码学</a></li></ul>
-	</div>
-
+            <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg">
         
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/密码学/">密码学</a>
-	</div>
-
-
-        
-        <div class="clearfix"></div>
-      </div>
-      
+        <h1>古典密码</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年01月03日</a>
+    <a><i class="nexmoefont icon-areachart"></i>3,019 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 15 分钟</a>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>密码学中的古典密码。</p>
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/密码学/">密码学</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/密码学/">密码学</a>
+    
+  </div>
+  <article>
+    <p>密码学中的古典密码。</p>
 <a id="more"></a>
 
 <h2 id="维吉尼亚密码原理"><a href="#维吉尼亚密码原理" class="headerlink" title="维吉尼亚密码原理"></a>维吉尼亚密码原理</h2><p>维吉尼亚密码是一种简单的多表代换密码，可以看成由一些偏移量不同的恺撒密码组成。为了掩盖字母使用中暴露的频率特征，解决的办法就是用多套符号代替原来的文字。它是一个表格，第一行代表原文的字母，下面每一横行代表原文分别由哪些字母代替，每一竖列代表我们要用第几套字符来替换原文。一共26个字母，一共26套代替法，所以这个表是一个26*26的表  .</p>
@@ -282,109 +317,66 @@
 <h3 id="仿射暴力破解"><a href="#仿射暴力破解" class="headerlink" title="仿射暴力破解"></a>仿射暴力破解</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span><span class="params">(a,b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> a%b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    <span class="keyword">return</span> gcd(b,a%b)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findModReverse</span><span class="params">(a,m)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> gcd(a,m)!=<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    u1,u2,u3 = <span class="number">1</span>,<span class="number">0</span>,a</span><br><span class="line">    v1,v2,v3 = <span class="number">0</span>,<span class="number">1</span>,m</span><br><span class="line">    <span class="keyword">while</span> v3!=<span class="number">0</span>:</span><br><span class="line">        q = u3//v3</span><br><span class="line">        v1,v2,v3,u1,u2,u3 = (u1-q*v1),(u2-q*v2),(u3-q*v3),v1,v2,v3</span><br><span class="line">    <span class="keyword">return</span> u1%m</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">AffineDecrypt</span><span class="params">(c,k1,k2)</span>:</span></span><br><span class="line">    k2 %= <span class="number">26</span></span><br><span class="line">    <span class="keyword">if</span> gcd(k1,<span class="number">26</span>) != <span class="number">1</span>:</span><br><span class="line">        print(<span class="string">"k1 and 26 are not mutually prime, and decryption fails."</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    k1 = findModReverse(k1,<span class="number">26</span>)</span><br><span class="line">    l = len(c)</span><br><span class="line">    ans = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(l):</span><br><span class="line">        <span class="keyword">if</span> c[i].isupper():</span><br><span class="line">            ans += chr((k1*(ord(c[i])-ord(<span class="string">'A'</span>)+<span class="number">26</span>-k2))%<span class="number">26</span>+ord(<span class="string">'A'</span>))</span><br><span class="line">        <span class="keyword">elif</span> c[i].islower():</span><br><span class="line">            ans += chr((k1*(ord(c[i])-ord(<span class="string">'a'</span>)+<span class="number">26</span>-k2))%<span class="number">26</span>+ord(<span class="string">'a'</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ans += c[i]</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BruteAffineDecrypt</span><span class="params">(c)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> k1 <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">        <span class="keyword">if</span> gcd(k1,<span class="number">26</span>) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">for</span> k2 <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">                <span class="keyword">print</span> (<span class="string">"k1 = "</span>+str(k1).zfill(<span class="number">2</span>)+<span class="string">", k2 = "</span>+str(k2).zfill(<span class="number">2</span>)+<span class="string">": "</span>+AffineDecrypt(c,k1,k2))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    s = input(<span class="string">"Please enter your plaintext:\n\t"</span>)</span><br><span class="line">    <span class="keyword">print</span> (<span class="number">7</span> * <span class="string">"*"</span> + <span class="string">"  Attack  "</span> + <span class="number">7</span> * <span class="string">"*"</span>)</span><br><span class="line">    BruteAffineDecrypt(s)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
 
 
-      
-    </div>
-    
-  </div>
+  </article>
   
     
-<nav id="article-nav">
-  
-    <a href="/2020/01/03/lsfr/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          序列密码
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/01/03/java-4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java第四次实验作业</div>
-      <strong class="article-nav-caption">&gt;</strong>
-    </a>
-  
-</nav>
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>Author：</strong>huahua<br>
+<strong>Link：</strong><a href="https://1187100546.github.io/2020/01/03/gudianmima/" title="https://1187100546.github.io/2020/01/03/gudianmima/" target="_blank" rel="noopener">https://1187100546.github.io/2020/01/03/gudianmima/</a><br>
 
-  
-</article>
-
-
-<div class="ds-share share" data-thread-key="gudianmima" data-title="古典密码" data-url="https://1187100546.github.io/2020/01/03/gudianmima/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="古典密码">
-    <div class="ds-share-inline">
-      <ul  class="ds-share-icons-16">
-      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-      </ul>
-      <div class="ds-share-icons-more">
-      </div>
-    </div>
- </div>
- 
-
-
-
-
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
 
 </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-      <div class="footer-left">
-        &copy; 2020 huahua
-      </div>
-        <div class="footer-right">
-          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
-        </div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
     </div>
   </div>
-</footer>
-    </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="/js/main.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1578720655529"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
 
 
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+  
 
 
-  </div>
+
+
+
 </body>
+
 </html>
