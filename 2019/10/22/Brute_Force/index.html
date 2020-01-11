@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>DVWA-Brute_Force暴力破解 | 花花的blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="利用burpsuite暴力破解DVWA的Brute_Force。">
+<meta name="keywords" content="暴力破解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DVWA-Brute_Force暴力破解">
+<meta property="og:url" content="https://1187100546.github.io/2019/10/22/Brute_Force/index.html">
+<meta property="og:site_name" content="花花的blog">
+<meta property="og:description" content="利用burpsuite暴力破解DVWA的Brute_Force。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/oag5jxbHnJhIQy8.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/zeU52IaT8qSYhpN.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/jEcwLoTW9AgiKdR.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/OjQFxUDV3PBmiuE.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/TdNYEPaJ9vpGfeK.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/Gm5AEUr6lTiKd2Y.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/JFGd3PfibMpaTZ6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/Qm0Bb8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/Qm022n.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/Qm0q2R.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QmB8s0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QmBtdU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QmBrsx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QmBcdO.png">
+<meta property="og:updated_time" content="2019-12-02T06:34:45.840Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DVWA-Brute_Force暴力破解">
+<meta name="twitter:description" content="利用burpsuite暴力破解DVWA的Brute_Force。">
+<meta name="twitter:image" content="https://i.loli.net/2019/10/22/oag5jxbHnJhIQy8.png">
+  
+    <link rel="alternative" href="/atom.xml" title="花花的blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">huahua</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">厚积薄发</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/XSS攻击/" style="font-size: 10px;">XSS攻击</a> <a href="/tags/java/" style="font-size: 18px;">java</a> <a href="/tags/sql注入/" style="font-size: 16px;">sql注入</a> <a href="/tags/xss攻击/" style="font-size: 12px;">xss攻击</a> <a href="/tags/作业/" style="font-size: 10px;">作业</a> <a href="/tags/动漫/" style="font-size: 10px;">动漫</a> <a href="/tags/密码学/" style="font-size: 14px;">密码学</a> <a href="/tags/新闻/" style="font-size: 10px;">新闻</a> <a href="/tags/暴力破解/" style="font-size: 10px;">暴力破解</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/渗透攻击/" style="font-size: 10px;">渗透攻击</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">huahua</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">huahua</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">厚积薄发</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Brute_Force" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/10/22/Brute_Force/" class="article-date">
+  	<time datetime="2019-10-22T12:53:42.000Z" itemprop="datePublished">2019-10-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DVWA-Brute_Force暴力破解
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/暴力破解/">暴力破解</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/暴力破解/">暴力破解</a>
+	</div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>利用burpsuite暴力破解DVWA的Brute_Force。</p>
+<a id="more"></a>
+
+<h2 id="级别：low"><a href="#级别：low" class="headerlink" title="级别：low"></a>级别：low</h2><h3 id="一、配置burpsuite"><a href="#一、配置burpsuite" class="headerlink" title="一、配置burpsuite"></a>一、配置burpsuite</h3><p>打开火狐浏览器，工具栏里找到preferences,找到network proxy,点击settings,填写如下配置</p>
+<p>![<del>`KHUGAWJ8ZXHWWKAC``3</del>S.png](<a href="https://i.loli.net/2019/10/22/dbGx16ywKJ32Y9t.png" target="_blank" rel="noopener">https://i.loli.net/2019/10/22/dbGx16ywKJ32Y9t.png</a>)</p>
+<p><img src="https://i.loli.net/2019/10/22/oag5jxbHnJhIQy8.png" alt="DH136K_XS4P1DIU_UWK7_R5.png"></p>
+<p>打开burpsuite,勾选代理即可</p>
+<p><img src="https://i.loli.net/2019/10/22/zeU52IaT8qSYhpN.png" alt="2KIR_2_A1X2TVG54_Z_@C96.png"></p>
+<p>先关闭proxy里的intercept，先不拦截</p>
+<h3 id="二、寻找注入点"><a href="#二、寻找注入点" class="headerlink" title="二、寻找注入点"></a>二、寻找注入点</h3><p>先进入DVWA页面，安全等级设置位low,再进入暴力破解的页面</p>
+<p><img src="https://i.loli.net/2019/10/22/jEcwLoTW9AgiKdR.png" alt="C0_0_CWB_ISDUO_RCNCS45I.png"></p>
+<p>输入用户名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin</span><br></pre></td></tr></table></figure>
+
+<p>密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123</span><br></pre></td></tr></table></figure>
+
+<p>开启burp suite拦截，登陆</p>
+<p><img src="https://i.loli.net/2019/10/22/OjQFxUDV3PBmiuE.png" alt="H_HLQGD19_DF_ODPW_@385T.png"></p>
+<p>选中全部内容，右键发送给intruder</p>
+<p><img src="https://i.loli.net/2019/10/22/TdNYEPaJ9vpGfeK.png" alt="2Y19__1WHZ__RQM@9K__BLX.png"></p>
+<p>点clear清除全部变量，选中123，点add，添加变量</p>
+<p>![O@P_AL@_P1IU`E~MU5A7X_Q.png](<a href="https://i.loli.net/2019/10/22/Opm7XKfaS1otTZE.png" target="_blank" rel="noopener">https://i.loli.net/2019/10/22/Opm7XKfaS1otTZE.png</a>)</p>
+<p>在payloads里添加破解字典</p>
+<p>![0EA__K`9T_QD_WXGC7_1_@S.png](<a href="https://i.loli.net/2019/10/22/837G4kexKdzlRaS.png" target="_blank" rel="noopener">https://i.loli.net/2019/10/22/837G4kexKdzlRaS.png</a>)</p>
+<p>下面就可以攻击了</p>
+<p>burp suite的攻击类型</p>
+<p><img src="https://i.loli.net/2019/10/22/Gm5AEUr6lTiKd2Y.png" alt="5C`_M8L_Q_D_X_AT_`___@J.png"></p>
+<h4 id="第一种："><a href="#第一种：" class="headerlink" title="第一种："></a>第一种：</h4><p>Sniper标签 这个是我们最常用的，Sniper是狙击手的意思。这个模式会使用单一的payload【就是导入字典的payload】组。它会针对每个position中$$位置设置payload。这种攻击类型适合对常见漏洞中的请求参数单独地进行测试。攻击中的请求总数应该是position数量和payload数量的乘积。</p>
+<h4 id="第二种："><a href="#第二种：" class="headerlink" title="第二种："></a>第二种：</h4><p>Battering ram – 这一模式是使用单一的payload组。它会重复payload并且一次把所有相同的payload放入指定的位置中。这种攻击适合那种需要在请求中把相同的输入放到多个位置的情况。请求的总数是payload组中payload的总数。简单说就是一个playload字典同时应用到多个position中</p>
+<h4 id="第三种："><a href="#第三种：" class="headerlink" title="第三种："></a>第三种：</h4><p>Pitchfork – 这一模式是使用多个payload组。对于定义的位置可以使用不同的payload组。攻击会同步迭代所有的payload组，把payload放入每个定义的位置中。比如：position中A处有a字典，B处有b字典，则a【1】将会对应b【1】进行attack处理，这种攻击类型非常适合那种不同位置中需要插入不同但相关的输入的情况。请求的数量应该是最小的payload组中的payload数量</p>
+<h4 id="第四种："><a href="#第四种：" class="headerlink" title="第四种："></a>第四种：</h4><p>Cluster bomb – 这种模式会使用多个payload组。每个定义的位置中有不同的payload组。攻击会迭代每个payload组，每种payload组合都会被测试一遍。比如：position中A处有a字典，B处有b字典，则两个字典将会循环搭配组合进行attack处理这种攻击适用于那种位置中需要不同且不相关或者未知的输入的攻击。攻击请求的总数是各payload组中payload数量的乘积。</p>
+<h3 id="三、攻击"><a href="#三、攻击" class="headerlink" title="三、攻击"></a>三、攻击</h3><p>选择sniper攻击方式，开始攻击</p>
+<p>根据攻击结果的length来判断是否成功</p>
+<p><img src="https://i.loli.net/2019/10/22/JFGd3PfibMpaTZ6.png" alt="R_OTHC_P6_X_`_ZWAN_O_`I.png"></p>
+<p>攻击成功，密码为password</p>
+<p><del>此法适用各个安全等级</del></p>
+<p><strong><code>之前说法有误，此法并不适合各个等级</code></strong></p>
+<h2 id="级别：medium"><a href="#级别：medium" class="headerlink" title="级别：medium"></a>级别：medium</h2><h3 id="Brute-Force-Source"><a href="#Brute-Force-Source" class="headerlink" title="Brute Force Source"></a>Brute Force Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_GET[ <span class="string">'Login'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Sanitise username input</span></span><br><span class="line">    $user = $_GET[ <span class="string">'username'</span> ];</span><br><span class="line">    $user = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $user ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitise password input</span></span><br><span class="line">    $pass = $_GET[ <span class="string">'password'</span> ];</span><br><span class="line">    $pass = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $pass ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">    $pass = md5( $pass );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Check the database</span></span><br><span class="line">    $query  = <span class="string">"SELECT * FROM `users` WHERE user = '$user' AND password = '$pass';"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( $result &amp;&amp; mysqli_num_rows( $result ) == <span class="number">1</span> ) &#123;</span><br><span class="line">        <span class="comment">// Get users details</span></span><br><span class="line">        $row    = mysqli_fetch_assoc( $result );</span><br><span class="line">        $avatar = $row[<span class="string">"avatar"</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Login successful</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;p&gt;Welcome to the password protected area &#123;$user&#125;&lt;/p&gt;"</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;img src=\"&#123;$avatar&#125;\" /&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Login failed</span></span><br><span class="line">        sleep( <span class="number">2</span> );</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[<span class="string">"___mysqli_ston"</span>]))) ? <span class="keyword">false</span> : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>medium加了错误密码延迟，low级别的方法还是适用，就是花费时间更长</p>
+<h2 id="级别：high"><a href="#级别：high" class="headerlink" title="级别：high"></a>级别：high</h2><h3 id="Brute-Force-Source-1"><a href="#Brute-Force-Source-1" class="headerlink" title="Brute Force Source"></a>Brute Force Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_GET[ <span class="string">'Login'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">    checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitise username input</span></span><br><span class="line">    $user = $_GET[ <span class="string">'username'</span> ];</span><br><span class="line">    $user = stripslashes( $user );</span><br><span class="line">    $user = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $user ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitise password input</span></span><br><span class="line">    $pass = $_GET[ <span class="string">'password'</span> ];</span><br><span class="line">    $pass = stripslashes( $pass );</span><br><span class="line">    $pass = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $pass ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">    $pass = md5( $pass );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Check database</span></span><br><span class="line">    $query  = <span class="string">"SELECT * FROM `users` WHERE user = '$user' AND password = '$pass';"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( $result &amp;&amp; mysqli_num_rows( $result ) == <span class="number">1</span> ) &#123;</span><br><span class="line">        <span class="comment">// Get users details</span></span><br><span class="line">        $row    = mysqli_fetch_assoc( $result );</span><br><span class="line">        $avatar = $row[<span class="string">"avatar"</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Login successful</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;p&gt;Welcome to the password protected area &#123;$user&#125;&lt;/p&gt;"</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;img src=\"&#123;$avatar&#125;\" /&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Login failed</span></span><br><span class="line">        sleep( rand( <span class="number">0</span>, <span class="number">3</span> ) );</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[<span class="string">"___mysqli_ston"</span>]))) ? <span class="keyword">false</span> : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>加了 user_token 一个随机值，来防止用户多次提交</p>
+<p>抓包，选择Pitchfork攻击类型，添加爆破的参数 <img src="https://s2.ax1x.com/2019/12/01/Qm0Bb8.png" alt="Qm0Bb8.png"></p>
+<p>options中选择单线程</p>
+<p><img src="https://s2.ax1x.com/2019/12/01/Qm022n.png" alt="Qm022n.png"></p>
+<p> Options中找到Rediections模块，选择always，允许重定向 </p>
+<p><img src="https://s2.ax1x.com/2019/12/01/Qm0q2R.png" alt="Qm0q2R.png"></p>
+<p> 在Options中找到Grep-Extract模块，点击Add，并设置筛选条件，得到user_token </p>
+<p><img src="https://s2.ax1x.com/2019/12/01/QmB8s0.png" alt="QmB8s0.png"></p>
+<p> 在Payloads中为选择的参数设置字典 </p>
+<p><img src="https://s2.ax1x.com/2019/12/01/QmBtdU.png" alt="QmBtdU.png"></p>
+<p><img src="https://s2.ax1x.com/2019/12/01/QmBrsx.png" alt="QmBrsx.png"></p>
+<p>开始攻击</p>
+<p><img src="https://s2.ax1x.com/2019/12/01/QmBcdO.png" alt="QmBcdO.png"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/23/算法实验2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          算法实验（二）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/22/算法实验1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法实验（一）</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="Brute_Force" data-title="DVWA-Brute_Force暴力破解" data-url="https://1187100546.github.io/2019/10/22/Brute_Force/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="DVWA-Brute_Force暴力破解">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2020 huahua
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
