@@ -41,7 +41,7 @@
         <link rel="alternate" type="application/atom+xml" title="花花的blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -171,7 +171,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#建立漏洞页面"><span class="post-toc-number">1.</span> <span class="post-toc-text">建立漏洞页面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#漏洞修补"><span class="post-toc-number">2.</span> <span class="post-toc-text">漏洞修补</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#建立漏洞页面"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 建立漏洞页面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#漏洞修补"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 漏洞修补</span></a></li></ol>
         </nav>
     </aside>
 
@@ -197,10 +197,12 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>xss<br><a id="more"></a></p>
-<h3 id="建立漏洞页面"><a href="#建立漏洞页面" class="headerlink" title="建立漏洞页面"></a>建立漏洞页面</h3><p>在www目录下新建xss.php,代码如下</p>
+            <p>xss</p>
+<a id="more"></a>
+<h3 id="建立漏洞页面"><a class="markdownIt-Anchor" href="#建立漏洞页面"></a> 建立漏洞页面</h3>
+<p>在www目录下新建xss.php,代码如下</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html;charset=utf-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;xss漏洞简单搭建&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;center&gt;</span><br><span class="line">			&lt;h6&gt;把我们输入的字符串输出到input里的value属性里&lt;/h6&gt;</span><br><span class="line">			&lt;form action=<span class="string">""</span> method=<span class="string">"get"</span>&gt;</span><br><span class="line">				&lt;h6&gt;请输入你想显现的字符串&lt;/h6&gt;</span><br><span class="line">				&lt;input type=<span class="string">"text"</span> name=<span class="string">"xss_input_value"</span> value=<span class="string">"输入"</span>&gt;&lt;br /&gt;</span><br><span class="line">				&lt;input type=<span class="string">'submit'</span>&gt;</span><br><span class="line">			&lt;/form&gt;</span><br><span class="line">			&lt;hr&gt;</span><br><span class="line">	</span><br><span class="line">			<span class="meta">&lt;?php</span></span><br><span class="line">			<span class="comment">//php防注入和XSS攻击通用过滤</span></span><br><span class="line">$_GET     &amp;&amp; SafeFilter($_GET);</span><br><span class="line">$_POST    &amp;&amp; SafeFilter($_POST);</span><br><span class="line">$_COOKIE  &amp;&amp; SafeFilter($_COOKIE);</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SafeFilter</span> <span class="params">(&amp;$arr)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   $ra=<span class="keyword">Array</span>(<span class="string">'/([\x00-\x08,\x0b-\x0c,\x0e-\x19])/'</span>,<span class="string">'/script/'</span>,<span class="string">'/javascript/'</span>,<span class="string">'/vbscript/'</span>,<span class="string">'/expression/'</span>,<span class="string">'/applet/'</span></span><br><span class="line">   ,<span class="string">'/meta/'</span>,<span class="string">'/xml/'</span>,<span class="string">'/blink/'</span>,<span class="string">'/link/'</span>,<span class="string">'/style/'</span>,<span class="string">'/embed/'</span>,<span class="string">'/object/'</span>,<span class="string">'/frame/'</span>,<span class="string">'/layer/'</span>,<span class="string">'/title/'</span>,<span class="string">'/bgsound/'</span></span><br><span class="line">   ,<span class="string">'/base/'</span>,<span class="string">'/onload/'</span>,<span class="string">'/onunload/'</span>,<span class="string">'/onchange/'</span>,<span class="string">'/onsubmit/'</span>,<span class="string">'/onreset/'</span>,<span class="string">'/onselect/'</span>,<span class="string">'/onblur/'</span>,<span class="string">'/onfocus/'</span>,</span><br><span class="line">   <span class="string">'/onabort/'</span>,<span class="string">'/onkeydown/'</span>,<span class="string">'/onkeypress/'</span>,<span class="string">'/onkeyup/'</span>,<span class="string">'/onclick/'</span>,<span class="string">'/ondblclick/'</span>,<span class="string">'/onmousedown/'</span>,<span class="string">'/onmousemove/'</span></span><br><span class="line">   ,<span class="string">'/onmouseout/'</span>,<span class="string">'/onmouseover/'</span>,<span class="string">'/onmouseup/'</span>,<span class="string">'/onunload/'</span>);</span><br><span class="line">     </span><br><span class="line">   <span class="keyword">if</span> (is_array($arr))</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $key =&gt; $value) </span><br><span class="line">     &#123;</span><br><span class="line">        <span class="keyword">if</span> (!is_array($value))</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">if</span> (!get_magic_quotes_gpc())  <span class="comment">//不对magic_quotes_gpc转义过的字符使用addslashes(),避免双重转义。</span></span><br><span class="line">          &#123;</span><br><span class="line">             $value  = addslashes($value); <span class="comment">//给单引号（'）、双引号（"）、反斜线（\）与 NUL（NULL 字符）  加上反斜线转义</span></span><br><span class="line">          &#125;</span><br><span class="line">          $value       = preg_replace($ra,<span class="string">''</span>,$value);     <span class="comment">//删除非打印字符，粗暴式过滤xss可疑字符串</span></span><br><span class="line">          $arr[$key]     = htmlentities(strip_tags($value)); <span class="comment">//去除 HTML 和 PHP 标记并转换为 HTML 实体</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">          SafeFilter($arr[$key]);</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'xss_input_value'</span>]))</span><br><span class="line">			&#123;</span><br><span class="line">				$s=$_GET[<span class="string">'xss_input_value'</span>];</span><br><span class="line">				<span class="keyword">echo</span><span class="string">'&lt;input type="text" value="'</span>.$_GET[<span class="string">'xss_input_value'</span>].<span class="string">'"&gt;'</span>;</span><br><span class="line">				</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">echo</span> <span class="string">'&lt;input type="text" value="输出"&gt;'</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">		&lt;/center&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>在浏览器输入<a href="http://localhost/xss.php/" target="_blank" rel="noopener">http://localhost/xss.php/</a></p>
+<p>在浏览器输入http://localhost/xss.php/</p>
 <p>进入页面</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -219,7 +221,8 @@
                 <div class="image-caption">L0_P317WRNGPCYPGDQPG_0O.png</div>
             </figure>
 <p>攻击成功</p>
-<h3 id="漏洞修补"><a href="#漏洞修补" class="headerlink" title="漏洞修补"></a>漏洞修补</h3><p>将xss.php中</p>
+<h3 id="漏洞修补"><a class="markdownIt-Anchor" href="#漏洞修补"></a> 漏洞修补</h3>
+<p>将xss.php中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//<span class="variable">$_GET</span>     &amp;&amp; SafeFilter(<span class="variable">$_GET</span>);</span><br></pre></td></tr></table></figure>
 <p>注释去掉</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$_GET</span>     &amp;&amp; SafeFilter(<span class="variable">$_GET</span>);</span><br></pre></td></tr></table></figure>
@@ -485,7 +488,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -505,7 +508,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 
