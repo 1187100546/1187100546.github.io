@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="huahua">
+
+
+
+<meta name="description" content="密码学中的RSA加密。">
+<meta name="keywords" content="密码学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="公钥密码RSA">
+<meta property="og:url" content="https://1187100546.github.io/2020/01/12/RSA/index.html">
+<meta property="og:site_name" content="花花的blog">
+<meta property="og:description" content="密码学中的RSA加密。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/12/lov9Nn.png">
+<meta property="og:updated_time" content="2020-01-12T10:34:44.060Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="公钥密码RSA">
+<meta name="twitter:description" content="密码学中的RSA加密。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2020/01/12/lov9Nn.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="花花的blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>公钥密码RSA | 花花的blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">huahua</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">厚积薄发</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" href="#" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS攻击/">XSS攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss攻击/">xss攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作业/">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动漫/">动漫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码学/">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新闻/">新闻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力破解/">暴力破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/渗透攻击/">渗透攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">huahua</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">huahua</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">厚积薄发</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="#" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-RSA" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/01/12/RSA/" class="article-date">
+      <time datetime="2020-01-12T10:16:06.000Z" itemprop="datePublished">2020-01-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      公钥密码RSA
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/密码学/">密码学</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/密码学/">密码学</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>密码学中的RSA加密。</p>
+<a id="more"></a>
+
+<h2 id="RSA算法原理"><a href="#RSA算法原理" class="headerlink" title="RSA算法原理"></a>RSA算法原理</h2><ol>
+<li>密钥的生成</li>
+</ol>
+<ul>
+<li><p>选择两个大素数 𝑝和𝑞,（𝑝≠𝑞，需要保密，步骤4以后建议销毁）</p>
+</li>
+<li><p>计算𝑛=𝑝×𝑞， (𝑛)=(𝑝－1)×(𝑞－1)</p>
+</li>
+<li><p>选择整数 𝑒 使 ((𝑛)，𝑒) =1,  1&lt;𝑒&lt; (𝑛) </p>
+</li>
+<li><p>计算𝑑，使𝑑=𝑒－1 𝑚𝑜𝑑 (𝑛),</p>
+</li>
+</ul>
+<p>​    得到：公钥为{𝑒, 𝑛}； 私钥为{𝑑}</p>
+<ol start="2">
+<li><p>加密(用𝒆，𝒏)： 明文𝑀&lt;𝑛， 密文𝐶=𝑀^𝑒 (𝑚𝑜𝑑 𝑛).</p>
+</li>
+<li><p>解密(用𝒅，𝒏)： 密文𝐶， 明文𝑀 =𝐶^𝑑 (𝑚𝑜𝑑 𝑛)</p>
+</li>
+</ol>
+<h2 id="大素数生成"><a href="#大素数生成" class="headerlink" title="大素数生成"></a>大素数生成</h2><p>Miler-Rabin 算法：</p>
+<p>对于大整数的素性测试，一般用 Miller-Rabin 算法。它是一个基于概率的算法，是费马小定理（若 n 是一个素数，则 an-1 ≡ 1 (mod n) ）的一个改进。要测试 n 是否为素数，首先将 n−1 分解为 2sd 。在每次测试开始时，先随机选一个介于 [1,n−1] 的整数 a ，之后如果对所有的 r∈[0,s−1] ，若admodn≠1 且 a2rd mod n≠−1，则 n 是合数。否则，n 有 3/4 的概率为素数。增加测试的次数，该数是素数的概率会越来越高。这样，我们就可以给定位数 n 的情况下随机生成数，然后再用 Miller-Rabin 算法验证它是不是素数，若是，则就用它，否则再随机生成其他数字，循环。Python 脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 素性检验：采用 Miler-Rabin 检验法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">miller_rabin</span><span class="params">(n,k=<span class="number">80</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">2</span> <span class="keyword">or</span> n == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    r, s = <span class="number">0</span>, n - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> s % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        r += <span class="number">1</span></span><br><span class="line">        s //= <span class="number">2</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(k):</span><br><span class="line">        a = random.randrange(<span class="number">2</span>, n - <span class="number">1</span>)</span><br><span class="line">        x = pow(a, s, n)</span><br><span class="line">        <span class="keyword">if</span> x == <span class="number">1</span> <span class="keyword">or</span> x == n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(r - <span class="number">1</span>):</span><br><span class="line">            x = pow(x, <span class="number">2</span>, n)</span><br><span class="line">            <span class="keyword">if</span> x == n - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"><span class="comment"># 生成 b 位的素数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">genPrime</span><span class="params">(b=<span class="number">1024</span>)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># the highest bit is 1</span></span><br><span class="line">        ans = <span class="string">"1"</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(b<span class="number">-2</span>):</span><br><span class="line">            ans += str(random.randint(<span class="number">0</span>,<span class="number">1</span>))</span><br><span class="line">        <span class="comment"># the lowest bit is 1</span></span><br><span class="line">        ans += <span class="string">"1"</span></span><br><span class="line">        ans = int(ans,<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">if</span> miller_rabin(ans):</span><br><span class="line">            <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<h2 id="带模的幂运算"><a href="#带模的幂运算" class="headerlink" title="带模的幂运算"></a>带模的幂运算</h2><p>原理：模重复平方运算，Python 代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">FastMod</span><span class="params">(x, n, m)</span>:</span></span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line">    b = x</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        temp = n</span><br><span class="line">        <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">1</span> :</span><br><span class="line">            a = a * b % m</span><br><span class="line">        b = b * b % m</span><br><span class="line">        n = n//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> temp &lt; <span class="number">1</span> :</span><br><span class="line">            <span class="keyword">return</span> a</span><br></pre></td></tr></table></figure>
+
+<h2 id="求逆运算"><a href="#求逆运算" class="headerlink" title="求逆运算"></a>求逆运算</h2><p>扩展欧几里得法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeD</span><span class="params">(e, phi_n)</span>:</span></span><br><span class="line">    (x, y, r) = extendedGCD(phi_n, e)</span><br><span class="line">    <span class="comment"># y maybe &lt; 0, so convert it</span></span><br><span class="line">    <span class="keyword">if</span> y &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> phi_n + y</span><br><span class="line">    <span class="keyword">return</span> y</span><br><span class="line"><span class="comment"># Extended Euclidean algorithm</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extendedGCD</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="comment"># a*xi + b*yi = ri</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span>, <span class="number">0</span>, a)</span><br><span class="line">    <span class="comment"># a*x1 + b*y1 = a</span></span><br><span class="line">    x1 = <span class="number">1</span></span><br><span class="line">    y1 = <span class="number">0</span></span><br><span class="line">    <span class="comment"># a*x2 + b*y2 = b</span></span><br><span class="line">    x2 = <span class="number">0</span></span><br><span class="line">    y2 = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> b != <span class="number">0</span>:</span><br><span class="line">        q = a // b</span><br><span class="line">        <span class="comment"># ri = r(i-2) % r(i-1)</span></span><br><span class="line">        r = a % b</span><br><span class="line">        a = b</span><br><span class="line">        b = r</span><br><span class="line">        <span class="comment"># xi = x(i-2) - q*x(i-1)</span></span><br><span class="line">        x = x1 - q*x2</span><br><span class="line">        x1 = x2</span><br><span class="line">        x2 = x</span><br><span class="line">        <span class="comment"># yi = y(i-2) - q*y(i-1)</span></span><br><span class="line">        y = y1 - q*y2</span><br><span class="line">        y1 = y2</span><br><span class="line">        y2 = y</span><br><span class="line"><span class="keyword">return</span>(x1, y1, a)</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="https://s2.ax1x.com/2020/01/12/lov9Nn.png" alt="lov9Nn.png"></p>
+<h2 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h2><p>RSA的安全性依赖于大数分解问题，目前，还未能从数学上证明由𝑐和𝑒计算出𝑚一定需要分解𝑛，然而，如果新方法能使密码分析者推算出𝑑，它也就成为大数分解的一个新方法</p>
+<p>非对称加密算法中 1024 bit 密钥的强度相当于对称加密算法 80bit 密钥的强度。但是，从效率上，密钥长度增长一倍，公钥操作所需时间增加约 4 倍，私钥操作所需时间增加约 8 倍，公私钥生成时间约增长16倍。所以，我们要权衡一下效率和安全性。一般来说， 1024 bit 只能用于加密 最多117 字节的明文。</p>
+<p>低加密指数攻击：</p>
+<p>为了使加密高效，一般希望选取较小的加密指数 e ，但是 e 不能太小，否则容易遭到低加密指数攻击。</p>
+<p>假设用户使用的密钥 e=3 。考虑到加密关系满足：<br>$$<br>C\equiv m^3\ mod\ n\<br>$$<br>则容易得到：<br>$$<br>m^3=c+k\times n\<br>m=\sqrt[3]{c+k\times n}<br>$$<br>攻击者可以从小到大枚举 k ，依次开三次根，直到开出整数为止。</p>
+<p>低加密指数广播攻击：</p>
+<p>还有一种情况是如果给 k 个用户发的都是同个低加密指数比如 e=3 ，在不同的模数 n1.n2,n3下 ，可由 CRT（中国剩余定理） 解出 m3 ，从而直接开三次根解出 m。</p>
+<p>共模攻击：</p>
+<p>场景：n 相同（让多个用户使用相同的模数 n ），但他们的公私钥对不同。这样，我们可以在已知 n,e1,e2,c1,c2 的情况下解出 m 。过程如下：</p>
+<p>其实有个隐形的前提条件是：<br>$$<br>gcd(e_1,e_2)=1<br>$$<br>存在 s1,s2 使得：<br>$$<br>s_1e_1+s_2e_2=1<br>$$<br>又由 RSA 定义可知：<br>$$<br>c_1\equiv m^{e_1}\ mod\ n\<br>c_2\equiv m^{e_2}\ mod \ n<br>$$<br>可得出：<br>$$<br>c_1^{s_1}c_2^{s_2}\equiv m\ mod\ n<br>$$<br>解出明文。</p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">FastMod</span><span class="params">(x, n, m)</span>:</span></span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line">    b = x</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        temp = n</span><br><span class="line">        <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">1</span> :</span><br><span class="line">            a = a * b % m</span><br><span class="line">        b = b * b % m</span><br><span class="line">        n = n//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> temp &lt; <span class="number">1</span> :</span><br><span class="line">            <span class="keyword">return</span> a</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeD</span><span class="params">(e, phi_n)</span>:</span></span><br><span class="line">    (x, y, r) = extendedGCD(phi_n, e)</span><br><span class="line">    <span class="keyword">if</span> y &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> phi_n + y</span><br><span class="line">    <span class="keyword">return</span> y</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extendedGCD</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span>, <span class="number">0</span>, a)</span><br><span class="line">    x1 = <span class="number">1</span></span><br><span class="line">    y1 = <span class="number">0</span></span><br><span class="line">    x2 = <span class="number">0</span></span><br><span class="line">    y2 = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> b != <span class="number">0</span>:</span><br><span class="line">        q = a // b</span><br><span class="line">        r = a % b</span><br><span class="line">        a = b</span><br><span class="line">        b = r</span><br><span class="line">        x = x1 - q*x2</span><br><span class="line">        x1 = x2</span><br><span class="line">        x2 = x</span><br><span class="line">        y = y1 - q*y2</span><br><span class="line">        y1 = y2</span><br><span class="line">        y2 = y</span><br><span class="line">    <span class="keyword">return</span>(x1, y1, a)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str2Hex</span><span class="params">(m)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>.join(<span class="string">"&#123;:02x&#125;"</span>.format(ord(x)) <span class="keyword">for</span> x <span class="keyword">in</span> m)</span><br><span class="line"><span class="comment"># 素性检验：采用 Miler-Rabin 检验法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">miller_rabin</span><span class="params">(n,k=<span class="number">80</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">2</span> <span class="keyword">or</span> n == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    r, s = <span class="number">0</span>, n - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> s % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        r += <span class="number">1</span></span><br><span class="line">        s //= <span class="number">2</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(k):</span><br><span class="line">        a = random.randrange(<span class="number">2</span>, n - <span class="number">1</span>)</span><br><span class="line">        x = pow(a, s, n)</span><br><span class="line">        <span class="keyword">if</span> x == <span class="number">1</span> <span class="keyword">or</span> x == n - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(r - <span class="number">1</span>):</span><br><span class="line">            x = pow(x, <span class="number">2</span>, n)</span><br><span class="line">            <span class="keyword">if</span> x == n - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"><span class="comment"># 生成 b 位的素数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">genPrime</span><span class="params">(b=<span class="number">1024</span>)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># the highest bit is 1</span></span><br><span class="line">        ans = <span class="string">"1"</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(b<span class="number">-2</span>):</span><br><span class="line">            ans += str(random.randint(<span class="number">0</span>,<span class="number">1</span>))</span><br><span class="line">        <span class="comment"># the lowest bit is 1</span></span><br><span class="line">        ans += <span class="string">"1"</span></span><br><span class="line">        ans = int(ans,<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">if</span> miller_rabin(ans):</span><br><span class="line">            <span class="keyword">return</span> ans</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">genE</span><span class="params">(phi_n)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        e = genPrime(b=random.randint(<span class="number">3</span>,<span class="number">13</span>))</span><br><span class="line">        <span class="keyword">if</span> e == <span class="number">3</span> <span class="keyword">or</span> e == <span class="number">5</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> phi_n%e != <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> e</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">RSAEncrypt</span><span class="params">(m,n,e)</span>:</span></span><br><span class="line">    m = int(str2Hex(m),<span class="number">16</span>)</span><br><span class="line">    c = pow(m,e,n)</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">RSADecrypt</span><span class="params">(c,d,n)</span>:</span></span><br><span class="line">    m = pow(c,d,n)</span><br><span class="line">    m = bytes.fromhex(<span class="string">'&#123;:x&#125;'</span>.format(m))</span><br><span class="line">    <span class="keyword">return</span> m</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 生成两个大素数p和q</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"Generate p and q ......"</span>)</span><br><span class="line">    p = genPrime()</span><br><span class="line">    q = genPrime()</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"p = "</span>+str(p))</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"q = "</span>+str(q))</span><br><span class="line">    <span class="comment"># 计算n = p*q</span></span><br><span class="line">    n = p*q</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"n = "</span>+str(n))</span><br><span class="line">    <span class="comment"># 计算φ(n) = p*q</span></span><br><span class="line">    phi_n = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"\nGenerate e ......"</span>)</span><br><span class="line">    <span class="comment"># 生成一个和φ(n)互素的数e</span></span><br><span class="line">    e = genE(phi_n)</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"e = "</span>+str(e))</span><br><span class="line">    m = <span class="string">"Hello world!"</span></span><br><span class="line">    <span class="comment"># 加密算法</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"\n"</span>+<span class="number">8</span>*<span class="string">"*"</span>+<span class="string">" Encryption "</span>+<span class="number">8</span>*<span class="string">"*"</span>)</span><br><span class="line">    Ciphertext = RSAEncrypt(m,n,e)</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"The Ciphertext is:\n\t"</span>+str(Ciphertext))</span><br><span class="line">    <span class="comment"># 解密算法</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"\n"</span>+<span class="number">8</span>*<span class="string">"*"</span>+<span class="string">" Decryption "</span>+<span class="number">8</span>*<span class="string">"*"</span>)</span><br><span class="line">    <span class="comment"># 使用私钥d，d是e模φ(n)的逆</span></span><br><span class="line">    d = computeD(e,phi_n)</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"d = "</span>+str(d))</span><br><span class="line">    Plaintext = RSADecrypt(Ciphertext,d,n)</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"The Plaintext is:\n\t"</span>+str(Plaintext))</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/01/12/RSA/">公钥密码RSA</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">huahua</a></p>
+        <p><span>发布时间:</span>2020-01-12, 18:16:06</p>
+        <p><span>最后更新:</span>2020-01-12, 18:34:44</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/01/12/RSA/" title="公钥密码RSA">https://1187100546.github.io/2020/01/12/RSA/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://1187100546.github.io/2020/01/12/RSA/　　作者: huahua" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/01/03/des/">
+                    分组密码DES
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RSA算法原理"><span class="toc-number">1.</span> <span class="toc-text">RSA算法原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大素数生成"><span class="toc-number">2.</span> <span class="toc-text">大素数生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带模的幂运算"><span class="toc-number">3.</span> <span class="toc-text">带模的幂运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#求逆运算"><span class="toc-number">4.</span> <span class="toc-text">求逆运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行结果"><span class="toc-number">5.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全性分析"><span class="toc-number">6.</span> <span class="toc-text">安全性分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整代码"><span class="toc-number">7.</span> <span class="toc-text">完整代码</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"公钥密码RSA　| 花花的blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/01/03/des/" title="下一篇: 分组密码DES">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/12/RSA/">公钥密码RSA</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/des/">分组密码DES</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/lsfr/">序列密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/gudianmima/">古典密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/java-4/">java第四次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/java-3/">java第三次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/java-2/">java第二次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/29/java-fujia/">java继承实现多态的例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-3/">java实验三</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-2/">java实验二</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/24/spawn-failed/">hexo发生error：spawn failed错误的解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/19/网安作业3/">网安作业3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-stored/">DVWA--xss_stored</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-reflected/">DVWA--xss_reflected</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/DVWA-SQL-Injection-Blind/">DVWA-SQL_Injection_Blind（sql盲注）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/DVWA-SQL-Injection/">DVWA-SQL_Injection(SQL注入)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/算法实验考试/">算法实验考试</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/算法实验作业/">算法实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/25/算法实验4/">算法实验（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/算法实验3/">算法实验（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/算法实验2/">算法实验（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/Brute_Force/">DVWA-Brute_Force暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/算法实验1/">算法实验（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/21/算法作业2/">算法作业（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/20/算法作业1/">算法作业（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/XSS攻击简单示例/">XSS攻击简单示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/教育部取消毕业前补考的意见/">教育部取消毕业前补考的意见(某人的毛概作业)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/利用sqlmap注入dvwa/">利用sqlmap注入dvwa</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/12/简单sql注入环境搭建及注入/">简单sql注入环境搭建及注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/msf攻击windows/">msf攻击windows</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/一天是不良人，一辈子都是不良人/">一天是不良人，一辈子都是不良人</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2020 huahua
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+            
+            
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
