@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>XSS攻击简单示例 | 花花的blog | 厚积薄发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="XSS攻击">
+    <meta name="description" content="xss">
+<meta name="keywords" content="XSS攻击">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XSS攻击简单示例">
+<meta property="og:url" content="https://1187100546.github.io/2019/10/13/XSS攻击简单示例/index.html">
+<meta property="og:site_name" content="花花的blog">
+<meta property="og:description" content="xss">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="c:/Users/张寅/AppData/Roaming/Typora/typora-user-images/1570973405972.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/13/UonfqPdrGlsBXSt.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/13/l2DCHsWTqGRXNfJ.png">
+<meta property="og:updated_time" content="2019-12-01T13:10:04.542Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XSS攻击简单示例">
+<meta name="twitter:description" content="xss">
+<meta name="twitter:image" content="c:/Users/张寅/AppData/Roaming/Typora/typora-user-images/1570973405972.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="花花的blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">huahua</h5>
+          <a href="mailto:1187100546@qq.com" title="1187100546@qq.com" class="mail">1187100546@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/1187100546" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">XSS攻击简单示例</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">XSS攻击简单示例</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-13T11:06:06.000Z" itemprop="datePublished" class="page-time">
+  2019-10-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/XSS攻击/">XSS攻击</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#建立漏洞页面"><span class="post-toc-number">1.</span> <span class="post-toc-text">建立漏洞页面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#漏洞修补"><span class="post-toc-number">2.</span> <span class="post-toc-text">漏洞修补</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-XSS攻击简单示例"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">XSS攻击简单示例</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-13 19:06:06" datetime="2019-10-13T11:06:06.000Z"  itemprop="datePublished">2019-10-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/XSS攻击/">XSS攻击</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>xss</p>
+<a id="more"></a>
+
+<h3 id="建立漏洞页面"><a href="#建立漏洞页面" class="headerlink" title="建立漏洞页面"></a>建立漏洞页面</h3><p>在www目录下新建xss.php,代码如下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html;charset=utf-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;xss漏洞简单搭建&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;center&gt;</span><br><span class="line">			&lt;h6&gt;把我们输入的字符串输出到input里的value属性里&lt;/h6&gt;</span><br><span class="line">			&lt;form action=<span class="string">""</span> method=<span class="string">"get"</span>&gt;</span><br><span class="line">				&lt;h6&gt;请输入你想显现的字符串&lt;/h6&gt;</span><br><span class="line">				&lt;input type=<span class="string">"text"</span> name=<span class="string">"xss_input_value"</span> value=<span class="string">"输入"</span>&gt;&lt;br /&gt;</span><br><span class="line">				&lt;input type=<span class="string">'submit'</span>&gt;</span><br><span class="line">			&lt;/form&gt;</span><br><span class="line">			&lt;hr&gt;</span><br><span class="line">	</span><br><span class="line">			<span class="meta">&lt;?php</span></span><br><span class="line">			<span class="comment">//php防注入和XSS攻击通用过滤</span></span><br><span class="line">$_GET     &amp;&amp; SafeFilter($_GET);</span><br><span class="line">$_POST    &amp;&amp; SafeFilter($_POST);</span><br><span class="line">$_COOKIE  &amp;&amp; SafeFilter($_COOKIE);</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SafeFilter</span> <span class="params">(&amp;$arr)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   $ra=<span class="keyword">Array</span>(<span class="string">'/([\x00-\x08,\x0b-\x0c,\x0e-\x19])/'</span>,<span class="string">'/script/'</span>,<span class="string">'/javascript/'</span>,<span class="string">'/vbscript/'</span>,<span class="string">'/expression/'</span>,<span class="string">'/applet/'</span></span><br><span class="line">   ,<span class="string">'/meta/'</span>,<span class="string">'/xml/'</span>,<span class="string">'/blink/'</span>,<span class="string">'/link/'</span>,<span class="string">'/style/'</span>,<span class="string">'/embed/'</span>,<span class="string">'/object/'</span>,<span class="string">'/frame/'</span>,<span class="string">'/layer/'</span>,<span class="string">'/title/'</span>,<span class="string">'/bgsound/'</span></span><br><span class="line">   ,<span class="string">'/base/'</span>,<span class="string">'/onload/'</span>,<span class="string">'/onunload/'</span>,<span class="string">'/onchange/'</span>,<span class="string">'/onsubmit/'</span>,<span class="string">'/onreset/'</span>,<span class="string">'/onselect/'</span>,<span class="string">'/onblur/'</span>,<span class="string">'/onfocus/'</span>,</span><br><span class="line">   <span class="string">'/onabort/'</span>,<span class="string">'/onkeydown/'</span>,<span class="string">'/onkeypress/'</span>,<span class="string">'/onkeyup/'</span>,<span class="string">'/onclick/'</span>,<span class="string">'/ondblclick/'</span>,<span class="string">'/onmousedown/'</span>,<span class="string">'/onmousemove/'</span></span><br><span class="line">   ,<span class="string">'/onmouseout/'</span>,<span class="string">'/onmouseover/'</span>,<span class="string">'/onmouseup/'</span>,<span class="string">'/onunload/'</span>);</span><br><span class="line">     </span><br><span class="line">   <span class="keyword">if</span> (is_array($arr))</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $key =&gt; $value) </span><br><span class="line">     &#123;</span><br><span class="line">        <span class="keyword">if</span> (!is_array($value))</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">if</span> (!get_magic_quotes_gpc())  <span class="comment">//不对magic_quotes_gpc转义过的字符使用addslashes(),避免双重转义。</span></span><br><span class="line">          &#123;</span><br><span class="line">             $value  = addslashes($value); <span class="comment">//给单引号（'）、双引号（"）、反斜线（\）与 NUL（NULL 字符）  加上反斜线转义</span></span><br><span class="line">          &#125;</span><br><span class="line">          $value       = preg_replace($ra,<span class="string">''</span>,$value);     <span class="comment">//删除非打印字符，粗暴式过滤xss可疑字符串</span></span><br><span class="line">          $arr[$key]     = htmlentities(strip_tags($value)); <span class="comment">//去除 HTML 和 PHP 标记并转换为 HTML 实体</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">          SafeFilter($arr[$key]);</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'xss_input_value'</span>]))</span><br><span class="line">			&#123;</span><br><span class="line">				$s=$_GET[<span class="string">'xss_input_value'</span>];</span><br><span class="line">				<span class="keyword">echo</span><span class="string">'&lt;input type="text" value="'</span>.$_GET[<span class="string">'xss_input_value'</span>].<span class="string">'"&gt;'</span>;</span><br><span class="line">				</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">echo</span> <span class="string">'&lt;input type="text" value="输出"&gt;'</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">		&lt;/center&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器输入<a href="http://localhost/xss.php/" target="_blank" rel="noopener">http://localhost/xss.php/</a></p>
+<p>进入页面</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\张寅\AppData\Roaming\Typora\typora-user-images\1570973405972.png" alt="1570973405972" title>
+                </div>
+                <div class="image-caption">1570973405972</div>
+            </figure>
+
+<p>输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"&gt;&lt;img src=1 onerror=alert(/xss/)&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/13/UonfqPdrGlsBXSt.png" alt="L0_P317WRNGPCYPGDQPG_0O.png" title>
+                </div>
+                <div class="image-caption">L0_P317WRNGPCYPGDQPG_0O.png</div>
+            </figure>
+
+<p>攻击成功</p>
+<h3 id="漏洞修补"><a href="#漏洞修补" class="headerlink" title="漏洞修补"></a>漏洞修补</h3><p>将xss.php中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//<span class="variable">$_GET</span>     &amp;&amp; SafeFilter(<span class="variable">$_GET</span>);</span><br></pre></td></tr></table></figure>
+
+<p>注释去掉</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$_GET</span>     &amp;&amp; SafeFilter(<span class="variable">$_GET</span>);</span><br></pre></td></tr></table></figure>
+
+<p>通过SafeFilter()函数来过滤输入的内容</p>
+<p>再输入刚才的内容</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/13/l2DCHsWTqGRXNfJ.png" alt="_I9UOP3AI0448_OMY9_R_6Y.png" title>
+                </div>
+                <div class="image-caption">_I9UOP3AI0448_OMY9_R_6Y.png</div>
+            </figure>
+
+<p><strong>注意：建议用ie浏览器打开，关闭ie浏览器的xss过滤器</strong></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-12-01T13:10:04.542Z" itemprop="dateUpdated">2019-12-01 21:10:04</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/10/13/XSS攻击简单示例/" target="_blank" rel="external">https://1187100546.github.io/2019/10/13/XSS攻击简单示例/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://1187100546.github.io">
+            <img src="/img/avatar.jpg" alt="huahua">
+            huahua
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XSS攻击/">XSS攻击</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&title=《XSS攻击简单示例》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&title=《XSS攻击简单示例》 — 花花的blog&source=xss" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XSS攻击简单示例》 — 花花的blog&url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/10/20/算法作业1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">算法作业（一）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/13/教育部取消毕业前补考的意见/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">教育部取消毕业前补考的意见(某人的毛概作业)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>huahua &copy; 2018 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&title=《XSS攻击简单示例》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&title=《XSS攻击简单示例》 — 花花的blog&source=xss" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XSS攻击简单示例》 — 花花的blog&url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3aQXLjQAgFUN//0pqq2TpSPmBNjdHrlUtRWv20wGB4veJ1/F3X14+39X7n+1/PrrzuWBgYGF/LOC5Xwri+Pz96cv3sNWFgYDyBkQTT689nvBxW3R8DAwOj9+A8rawGbgwMDIw84CaPLx+i9VwMDIynMZIi9pcy8obwfUstjoGB8YWMamPgX36+sb+BgYHxJYyjtT7b/szD6+l5MDAwVjPOtsvjW6+grTY1o0CMgYGxlJEAro/bS+yu789L5R++NzAwMJYyJg+btBAmQfaHpBADA2MpI0/4khxsHjrzcjdqZGJgYCxijAJcnD5Oas9oaAwDA2MpIylHJ2MWebGaPP30OgYGxmrGp9qQvcPlTc1qKomBgbGPkbQeq0nefXtGVTgGBsZSRp6QTZoBOb5a0GJgYOxmTEJnnjhO2gb5GAcGBsYTGOXO54DRK4MxMDCezDji1RuwyPeZhHgMDIzdjMmtE17+KpvJIgYGxiJGNEFWTB+rBWo+rnG6MwYGxlJG3gaYJHa9V1P4lsDAwHgMozpUms+aVZPFpKmAgYHxHEaS8CX/XM1Gq12L0bAFBgbG1zKO4uo1Gj81THb6ajAwMFYzqsFussWkJG4miBgYGIsYk8Zh7xCTn/bKtTgGBsYiRq8oraaMk8D9Cw8DAwNjkMBVj5WXxxgYGBjVrSeJYN6cwMDAeDIjKWJ7h+ulhqMBCwwMjHWM3s/65TmOYhKZjJF9oL+BgYHxvzP+AHLcxgSNvfJVAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
