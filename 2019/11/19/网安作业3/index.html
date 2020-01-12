@@ -148,7 +148,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -217,7 +217,6 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>网安作业3.</p>
 <a id="more"></a>
-
 <h3 id="crackme"><a href="#crackme" class="headerlink" title="crackme:"></a>crackme:</h3><p>打开IDA找到判断跳转语句位置</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -226,7 +225,6 @@
                 </div>
                 <div class="image-caption">MReyX4.png</div>
             </figure>
-
 <p>修改跳转指令</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -235,7 +233,6 @@
                 </div>
                 <div class="image-caption">MReocD.png</div>
             </figure>
-
 <p>应用到程序</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -244,7 +241,6 @@
                 </div>
                 <div class="image-caption">MReOAI.png</div>
             </figure>
-
 <p>运行结果：</p>
 <p>正确密码显示错误，错误密码显示正确。</p>
 <figure class="image-bubble">
@@ -254,7 +250,6 @@
                 </div>
                 <div class="image-caption">MRmkEn.png</div>
             </figure>
-
 <h3 id="overflow-1"><a href="#overflow-1" class="headerlink" title="overflow(1):"></a>overflow(1):</h3><p>首先输入7个q看一下栈情况</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -263,7 +258,6 @@
                 </div>
                 <div class="image-caption">Mqgxu8.png</div>
             </figure>
-
 <p>authenticated的值是1</p>
 <p>输入8个q</p>
 <p>没有执行前，authenticated的值还是1</p>
@@ -274,7 +268,6 @@
                 </div>
                 <div class="image-caption">Mq2JKK.png</div>
             </figure>
-
 <p>执行以后，值被覆盖为0</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -283,7 +276,6 @@
                 </div>
                 <div class="image-caption">Mq2UVe.png</div>
             </figure>
-
 <h3 id="overflow-2"><a href="#overflow-2" class="headerlink" title="overflow(2):"></a>overflow(2):</h3><p>将跳转地址覆盖为验证通过的地址</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -292,7 +284,6 @@
                 </div>
                 <div class="image-caption">Mq2qZF.png</div>
             </figure>
-
 <p>用ultraedit编辑password文件，任意填充8字符覆盖password，4字符覆盖authenticated，4字符覆盖上一栈帧的ebp,填入4个字符返回地址。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -301,7 +292,6 @@
                 </div>
                 <div class="image-caption">MqRldg.png</div>
             </figure>
-
 <p>再运行程序</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -310,7 +300,6 @@
                 </div>
                 <div class="image-caption">MqRweU.png</div>
             </figure>
-
 <h3 id="overflow-3"><a href="#overflow-3" class="headerlink" title="overflow(3):"></a>overflow(3):</h3><p>程序与2的区别是增加了头文件windows.h，buff由8字节变成44字节，有足够空间填入代码。</p>
 <p>找到buff地址和返回地址</p>
 <figure class="image-bubble">
@@ -320,10 +309,8 @@
                 </div>
                 <div class="image-caption">MLYJ5F.png</div>
             </figure>
-
 <p>找到messageboxA入口地址</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*FuncPointer)</span><span class="params">(LPTSTR)</span></span>;  <span class="comment">// 函数指针  </span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    HINSTANCE LibHandle;</span><br><span class="line">    FuncPointer GetAddr;</span><br><span class="line">    <span class="comment">// 加载成功后返回库模块的句柄 </span></span><br><span class="line">    LibHandle = LoadLibrary(<span class="string">"user32"</span>);  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"user32 LibHandle = 0x%X\n"</span>, LibHandle);</span><br><span class="line">    <span class="comment">// 返回动态链接库(DLL)中的输出库函数地址</span></span><br><span class="line">    GetAddr=(FuncPointer)GetProcAddress(LibHandle,<span class="string">"MessageBoxA"</span>);   </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"MessageBoxA = 0x%X\n"</span>, GetAddr);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -331,8 +318,8 @@
                 </div>
                 <div class="image-caption">MLt0zj.png</div>
             </figure>
-
 <p>构造password</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -341,7 +328,8 @@
 <th>解释</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>33DB</td>
 <td>XOR EBX,EBX</td>
 <td>将EBX寄存器置为NULL</td>
@@ -394,9 +382,10 @@
 <tr>
 <td>FFD0</td>
 <td>CALL EAX</td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -404,7 +393,6 @@
                 </div>
                 <div class="image-caption">MLLowj.png</div>
             </figure>
-
 <p>由于win10保护机制太强，没有办法显示messagebox</p>
 <p>换到xp系统上实现</p>
 <p>先找到messageboxA的入口地址</p>
@@ -415,7 +403,6 @@
                 </div>
                 <div class="image-caption">MLOene.png</div>
             </figure>
-
 <p>再找到buff起始地址</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -424,7 +411,6 @@
                 </div>
                 <div class="image-caption">MLO8c8.png</div>
             </figure>
-
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -432,7 +418,6 @@
                 </div>
                 <div class="image-caption">MLON7j.png</div>
             </figure>
-
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -440,10 +425,8 @@
                 </div>
                 <div class="image-caption">MLOsjU.png</div>
             </figure>
-
 <p>定位shellcode，找jmp esp指令</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DLL_NAME <span class="meta-string">"user32.dll"</span></span></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    BYTE* ptr;</span><br><span class="line">    <span class="keyword">int</span> position,address;</span><br><span class="line">    HINSTANCE handle;</span><br><span class="line">    BOOL done_flag = FALSE;</span><br><span class="line">    handle=LoadLibrary(DLL_NAME);</span><br><span class="line">    <span class="keyword">if</span>(!handle)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">" load dll erro !"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ptr = (BYTE*)handle;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(position = <span class="number">0</span>; !done_flag; position++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(ptr[position] == <span class="number">0xFF</span> &amp;&amp; ptr[position+<span class="number">1</span>] == <span class="number">0xE4</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//0xFFE4 is the opcode of jmp esp</span></span><br><span class="line">                <span class="keyword">int</span> address = (<span class="keyword">int</span>)ptr + position;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"OPCODE found at 0x%x\n"</span>,address);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(...)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> address = (<span class="keyword">int</span>)ptr + position;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"END OF 0x%x\n"</span>, address);</span><br><span class="line">            done_flag = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -451,10 +434,8 @@
                 </div>
                 <div class="image-caption">MLzBOf.png</div>
             </figure>
-
 <p>定位exitprocess入口地址</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*FuncPointer)</span><span class="params">(LPTSTR)</span></span>;  <span class="comment">// 函数指针  </span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    HINSTANCE LibHandle;</span><br><span class="line">    FuncPointer GetAddr;</span><br><span class="line">    <span class="comment">// 加载成功后返回库模块的句柄 </span></span><br><span class="line">    LibHandle = LoadLibrary(<span class="string">"kernel32"</span>);  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"kernel32 LibHandle = 0x%X\n"</span>, LibHandle);</span><br><span class="line">    <span class="comment">// 返回动态链接库(DLL)中的输出库函数地址</span></span><br><span class="line">    GetAddr=(FuncPointer)GetProcAddress(LibHandle,<span class="string">"ExitProcess"</span>);   </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"ExitProcess = 0x%X\n"</span>, GetAddr);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -462,8 +443,8 @@
                 </div>
                 <div class="image-caption">MLzqh9.png</div>
             </figure>
-
 <p>修改password文件</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -472,7 +453,8 @@
 <th>解释</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>33DB</td>
 <td>XOR EBX,EBX</td>
 <td>将EBX寄存器置为NULL</td>
@@ -540,9 +522,10 @@
 <tr>
 <td>FFD0</td>
 <td>CALL EAX</td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -550,7 +533,6 @@
                 </div>
                 <div class="image-caption">MOC6uq.png</div>
             </figure>
-
 <p>现在程序就可以正常退出</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -566,7 +548,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-11-24T07:31:43.119Z" itemprop="dateUpdated">2019-11-24 15:31:43</time>
+    Last updated: <time datetime="2019-11-24T07:31:43.119Z" itemprop="dateUpdated">2019-11-24 15:31:43</time>
 </span><br>
 
 
@@ -739,7 +721,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

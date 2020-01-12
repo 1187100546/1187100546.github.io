@@ -128,7 +128,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -197,11 +197,9 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>密码学中的序列密码。</p>
 <a id="more"></a>
-
 <h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><p>选择一个15次以上的不可约多项式，编写一个线性反馈移位寄存器。验证生成序列的周期。</p>
 <h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><p>利用python数组的pop操作可以实现移位的效果，将反馈函数写成0，1数组，便可以实现反馈效果。</p>
 <h2 id="线性反馈移位寄存器"><a href="#线性反馈移位寄存器" class="headerlink" title="线性反馈移位寄存器"></a>线性反馈移位寄存器</h2><h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lfsr</span><span class="params">(lst, k,key)</span>:</span></span><br><span class="line">    temp_l= lst[:]</span><br><span class="line">    temp_k= key[:]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">        <span class="comment">#temp.append(temp.pop(0))</span></span><br><span class="line">        k_out=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">18</span>):</span><br><span class="line">            <span class="keyword">if</span>(temp_k[j]==<span class="number">1</span>):</span><br><span class="line">                k_out+=(temp_k[j]+temp_l[j])%<span class="number">2</span></span><br><span class="line">        k_out=k_out%<span class="number">2</span></span><br><span class="line">        <span class="comment">#print(k_out)</span></span><br><span class="line">        temp_l.pop(<span class="number">0</span>)</span><br><span class="line">        temp_l.append(k_out)</span><br><span class="line">        print(<span class="string">"当前寄存器值："</span>,temp_l,<span class="string">"循环次数："</span>,i+<span class="number">1</span>,temp_l==lst)</span><br><span class="line">    <span class="comment">#return temp</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    lst=[<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">    k=<span class="number">262146</span></span><br><span class="line">    key=[<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">    lfsr(lst,k,key)</span><br><span class="line">print(len(key))</span><br></pre></td></tr></table></figure>
-
 <h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p>18次线性移位寄存器，当运行到周期次数时开始重复。</p>
 <p>寄存器初始值：[0,1,1,1,0,0,0,1,0,1,0,0,1,0,0,1,0,1]</p>
 <p>本原多项式：[1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]</p>
@@ -212,7 +210,6 @@
                 </div>
                 <div class="image-caption">lauAUg.png</div>
             </figure>
-
 <h2 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h2><p>由算法的实现可知，序列密码算法的加解密对种子秘钥的依赖十分强烈。故需要保证种子秘钥的安全性。对于此可进行相关攻击。</p>
 <p>可以进行穷举搜素攻击，故为了保证安全强度，要求秘钥长度足够长。</p>
 <p>弱密钥攻击，弱密钥会产生重复的密钥流，一旦子密钥序列出现了重复，密文就有可能被破解。</p>
@@ -225,7 +222,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2020-01-03T09:02:53.396Z" itemprop="dateUpdated">2020-01-03 17:02:53</time>
+    Last updated: <time datetime="2020-01-03T09:02:53.396Z" itemprop="dateUpdated">2020-01-03 17:02:53</time>
 </span><br>
 
 
@@ -398,7 +395,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

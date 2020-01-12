@@ -142,7 +142,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -211,10 +211,8 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>利用msf对windows进行渗透攻击。</p>
 <a id="more"></a>
-
 <h3 id="一、利用ms08-067攻击xp系统"><a href="#一、利用ms08-067攻击xp系统" class="headerlink" title="一、利用ms08_067攻击xp系统"></a>一、利用ms08_067攻击xp系统</h3><p>在kali终端输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
-
 <p>进入metasploit</p>
 <p>首先搜索这个漏洞</p>
 <figure class="image-bubble">
@@ -224,7 +222,6 @@
                 </div>
                 <div class="image-caption">img</div>
             </figure>
-
 <p>然后使用模块</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -233,7 +230,6 @@
                 </div>
                 <div class="image-caption">1570774772837.png</div>
             </figure>
-
 <p>查看选项</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -242,7 +238,6 @@
                 </div>
                 <div class="image-caption">1570774821418.png</div>
             </figure>
-
 <p>设置目标IP和自身IP，及被攻击系统版本</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -251,7 +246,6 @@
                 </div>
                 <div class="image-caption">1570774842853.png</div>
             </figure>
-
 <p>直接攻击返回shell</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -260,7 +254,6 @@
                 </div>
                 <div class="image-caption">1570774863433.png</div>
             </figure>
-
 <h3 id="二、利用永恒之蓝（ms17-010）攻击win7"><a href="#二、利用永恒之蓝（ms17-010）攻击win7" class="headerlink" title="二、利用永恒之蓝（ms17_010）攻击win7"></a>二、利用永恒之蓝（ms17_010）攻击win7</h3><p>首先搜索该漏洞</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -269,7 +262,6 @@
                 </div>
                 <div class="image-caption">1570775052329.png</div>
             </figure>
-
 <p>使用该漏洞模块</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -278,7 +270,6 @@
                 </div>
                 <div class="image-caption">1570775067326.png</div>
             </figure>
-
 <p>设置目标IP和自身IP，目标系统默认</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -287,7 +278,6 @@
                 </div>
                 <div class="image-caption">1570775084979.png</div>
             </figure>
-
 <p>攻击</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -296,7 +286,6 @@
                 </div>
                 <div class="image-caption">1570775102714.png</div>
             </figure>
-
 <p>攻击成功，建立会话</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -305,7 +294,6 @@
                 </div>
                 <div class="image-caption">1570775118532.png</div>
             </figure>
-
 <p>打开绘画，进入shell</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -314,7 +302,6 @@
                 </div>
                 <div class="image-caption">1570775133539.png</div>
             </figure>
-
 <h3 id="三、利用metasploit渗透win10"><a href="#三、利用metasploit渗透win10" class="headerlink" title="三、利用metasploit渗透win10"></a>三、利用metasploit渗透win10</h3><p>首先通过msfvenom生成木马文件，并放入win10靶机中</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -323,7 +310,6 @@
                 </div>
                 <div class="image-caption">1570775167414.png</div>
             </figure>
-
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -331,7 +317,6 @@
                 </div>
                 <div class="image-caption">1570775173831.png</div>
             </figure>
-
 <p>然后在kali上开启监听</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -340,7 +325,6 @@
                 </div>
                 <div class="image-caption">1570775193761.png</div>
             </figure>
-
 <p>然后在win10靶机上运行木马程序，监听便能收到，获取shell</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -349,7 +333,6 @@
                 </div>
                 <div class="image-caption">1570775209578.png</div>
             </figure>
-
 <p>攻击完成。</p>
 <p>以上三个攻击均拿到了shell便可以在对方机器上设置远程用户，然后就可以通过本机的Windows系统远程登陆被攻击的机器，也可以记录对方的键盘记录，远程关机等等</p>
 
@@ -360,7 +343,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-11-09T07:45:07.830Z" itemprop="dateUpdated">2019-11-09 15:45:07</time>
+    Last updated: <time datetime="2019-11-09T07:45:07.830Z" itemprop="dateUpdated">2019-11-09 15:45:07</time>
 </span><br>
 
 
@@ -533,7 +516,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
