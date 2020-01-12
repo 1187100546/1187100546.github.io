@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>古典密码 | 花花的blog | 厚积薄发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="密码学">
+    <meta name="description" content="密码学中的古典密码。">
+<meta name="keywords" content="密码学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="古典密码">
+<meta property="og:url" content="https://1187100546.github.io/2020/01/03/gudianmima/index.html">
+<meta property="og:site_name" content="花花的blog">
+<meta property="og:description" content="密码学中的古典密码。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/03/laA81K.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/03/laet2t.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/03/laeNxP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/03/laeyPs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/03/laeTi9.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/03/laeHR1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/03/lamPzt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/03/lamT0S.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/03/lantnf.png">
+<meta property="og:updated_time" content="2020-01-03T09:02:03.747Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="古典密码">
+<meta name="twitter:description" content="密码学中的古典密码。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2020/01/03/laA81K.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="花花的blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">huahua</h5>
+          <a href="mailto:1187100546@qq.com" title="1187100546@qq.com" class="mail">1187100546@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/1187100546" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">古典密码</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">古典密码</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-01-03T08:35:15.000Z" itemprop="datePublished" class="page-time">
+  2020-01-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/密码学/">密码学</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#维吉尼亚密码原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">维吉尼亚密码原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">算法实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加密算法"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">加密算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解密算法"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">解密算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#攻击方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">攻击方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Kasiski测试法"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Kasiski测试法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重合指数法"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">重合指数法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重合指数算法"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">重合指数算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重合互指数"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">重合互指数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重合互指数算法"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">重合互指数算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码运行结果"><span class="post-toc-number">4.</span> <span class="post-toc-text">代码运行结果</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安全性分析"><span class="post-toc-number">5.</span> <span class="post-toc-text">安全性分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#仿射密码的破解"><span class="post-toc-number">6.</span> <span class="post-toc-text">仿射密码的破解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加密原理"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">加密原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#穷举攻击"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">穷举攻击</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#频率分析攻击"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">频率分析攻击</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#完整代码"><span class="post-toc-number">7.</span> <span class="post-toc-text">完整代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#维吉尼亚加解密"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">维吉尼亚加解密</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重合指数"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">重合指数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#仿射频率分析"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">仿射频率分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#仿射暴力破解"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">仿射暴力破解</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-gudianmima"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">古典密码</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-01-03 16:35:15" datetime="2020-01-03T08:35:15.000Z"  itemprop="datePublished">2020-01-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/密码学/">密码学</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>密码学中的古典密码。</p>
+<a id="more"></a>
+
+<h2 id="维吉尼亚密码原理"><a href="#维吉尼亚密码原理" class="headerlink" title="维吉尼亚密码原理"></a>维吉尼亚密码原理</h2><p>维吉尼亚密码是一种简单的多表代换密码，可以看成由一些偏移量不同的恺撒密码组成。为了掩盖字母使用中暴露的频率特征，解决的办法就是用多套符号代替原来的文字。它是一个表格，第一行代表原文的字母，下面每一横行代表原文分别由哪些字母代替，每一竖列代表我们要用第几套字符来替换原文。一共26个字母，一共26套代替法，所以这个表是一个26*26的表  .</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2020/01/03/laA81K.png" alt="laA81K.png" title>
+                </div>
+                <div class="image-caption">laA81K.png</div>
+            </figure>
+
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><h3 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h3><p>$$<br>c_i=(m_i+k_i)mod26<br>$$</p>
+<p>若密钥长度小于明文长度，则密钥循环使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">VigenereEncrypt</span><span class="params">(m,k)</span>:</span></span><br><span class="line">    k = k.upper()</span><br><span class="line">    lm = len(m)</span><br><span class="line">    lk = len(k)</span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    ans = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(lm):</span><br><span class="line">        <span class="keyword">if</span> m[i].isupper():</span><br><span class="line">            ans += chr(((ord(m[i])-ord(<span class="string">'A'</span>))%<span class="number">26</span>+(ord(k[j%lk])-ord(<span class="string">'A'</span>))%<span class="number">26</span>)%<span class="number">26</span>+ord(<span class="string">'A'</span>))</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> m[i].islower():</span><br><span class="line">            ans += chr(((ord(m[i])-ord(<span class="string">'a'</span>))%<span class="number">26</span>+(ord(k[j%lk])-ord(<span class="string">'A'</span>))%<span class="number">26</span>)%<span class="number">26</span>+ord(<span class="string">'a'</span>))</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ans += m[i]</span><br><span class="line"><span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<h3 id="解密算法"><a href="#解密算法" class="headerlink" title="解密算法"></a>解密算法</h3><p>$$<br>m_i=(c_i+26-k_i)mod\ 26<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">VigenereDecrypt</span><span class="params">(c,k)</span>:</span></span><br><span class="line">    k = k.upper()</span><br><span class="line">    lc = len(c)</span><br><span class="line">    lk = len(k)</span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    ans = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(lc):</span><br><span class="line">        <span class="keyword">if</span> c[i].isupper():</span><br><span class="line">            ans += chr(((ord(c[i])-ord(<span class="string">'A'</span>))%<span class="number">26</span>+<span class="number">26</span>-(ord(k[j%lk])-ord(<span class="string">'A'</span>))%<span class="number">26</span>)%<span class="number">26</span>+ord(<span class="string">'A'</span>))</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> c[i].islower():</span><br><span class="line">            ans += chr(((ord(c[i])-ord(<span class="string">'a'</span>))%<span class="number">26</span>+<span class="number">26</span>-(ord(k[j%lk])-ord(<span class="string">'A'</span>))%<span class="number">26</span>)%<span class="number">26</span>+ord(<span class="string">'a'</span>))</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ans += c[i]</span><br><span class="line"><span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<h2 id="攻击方法"><a href="#攻击方法" class="headerlink" title="攻击方法"></a>攻击方法</h2><p>破译维吉尼亚密码的关键在于它的密钥是循环重复的。如果我们知道了密钥的长度，那密文就可以被看作是交织在一起的凯撒密码，而其中每一个都可以单独破解。</p>
+<p>多表代换密码体制的分析方法主要分为三步：第一步确定秘钥长度，常用的方法有卡西斯基（Kasiski）测试法和重合指数法（Index of Coincidence）；第二步就是确定秘钥，常用的方法是拟重合指数测试法；第三步是根据第二步确定的密钥恢复出明文。</p>
+<h3 id="Kasiski测试法"><a href="#Kasiski测试法" class="headerlink" title="Kasiski测试法"></a>Kasiski测试法</h3><p>卡西斯基试验是基于类似 the 这样的常用单词有可能被同样的密钥字母进行加密，从而在密文中重复出现。如果将密文中所有相同的字母组都找出来，并计算他们的最大公因数，就有可能提取出来密钥长度信息。</p>
+<p>测试过程：搜索长度至少为2的相邻的一对对相同的密文段，记下它们之间的距离。而密钥长度d可能就是这些距离的最大公因子</p>
+<h3 id="重合指数法"><a href="#重合指数法" class="headerlink" title="重合指数法"></a>重合指数法</h3><p>利用随机文本和英文文本的统计概率差别来分析密钥长度。依据：英文中每种单词出现的频率不同。</p>
+<p>重合指数公式：</p>
+<img src="https://s2.ax1x.com/2020/01/03/laet2t.png" alt="laet2t.png" style="zoom:50%;">
+
+<p>人们已经获得了英文的26个字母的概率分布的一个估计。期望值为：</p>
+<img src="https://s2.ax1x.com/2020/01/03/laeNxP.png" alt="laeNxP.png" style="zoom: 67%;">
+
+<p>将密文按n来分组，当每组的重合指数都接近0.065时，n便为密钥的长度值</p>
+<h3 id="重合指数算法"><a href="#重合指数算法" class="headerlink" title="重合指数算法"></a>重合指数算法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">chzs</span><span class="params">(input)</span>:</span> <span class="comment">#定义重合指数法</span></span><br><span class="line">    num_list = [<span class="number">0</span>]*<span class="number">26</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(input)):</span><br><span class="line">        ord_input = ord(input[i])<span class="number">-97</span></span><br><span class="line">        num_list[ord_input] +=<span class="number">1</span></span><br><span class="line">    n = len(input)</span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">26</span>):</span><br><span class="line">        res += num_list[i]*(num_list[i]<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">return</span> float(res)/((n)*n)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">len_key</span><span class="params">(input)</span>:</span><span class="comment">#计算密钥长度</span></span><br><span class="line">    may_d = <span class="number">0</span></span><br><span class="line">    index_d = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        str_list = [<span class="string">""</span>] * d</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(input)):</span><br><span class="line">            str_list[i%d] += input[i]</span><br><span class="line">        ch_sum = <span class="number">0</span></span><br><span class="line">        ch_time = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">0</span>, len(str_list)):</span><br><span class="line">            <span class="keyword">if</span> str_list[k] !=<span class="string">""</span>:</span><br><span class="line">                ch_sum += chzs(str_list[k])</span><br><span class="line">                ch_time +=<span class="number">1</span></span><br><span class="line">            print(chzs(str_list[k]))</span><br><span class="line">            print(str_list[k])</span><br><span class="line">        print(d)</span><br><span class="line">        k1 = abs(ch_sum / ch_time - <span class="number">0.065</span>)</span><br><span class="line">        k2 = abs(may_d - <span class="number">0.065</span>)</span><br><span class="line">        <span class="keyword">if</span> k1&lt;k2:                       <span class="comment">#取最接近0.065的</span></span><br><span class="line">            may_d = ch_sum / ch_time</span><br><span class="line">            index_d = d</span><br><span class="line"><span class="keyword">return</span> index_d</span><br></pre></td></tr></table></figure>
+
+<h3 id="重合互指数"><a href="#重合互指数" class="headerlink" title="重合互指数"></a>重合互指数</h3><p>重合互指数用于确定密钥字。</p>
+<p>假定𝑥＝𝑥1𝑥2 … 𝑥𝑛和𝑦＝𝑦1 𝑦2…𝑦𝑛′,分别是长为𝑛和𝑛’的字符串。𝑥和𝑦的重合互指数是指𝑥的一个随机元素等于𝑦的一个随机元素的概率，记为𝑀𝐼𝑐(𝑥,𝑦)</p>
+<p>将𝑥和𝑦中的字母A,B,C,……,Z出现的次数分别表示为𝑓0,𝑓1,……,𝑓25和𝑓0′, 𝑓1′,⋯,𝑓25′, 那么</p>
+<img src="https://s2.ax1x.com/2020/01/03/laeyPs.png" alt="laeyPs.png" style="zoom:50%;">
+
+<h3 id="重合互指数算法"><a href="#重合互指数算法" class="headerlink" title="重合互指数算法"></a>重合互指数算法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xd_d</span><span class="params">(input)</span>:</span> <span class="comment">#相对位移</span></span><br><span class="line">    <span class="comment">#pi频率表</span></span><br><span class="line">    pi=[<span class="number">0.082</span>,<span class="number">0.015</span>,<span class="number">0.028</span>,<span class="number">0.043</span>,<span class="number">0.127</span>,<span class="number">0.022</span>,<span class="number">0.02</span>,<span class="number">0.061</span>,<span class="number">0.07</span>,<span class="number">0.002</span>,<span class="number">0.008</span>,<span class="number">0.04</span>,<span class="number">0.024</span>,<span class="number">0.067</span>,<span class="number">0.075</span>,<span class="number">0.019</span>,<span class="number">0.001</span>,<span class="number">0.06</span>,<span class="number">0.063</span>,<span class="number">0.091</span>,<span class="number">0.028</span>,<span class="number">0.01</span>,<span class="number">0.023</span>,<span class="number">0.001</span>,<span class="number">0.02</span>,<span class="number">0.001</span>]</span><br><span class="line">    print(pi)</span><br><span class="line">    key_len = len_key(input)</span><br><span class="line">    print(<span class="string">"密钥长度："</span>,key_len)</span><br><span class="line">    d_list = [<span class="number">0</span>]*key_len</span><br><span class="line">    <span class="comment">#weiyi = [0]*key_len</span></span><br><span class="line">    str_list = [<span class="string">""</span>]*key_len<span class="comment">#根据密钥长度分组</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(input)):</span><br><span class="line">        str_list[i%key_len] += input[i]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,key_len):<span class="comment">#查看分组结果和计算每个分组长度</span></span><br><span class="line">        print(str_list[i],<span class="string">"长度："</span>,len(str_list[i]))</span><br><span class="line">        d_list[i]=len(str_list[i])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,key_len):<span class="comment">#找第i组的相对位移</span></span><br><span class="line">        num_list_i = [<span class="number">0</span>] * <span class="number">26</span><span class="comment">#每个字母出现的次数</span></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> str_list[i]:<span class="comment">#计算i组每个字母出现次数</span></span><br><span class="line">            i_c = ord(k) - <span class="number">97</span></span><br><span class="line">            num_list_i[i_c] += <span class="number">1</span></span><br><span class="line">        may_mc=<span class="number">0</span></span><br><span class="line">        may_d=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">26</span>):<span class="comment">#位移长度</span></span><br><span class="line">            mc=<span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">26</span>):<span class="comment">#计算最接近0.065的互重合指数</span></span><br><span class="line">                mc+=pi[l]*float(num_list_i[(l+j)%<span class="number">26</span>]/d_list[i])</span><br><span class="line">                <span class="keyword">if</span>(abs(mc<span class="number">-0.065</span>)&lt;=abs(may_mc<span class="number">-0.065</span>)):</span><br><span class="line">                    may_mc=mc</span><br><span class="line">                    may_d=j</span><br><span class="line">        print(i,<span class="string">"组："</span>,may_mc,chr(<span class="number">97</span>+may_d))</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码运行结果"><a href="#代码运行结果" class="headerlink" title="代码运行结果"></a>代码运行结果</h2><p><strong>加密：</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2020/01/03/laeTi9.png" alt="laeTi9.png" title>
+                </div>
+                <div class="image-caption">laeTi9.png</div>
+            </figure>
+
+<p><strong>解密：</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2020/01/03/laeHR1.png" alt="laeHR1.png" title>
+                </div>
+                <div class="image-caption">laeHR1.png</div>
+            </figure>
+
+<p><strong>重合指数：</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2020/01/03/lamPzt.png" alt="lamPzt.png" title>
+                </div>
+                <div class="image-caption">lamPzt.png</div>
+            </figure>
+
+<h2 id="安全性分析"><a href="#安全性分析" class="headerlink" title="安全性分析"></a>安全性分析</h2><p>多表代换密码打破了原语言的字符出现规律，故其分析方法比单表代换密码复杂得多。多表代换密码对比单表代换密码安全性显著提高。但是仍然可以用一些统计分析法破解（具体参看上文攻击方法），但是前提是密文足够长。所以，较短的密文几乎是不可破译的。较长的密文是很容易破解的。</p>
+<h2 id="仿射密码的破解"><a href="#仿射密码的破解" class="headerlink" title="仿射密码的破解"></a>仿射密码的破解</h2><h3 id="加密原理"><a href="#加密原理" class="headerlink" title="加密原理"></a>加密原理</h3><p>仿射密码属于单表代换密码，它使用线性方程加上一个模数。<br>$$<br>c_i=(k_1*m_i+k_2)mod26<br>$$<br>前提条件是：k1 和 26 互素</p>
+<h3 id="穷举攻击"><a href="#穷举攻击" class="headerlink" title="穷举攻击"></a>穷举攻击</h3><p>通过密文，列举出所有可能的明文（一共 311 种情况），从中找出有特定标识或构成自然语言中有意义的单词或短语的正确明文。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BruteAffineDecrypt</span><span class="params">(c)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> k1 <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">        <span class="keyword">if</span> gcd(k1,<span class="number">26</span>) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">for</span> k2 <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">                <span class="keyword">print</span> (<span class="string">"k1 = "</span>+str(k1).zfill(<span class="number">2</span>)+<span class="string">", k2 = "</span>+str(k2).zfill(<span class="number">2</span>)+<span class="string">": "</span>+AffineDecrypt(c,k1,k2))</span><br></pre></td></tr></table></figure>
+
+<p><strong>结果：</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2020/01/03/lamT0S.png" alt="lamT0S.png" title>
+                </div>
+                <div class="image-caption">lamT0S.png</div>
+            </figure>
+
+<h3 id="频率分析攻击"><a href="#频率分析攻击" class="headerlink" title="频率分析攻击"></a>频率分析攻击</h3><p>统计密文中字母的出现次数和频率，从出现频率最高的几个字母及双字母组合、三字母组合开始，并假定它们是英语中出现频率较高的字母及字母组合对应的密文，逐步推测各密文字母对应的明文字母。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pinlv</span><span class="params">(input)</span>:</span></span><br><span class="line">    num_list = [<span class="number">0</span>]*<span class="number">26</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(input)):</span><br><span class="line">        ord_input = ord(input[i])<span class="number">-97</span></span><br><span class="line">        num_list[ord_input] +=<span class="number">1</span></span><br><span class="line">    n = len(input)</span><br><span class="line">    x=[]</span><br><span class="line">    y=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">26</span>):</span><br><span class="line">        x.append(chr(<span class="number">97</span>+i))</span><br><span class="line">        y.append(float(num_list[i]/n))</span><br><span class="line">    plt.bar(x, y, <span class="number">0.4</span>, color=<span class="string">"green"</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Letters"</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"Frequency"</span>)</span><br><span class="line">    plt.title(<span class="string">"Frequency analysis"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2020/01/03/lantnf.png" alt="lantnf.png" title>
+                </div>
+                <div class="image-caption">lantnf.png</div>
+            </figure>
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><h3 id="维吉尼亚加解密"><a href="#维吉尼亚加解密" class="headerlink" title="维吉尼亚加解密"></a>维吉尼亚加解密</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">VigenereEncrypt</span><span class="params">(m,k)</span>:</span></span><br><span class="line">    k = k.upper()</span><br><span class="line">    lm = len(m)</span><br><span class="line">    lk = len(k)</span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    ans = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(lm):</span><br><span class="line">        <span class="keyword">if</span> m[i].isupper():</span><br><span class="line">            ans += chr(((ord(m[i])-ord(<span class="string">'A'</span>))%<span class="number">26</span>+(ord(k[j%lk])-ord(<span class="string">'A'</span>))%<span class="number">26</span>)%<span class="number">26</span>+ord(<span class="string">'A'</span>))</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> m[i].islower():</span><br><span class="line">            ans += chr(((ord(m[i])-ord(<span class="string">'a'</span>))%<span class="number">26</span>+(ord(k[j%lk])-ord(<span class="string">'A'</span>))%<span class="number">26</span>)%<span class="number">26</span>+ord(<span class="string">'a'</span>))</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ans += m[i]</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"><span class="comment"># Decryption</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">VigenereDecrypt</span><span class="params">(c,k)</span>:</span></span><br><span class="line">    k = k.upper()</span><br><span class="line">    lc = len(c)</span><br><span class="line">    lk = len(k)</span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    ans = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(lc):</span><br><span class="line">        <span class="keyword">if</span> c[i].isupper():</span><br><span class="line">            ans += chr(((ord(c[i])-ord(<span class="string">'A'</span>))%<span class="number">26</span>+<span class="number">26</span>-(ord(k[j%lk])-ord(<span class="string">'A'</span>))%<span class="number">26</span>)%<span class="number">26</span>+ord(<span class="string">'A'</span>))</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> c[i].islower():</span><br><span class="line">            ans += chr(((ord(c[i])-ord(<span class="string">'a'</span>))%<span class="number">26</span>+<span class="number">26</span>-(ord(k[j%lk])-ord(<span class="string">'A'</span>))%<span class="number">26</span>)%<span class="number">26</span>+ord(<span class="string">'a'</span>))</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ans += c[i]</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"><span class="comment"># Main function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        op = input(<span class="string">"What do you want to do?\n[E]Encryption [D]Decryption\n"</span>).upper()</span><br><span class="line">        <span class="keyword">if</span> op[<span class="number">0</span>] == <span class="string">"E"</span>:</span><br><span class="line">            s = input(<span class="string">"Please enter your plaintext:\n\t"</span>)</span><br><span class="line">            k = input(<span class="string">"Please enter your key:\n\t"</span>)</span><br><span class="line">            <span class="comment"># s = "plaintext"</span></span><br><span class="line">            <span class="comment"># k = "key"</span></span><br><span class="line">            <span class="keyword">print</span> (<span class="number">8</span>*<span class="string">"*"</span>+<span class="string">"  Encryption  "</span>+<span class="number">8</span>*<span class="string">"*"</span>)</span><br><span class="line">            Encryption = VigenereEncrypt(s,k)</span><br><span class="line">            <span class="keyword">print</span> (<span class="string">"The Ciphertext is:\n\t"</span>+Encryption)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> op[<span class="number">0</span>] == <span class="string">"D"</span>:</span><br><span class="line">            s = input(<span class="string">"Please enter your ciphertext:\n\t"</span>)</span><br><span class="line">            k = input(<span class="string">"Please enter your key:\n\t"</span>)</span><br><span class="line">            <span class="comment"># s = "ciphertext"</span></span><br><span class="line">            <span class="comment"># k = "key"</span></span><br><span class="line">            <span class="keyword">print</span> (<span class="number">8</span>*<span class="string">"*"</span>+<span class="string">"  Decryption  "</span>+<span class="number">8</span>*<span class="string">"*"</span>)</span><br><span class="line">            Decryption = VigenereDecrypt(s,k)</span><br><span class="line">            <span class="keyword">print</span> (<span class="string">"The Plaintext is:\n\t"</span>+Decryption)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+<h3 id="重合指数"><a href="#重合指数" class="headerlink" title="重合指数"></a>重合指数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">chzs</span><span class="params">(input)</span>:</span> <span class="comment">#定义重合指数法</span></span><br><span class="line">    num_list = [<span class="number">0</span>]*<span class="number">26</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(input)):</span><br><span class="line">        ord_input = ord(input[i])<span class="number">-97</span></span><br><span class="line">        num_list[ord_input] +=<span class="number">1</span></span><br><span class="line">    n = len(input)</span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">26</span>):</span><br><span class="line">        res += num_list[i]*(num_list[i]<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">return</span> float(res)/((n)*n)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">len_key</span><span class="params">(input)</span>:</span><span class="comment">#计算密钥长度</span></span><br><span class="line">    may_d = <span class="number">0</span></span><br><span class="line">    index_d = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">        str_list = [<span class="string">""</span>] * d</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(input)):</span><br><span class="line">            str_list[i%d] += input[i]</span><br><span class="line">        ch_sum = <span class="number">0</span></span><br><span class="line">        ch_time = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">0</span>, len(str_list)):</span><br><span class="line">            <span class="keyword">if</span> str_list[k] !=<span class="string">""</span>:</span><br><span class="line">                ch_sum += chzs(str_list[k])</span><br><span class="line">                ch_time +=<span class="number">1</span></span><br><span class="line">            print(chzs(str_list[k]))</span><br><span class="line">            print(str_list[k])</span><br><span class="line">        print(d)</span><br><span class="line">        k1 = abs(ch_sum / ch_time - <span class="number">0.065</span>)</span><br><span class="line">        k2 = abs(may_d - <span class="number">0.065</span>)</span><br><span class="line">        <span class="keyword">if</span> k1&lt;k2:                       <span class="comment">#取最接近0.065的</span></span><br><span class="line">            may_d = ch_sum / ch_time</span><br><span class="line">            index_d = d</span><br><span class="line">    <span class="keyword">return</span> index_d</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xd_d</span><span class="params">(input)</span>:</span> <span class="comment">#相对位移</span></span><br><span class="line">    <span class="comment">#pi频率表</span></span><br><span class="line">    pi=[<span class="number">0.082</span>,<span class="number">0.015</span>,<span class="number">0.028</span>,<span class="number">0.043</span>,<span class="number">0.127</span>,<span class="number">0.022</span>,<span class="number">0.02</span>,<span class="number">0.061</span>,<span class="number">0.07</span>,<span class="number">0.002</span>,<span class="number">0.008</span>,<span class="number">0.04</span>,<span class="number">0.024</span>,<span class="number">0.067</span>,<span class="number">0.075</span>,<span class="number">0.019</span>,<span class="number">0.001</span>,<span class="number">0.06</span>,<span class="number">0.063</span>,<span class="number">0.091</span>,<span class="number">0.028</span>,<span class="number">0.01</span>,<span class="number">0.023</span>,<span class="number">0.001</span>,<span class="number">0.02</span>,<span class="number">0.001</span>]</span><br><span class="line">    print(pi)</span><br><span class="line">    key_len = len_key(input)</span><br><span class="line">    print(<span class="string">"密钥长度："</span>,key_len)</span><br><span class="line">    d_list = [<span class="number">0</span>]*key_len</span><br><span class="line">    <span class="comment">#weiyi = [0]*key_len</span></span><br><span class="line">    str_list = [<span class="string">""</span>]*key_len<span class="comment">#根据密钥长度分组</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(input)):</span><br><span class="line">        str_list[i%key_len] += input[i]</span><br><span class="line">    <span class="comment">#print("****",len(d_list))</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,key_len):<span class="comment">#查看分组结果和计算每个分组长度</span></span><br><span class="line">        print(str_list[i],<span class="string">"长度："</span>,len(str_list[i]))</span><br><span class="line">        d_list[i]=len(str_list[i])</span><br><span class="line">    <span class="comment">#sll = len(str_list)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,key_len):<span class="comment">#找第i组的相对位移</span></span><br><span class="line">        num_list_i = [<span class="number">0</span>] * <span class="number">26</span><span class="comment">#每个字母出现的次数</span></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> str_list[i]:<span class="comment">#计算i组每个字母出现次数</span></span><br><span class="line">            i_c = ord(k) - <span class="number">97</span></span><br><span class="line">            num_list_i[i_c] += <span class="number">1</span></span><br><span class="line">        may_mc=<span class="number">0</span></span><br><span class="line">        may_d=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">26</span>):<span class="comment">#位移长度</span></span><br><span class="line">            mc=<span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">26</span>):<span class="comment">#计算最接近0.065的互重合指数</span></span><br><span class="line">                mc+=pi[l]*float(num_list_i[(l+j)%<span class="number">26</span>]/d_list[i])</span><br><span class="line">                <span class="keyword">if</span>(abs(mc<span class="number">-0.065</span>)&lt;=abs(may_mc<span class="number">-0.065</span>)):</span><br><span class="line">                    may_mc=mc</span><br><span class="line">                    may_d=j</span><br><span class="line">            <span class="comment">#print(mc)</span></span><br><span class="line">        print(i,<span class="string">"组："</span>,may_mc,chr(<span class="number">97</span>+may_d))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    s=input(<span class="string">"Please enter your ciphertext:\n\t"</span>)</span><br><span class="line">    xd_d(s)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+<h3 id="仿射频率分析"><a href="#仿射频率分析" class="headerlink" title="仿射频率分析"></a>仿射频率分析</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.mlab <span class="keyword">as</span> mlab</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pinlv</span><span class="params">(input)</span>:</span></span><br><span class="line">    num_list = [<span class="number">0</span>]*<span class="number">26</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(input)):</span><br><span class="line">        ord_input = ord(input[i])<span class="number">-97</span></span><br><span class="line">        num_list[ord_input] +=<span class="number">1</span></span><br><span class="line">    n = len(input)</span><br><span class="line">    x=[]</span><br><span class="line">    y=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">26</span>):</span><br><span class="line">        x.append(chr(<span class="number">97</span>+i))</span><br><span class="line">        y.append(float(num_list[i]/n))</span><br><span class="line">    plt.bar(x, y, <span class="number">0.4</span>, color=<span class="string">"green"</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Letters"</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"Frequency"</span>)</span><br><span class="line">    plt.title(<span class="string">"Frequency analysis"</span>)</span><br><span class="line">    plt.show()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    s = input(<span class="string">"Please enter your ciphertext:\n\t"</span>)</span><br><span class="line">    pinlv(s)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+<h3 id="仿射暴力破解"><a href="#仿射暴力破解" class="headerlink" title="仿射暴力破解"></a>仿射暴力破解</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span><span class="params">(a,b)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> a%b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    <span class="keyword">return</span> gcd(b,a%b)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findModReverse</span><span class="params">(a,m)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> gcd(a,m)!=<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    u1,u2,u3 = <span class="number">1</span>,<span class="number">0</span>,a</span><br><span class="line">    v1,v2,v3 = <span class="number">0</span>,<span class="number">1</span>,m</span><br><span class="line">    <span class="keyword">while</span> v3!=<span class="number">0</span>:</span><br><span class="line">        q = u3//v3</span><br><span class="line">        v1,v2,v3,u1,u2,u3 = (u1-q*v1),(u2-q*v2),(u3-q*v3),v1,v2,v3</span><br><span class="line">    <span class="keyword">return</span> u1%m</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">AffineDecrypt</span><span class="params">(c,k1,k2)</span>:</span></span><br><span class="line">    k2 %= <span class="number">26</span></span><br><span class="line">    <span class="keyword">if</span> gcd(k1,<span class="number">26</span>) != <span class="number">1</span>:</span><br><span class="line">        print(<span class="string">"k1 and 26 are not mutually prime, and decryption fails."</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    k1 = findModReverse(k1,<span class="number">26</span>)</span><br><span class="line">    l = len(c)</span><br><span class="line">    ans = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(l):</span><br><span class="line">        <span class="keyword">if</span> c[i].isupper():</span><br><span class="line">            ans += chr((k1*(ord(c[i])-ord(<span class="string">'A'</span>)+<span class="number">26</span>-k2))%<span class="number">26</span>+ord(<span class="string">'A'</span>))</span><br><span class="line">        <span class="keyword">elif</span> c[i].islower():</span><br><span class="line">            ans += chr((k1*(ord(c[i])-ord(<span class="string">'a'</span>)+<span class="number">26</span>-k2))%<span class="number">26</span>+ord(<span class="string">'a'</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ans += c[i]</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BruteAffineDecrypt</span><span class="params">(c)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> k1 <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">        <span class="keyword">if</span> gcd(k1,<span class="number">26</span>) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">for</span> k2 <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">                <span class="keyword">print</span> (<span class="string">"k1 = "</span>+str(k1).zfill(<span class="number">2</span>)+<span class="string">", k2 = "</span>+str(k2).zfill(<span class="number">2</span>)+<span class="string">": "</span>+AffineDecrypt(c,k1,k2))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    s = input(<span class="string">"Please enter your plaintext:\n\t"</span>)</span><br><span class="line">    <span class="keyword">print</span> (<span class="number">7</span> * <span class="string">"*"</span> + <span class="string">"  Attack  "</span> + <span class="number">7</span> * <span class="string">"*"</span>)</span><br><span class="line">    BruteAffineDecrypt(s)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-01-03T09:02:03.747Z" itemprop="dateUpdated">2020-01-03 17:02:03</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/01/03/gudianmima/" target="_blank" rel="external">https://1187100546.github.io/2020/01/03/gudianmima/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://1187100546.github.io">
+            <img src="/img/avatar.jpg" alt="huahua">
+            huahua
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/密码学/">密码学</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2020/01/03/gudianmima/&title=《古典密码》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2020/01/03/gudianmima/&title=《古典密码》 — 花花的blog&source=密码学中的古典密码。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2020/01/03/gudianmima/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《古典密码》 — 花花的blog&url=https://1187100546.github.io/2020/01/03/gudianmima/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2020/01/03/gudianmima/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/01/03/lsfr/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">序列密码</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/01/03/java-4/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">java第四次实验作业</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>huahua &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2020/01/03/gudianmima/&title=《古典密码》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2020/01/03/gudianmima/&title=《古典密码》 — 花花的blog&source=密码学中的古典密码。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2020/01/03/gudianmima/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《古典密码》 — 花花的blog&url=https://1187100546.github.io/2020/01/03/gudianmima/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2020/01/03/gudianmima/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aQQ7DIBBD0dz/0um2UhNie0IlmM+qaqPA68KCGY5DHufPcL///lWZ65gxYMCAsSzjHA5lub/P3C3r7lf377igwoABowFjHHzuM274Ku95WDMMGDBgDCd2w1EJbhgwYMB4i6FPqUctDBgwYFQOsUo5LHvbX8/iMGDAWJDhFuv/+XlKfwMGDBhLMU5zKFs6fXs33g4aq4IBA8bWDD3gxhuySrNTaYJK64EBA8amjKxJWWe7pbSHb2DAgNGMkQWre9LUN5fSFTQYMGA0YFQmUFqbWSFPb4vCgAFjb4b+OmWaGWGqXD6DAQPG3gzlofr2MdsgGn8xDBgwGjCyyxD1UM4KcxefYcCA0ZihpFkF7Ia4VG6DAQNGA4Z7kasSlG4h7+G2CAwYMNowsldnl72y5sHh5jEMGDAWZ+iF++z4mhXU9Pi+jV0YMGBsxHADdLygrJHghu/F8zBgwGjA0Bf0FsDdaEqXLWDAgLEpQw/WejhWmqPKqmDAgNGH4bYtZ5T7wz8UBgwYzRjGlaxCw7Keloe+34QBA8ZGDJeULcttjr5wiIUBA8ayjNMcSry6LQf30oZ9zQIGDBiLM+olM70xmR1N3cIcDBgwdmW4pa5scdmVLyWUYcCA0YdRL7S55baM/XAWhwEDBgzlddH1rxcOsTBgwIDx0plYmculwoABow9D2bq5Tcd6cW1KuQ0GDBgLMirlMCUWs0bmlKYmDBgw1mN8AHwfQc9zjnK3AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
