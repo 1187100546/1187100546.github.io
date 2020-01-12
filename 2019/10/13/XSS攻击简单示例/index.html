@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html>
 <head><meta name="generator" content="Hexo 3.9.0">
+    
 
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
+    
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="author" content="huahua">
+    
 
 
 
-<meta name="description" content="xss">
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>XSS攻击简单示例 | 花花的blog | 厚积薄发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="XSS攻击">
+    <meta name="description" content="xss">
 <meta name="keywords" content="XSS攻击">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XSS攻击简单示例">
@@ -23,307 +29,175 @@
 <meta property="og:site_name" content="花花的blog">
 <meta property="og:description" content="xss">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="c:%5CUsers%5C%E5%BC%A0%E5%AF%85%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1570973405972.png">
+<meta property="og:image" content="c:/Users/张寅/AppData/Roaming/Typora/typora-user-images/1570973405972.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/13/UonfqPdrGlsBXSt.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/13/l2DCHsWTqGRXNfJ.png">
 <meta property="og:updated_time" content="2019-12-01T13:10:04.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS攻击简单示例">
 <meta name="twitter:description" content="xss">
-<meta name="twitter:image" content="c:%5CUsers%5C%E5%BC%A0%E5%AF%85%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1570973405972.png">
+<meta name="twitter:image" content="c:/Users/张寅/AppData/Roaming/Typora/typora-user-images/1570973405972.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="花花的blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- custom head -->
+    
 
+</head>
 
-    <link rel="alternate" href="/atom.xml" title="花花的blog" type="application/atom+xml">
-
-
-
-    <link rel="shortcut icon" href="/img/avatar.png">
-
-
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>XSS攻击简单示例 | 花花的blog</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: false,
-        isPost: true,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: true
-    }
-</script>
-
-
-    <script>
-        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
-    </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
-
-</head></html>
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/avatar.jpg" class="animated zoomIn">
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">huahua</a></h1>
+        <hgroup class="introduce">
+          <h5 class="nickname">huahua</h5>
+          <a href="mailto:1187100546@qq.com" title="1187100546@qq.com" class="mail">1187100546@qq.com</a>
         </hgroup>
-
-        
-        <p class="header-subtitle">厚积薄发</p>
-        
-
-        
-            <form id="search-form">
-            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
-            <i class="fa fa-times" onclick="resetSearch()"></i>
-            </form>
-            <div id="local-search-result"></div>
-            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
-        
-
-
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
-                            
-                                <a class="fa QQ" href="#" title="QQ"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS攻击/">XSS攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss攻击/">xss攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作业/">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动漫/">动漫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码学/">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新闻/">新闻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力破解/">暴力破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/渗透攻击/">渗透攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">专注于前端</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">huahua</a></h1>
       </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/avatar.jpg" class="animated zoomIn">
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/1187100546" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">XSS攻击简单示例</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">huahua</a></h1>
-            </hgroup>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">XSS攻击简单示例</h1>
+        <h5 class="subtitle">
             
-            <p class="header-subtitle">厚积薄发</p>
+                <time datetime="2019-10-13T11:06:06.000Z" itemprop="datePublished" class="page-time">
+  2019-10-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/XSS攻击/">XSS攻击</a></li></ul>
+
             
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
-                            
-                                <a class="fa QQ" target="_blank" href="#" title="QQ"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
-</nav>
-      <div class="body-wrap"><article id="post-XSS攻击简单示例" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/10/13/XSS攻击简单示例/" class="article-date">
-      <time datetime="2019-10-13T11:06:06.000Z" itemprop="datePublished">2019-10-13</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      XSS攻击简单示例
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/XSS攻击/">XSS攻击</a>
+        </h5>
     </div>
 
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XSS攻击/">XSS攻击</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>xss</p>
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#建立漏洞页面"><span class="post-toc-number">1.</span> <span class="post-toc-text">建立漏洞页面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#漏洞修补"><span class="post-toc-number">2.</span> <span class="post-toc-text">漏洞修补</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-XSS攻击简单示例"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">XSS攻击简单示例</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-13 19:06:06" datetime="2019-10-13T11:06:06.000Z"  itemprop="datePublished">2019-10-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/XSS攻击/">XSS攻击</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>xss</p>
 <a id="more"></a>
 
 <h3 id="建立漏洞页面"><a href="#建立漏洞页面" class="headerlink" title="建立漏洞页面"></a>建立漏洞页面</h3><p>在www目录下新建xss.php,代码如下</p>
@@ -331,11 +205,25 @@
 
 <p>在浏览器输入<a href="http://localhost/xss.php/" target="_blank" rel="noopener">http://localhost/xss.php/</a></p>
 <p>进入页面</p>
-<p><img src="C:%5CUsers%5C%E5%BC%A0%E5%AF%85%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1570973405972.png" alt="1570973405972"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\张寅\AppData\Roaming\Typora\typora-user-images\1570973405972.png" alt="1570973405972" title>
+                </div>
+                <div class="image-caption">1570973405972</div>
+            </figure>
+
 <p>输入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"&gt;&lt;img src=1 onerror=alert(/xss/)&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2019/10/13/UonfqPdrGlsBXSt.png" alt="L0_P317WRNGPCYPGDQPG_0O.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/13/UonfqPdrGlsBXSt.png" alt="L0_P317WRNGPCYPGDQPG_0O.png" title>
+                </div>
+                <div class="image-caption">L0_P317WRNGPCYPGDQPG_0O.png</div>
+            </figure>
+
 <p>攻击成功</p>
 <h3 id="漏洞修补"><a href="#漏洞修补" class="headerlink" title="漏洞修补"></a>漏洞修补</h3><p>将xss.php中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//<span class="variable">$_GET</span>     &amp;&amp; SafeFilter(<span class="variable">$_GET</span>);</span><br></pre></td></tr></table></figure>
@@ -345,268 +233,316 @@
 
 <p>通过SafeFilter()函数来过滤输入的内容</p>
 <p>再输入刚才的内容</p>
-<p><img src="https://i.loli.net/2019/10/13/l2DCHsWTqGRXNfJ.png" alt="_I9UOP3AI0448_OMY9_R_6Y.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/13/l2DCHsWTqGRXNfJ.png" alt="_I9UOP3AI0448_OMY9_R_6Y.png" title>
+                </div>
+                <div class="image-caption">_I9UOP3AI0448_OMY9_R_6Y.png</div>
+            </figure>
+
 <p><strong>注意：建议用ie浏览器打开，关闭ie浏览器的xss过滤器</strong></p>
 
-      
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-12-01T13:10:04.542Z" itemprop="dateUpdated">2019-12-01 21:10:04</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/10/13/XSS攻击简单示例/" target="_blank" rel="external">https://1187100546.github.io/2019/10/13/XSS攻击简单示例/</a>
+        
     </div>
     
-  </div>
-  
+    <footer>
+        <a href="https://1187100546.github.io">
+            <img src="/img/avatar.jpg" alt="huahua">
+            huahua
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XSS攻击/">XSS攻击</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
     
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/10/13/XSS攻击简单示例/">XSS攻击简单示例</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">huahua</a></p>
-        <p><span>发布时间:</span>2019-10-13, 19:06:06</p>
-        <p><span>最后更新:</span>2019-12-01, 21:10:04</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/10/13/XSS攻击简单示例/" title="XSS攻击简单示例">https://1187100546.github.io/2019/10/13/XSS攻击简单示例/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://1187100546.github.io/2019/10/13/XSS攻击简单示例/　　作者: huahua" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&title=《XSS攻击简单示例》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&title=《XSS攻击简单示例》 — 花花的blog&source=xss" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XSS攻击简单示例》 — 花花的blog&url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
     </div>
 
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/10/20/算法作业1/">
-                    算法作业（一）
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/10/13/教育部取消毕业前补考的意见/">
-                    教育部取消毕业前补考的意见(某人的毛概作业)
-                </a>
-            </div>
-        
-    </nav>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/10/20/算法作业1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">算法作业（一）</h4>
+      </a>
+    </div>
+  
 
   
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/13/教育部取消毕业前补考的意见/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">教育部取消毕业前补考的意见(某人的毛概作业)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
 
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#建立漏洞页面"><span class="toc-number">1.</span> <span class="toc-text">建立漏洞页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞修补"><span class="toc-number">2.</span> <span class="toc-text">漏洞修补</span></a></li></ol>
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
         
     </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-6 i,
-        .toc-level-6 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
-        </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"XSS攻击简单示例　| 花花的blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
-
-    
 </div>
 
 
 
-
-
-
-
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2019/10/20/算法作业1/" title="上一篇: 算法作业（一）">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2019/10/13/教育部取消毕业前补考的意见/" title="下一篇: 教育部取消毕业前补考的意见(某人的毛概作业)">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/12/md5/">MD5加密</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/12/RSA/">公钥密码RSA</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/des/">分组密码DES</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/lsfr/">序列密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/gudianmima/">古典密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/java-4/">java第四次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/java-3/">java第三次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/java-2/">java第二次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/29/java-fujia/">java继承实现多态的例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-3/">java实验三</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-2/">java实验二</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/24/spawn-failed/">hexo发生error：spawn failed错误的解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/19/网安作业3/">网安作业3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-stored/">DVWA--xss_stored</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-reflected/">DVWA--xss_reflected</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/DVWA-SQL-Injection-Blind/">DVWA-SQL_Injection_Blind（sql盲注）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/DVWA-SQL-Injection/">DVWA-SQL_Injection(SQL注入)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/算法实验考试/">算法实验考试</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/算法实验作业/">算法实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/25/算法实验4/">算法实验（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/算法实验3/">算法实验（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/算法实验2/">算法实验（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/Brute_Force/">DVWA-Brute_Force暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/算法实验1/">算法实验（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/21/算法作业2/">算法作业（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/20/算法作业1/">算法作业（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/XSS攻击简单示例/">XSS攻击简单示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/教育部取消毕业前补考的意见/">教育部取消毕业前补考的意见(某人的毛概作业)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/利用sqlmap注入dvwa/">利用sqlmap注入dvwa</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/12/简单sql注入环境搭建及注入/">简单sql注入环境搭建及注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/msf攻击windows/">msf攻击windows</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/一天是不良人，一辈子都是不良人/">一天是不良人，一辈子都是不良人</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/hello-world/">Hello World</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
-      
-<footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2018-2020 huahua
-            </div>
- 
- 
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
-        </div>
- 
- 
+
+        <footer class="footer">
+    <div class="top">
         
- 
- 
-            <div class="visit">
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>huahua &copy; 2018 - 2020</span>
+            <span>
                 
-                    <span style='display:inline'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i>本站总访问量<span id="busuanzi_value_site_pv"></span>次
-                        </span>
-                    </span>
-                
- 
- 
-                
-                    <span>| </span>
-                
- 
- 
-                
-                    <span style='display:inline'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i>本页面被访问<span id="busuanzi_value_page_pv"></span>次
-                        </span>
-                    </span>
-                
- 
-                
-                    <span>| </span>
-                
- 
- 
-                
-                    <span style='display:inline'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-user" aria-hidden="true"></i>本站访客数<span id="busuanzi_value_site_uv"></span>人
-                        </span>
-                    </span>
-                
- 
-                
-            </div>
-        
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
     </div>
 </footer>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-    </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
 
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&title=《XSS攻击简单示例》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&title=《XSS攻击简单示例》 — 花花的blog&source=xss" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《XSS攻击简单示例》 — 花花的blog&url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/13/XSS攻击简单示例/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
 
 
-    <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-<div class="scroll" id="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3aQXLjQAgFUN//0pqq2TpSPmBNjdHrlUtRWv20wGB4veJ1/F3X14+39X7n+1/PrrzuWBgYGF/LOC5Xwri+Pz96cv3sNWFgYDyBkQTT689nvBxW3R8DAwOj9+A8rawGbgwMDIw84CaPLx+i9VwMDIynMZIi9pcy8obwfUstjoGB8YWMamPgX36+sb+BgYHxJYyjtT7b/szD6+l5MDAwVjPOtsvjW6+grTY1o0CMgYGxlJEAro/bS+yu789L5R++NzAwMJYyJg+btBAmQfaHpBADA2MpI0/4khxsHjrzcjdqZGJgYCxijAJcnD5Oas9oaAwDA2MpIylHJ2MWebGaPP30OgYGxmrGp9qQvcPlTc1qKomBgbGPkbQeq0nefXtGVTgGBsZSRp6QTZoBOb5a0GJgYOxmTEJnnjhO2gb5GAcGBsYTGOXO54DRK4MxMDCezDji1RuwyPeZhHgMDIzdjMmtE17+KpvJIgYGxiJGNEFWTB+rBWo+rnG6MwYGxlJG3gaYJHa9V1P4lsDAwHgMozpUms+aVZPFpKmAgYHxHEaS8CX/XM1Gq12L0bAFBgbG1zKO4uo1Gj81THb6ajAwMFYzqsFussWkJG4miBgYGIsYk8Zh7xCTn/bKtTgGBsYiRq8oraaMk8D9Cw8DAwNjkMBVj5WXxxgYGBjVrSeJYN6cwMDAeDIjKWJ7h+ulhqMBCwwMjHWM3s/65TmOYhKZjJF9oL+BgYHxvzP+AHLcxgSNvfJVAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-            
-            
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
 </script>
 
-    <script>
-        var originTitle = document.title;
-        var titleTime;
-        document.addEventListener("visibilitychange", function() {
-            if (document.hidden) {
-                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
-                clearTimeout(titleTime);
-            }
-            else {
-                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
-                titleTime = setTimeout(function() {
-                    document.title = originTitle;
-                }, 2000);
-            }
-        })
-    </script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
 </script>
-  </div>
+
+
+
 </body>
 </html>

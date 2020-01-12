@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html>
 <head><meta name="generator" content="Hexo 3.9.0">
+    
 
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
+    
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no">
-<meta name="author" content="huahua">
+    
 
 
 
-<meta name="description" content="算法实验三。">
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>算法实验（三） | 花花的blog | 厚积薄发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="算法">
+    <meta name="description" content="算法实验三。">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法实验（三）">
@@ -27,299 +33,167 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法实验（三）">
 <meta name="twitter:description" content="算法实验三。">
+    
+        <link rel="alternate" type="application/atom+xml" title="花花的blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
 
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- custom head -->
+    
 
+</head>
 
-    <link rel="alternate" href="/atom.xml" title="花花的blog" type="application/atom+xml">
-
-
-
-    <link rel="shortcut icon" href="/img/avatar.png">
-
-
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>算法实验（三） | 花花的blog</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: false,
-        isPost: true,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: true
-    }
-</script>
-
-
-    <script>
-        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
-    </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
-
-</head></html>
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/avatar.jpg" class="animated zoomIn">
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">huahua</a></h1>
+        <hgroup class="introduce">
+          <h5 class="nickname">huahua</h5>
+          <a href="mailto:1187100546@qq.com" title="1187100546@qq.com" class="mail">1187100546@qq.com</a>
         </hgroup>
-
-        
-        <p class="header-subtitle">厚积薄发</p>
-        
-
-        
-            <form id="search-form">
-            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
-            <i class="fa fa-times" onclick="resetSearch()"></i>
-            </form>
-            <div id="local-search-result"></div>
-            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
-        
-
-
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
-                            
-                                <a class="fa QQ" href="#" title="QQ"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS攻击/">XSS攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss攻击/">xss攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作业/">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动漫/">动漫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码学/">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新闻/">新闻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力破解/">暴力破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/渗透攻击/">渗透攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">专注于前端</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">huahua</a></h1>
       </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/avatar.jpg" class="animated zoomIn">
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://https://github.com/1187100546" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">算法实验（三）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">huahua</a></h1>
-            </hgroup>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">算法实验（三）</h1>
+        <h5 class="subtitle">
             
-            <p class="header-subtitle">厚积薄发</p>
+                <time datetime="2019-10-24T09:08:35.000Z" itemprop="datePublished" class="page-time">
+  2019-10-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
             
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
-                            
-                                <a class="fa QQ" target="_blank" href="#" title="QQ"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
-</nav>
-      <div class="body-wrap"><article id="post-算法实验3" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/10/24/算法实验3/" class="article-date">
-      <time datetime="2019-10-24T09:08:35.000Z" itemprop="datePublished">2019-10-24</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      算法实验（三）
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
+        </h5>
     </div>
 
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>算法实验三。</p>
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题-A-评分系统"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题 A: 评分系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输入"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">样例输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输出"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">样例输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提示"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">提示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题-B-节食的限制"><span class="post-toc-number">2.</span> <span class="post-toc-text">问题 B: 节食的限制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输入-1"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">样例输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输出-1"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">样例输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提示-1"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">提示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码-1"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题-C-汽车费用"><span class="post-toc-number">3.</span> <span class="post-toc-text">问题 C: 汽车费用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出-2"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输入-2"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">样例输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输出-2"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">样例输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提示-2"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">提示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码-2"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题-D-法师康的工人"><span class="post-toc-number">4.</span> <span class="post-toc-text">问题 D: 法师康的工人</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述-3"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入-3"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出-3"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输入-3"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">样例输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输出-3"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">样例输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提示-3"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">提示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码-3"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题-E-配对元素"><span class="post-toc-number">5.</span> <span class="post-toc-text">问题 E: 配对元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述-4"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入-4"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出-4"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输入-4"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">样例输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输出-4"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">样例输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提示-4"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">提示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码-4"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">代码</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-算法实验3"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">算法实验（三）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-24 17:08:35" datetime="2019-10-24T09:08:35.000Z"  itemprop="datePublished">2019-10-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>算法实验三。</p>
 <a id="more"></a>
 
 <h2 id="问题-A-评分系统"><a href="#问题-A-评分系统" class="headerlink" title="问题 A: 评分系统"></a>问题 A: 评分系统</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>英语俱乐部举办了一个叫做“英文金曲大赛”的节目。这个节目有好多人参加，这不，成绩出来了，渊子当是很勇敢，自告奋勇接下了算出大家的总得分的任务。当时有7个评委，每个评委都要给选手打分，现在要求去掉一个最高分和去掉一个最低分，再算出平均分。结果精确到小数点后两位。</p>
@@ -372,265 +246,306 @@
 <h3 id="提示-4"><a href="#提示-4" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">int</span> a[n],b[n];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i]&gt;&gt;b[i];</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a,a+n);</span><br><span class="line">    sort(b,b+n);</span><br><span class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum=sum+<span class="built_in">abs</span>(a[i]-b[n<span class="number">-1</span>-i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;sum&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-      
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-11-09T09:15:18.373Z" itemprop="dateUpdated">2019-11-09 17:15:18</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/10/24/算法实验3/" target="_blank" rel="external">https://1187100546.github.io/2019/10/24/算法实验3/</a>
+        
     </div>
     
-  </div>
-  
+    <footer>
+        <a href="https://1187100546.github.io">
+            <img src="/img/avatar.jpg" alt="huahua">
+            huahua
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
     
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/10/24/算法实验3/">算法实验（三）</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">huahua</a></p>
-        <p><span>发布时间:</span>2019-10-24, 17:08:35</p>
-        <p><span>最后更新:</span>2019-11-09, 17:15:18</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/10/24/算法实验3/" title="算法实验（三）">https://1187100546.github.io/2019/10/24/算法实验3/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://1187100546.github.io/2019/10/24/算法实验3/　　作者: huahua" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/24/算法实验3/&title=《算法实验（三）》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/24/算法实验3/&title=《算法实验（三）》 — 花花的blog&source=算法实验三。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/24/算法实验3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法实验（三）》 — 花花的blog&url=https://1187100546.github.io/2019/10/24/算法实验3/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/24/算法实验3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
     </div>
 
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/10/25/算法实验4/">
-                    算法实验（四）
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/10/23/算法实验2/">
-                    算法实验（二）
-                </a>
-            </div>
-        
-    </nav>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/10/25/算法实验4/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">算法实验（四）</h4>
+      </a>
+    </div>
+  
 
   
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/23/算法实验2/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">算法实验（二）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
 
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-A-评分系统"><span class="toc-number">1.</span> <span class="toc-text">问题 A: 评分系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述"><span class="toc-number">1.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入"><span class="toc-number">1.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出"><span class="toc-number">1.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入"><span class="toc-number">1.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出"><span class="toc-number">1.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示"><span class="toc-number">1.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">1.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-B-节食的限制"><span class="toc-number">2.</span> <span class="toc-text">问题 B: 节食的限制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-1"><span class="toc-number">2.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-1"><span class="toc-number">2.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-1"><span class="toc-number">2.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-1"><span class="toc-number">2.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-1"><span class="toc-number">2.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-number">2.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-C-汽车费用"><span class="toc-number">3.</span> <span class="toc-text">问题 C: 汽车费用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-2"><span class="toc-number">3.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-2"><span class="toc-number">3.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-2"><span class="toc-number">3.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-2"><span class="toc-number">3.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-2"><span class="toc-number">3.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-2"><span class="toc-number">3.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-2"><span class="toc-number">3.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-D-法师康的工人"><span class="toc-number">4.</span> <span class="toc-text">问题 D: 法师康的工人</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-3"><span class="toc-number">4.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-3"><span class="toc-number">4.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-3"><span class="toc-number">4.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-3"><span class="toc-number">4.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-3"><span class="toc-number">4.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-3"><span class="toc-number">4.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-3"><span class="toc-number">4.7.</span> <span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题-E-配对元素"><span class="toc-number">5.</span> <span class="toc-text">问题 E: 配对元素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述-4"><span class="toc-number">5.1.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入-4"><span class="toc-number">5.2.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出-4"><span class="toc-number">5.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输入-4"><span class="toc-number">5.4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例输出-4"><span class="toc-number">5.5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提示-4"><span class="toc-number">5.6.</span> <span class="toc-text">提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-4"><span class="toc-number">5.7.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
         
     </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-6 i,
-        .toc-level-6 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
-        </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"算法实验（三）　| 花花的blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
-
-    
 </div>
 
 
 
-
-
-
-
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2019/10/25/算法实验4/" title="上一篇: 算法实验（四）">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2019/10/23/算法实验2/" title="下一篇: 算法实验（二）">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/12/md5/">MD5加密</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/12/RSA/">公钥密码RSA</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/des/">分组密码DES</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/lsfr/">序列密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/gudianmima/">古典密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/java-4/">java第四次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/java-3/">java第三次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/java-2/">java第二次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/29/java-fujia/">java继承实现多态的例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-3/">java实验三</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-2/">java实验二</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/24/spawn-failed/">hexo发生error：spawn failed错误的解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/19/网安作业3/">网安作业3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-stored/">DVWA--xss_stored</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-reflected/">DVWA--xss_reflected</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/DVWA-SQL-Injection-Blind/">DVWA-SQL_Injection_Blind（sql盲注）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/DVWA-SQL-Injection/">DVWA-SQL_Injection(SQL注入)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/算法实验考试/">算法实验考试</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/算法实验作业/">算法实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/25/算法实验4/">算法实验（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/算法实验3/">算法实验（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/算法实验2/">算法实验（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/Brute_Force/">DVWA-Brute_Force暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/算法实验1/">算法实验（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/21/算法作业2/">算法作业（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/20/算法作业1/">算法作业（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/XSS攻击简单示例/">XSS攻击简单示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/教育部取消毕业前补考的意见/">教育部取消毕业前补考的意见(某人的毛概作业)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/利用sqlmap注入dvwa/">利用sqlmap注入dvwa</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/12/简单sql注入环境搭建及注入/">简单sql注入环境搭建及注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/msf攻击windows/">msf攻击windows</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/一天是不良人，一辈子都是不良人/">一天是不良人，一辈子都是不良人</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/hello-world/">Hello World</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
-      
-<footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2018-2020 huahua
-            </div>
- 
- 
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
-        </div>
- 
- 
+
+        <footer class="footer">
+    <div class="top">
         
- 
- 
-            <div class="visit">
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>huahua &copy; 2018 - 2020</span>
+            <span>
                 
-                    <span style='display:inline'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i>本站总访问量<span id="busuanzi_value_site_pv"></span>次
-                        </span>
-                    </span>
-                
- 
- 
-                
-                    <span>| </span>
-                
- 
- 
-                
-                    <span style='display:inline'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i>本页面被访问<span id="busuanzi_value_page_pv"></span>次
-                        </span>
-                    </span>
-                
- 
-                
-                    <span>| </span>
-                
- 
- 
-                
-                    <span style='display:inline'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-user" aria-hidden="true"></i>本站访客数<span id="busuanzi_value_site_uv"></span>人
-                        </span>
-                    </span>
-                
- 
-                
-            </div>
-        
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
     </div>
 </footer>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-    </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
 
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/24/算法实验3/&title=《算法实验（三）》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/24/算法实验3/&title=《算法实验（三）》 — 花花的blog&source=算法实验三。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/24/算法实验3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法实验（三）》 — 花花的blog&url=https://1187100546.github.io/2019/10/24/算法实验3/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/24/算法实验3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
 
 
-    <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-<div class="scroll" id="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aQW7DMAwEwPz/0+4DWju7VFLA8ugUOE6k0UEgRb5e8ThOxqfe//3b1zcGBgbGbRnH5fj9zvp2zOZ9sykYGBgPYCRTXn8+A+fLTf7/9DkGBgZGHAi24V3Ow8DAwPgUIwkok3/DwMDAmCWxsyNy9v4Xc3EMDIwbMmbXZP/z+Sv1DQwMjFsxjnIk0ydPZsfr6aowMDC2ZuQHXJ6OtuBZ2IeBgfEcRn5ErjRJrISh0RMMDIytGW1J8vrYvV56+21+5YeBgbE3I7/Eb/dmVshsw0QMDIynMfIj9VMhY57iFlk4BgbGdoy25aJOI+MQMD+ai6gWAwNjC0bb7pBfeyWH5qzN4o/3MTAwHsCo2xpK3jrjTWCKgYGxNaNdVpt8rjRbzAoMGBgY+zHyKdtGsWF7RLytr9keY2Bg3JCxsrhZ8rmCLEJDDAyMjRjJso7RSBbXbkTRbIGBgbE1oy0PtBuRh6RFOo2BgbE1Iw+/2vaItnkiwdSdIxgYGBsxkkv5PPmsW07LdPd0LgwMjMcw2spn/m1enhxe8GFgYDyAMVvWSorbHsRvMBgYGJsyVq77V8oDs82K6q4YGBjbMdpj7pq0UhJYObIxMDCewFhpm8gv8fNiZE7FwMB4GmPWttUuJUfWZQMMDAyMYJq2/DkLQ6N7OAwMDIxRctu2aNThJgYGxgMYeTGgrZHmS1y5yMPAwNib0bY4tAWAHPD1oiYGBsb9GD/1JWqYdNGkXQAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-            
-            
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
 </script>
 
-    <script>
-        var originTitle = document.title;
-        var titleTime;
-        document.addEventListener("visibilitychange", function() {
-            if (document.hidden) {
-                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
-                clearTimeout(titleTime);
-            }
-            else {
-                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
-                titleTime = setTimeout(function() {
-                    document.title = originTitle;
-                }, 2000);
-            }
-        })
-    </script>
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
 </script>
-  </div>
+
+
+
 </body>
 </html>
