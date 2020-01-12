@@ -189,7 +189,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#crackme"><span class="post-toc-number">1.</span> <span class="post-toc-text"> crackme:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#overflow1"><span class="post-toc-number">2.</span> <span class="post-toc-text"> overflow(1):</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#overflow2"><span class="post-toc-number">3.</span> <span class="post-toc-text"> overflow(2):</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#overflow3"><span class="post-toc-number">4.</span> <span class="post-toc-text"> overflow(3):</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#crackme"><span class="post-toc-number">1.</span> <span class="post-toc-text">crackme:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#overflow-1"><span class="post-toc-number">2.</span> <span class="post-toc-text">overflow(1):</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#overflow-2"><span class="post-toc-number">3.</span> <span class="post-toc-text">overflow(2):</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#overflow-3"><span class="post-toc-number">4.</span> <span class="post-toc-text">overflow(3):</span></a></li></ol>
         </nav>
     </aside>
 
@@ -217,7 +217,7 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>网安作业3.</p>
 <a id="more"></a>
-<h3 id="crackme"><a class="markdownIt-Anchor" href="#crackme"></a> crackme:</h3>
+<h3 id="crackme">crackme:</h3>
 <p>打开IDA找到判断跳转语句位置</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -251,7 +251,7 @@
                 </div>
                 <div class="image-caption">MRmkEn.png</div>
             </figure>
-<h3 id="overflow1"><a class="markdownIt-Anchor" href="#overflow1"></a> overflow(1):</h3>
+<h3 id="overflow-1">overflow(1):</h3>
 <p>首先输入7个q看一下栈情况</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -278,7 +278,7 @@
                 </div>
                 <div class="image-caption">Mq2UVe.png</div>
             </figure>
-<h3 id="overflow2"><a class="markdownIt-Anchor" href="#overflow2"></a> overflow(2):</h3>
+<h3 id="overflow-2">overflow(2):</h3>
 <p>将跳转地址覆盖为验证通过的地址</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -303,7 +303,7 @@
                 </div>
                 <div class="image-caption">MqRweU.png</div>
             </figure>
-<h3 id="overflow3"><a class="markdownIt-Anchor" href="#overflow3"></a> overflow(3):</h3>
+<h3 id="overflow-3">overflow(3):</h3>
 <p>程序与2的区别是增加了头文件windows.h，buff由8字节变成44字节，有足够空间填入代码。</p>
 <p>找到buff地址和返回地址</p>
 <figure class="image-bubble">
