@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/12/lTtd29.png">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/12/lTtW2d.png">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/12/lTtfxA.png">
-<meta property="og:updated_time" content="2020-01-12T13:29:53.182Z">
+<meta property="og:updated_time" content="2020-01-12T14:45:28.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MD5加密">
 <meta name="twitter:description" content="密码学里的MD5加密。">
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -210,7 +210,12 @@
 </li>
 </ul>
 <p><strong>注：64位数据长度存储的时候是小端序</strong></p>
-<h3 id="初始化链接变量"><a href="#初始化链接变量" class="headerlink" title="初始化链接变量"></a>初始化链接变量</h3><p>使用4个32位的寄存器A， B，C， D存放4个固定的32位整型参数，用于第一轮迭代，这里需要注意的是，寄存器的值要转化为小端序。<br>$$<br>A=0x01234567\<br>B=0x89abcdef\<br>C=0xfedcba98\<br>D=0x76543210<br>$$</p>
+<h3 id="初始化链接变量"><a href="#初始化链接变量" class="headerlink" title="初始化链接变量"></a>初始化链接变量</h3><p>使用4个32位的寄存器A， B，C， D存放4个固定的32位整型参数，用于第一轮迭代，这里需要注意的是，寄存器的值要转化为小端序。<br>$$ 
+A=0x01234567\\
+B=0x89abcdef\\
+C=0xfedcba98\\
+D=0x76543210
+$$ </p>
 <h3 id="分组处理"><a href="#分组处理" class="headerlink" title="分组处理"></a>分组处理</h3><p>与分组密码分组处理相似，有4轮步骤，将512比特的消息分组平均分为16个子分组，每个子分组有32比特，参与每一轮的的16步运算，每步输入是4个32比特的链接变量和一个32位的的消息子分组，经过这样的64步之后得到4个寄存器的值分别与输入的链接变量进行模加。</p>
 <h3 id="步函数"><a href="#步函数" class="headerlink" title="步函数"></a>步函数</h3><figure class="image-bubble">
                 <div class="img-lightbox">
@@ -273,7 +278,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-01-12T13:29:53.182Z" itemprop="dateUpdated">2020-01-12 21:29:53</time>
+    Last updated: <time datetime="2020-01-12T14:45:28.303Z" itemprop="dateUpdated">2020-01-12 22:45:28</time>
 </span><br>
 
 
@@ -439,7 +444,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
