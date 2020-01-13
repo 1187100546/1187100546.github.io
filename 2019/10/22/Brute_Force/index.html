@@ -166,7 +166,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -269,9 +269,11 @@
                 <div class="image-caption">C0_0_CWB_ISDUO_RCNCS45I.png</div>
             </figure>
 <p>输入用户名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">admin
+</code></pre>
 <p>密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">123
+</code></pre>
 <p>开启burp suite拦截，登陆</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -329,9 +331,87 @@
 <p>攻击成功，密码为password</p>
 <p><del>此法适用各个安全等级</del></p>
 <p><strong><code>之前说法有误，此法并不适合各个等级</code></strong></p>
-<h2 id="级别：medium"><a href="#级别：medium" class="headerlink" title="级别：medium"></a>级别：medium</h2><h3 id="Brute-Force-Source"><a href="#Brute-Force-Source" class="headerlink" title="Brute Force Source"></a>Brute Force Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_GET[ <span class="string">'Login'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Sanitise username input</span></span><br><span class="line">    $user = $_GET[ <span class="string">'username'</span> ];</span><br><span class="line">    $user = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $user ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitise password input</span></span><br><span class="line">    $pass = $_GET[ <span class="string">'password'</span> ];</span><br><span class="line">    $pass = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $pass ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">    $pass = md5( $pass );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Check the database</span></span><br><span class="line">    $query  = <span class="string">"SELECT * FROM `users` WHERE user = '$user' AND password = '$pass';"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( $result &amp;&amp; mysqli_num_rows( $result ) == <span class="number">1</span> ) &#123;</span><br><span class="line">        <span class="comment">// Get users details</span></span><br><span class="line">        $row    = mysqli_fetch_assoc( $result );</span><br><span class="line">        $avatar = $row[<span class="string">"avatar"</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Login successful</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;p&gt;Welcome to the password protected area &#123;$user&#125;&lt;/p&gt;"</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;img src=\"&#123;$avatar&#125;\" /&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Login failed</span></span><br><span class="line">        sleep( <span class="number">2</span> );</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[<span class="string">"___mysqli_ston"</span>]))) ? <span class="keyword">false</span> : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="级别：medium"><a href="#级别：medium" class="headerlink" title="级别：medium"></a>级别：medium</h2><h3 id="Brute-Force-Source"><a href="#Brute-Force-Source" class="headerlink" title="Brute Force Source"></a>Brute Force Source</h3><pre><code class="lang-php">&lt;?php
+
+if( isset( $_GET[ &#39;Login&#39; ] ) ) {
+    // Sanitise username input
+    $user = $_GET[ &#39;username&#39; ];
+    $user = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $user ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Sanitise password input
+    $pass = $_GET[ &#39;password&#39; ];
+    $pass = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+    $pass = md5( $pass );
+
+    // Check the database
+    $query  = &quot;SELECT * FROM `users` WHERE user = &#39;$user&#39; AND password = &#39;$pass&#39;;&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+
+    if( $result &amp;&amp; mysqli_num_rows( $result ) == 1 ) {
+        // Get users details
+        $row    = mysqli_fetch_assoc( $result );
+        $avatar = $row[&quot;avatar&quot;];
+
+        // Login successful
+        echo &quot;&lt;p&gt;Welcome to the password protected area {$user}&lt;/p&gt;&quot;;
+        echo &quot;&lt;img src=\&quot;{$avatar}\&quot; /&gt;&quot;;
+    }
+    else {
+        // Login failed
+        sleep( 2 );
+        echo &quot;&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;&quot;;
+    }
+
+    ((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);
+}
+
+?&gt;
+</code></pre>
 <p>medium加了错误密码延迟，low级别的方法还是适用，就是花费时间更长</p>
-<h2 id="级别：high"><a href="#级别：high" class="headerlink" title="级别：high"></a>级别：high</h2><h3 id="Brute-Force-Source-1"><a href="#Brute-Force-Source-1" class="headerlink" title="Brute Force Source"></a>Brute Force Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_GET[ <span class="string">'Login'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">    checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitise username input</span></span><br><span class="line">    $user = $_GET[ <span class="string">'username'</span> ];</span><br><span class="line">    $user = stripslashes( $user );</span><br><span class="line">    $user = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $user ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitise password input</span></span><br><span class="line">    $pass = $_GET[ <span class="string">'password'</span> ];</span><br><span class="line">    $pass = stripslashes( $pass );</span><br><span class="line">    $pass = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $pass ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">    $pass = md5( $pass );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Check database</span></span><br><span class="line">    $query  = <span class="string">"SELECT * FROM `users` WHERE user = '$user' AND password = '$pass';"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( $result &amp;&amp; mysqli_num_rows( $result ) == <span class="number">1</span> ) &#123;</span><br><span class="line">        <span class="comment">// Get users details</span></span><br><span class="line">        $row    = mysqli_fetch_assoc( $result );</span><br><span class="line">        $avatar = $row[<span class="string">"avatar"</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Login successful</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;p&gt;Welcome to the password protected area &#123;$user&#125;&lt;/p&gt;"</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;img src=\"&#123;$avatar&#125;\" /&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Login failed</span></span><br><span class="line">        sleep( rand( <span class="number">0</span>, <span class="number">3</span> ) );</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[<span class="string">"___mysqli_ston"</span>]))) ? <span class="keyword">false</span> : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="级别：high"><a href="#级别：high" class="headerlink" title="级别：high"></a>级别：high</h2><h3 id="Brute-Force-Source-1"><a href="#Brute-Force-Source-1" class="headerlink" title="Brute Force Source"></a>Brute Force Source</h3><pre><code class="lang-php">&lt;?php
+
+if( isset( $_GET[ &#39;Login&#39; ] ) ) {
+    // Check Anti-CSRF token
+    checkToken( $_REQUEST[ &#39;user_token&#39; ], $_SESSION[ &#39;session_token&#39; ], &#39;index.php&#39; );
+
+    // Sanitise username input
+    $user = $_GET[ &#39;username&#39; ];
+    $user = stripslashes( $user );
+    $user = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $user ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Sanitise password input
+    $pass = $_GET[ &#39;password&#39; ];
+    $pass = stripslashes( $pass );
+    $pass = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+    $pass = md5( $pass );
+
+    // Check database
+    $query  = &quot;SELECT * FROM `users` WHERE user = &#39;$user&#39; AND password = &#39;$pass&#39;;&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+
+    if( $result &amp;&amp; mysqli_num_rows( $result ) == 1 ) {
+        // Get users details
+        $row    = mysqli_fetch_assoc( $result );
+        $avatar = $row[&quot;avatar&quot;];
+
+        // Login successful
+        echo &quot;&lt;p&gt;Welcome to the password protected area {$user}&lt;/p&gt;&quot;;
+        echo &quot;&lt;img src=\&quot;{$avatar}\&quot; /&gt;&quot;;
+    }
+    else {
+        // Login failed
+        sleep( rand( 0, 3 ) );
+        echo &quot;&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;&quot;;
+    }
+
+    ((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);
+}
+
+// Generate Anti-CSRF token
+generateSessionToken();
+
+?&gt;
+</code></pre>
 <p>加了 user_token 一个随机值，来防止用户多次提交</p>
 <p>抓包，选择Pitchfork攻击类型，添加爆破的参数 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -377,7 +457,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2019-12-02T06:34:45.840Z" itemprop="dateUpdated">2019-12-02 14:34:45</time>
+    Last updated: <time datetime="2019-12-02T06:34:45.840Z" itemprop="dateUpdated">2019-12-02 14:34:45</time>
 </span><br>
 
 
@@ -556,7 +636,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

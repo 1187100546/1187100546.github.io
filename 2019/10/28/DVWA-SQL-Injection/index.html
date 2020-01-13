@@ -175,7 +175,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -245,10 +245,52 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>DVWA里的SQL注入。</p>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SQL 注入分类</span><br><span class="line">按SQLMap中的分类来看，SQL注入类型有以下 5 种：</span><br><span class="line"> UNION query SQL injection（可联合查询注入） </span><br><span class="line"> Stacked queries SQL injection（可多语句查询注入）</span><br><span class="line"> Boolean-based blind SQL injection（布尔型注入） </span><br><span class="line"> Error-based SQL injection（报错型注入）</span><br><span class="line"> Time-based blind SQL injection（基于时间延迟注入）</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SQL 注入常规利用思路：</span><br><span class="line">1、寻找注入点，可以通过 web 扫描工具实现 </span><br><span class="line">2、通过注入点，尝试获得关于连接数据库用户名、数据库名称、连接数据库用户权限、操作系统信息、数据库版本等相关信息。 </span><br><span class="line">3、猜解关键数据库表及其重要字段与内容（常见如存放管理员账户的表名、字段名等信息）</span><br><span class="line">4、可以通过获得的用户信息，寻找后台登录。 </span><br><span class="line">5、利用后台或了解的进一步信息，上传 webshell 或向数据库写入一句话木马，以进一步提权，直到拿到服务器权限。</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">手工注入常规思路：</span><br><span class="line">1.判断是否存在注入，注入是字符型还是数字型 </span><br><span class="line">2.猜解 SQL 查询语句中的字段数</span><br><span class="line">3.确定显示的字段顺序 </span><br><span class="line">4.获取当前数据库 </span><br><span class="line">5.获取数据库中的表 </span><br><span class="line">6.获取表中的字段名 </span><br><span class="line">7.查询到账户的数据</span><br></pre></td></tr></table></figure>
-<h3 id="级别：low"><a href="#级别：low" class="headerlink" title="级别：low"></a>级别：low</h3><h4 id="查看源码"><a href="#查看源码" class="headerlink" title="查看源码"></a>查看源码</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_REQUEST[ <span class="string">'Submit'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $id = $_REQUEST[ <span class="string">'id'</span> ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Check database</span></span><br><span class="line">    $query  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id';"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get results</span></span><br><span class="line">    <span class="keyword">while</span>( $row = mysqli_fetch_assoc( $result ) ) &#123;</span><br><span class="line">        <span class="comment">// Get values</span></span><br><span class="line">        $first = $row[<span class="string">"first_name"</span>];</span><br><span class="line">        $last  = $row[<span class="string">"last_name"</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Feedback for end user</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mysqli_close($GLOBALS[<span class="string">"___mysqli_ston"</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code>SQL 注入分类
+按SQLMap中的分类来看，SQL注入类型有以下 5 种：
+ UNION query SQL injection（可联合查询注入） 
+ Stacked queries SQL injection（可多语句查询注入）
+ Boolean-based blind SQL injection（布尔型注入） 
+ Error-based SQL injection（报错型注入）
+ Time-based blind SQL injection（基于时间延迟注入）
+</code></pre><pre><code>SQL 注入常规利用思路：
+1、寻找注入点，可以通过 web 扫描工具实现 
+2、通过注入点，尝试获得关于连接数据库用户名、数据库名称、连接数据库用户权限、操作系统信息、数据库版本等相关信息。 
+3、猜解关键数据库表及其重要字段与内容（常见如存放管理员账户的表名、字段名等信息）
+4、可以通过获得的用户信息，寻找后台登录。 
+5、利用后台或了解的进一步信息，上传 webshell 或向数据库写入一句话木马，以进一步提权，直到拿到服务器权限。
+</code></pre><pre><code>手工注入常规思路：
+1.判断是否存在注入，注入是字符型还是数字型 
+2.猜解 SQL 查询语句中的字段数
+3.确定显示的字段顺序 
+4.获取当前数据库 
+5.获取数据库中的表 
+6.获取表中的字段名 
+7.查询到账户的数据
+</code></pre><h3 id="级别：low"><a href="#级别：low" class="headerlink" title="级别：low"></a>级别：low</h3><h4 id="查看源码"><a href="#查看源码" class="headerlink" title="查看源码"></a>查看源码</h4><pre><code class="lang-php">&lt;?php
+
+if( isset( $_REQUEST[ &#39;Submit&#39; ] ) ) {
+    // Get input
+    $id = $_REQUEST[ &#39;id&#39; ];
+
+    // Check database
+    $query  = &quot;SELECT first_name, last_name FROM users WHERE user_id = &#39;$id&#39;;&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+
+    // Get results
+    while( $row = mysqli_fetch_assoc( $result ) ) {
+        // Get values
+        $first = $row[&quot;first_name&quot;];
+        $last  = $row[&quot;last_name&quot;];
+
+        // Feedback for end user
+        echo &quot;&lt;pre&gt;ID: {$id}&lt;br /&gt;First name: {$first}&lt;br /&gt;Surname: {$last}&lt;/pre&gt;&quot;;
+    }
+
+    mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]);
+}
+
+?&gt;
+</code></pre>
 <h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>由代码可知，通过<code>REQUEST</code>方式接受传递的参数id，再通过sql语句带入查询，并未设置任何过滤，因此可以进行sql注入利用。</p>
 <p><strong>常见注入测试的POC：</strong></p>
 <ul>
@@ -450,7 +492,31 @@
                 </div>
                 <div class="image-caption">MlraOf.png</div>
             </figure>
-<h3 id="级别：high"><a href="#级别：high" class="headerlink" title="级别：high"></a>级别：high</h3><h4 id="SQL-Injection-Source"><a href="#SQL-Injection-Source" class="headerlink" title="SQL Injection Source"></a>SQL Injection Source</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_SESSION [ <span class="string">'id'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $id = $_SESSION[ <span class="string">'id'</span> ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Check database</span></span><br><span class="line">    $query  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id' LIMIT 1;"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>], $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;Something went wrong.&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get results</span></span><br><span class="line">    <span class="keyword">while</span>( $row = mysqli_fetch_assoc( $result ) ) &#123;</span><br><span class="line">        <span class="comment">// Get values</span></span><br><span class="line">        $first = $row[<span class="string">"first_name"</span>];</span><br><span class="line">        $last  = $row[<span class="string">"last_name"</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Feedback for end user</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[<span class="string">"___mysqli_ston"</span>]))) ? <span class="keyword">false</span> : $___mysqli_res);        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="级别：high"><a href="#级别：high" class="headerlink" title="级别：high"></a>级别：high</h3><h4 id="SQL-Injection-Source"><a href="#SQL-Injection-Source" class="headerlink" title="SQL Injection Source"></a>SQL Injection Source</h4><pre><code class="lang-php">&lt;?php
+
+if( isset( $_SESSION [ &#39;id&#39; ] ) ) {
+    // Get input
+    $id = $_SESSION[ &#39;id&#39; ];
+
+    // Check database
+    $query  = &quot;SELECT first_name, last_name FROM users WHERE user_id = &#39;$id&#39; LIMIT 1;&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;], $query ) or die( &#39;&lt;pre&gt;Something went wrong.&lt;/pre&gt;&#39; );
+
+    // Get results
+    while( $row = mysqli_fetch_assoc( $result ) ) {
+        // Get values
+        $first = $row[&quot;first_name&quot;];
+        $last  = $row[&quot;last_name&quot;];
+
+        // Feedback for end user
+        echo &quot;&lt;pre&gt;ID: {$id}&lt;br /&gt;First name: {$first}&lt;br /&gt;Surname: {$last}&lt;/pre&gt;&quot;;
+    }
+
+    ((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);        
+}
+
+?&gt;
+</code></pre>
 <h4 id="分析：-1"><a href="#分析：-1" class="headerlink" title="分析："></a><strong>分析：</strong></h4><p> 与Medium级别的代码相比，High级别的只是在SQL查询语句中添加了LIMIT 1，希望以此控制只输出一个结果。 </p>
 <h4 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用:"></a><strong>漏洞利用:</strong></h4><p> 虽然添加了LIMIT 1，但是我们可以通过#将其注释掉。由于手工注入的过程与Low级别基本一样，直接最后一步演示下载数据。 </p>
 <p><code>输入1&#39; or 1=1 union select group_concat(user_id,first_name,last_name),group_concat(password) from users #，查询成功：</code></p>
@@ -463,7 +529,7 @@
             </figure>
 <p><strong>特别注意：</strong>High级别的查询提交页面与查询结果显示页面不是同一个，也没有执行302跳转，这样做的目的是为了防止一般的sqlmap注入，因为sqlmap在注入过程中，无法在查询提交页面上获取查询的结果，没有了反馈，也就没办法进一步注入。</p>
 <p><strong>参考链接：</strong> <a href="https://www.jianshu.com/p/e51cd8f15a84" target="_blank" rel="noopener">https://www.jianshu.com/p/e51cd8f15a84</a> </p>
-
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2019/11/12/DVWA-SQL-Injection-Blind/">DVWA-SQL_Injection_Blind（sql盲注）</a></li><li><a href="https://1187100546.github.io/2019/10/13/利用sqlmap注入dvwa/">利用sqlmap注入dvwa</a></li><li><a href="https://1187100546.github.io/2019/10/12/简单sql注入环境搭建及注入/">简单sql注入环境搭建及注入</a></li><li><a href="https://e1sewhere.github.io/2019/03/18/我的WafBypass之道-三篇笔记/">我的WafBypass之道 三篇笔记</a></li><li><a href="https://e1sewhere.github.io/2019/02/12/SQL注入脚本练习/">SQL注入脚本练习</a></li></ul></div>
         </div>
 
         <blockquote class="post-copyright">
@@ -471,7 +537,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2019-11-22T01:30:33.721Z" itemprop="dateUpdated">2019-11-22 09:30:33</time>
+    Last updated: <time datetime="2019-11-22T01:30:33.721Z" itemprop="dateUpdated">2019-11-22 09:30:33</time>
 </span><br>
 
 
@@ -650,7 +716,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

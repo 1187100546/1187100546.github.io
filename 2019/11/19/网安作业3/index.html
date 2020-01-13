@@ -170,7 +170,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -333,7 +333,24 @@
                 <div class="image-caption">MLYJ5F.png</div>
             </figure>
 <p>找到messageboxA入口地址</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*FuncPointer)</span><span class="params">(LPTSTR)</span></span>;  <span class="comment">// 函数指针  </span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    HINSTANCE LibHandle;</span><br><span class="line">    FuncPointer GetAddr;</span><br><span class="line">    <span class="comment">// 加载成功后返回库模块的句柄 </span></span><br><span class="line">    LibHandle = LoadLibrary(<span class="string">"user32"</span>);  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"user32 LibHandle = 0x%X\n"</span>, LibHandle);</span><br><span class="line">    <span class="comment">// 返回动态链接库(DLL)中的输出库函数地址</span></span><br><span class="line">    GetAddr=(FuncPointer)GetProcAddress(LibHandle,<span class="string">"MessageBoxA"</span>);   </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"MessageBoxA = 0x%X\n"</span>, GetAddr);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c++">#include &lt;stdio.h&gt;
+#include &lt;windows.h&gt;
+
+typedef void (*FuncPointer)(LPTSTR);  // 函数指针  
+
+int main()
+{   
+    HINSTANCE LibHandle;
+    FuncPointer GetAddr;
+    // 加载成功后返回库模块的句柄 
+    LibHandle = LoadLibrary(&quot;user32&quot;);  
+    printf(&quot;user32 LibHandle = 0x%X\n&quot;, LibHandle);
+    // 返回动态链接库(DLL)中的输出库函数地址
+    GetAddr=(FuncPointer)GetProcAddress(LibHandle,&quot;MessageBoxA&quot;);   
+    printf(&quot;MessageBoxA = 0x%X\n&quot;, GetAddr);
+    return 0;
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -449,7 +466,44 @@
                 <div class="image-caption">MLOsjU.png</div>
             </figure>
 <p>定位shellcode，找jmp esp指令</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DLL_NAME <span class="meta-string">"user32.dll"</span></span></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    BYTE* ptr;</span><br><span class="line">    <span class="keyword">int</span> position,address;</span><br><span class="line">    HINSTANCE handle;</span><br><span class="line">    BOOL done_flag = FALSE;</span><br><span class="line">    handle=LoadLibrary(DLL_NAME);</span><br><span class="line">    <span class="keyword">if</span>(!handle)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">" load dll erro !"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ptr = (BYTE*)handle;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(position = <span class="number">0</span>; !done_flag; position++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(ptr[position] == <span class="number">0xFF</span> &amp;&amp; ptr[position+<span class="number">1</span>] == <span class="number">0xE4</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//0xFFE4 is the opcode of jmp esp</span></span><br><span class="line">                <span class="keyword">int</span> address = (<span class="keyword">int</span>)ptr + position;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"OPCODE found at 0x%x\n"</span>,address);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(...)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> address = (<span class="keyword">int</span>)ptr + position;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"END OF 0x%x\n"</span>, address);</span><br><span class="line">            done_flag = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c++">#include &lt;windows.h&gt;
+#include &lt;stdio.h&gt;
+#define DLL_NAME &quot;user32.dll&quot;
+main()
+{
+    BYTE* ptr;
+    int position,address;
+    HINSTANCE handle;
+    BOOL done_flag = FALSE;
+    handle=LoadLibrary(DLL_NAME);
+    if(!handle)
+    {
+        printf(&quot; load dll erro !&quot;);
+        exit(0);
+    }
+
+    ptr = (BYTE*)handle;
+
+    for(position = 0; !done_flag; position++)
+    {
+        try
+        {
+            if(ptr[position] == 0xFF &amp;&amp; ptr[position+1] == 0xE4)
+            {
+                //0xFFE4 is the opcode of jmp esp
+                int address = (int)ptr + position;
+                printf(&quot;OPCODE found at 0x%x\n&quot;,address);
+            }
+        }
+        catch(...)
+        {
+            int address = (int)ptr + position;
+            printf(&quot;END OF 0x%x\n&quot;, address);
+            done_flag = true;
+        }
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -458,7 +512,24 @@
                 <div class="image-caption">MLzBOf.png</div>
             </figure>
 <p>定位exitprocess入口地址</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*FuncPointer)</span><span class="params">(LPTSTR)</span></span>;  <span class="comment">// 函数指针  </span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    HINSTANCE LibHandle;</span><br><span class="line">    FuncPointer GetAddr;</span><br><span class="line">    <span class="comment">// 加载成功后返回库模块的句柄 </span></span><br><span class="line">    LibHandle = LoadLibrary(<span class="string">"kernel32"</span>);  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"kernel32 LibHandle = 0x%X\n"</span>, LibHandle);</span><br><span class="line">    <span class="comment">// 返回动态链接库(DLL)中的输出库函数地址</span></span><br><span class="line">    GetAddr=(FuncPointer)GetProcAddress(LibHandle,<span class="string">"ExitProcess"</span>);   </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"ExitProcess = 0x%X\n"</span>, GetAddr);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c++">#include &lt;stdio.h&gt;
+#include &lt;windows.h&gt;
+
+typedef void (*FuncPointer)(LPTSTR);  // 函数指针  
+
+int main()
+{   
+    HINSTANCE LibHandle;
+    FuncPointer GetAddr;
+    // 加载成功后返回库模块的句柄 
+    LibHandle = LoadLibrary(&quot;kernel32&quot;);  
+    printf(&quot;kernel32 LibHandle = 0x%X\n&quot;, LibHandle);
+    // 返回动态链接库(DLL)中的输出库函数地址
+    GetAddr=(FuncPointer)GetProcAddress(LibHandle,&quot;ExitProcess&quot;);   
+    printf(&quot;ExitProcess = 0x%X\n&quot;, GetAddr);
+    return 0;
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -571,7 +642,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2019-11-24T07:31:43.119Z" itemprop="dateUpdated">2019-11-24 15:31:43</time>
+    Last updated: <time datetime="2019-11-24T07:31:43.119Z" itemprop="dateUpdated">2019-11-24 15:31:43</time>
 </span><br>
 
 
@@ -750,7 +821,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

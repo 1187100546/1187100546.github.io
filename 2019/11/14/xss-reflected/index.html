@@ -154,7 +154,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -224,11 +224,23 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>DVWA上的反射型xss。</p>
 <a id="more"></a>
-<h2 id="级别：low"><a href="#级别：low" class="headerlink" title="级别：low"></a>级别：low</h2><h3 id="Reflected-XSS-Source"><a href="#Reflected-XSS-Source" class="headerlink" title="Reflected XSS Source"></a>Reflected XSS Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;Hello '</span> . $_GET[ <span class="string">'name'</span> ] . <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="级别：low"><a href="#级别：low" class="headerlink" title="级别：low"></a>级别：low</h2><h3 id="Reflected-XSS-Source"><a href="#Reflected-XSS-Source" class="headerlink" title="Reflected XSS Source"></a>Reflected XSS Source</h3><pre><code class="lang-php">
+&lt;?php
+
+header (&quot;X-XSS-Protection: 0&quot;);
+
+// Is there any input?
+if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] != NULL ) {
+    // Feedback for end user
+    echo &#39;&lt;pre&gt;Hello &#39; . $_GET[ &#39;name&#39; ] . &#39;&lt;/pre&gt;&#39;;
+}
+
+?&gt;
+</code></pre>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p> 可以看到，代码直接引用了name参数，并没有任何的过滤与检查，存在明显的XSS漏洞 。</p>
 <p> 输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&apos;xss&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<figure class="image-bubble">
+<pre><code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;
+</code></pre><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="https://s2.ax1x.com/2019/11/14/MNT1gJ.png" alt="MNT1gJ.png" title>
@@ -244,15 +256,30 @@
                 <div class="image-caption">MNTa4O.png</div>
             </figure>
 <h3 id="获取cookie"><a href="#获取cookie" class="headerlink" title="获取cookie"></a>获取cookie</h3><p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<figure class="image-bubble">
+<pre><code>&lt;script&gt;alert(document.cookie)&lt;/script&gt;
+</code></pre><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="https://s2.ax1x.com/2019/11/14/MNTxxJ.png" alt="MNTxxJ.png" title>
                 </div>
                 <div class="image-caption">MNTxxJ.png</div>
             </figure>
-<h2 id="级别：medium"><a href="#级别：medium" class="headerlink" title="级别：medium"></a>级别：medium</h2><h3 id="Reflected-XSS-Source-1"><a href="#Reflected-XSS-Source-1" class="headerlink" title="Reflected XSS Source"></a>Reflected XSS Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="级别：medium"><a href="#级别：medium" class="headerlink" title="级别：medium"></a>级别：medium</h2><h3 id="Reflected-XSS-Source-1"><a href="#Reflected-XSS-Source-1" class="headerlink" title="Reflected XSS Source"></a>Reflected XSS Source</h3><pre><code class="lang-php">
+&lt;?php
+
+header (&quot;X-XSS-Protection: 0&quot;);
+
+// Is there any input?
+if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] != NULL ) {
+    // Get input
+    $name = str_replace( &#39;&lt;script&gt;&#39;, &#39;&#39;, $_GET[ &#39;name&#39; ] );
+
+    // Feedback for end user
+    echo &quot;&lt;pre&gt;Hello ${name}&lt;/pre&gt;&quot;;
+}
+
+?&gt;
+</code></pre>
 <h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p> Medium级别的代码相对于Low级别的代码使用<code>str_replace</code>函数将输入中的<code>&lt;script&gt;</code>删除 </p>
 <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol>
 <li>使用双写绕过，输入 <code>&lt;scr&lt;script&gt;ipt&gt;alert(document.cookie)&lt;/script&gt;</code> </li>
@@ -267,19 +294,34 @@
                 </div>
                 <div class="image-caption">MNH1mR.png</div>
             </figure>
-<h2 id="级别：high"><a href="#级别：high" class="headerlink" title="级别：high"></a>级别：high</h2><h3 id="Reflected-XSS-Source-2"><a href="#Reflected-XSS-Source-2" class="headerlink" title="Reflected XSS Source"></a>Reflected XSS Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $name = preg_replace( <span class="string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="string">''</span>, $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="级别：high"><a href="#级别：high" class="headerlink" title="级别：high"></a>级别：high</h2><h3 id="Reflected-XSS-Source-2"><a href="#Reflected-XSS-Source-2" class="headerlink" title="Reflected XSS Source"></a>Reflected XSS Source</h3><pre><code class="lang-php">
+&lt;?php
+
+header (&quot;X-XSS-Protection: 0&quot;);
+
+// Is there any input?
+if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] != NULL ) {
+    // Get input
+    $name = preg_replace( &#39;/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i&#39;, &#39;&#39;, $_GET[ &#39;name&#39; ] );
+
+    // Feedback for end user
+    echo &quot;&lt;pre&gt;Hello ${name}&lt;/pre&gt;&quot;;
+}
+
+?&gt;
+</code></pre>
 <h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p> 可以看到High级别的代码使用了  <code>preg_replace</code> 函数执行一个正则表达式的搜索和替换,其中 <code>/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i</code> 是正则表达式 <code>(.*)</code> 表示贪婪匹配，<code>/i</code> 表示不区分大小写所以在High级别的代码中，所有关于  <code>&lt;script&gt;</code> 标签均被过滤删除了 </p>
 <h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3><p><code>&lt;script&gt;</code> 标签不管用了，但是可以使用其他标签绕过 </p>
 <p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;IMG src=1 onerror=alert(document.cookie)&gt;</span><br></pre></td></tr></table></figure>
-<figure class="image-bubble">
+<pre><code>&lt;IMG src=1 onerror=alert(document.cookie)&gt;
+</code></pre><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="https://s2.ax1x.com/2019/11/14/MNbeHI.png" alt="MNbeHI.png" title>
                 </div>
                 <div class="image-caption">MNbeHI.png</div>
             </figure>
-
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2019/11/14/xss-stored/">DVWA--xss_stored</a></li></ul></div>
         </div>
 
         <blockquote class="post-copyright">
@@ -287,7 +329,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2019-11-14T13:18:25.601Z" itemprop="dateUpdated">2019-11-14 21:18:25</time>
+    Last updated: <time datetime="2019-11-14T13:18:25.601Z" itemprop="dateUpdated">2019-11-14 21:18:25</time>
 </span><br>
 
 
@@ -466,7 +508,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

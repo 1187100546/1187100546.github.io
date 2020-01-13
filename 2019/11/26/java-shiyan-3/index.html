@@ -151,7 +151,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -222,16 +222,131 @@
             <p>Java实验三。</p>
 <a id="more"></a>
 <h3 id="问题1、"><a href="#问题1、" class="headerlink" title="问题1、"></a>问题1、</h3><p>编一程序，求两个正整数m、n的最大公约数。要求程序中有两个方法，分别使用循环和递归求最大公约数，最后在主方法中分别调用这两个方法求解56与91的最大公约数。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">one</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">cyc</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(x%y!=<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> s=x%y;</span><br><span class="line">			x=y;</span><br><span class="line">			y=s;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> y;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rec</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%y==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> y;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> rec(y,x%y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		one o=<span class="keyword">new</span> one();</span><br><span class="line">		<span class="keyword">int</span> m,n;</span><br><span class="line">		m=<span class="number">56</span>;</span><br><span class="line">		n=<span class="number">91</span>;</span><br><span class="line">		System.out.println(o.cyc(m,n));</span><br><span class="line">		System.out.println(o.rec(m,n));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw3;
+
+public class one {
+    public int cyc(int x,int y)
+    {
+        while(x%y!=0)
+        {
+            int s=x%y;
+            x=y;
+            y=s;
+        }
+        return y;
+    }
+    public int rec(int x,int y)
+    {
+        if(x%y==0)
+            return y;
+        else
+            return rec(y,x%y);
+    }
+    public static void main(String[] args)
+    {
+        one o=new one();
+        int m,n;
+        m=56;
+        n=91;
+        System.out.println(o.cyc(m,n));
+        System.out.println(o.rec(m,n));
+    }
+}
+</code></pre>
 <h3 id="问题2、"><a href="#问题2、" class="headerlink" title="问题2、"></a>问题2、</h3><p>编写一个完整的Java Application程序，其中设计一个复数类Complex，利用它验证两个复数 1+2i 和3+4i 相加产生一个新的复数 4+6i 。复数类Complex的设计必须满足如下要求：<br>1）Complex 的属性有：<br>realPart：int型，代表复数的实数部分；<br>maginPart：int型，代表复数的虚数部分。<br>2）Complex 的方法有：<br>Complex()：构造方法，将复数的实部和虚部都置0；<br>Complex(int r , int i )：构造方法，形参 r 为实部的初值，i为虚部的初值。<br>3）Complex complexAdd(Complex a)：将当前复数对象与形参复数对象相加，最后的结果仍是一个复数对象，返回给此方法的调用者。<br>4）String toString(): 把当前复数对象的实部、虚部组合成 a+bi 的字符串形式，其中a 和 b分别为实部和虚部的数据。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">complex</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> rp,mp;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">complex</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		rp=mp=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">complex</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		rp=i;</span><br><span class="line">		mp=j;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> complex <span class="title">complexadd</span><span class="params">(complex a)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.rp=<span class="keyword">this</span>.rp+a.rp;</span><br><span class="line">		<span class="keyword">this</span>.mp=<span class="keyword">this</span>.mp+a.mp;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		String s=rp+<span class="string">"+"</span>+mp+<span class="string">"i"</span>;</span><br><span class="line">		<span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		complex c1=<span class="keyword">new</span> complex(<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">		complex c2=<span class="keyword">new</span> complex(<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">		c1.complexadd(c2);</span><br><span class="line">		System.out.println(c1.toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-Java">package hw3;
+
+public class complex {
+    int rp,mp;
+    public complex()
+    {
+        rp=mp=0;
+    }
+    public complex(int i,int j)
+    {
+        rp=i;
+        mp=j;
+    }
+    public complex complexadd(complex a)
+    {
+        this.rp=this.rp+a.rp;
+        this.mp=this.mp+a.mp;
+        return this;
+    }
+    public String toString()
+    {
+        String s=rp+&quot;+&quot;+mp+&quot;i&quot;;
+        return s;
+    }
+    public static void main(String[] args)
+    {
+        complex c1=new complex(2,3);
+        complex c2=new complex(4,5);
+        c1.complexadd(c2);
+        System.out.println(c1.toString());
+    }
+}
+</code></pre>
 <h3 id="问题3、"><a href="#问题3、" class="headerlink" title="问题3、"></a>问题3、</h3><p>编写一个包含圆类的程序，并为圆类设计几个构造方法和一般方法，在主方法中创建一个圆类对象并输出它的周长和面积。<br>要求：<br>    属性有3个：x,y,r，分别放置圆心坐标和半径；<br>    构造方法有2个。一个是无参的，用于设置3个属性的值都为0；另一个有参的，用于设置3个属性的值，以确定一个具体的圆。<br>    计算周长的方法：double zc()；<br>计算面积的方法：double mj()。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">yuan</span> </span>&#123;</span><br><span class="line">	<span class="keyword">double</span> x,y,r;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">yuan</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		x=y=r=<span class="number">0.0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">yuan</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y,<span class="keyword">double</span> r)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.x=x;</span><br><span class="line">		<span class="keyword">this</span>.y=y;</span><br><span class="line">		<span class="keyword">this</span>.r=r;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">zc</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">2</span>*Math.PI*<span class="keyword">this</span>.r;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">mj</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> Math.PI*Math.pow(<span class="keyword">this</span>.r, <span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw3;
+import java.util.*;
+public class yuan {
+    double x,y,r;
+    public yuan()
+    {
+        x=y=r=0.0;
+    }
+    public yuan(double x,double y,double r)
+    {
+        this.x=x;
+        this.y=y;
+        this.r=r;
+    }
+    public double zc()
+    {
+        return 2*Math.PI*this.r;
+    }
+    public double mj()
+    {
+        return Math.PI*Math.pow(this.r, 2);
+    }
+}
+</code></pre>
 <h3 id="问题4、"><a href="#问题4、" class="headerlink" title="问题4、"></a>问题4、</h3><p>编写一个程序，它含有一个圆类、圆柱类和主类。<br>要求：<br>    1）圆类参考上一题中的圆类；<br>    2）圆柱类：继承圆类，并加入一个属性h(高)；<br>              构造方法(给4个属性赋值)；<br>              计算面积的方法(double mj())；<br>              计算体积的方法(double tj())。<br>       注意，要充分利用父类的方法。<br>    3）主类：在主方法中创建圆和圆柱类的对象，然后计算并输出它们的面积及圆柱的体积。</p>
 <p>yuanzhu类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">yuanzhu</span> <span class="keyword">extends</span> <span class="title">yuan</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> h;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">yuanzhu</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y,<span class="keyword">double</span> r,<span class="keyword">double</span> h)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(x,y,r);</span><br><span class="line">		<span class="keyword">this</span>.h=h;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">mj</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.zc()*<span class="keyword">this</span>.h+<span class="number">2</span>*<span class="keyword">super</span>.mj();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">tj</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.mj()*<span class="keyword">this</span>.h;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw3;
+import java.util.*;
+public class yuanzhu extends yuan{
+    double h;
+    public yuanzhu(double x,double y,double r,double h)
+    {
+        super(x,y,r);
+        this.h=h;
+    }
+    public double mj()
+    {
+        return super.zc()*this.h+2*super.mj();
+    }
+    public double tj()
+    {
+        return super.mj()*this.h;
+    }
+}
+</code></pre>
 <p>main类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">main_yz</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		yuan yuan1=<span class="keyword">new</span> yuan(<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>);</span><br><span class="line">		yuanzhu yuanzhu1=<span class="keyword">new</span> yuanzhu(<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">2</span>);</span><br><span class="line">		System.out.println(<span class="string">"圆的面积是："</span>+yuan1.mj());</span><br><span class="line">		System.out.println(<span class="string">"圆柱的面积是："</span>+yuanzhu1.mj());</span><br><span class="line">		System.out.println(<span class="string">"圆柱的体积是："</span>+yuanzhu1.tj());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw3;
+
+public class main_yz {
+    public static void main(String[] args)
+    {
+        yuan yuan1=new yuan(2,3,2);
+        yuanzhu yuanzhu1=new yuanzhu(4,5,6,2);
+        System.out.println(&quot;圆的面积是：&quot;+yuan1.mj());
+        System.out.println(&quot;圆柱的面积是：&quot;+yuanzhu1.mj());
+        System.out.println(&quot;圆柱的体积是：&quot;+yuanzhu1.tj());
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -241,15 +356,141 @@
             </figure>
 <h3 id="问题6、"><a href="#问题6、" class="headerlink" title="问题6、"></a>问题6、</h3><p>编写一个含有5个类的程序：<br>      类Person:<br>          属性：编号、姓名、性别；<br>          构造方法：确定编号和姓名；<br>          一般方法：修改编号、姓名，获取编号、姓名。<br>      类Teacher：继承类Person并增加：<br>          属性：系别；<br>          构造方法：调用父类的构造方法；<br>          一般方法：修改、获取系别。<br>      类Student：继承类Person并增加：<br>          属性：班级；<br>          构造方法：调用父类的构造方法；<br>          一般方法：修改、获取班级属性值。<br>      类Classes：<br>          属性：班级名称，学生名单(Student类对象的数组)；<br>          构造方法：确定班级名称；<br>          一般方法：建立学生名单，输出学生名单。<br>      类Main：<br>主类。主方法中创建一个班级，然后建立该班级的学生名单，最后<br>输出学生名单。 </p>
 <p>person类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">person</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> id;</span><br><span class="line">	String name,gender;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">person</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">person</span><span class="params">(<span class="keyword">int</span> id,String name)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id=id;</span><br><span class="line">		<span class="keyword">this</span>.name=name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">revise_id</span><span class="params">(<span class="keyword">int</span> id)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id=id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">revise_name</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name=name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get_id</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">get_name</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw3;
+
+public class person {
+    int id;
+    String name,gender;
+    public person()
+    {
+    }
+    public person(int id,String name)
+    {
+        this.id=id;
+        this.name=name;
+    }
+    public void revise_id(int id)
+    {
+        this.id=id;
+    }
+    public void revise_name(String name)
+    {
+        this.name=name;
+    }
+    public int get_id()
+    {
+        return this.id;
+    }
+    public String get_name()
+    {
+        return this.name;
+    }
+}
+</code></pre>
 <p>teacher类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">teacher</span> <span class="keyword">extends</span> <span class="title">person</span> </span>&#123;</span><br><span class="line">	String faculty;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">teacher</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">teacher</span><span class="params">(<span class="keyword">int</span> id,String name,String faculty)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(id,name);</span><br><span class="line">		<span class="keyword">this</span>.faculty=faculty;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">revise_facilty</span><span class="params">(String Faculty)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.faculty=faculty;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">get_faculty</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.faculty;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-Java">package hw3;
+
+public class teacher extends person {
+    String faculty;
+    public teacher()
+    {
+
+    }
+    public teacher(int id,String name,String faculty)
+    {
+        super(id,name);
+        this.faculty=faculty;
+    }
+    public void revise_facilty(String Faculty)
+    {
+        this.faculty=faculty;
+    }
+    public String get_faculty()
+    {
+        return this.faculty;
+    }
+}
+</code></pre>
 <p>student类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">student</span> <span class="keyword">extends</span> <span class="title">person</span> </span>&#123;</span><br><span class="line">	String class_number;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">student</span><span class="params">(<span class="keyword">int</span> id,String name,String class_number)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(id,name);</span><br><span class="line">		<span class="keyword">this</span>.class_number=class_number;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">revise_class_number</span><span class="params">(String class_number)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.class_number=class_number;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">get_class_number</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.class_number;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-Java">package hw3;
+
+public class student extends person {
+    String class_number;
+    public student(int id,String name,String class_number)
+    {
+        super(id,name);
+        this.class_number=class_number;
+    }
+    public void revise_class_number(String class_number)
+    {
+        this.class_number=class_number;
+    }
+    public String get_class_number()
+    {
+        return this.class_number;
+    }
+}
+</code></pre>
 <p>classes类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">classes</span> </span>&#123;</span><br><span class="line">	String class_name;</span><br><span class="line">	student student_list[];</span><br><span class="line">	<span class="keyword">int</span> student_number;</span><br><span class="line">	teacher teacher;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">classes</span><span class="params">(String class_name,teacher tec)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.class_name=class_name;</span><br><span class="line">		<span class="keyword">this</span>.teacher=tec;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set_student_list</span><span class="params">(student student_list[],<span class="keyword">int</span> student_number)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.student_list=student_list;</span><br><span class="line">		<span class="keyword">this</span>.student_number=student_number;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print_student_list</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"班级名称是："</span>+<span class="string">"\t"</span>+<span class="keyword">this</span>.class_name);</span><br><span class="line">		System.out.println(<span class="string">"任课教师是："</span>+<span class="string">"\t"</span>+<span class="keyword">this</span>.teacher.name);</span><br><span class="line">		System.out.println(<span class="string">"学生名单如下："</span>);</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="keyword">this</span>.student_number;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"\t"</span>+<span class="string">"姓名："</span>+<span class="string">"\t"</span>+<span class="keyword">this</span>.student_list[i].name+<span class="string">"\t"</span>+<span class="string">"学号:"</span>+<span class="string">"\t"</span>+<span class="keyword">this</span>.student_list[i].id);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-Java">package hw3;
+
+public class classes {
+    String class_name;
+    student student_list[];
+    int student_number;
+    teacher teacher;
+    public classes(String class_name,teacher tec)
+    {
+        this.class_name=class_name;
+        this.teacher=tec;
+    }
+    public void set_student_list(student student_list[],int student_number)
+    {
+        this.student_list=student_list;
+        this.student_number=student_number;
+    }
+    public void print_student_list()
+    {
+        System.out.println(&quot;班级名称是：&quot;+&quot;\t&quot;+this.class_name);
+        System.out.println(&quot;任课教师是：&quot;+&quot;\t&quot;+this.teacher.name);
+        System.out.println(&quot;学生名单如下：&quot;);
+        int i;
+        for(i=0;i&lt;this.student_number;i++)
+        {
+            System.out.println(&quot;\t&quot;+&quot;姓名：&quot;+&quot;\t&quot;+this.student_list[i].name+&quot;\t&quot;+&quot;学号:&quot;+&quot;\t&quot;+this.student_list[i].id);
+        }
+    }
+}
+</code></pre>
 <p>main类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">main_class</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner s=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入班级名称："</span>);</span><br><span class="line">		String cn=s.nextLine();</span><br><span class="line">		System.out.println(<span class="string">"请输入任课老师姓名和院系"</span>);</span><br><span class="line">		teacher tec=<span class="keyword">new</span> teacher();</span><br><span class="line">		tec.revise_name(s.nextLine());</span><br><span class="line">		tec.revise_facilty(s.nextLine());</span><br><span class="line">		classes banji=<span class="keyword">new</span> classes(cn,tec);</span><br><span class="line">		System.out.println(<span class="string">"请输入学生人数："</span>);</span><br><span class="line">		<span class="keyword">int</span> n;</span><br><span class="line">		n=s.nextInt();</span><br><span class="line">		student stu[]=<span class="keyword">new</span> student[n];</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		System.out.println(<span class="string">"请输入学生学号和姓名:"</span>);</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			stu[i]=<span class="keyword">new</span> student(s.nextInt(),s.nextLine(),cn);</span><br><span class="line">		&#125;</span><br><span class="line">		banji.set_student_list(stu, n);</span><br><span class="line">		banji.print_student_list();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-Java">package hw3;
+import java.util.*;
+public class main_class {
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        System.out.println(&quot;请输入班级名称：&quot;);
+        String cn=s.nextLine();
+        System.out.println(&quot;请输入任课老师姓名和院系&quot;);
+        teacher tec=new teacher();
+        tec.revise_name(s.nextLine());
+        tec.revise_facilty(s.nextLine());
+        classes banji=new classes(cn,tec);
+        System.out.println(&quot;请输入学生人数：&quot;);
+        int n;
+        n=s.nextInt();
+        student stu[]=new student[n];
+        int i;
+        System.out.println(&quot;请输入学生学号和姓名:&quot;);
+        for(i=0;i&lt;n;i++)
+        {
+            stu[i]=new student(s.nextInt(),s.nextLine(),cn);
+        }
+        banji.set_student_list(stu, n);
+        banji.print_student_list();
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -257,7 +498,7 @@
                 </div>
                 <div class="image-caption">QSc77t.png</div>
             </figure>
-
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2020/01/03/java-4/">java第四次实验作业</a></li><li><a href="https://1187100546.github.io/2020/01/03/java-3/">java第三次实验作业</a></li><li><a href="https://1187100546.github.io/2019/12/30/java-2/">java第二次实验作业</a></li><li><a href="https://thelighter.github.io/2019/06/16/java-1/">java一键安装所有环境，vscode做到了！</a></li><li><a href="https://lailin.xyz/post/52826.html">java笔记1</a></li></ul></div>
         </div>
 
         <blockquote class="post-copyright">
@@ -265,7 +506,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2019-11-26T12:40:02.335Z" itemprop="dateUpdated">2019-11-26 20:40:02</time>
+    Last updated: <time datetime="2019-11-26T12:40:02.335Z" itemprop="dateUpdated">2019-11-26 20:40:02</time>
 </span><br>
 
 
@@ -444,7 +685,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

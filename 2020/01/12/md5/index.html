@@ -153,7 +153,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -257,9 +257,45 @@ $$ </p>
                 </div>
                 <div class="image-caption">lTtd29.png</div>
             </figure>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="消息填充-1"><a href="#消息填充-1" class="headerlink" title="消息填充"></a>消息填充</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">length = struct.pack(<span class="string">'&lt;Q'</span>, len(message)*<span class="number">8</span>)  <span class="comment">#原消息长度64位比特的添加格式</span></span><br><span class="line">    <span class="keyword">while</span> len(message) &gt; <span class="number">64</span>:</span><br><span class="line">        solve(message[:<span class="number">64</span>])</span><br><span class="line">        message = message[<span class="number">64</span>:]</span><br><span class="line">    <span class="comment">#长度不足64位消息自行填充</span></span><br><span class="line">    message += <span class="string">b'\x80'</span></span><br><span class="line">    message += <span class="string">b'\x00'</span> * (<span class="number">56</span> - len(message) % <span class="number">64</span>)</span><br><span class="line">    message += length</span><br><span class="line">solve(message[:<span class="number">64</span>])</span><br></pre></td></tr></table></figure>
-<h3 id="初始化链接变量-1"><a href="#初始化链接变量-1" class="headerlink" title="初始化链接变量"></a>初始化链接变量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A, B, C, D = (<span class="number">0x67452301</span>, <span class="number">0xefcdab89</span>, <span class="number">0x98badcfe</span>, <span class="number">0x10325476</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="分组处理及步函数"><a href="#分组处理及步函数" class="headerlink" title="分组处理及步函数"></a>分组处理及步函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">(chunk)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> A</span><br><span class="line">    <span class="keyword">global</span> B</span><br><span class="line">    <span class="keyword">global</span> C</span><br><span class="line">    <span class="keyword">global</span> D</span><br><span class="line">    w = list(struct.unpack(<span class="string">'&lt;'</span> + <span class="string">'I'</span> * <span class="number">16</span>, chunk))  <span class="comment">#分成16个组，I代表1组32位</span></span><br><span class="line">    a, b, c, d = A, B, C, D</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">64</span>):  <span class="comment">#64轮运算</span></span><br><span class="line">        <span class="keyword">if</span> i &lt; <span class="number">16</span>:  <span class="comment">#每一轮运算只用到了b,c,d三个</span></span><br><span class="line">            f = ( b &amp; c)|((~b) &amp; d)</span><br><span class="line">            flag  = i      <span class="comment">#用于标识处于第几组信息</span></span><br><span class="line">        <span class="keyword">elif</span> i &lt; <span class="number">32</span>:</span><br><span class="line">            f = (b &amp; d)|(c &amp; (~d))</span><br><span class="line">            flag = (<span class="number">5</span> * i +<span class="number">1</span>) %<span class="number">16</span></span><br><span class="line">        <span class="keyword">elif</span> i &lt; <span class="number">48</span>:</span><br><span class="line">            f = (b ^ c ^ d)</span><br><span class="line">            flag  = (<span class="number">3</span> * i + <span class="number">5</span>)% <span class="number">16</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            f = c ^(b |(~d))</span><br><span class="line">            flag  = (<span class="number">7</span> * i ) % <span class="number">16</span></span><br><span class="line">        tmp = b + lrot((a + f + k[i] + w[flag])&amp; <span class="number">0xffffffff</span>,r[i]) <span class="comment">#&amp;0xffffffff为了类型转换</span></span><br><span class="line">        a, b, c, d = d, tmp &amp; <span class="number">0xffffffff</span>, b, c</span><br><span class="line">    A = (A + a) &amp; <span class="number">0xffffffff</span></span><br><span class="line">    B = (B + b) &amp; <span class="number">0xffffffff</span></span><br><span class="line">    C = (C + c) &amp; <span class="number">0xffffffff</span></span><br><span class="line">D = (D + d) &amp; <span class="number">0xffffffff</span></span><br></pre></td></tr></table></figure>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="消息填充-1"><a href="#消息填充-1" class="headerlink" title="消息填充"></a>消息填充</h3><pre><code class="lang-python">length = struct.pack(&#39;&lt;Q&#39;, len(message)*8)  #原消息长度64位比特的添加格式
+    while len(message) &gt; 64:
+        solve(message[:64])
+        message = message[64:]
+    #长度不足64位消息自行填充
+    message += b&#39;\x80&#39;
+    message += b&#39;\x00&#39; * (56 - len(message) % 64)
+    message += length
+solve(message[:64])
+</code></pre>
+<h3 id="初始化链接变量-1"><a href="#初始化链接变量-1" class="headerlink" title="初始化链接变量"></a>初始化链接变量</h3><pre><code class="lang-python">A, B, C, D = (0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476)
+</code></pre>
+<h3 id="分组处理及步函数"><a href="#分组处理及步函数" class="headerlink" title="分组处理及步函数"></a>分组处理及步函数</h3><pre><code class="lang-python">def solve(chunk):
+    global A
+    global B
+    global C
+    global D
+    w = list(struct.unpack(&#39;&lt;&#39; + &#39;I&#39; * 16, chunk))  #分成16个组，I代表1组32位
+    a, b, c, d = A, B, C, D
+    for i in range(64):  #64轮运算
+        if i &lt; 16:  #每一轮运算只用到了b,c,d三个
+            f = ( b &amp; c)|((~b) &amp; d)
+            flag  = i      #用于标识处于第几组信息
+        elif i &lt; 32:
+            f = (b &amp; d)|(c &amp; (~d))
+            flag = (5 * i +1) %16
+        elif i &lt; 48:
+            f = (b ^ c ^ d)
+            flag  = (3 * i + 5)% 16
+        else:
+            f = c ^(b |(~d))
+            flag  = (7 * i ) % 16
+        tmp = b + lrot((a + f + k[i] + w[flag])&amp; 0xffffffff,r[i]) #&amp;0xffffffff为了类型转换
+        a, b, c, d = d, tmp &amp; 0xffffffff, b, c
+    A = (A + a) &amp; 0xffffffff
+    B = (B + b) &amp; 0xffffffff
+    C = (C + c) &amp; 0xffffffff
+D = (D + d) &amp; 0xffffffff
+</code></pre>
 <h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -284,8 +320,95 @@ $$ </p>
 <p>但Berson证明，对单轮的MD5算法，利用差分分析，可以在合理时间内找出碰撞的两条消息</p>
 <p>MD5算法抗密码分析的能力较弱，生日攻击所需代价是试验264个消息</p>
 <p>2004年8月17日，在美国加州圣巴巴拉召开的美密会（Crypto2004）上，中国的王小云、冯登国、来学嘉、于红波4位学者宣布，只需1小时就可找出MD5的碰撞（利用差分分析）</p>
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line">lrot = <span class="keyword">lambda</span> x,n: (x &lt;&lt; n)|(x &gt;&gt; <span class="number">32</span>- n)  <span class="comment">#循环左移的操作</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#初始向量</span></span><br><span class="line">A, B, C, D = (<span class="number">0x67452301</span>, <span class="number">0xefcdab89</span>, <span class="number">0x98badcfe</span>, <span class="number">0x10325476</span>)</span><br><span class="line"><span class="comment"># A, B, C, D = (0x01234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#循环左移的位移位数</span></span><br><span class="line">r = [   <span class="number">7</span>, <span class="number">12</span>, <span class="number">17</span>, <span class="number">22</span>, <span class="number">7</span>, <span class="number">12</span>, <span class="number">17</span>, <span class="number">22</span>, <span class="number">7</span>, <span class="number">12</span>, <span class="number">17</span>, <span class="number">22</span>, <span class="number">7</span>, <span class="number">12</span>, <span class="number">17</span>, <span class="number">22</span>,</span><br><span class="line">        <span class="number">5</span>,  <span class="number">9</span>, <span class="number">14</span>, <span class="number">20</span>, <span class="number">5</span>,  <span class="number">9</span>, <span class="number">14</span>, <span class="number">20</span>, <span class="number">5</span>,  <span class="number">9</span>, <span class="number">14</span>, <span class="number">20</span>, <span class="number">5</span>,  <span class="number">9</span>, <span class="number">14</span>, <span class="number">20</span>,</span><br><span class="line">         <span class="number">4</span>, <span class="number">11</span>, <span class="number">16</span>, <span class="number">23</span>, <span class="number">4</span>, <span class="number">11</span>, <span class="number">16</span>, <span class="number">23</span>, <span class="number">4</span>, <span class="number">11</span>, <span class="number">16</span>, <span class="number">23</span>, <span class="number">4</span>, <span class="number">11</span>, <span class="number">16</span>, <span class="number">23</span>,</span><br><span class="line">         <span class="number">6</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">21</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">21</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">21</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">21</span></span><br><span class="line">        ]</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用正弦函数产生的位随机数，也就是书本上的T[i]</span></span><br><span class="line">k =  [int(math.floor(abs(math.sin(i + <span class="number">1</span>)) * (<span class="number">2</span> ** <span class="number">32</span>))) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">64</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_mess</span><span class="params">(message)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> A</span><br><span class="line">    <span class="keyword">global</span> B</span><br><span class="line">    <span class="keyword">global</span> C</span><br><span class="line">    <span class="keyword">global</span> D</span><br><span class="line">    A, B, C, D = (<span class="number">0x67452301</span>, <span class="number">0xefcdab89</span>, <span class="number">0x98badcfe</span>, <span class="number">0x10325476</span>)</span><br><span class="line">    <span class="comment"># A, B, C, D = (0x01234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210)</span></span><br><span class="line">    length = struct.pack(<span class="string">'&lt;Q'</span>, len(message)*<span class="number">8</span>)  <span class="comment">#原消息长度64位比特的添加格式</span></span><br><span class="line">    <span class="keyword">while</span> len(message) &gt; <span class="number">64</span>:</span><br><span class="line">        solve(message[:<span class="number">64</span>])</span><br><span class="line">        message = message[<span class="number">64</span>:]</span><br><span class="line">    <span class="comment">#长度不足64位消息自行填充</span></span><br><span class="line">    message += <span class="string">b'\x80'</span></span><br><span class="line">    message += <span class="string">b'\x00'</span> * (<span class="number">56</span> - len(message) % <span class="number">64</span>)</span><br><span class="line">    message += length</span><br><span class="line">    solve(message[:<span class="number">64</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">(chunk)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> A</span><br><span class="line">    <span class="keyword">global</span> B</span><br><span class="line">    <span class="keyword">global</span> C</span><br><span class="line">    <span class="keyword">global</span> D</span><br><span class="line">    w = list(struct.unpack(<span class="string">'&lt;'</span> + <span class="string">'I'</span> * <span class="number">16</span>, chunk))  <span class="comment">#分成16个组，I代表1组32位</span></span><br><span class="line">    a, b, c, d = A, B, C, D</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">64</span>):  <span class="comment">#64轮运算</span></span><br><span class="line">        <span class="keyword">if</span> i &lt; <span class="number">16</span>:  <span class="comment">#每一轮运算只用到了b,c,d三个</span></span><br><span class="line">            f = ( b &amp; c)|((~b) &amp; d)</span><br><span class="line">            flag  = i      <span class="comment">#用于标识处于第几组信息</span></span><br><span class="line">        <span class="keyword">elif</span> i &lt; <span class="number">32</span>:</span><br><span class="line">            f = (b &amp; d)|(c &amp; (~d))</span><br><span class="line">            flag = (<span class="number">5</span> * i +<span class="number">1</span>) %<span class="number">16</span></span><br><span class="line">        <span class="keyword">elif</span> i &lt; <span class="number">48</span>:</span><br><span class="line">            f = (b ^ c ^ d)</span><br><span class="line">            flag  = (<span class="number">3</span> * i + <span class="number">5</span>)% <span class="number">16</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            f = c ^(b |(~d))</span><br><span class="line">            flag  = (<span class="number">7</span> * i ) % <span class="number">16</span></span><br><span class="line">        tmp = b + lrot((a + f + k[i] + w[flag])&amp; <span class="number">0xffffffff</span>,r[i]) <span class="comment">#&amp;0xffffffff为了类型转换</span></span><br><span class="line">        a, b, c, d = d, tmp &amp; <span class="number">0xffffffff</span>, b, c</span><br><span class="line">    A = (A + a) &amp; <span class="number">0xffffffff</span></span><br><span class="line">    B = (B + b) &amp; <span class="number">0xffffffff</span></span><br><span class="line">    C = (C + c) &amp; <span class="number">0xffffffff</span></span><br><span class="line">    D = (D + d) &amp; <span class="number">0xffffffff</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">digest</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> A</span><br><span class="line">    <span class="keyword">global</span> B</span><br><span class="line">    <span class="keyword">global</span> C</span><br><span class="line">    <span class="keyword">global</span> D</span><br><span class="line">    <span class="keyword">return</span> struct.pack(<span class="string">'&lt;IIII'</span>,A,B,C,D)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hex_digest</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> binascii.hexlify(digest()).decode()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        mess = input(<span class="string">"请输入你的信息:"</span>)</span><br><span class="line">        init_mess(mess.encode())</span><br><span class="line">        out_put = hex_digest()</span><br><span class="line">        print(type(out_put))</span><br><span class="line">        <span class="keyword">print</span> (out_put)</span><br></pre></td></tr></table></figure>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="lang-python">import struct
+import math
+import binascii
 
+lrot = lambda x,n: (x &lt;&lt; n)|(x &gt;&gt; 32- n)  #循环左移的操作
+
+#初始向量
+A, B, C, D = (0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476)
+# A, B, C, D = (0x01234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210)
+
+#循环左移的位移位数
+r = [   7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
+        5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20,
+         4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
+         6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21
+        ]
+
+#使用正弦函数产生的位随机数，也就是书本上的T[i]
+k =  [int(math.floor(abs(math.sin(i + 1)) * (2 ** 32))) for i in range(64)]
+
+
+def init_mess(message):
+    global A
+    global B
+    global C
+    global D
+    A, B, C, D = (0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476)
+    # A, B, C, D = (0x01234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210)
+    length = struct.pack(&#39;&lt;Q&#39;, len(message)*8)  #原消息长度64位比特的添加格式
+    while len(message) &gt; 64:
+        solve(message[:64])
+        message = message[64:]
+    #长度不足64位消息自行填充
+    message += b&#39;\x80&#39;
+    message += b&#39;\x00&#39; * (56 - len(message) % 64)
+    message += length
+    solve(message[:64])
+
+
+def solve(chunk):
+    global A
+    global B
+    global C
+    global D
+    w = list(struct.unpack(&#39;&lt;&#39; + &#39;I&#39; * 16, chunk))  #分成16个组，I代表1组32位
+    a, b, c, d = A, B, C, D
+
+    for i in range(64):  #64轮运算
+        if i &lt; 16:  #每一轮运算只用到了b,c,d三个
+            f = ( b &amp; c)|((~b) &amp; d)
+            flag  = i      #用于标识处于第几组信息
+        elif i &lt; 32:
+            f = (b &amp; d)|(c &amp; (~d))
+            flag = (5 * i +1) %16
+        elif i &lt; 48:
+            f = (b ^ c ^ d)
+            flag  = (3 * i + 5)% 16
+        else:
+            f = c ^(b |(~d))
+            flag  = (7 * i ) % 16
+        tmp = b + lrot((a + f + k[i] + w[flag])&amp; 0xffffffff,r[i]) #&amp;0xffffffff为了类型转换
+        a, b, c, d = d, tmp &amp; 0xffffffff, b, c
+    A = (A + a) &amp; 0xffffffff
+    B = (B + b) &amp; 0xffffffff
+    C = (C + c) &amp; 0xffffffff
+    D = (D + d) &amp; 0xffffffff
+
+
+
+def digest():
+    global A
+    global B
+    global C
+    global D
+    return struct.pack(&#39;&lt;IIII&#39;,A,B,C,D)
+
+def hex_digest():
+    return binascii.hexlify(digest()).decode()
+
+
+if __name__ == &#39;__main__&#39;:
+    while True:
+        mess = input(&quot;请输入你的信息:&quot;)
+        init_mess(mess.encode())
+        out_put = hex_digest()
+        print(type(out_put))
+        print (out_put)
+</code></pre>
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2020/01/12/RSA/">公钥密码RSA</a></li><li><a href="https://1187100546.github.io/2020/01/03/des/">分组密码DES</a></li><li><a href="https://1187100546.github.io/2020/01/03/lsfr/">序列密码</a></li><li><a href="https://wiki.hushhw.cn/posts/feaace02.html">《图解密码技术》学习笔记之密码(二)</a></li><li><a href="https://wiki.hushhw.cn/posts/418f8d38.html">《图解密码技术》学习笔记之密码(一)</a></li></ul></div>
         </div>
 
         <blockquote class="post-copyright">
@@ -293,7 +416,7 @@ $$ </p>
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2020-01-13T03:29:34.369Z" itemprop="dateUpdated">2020-01-13 11:29:34</time>
+    Last updated: <time datetime="2020-01-13T03:29:34.369Z" itemprop="dateUpdated">2020-01-13 11:29:34</time>
 </span><br>
 
 
@@ -465,7 +588,7 @@ $$ </p>
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

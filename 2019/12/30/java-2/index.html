@@ -155,7 +155,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -227,9 +227,83 @@
 <a id="more"></a>
 <h3 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h3><p>编写一个程序，其中设计一个矩阵类Matrix</p>
 <p>Matrix类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Matrix</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> m,n;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span>[][]ma;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Matrix</span><span class="params">(<span class="keyword">int</span> m,<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.m = m;</span><br><span class="line">        <span class="keyword">this</span>.n = n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMa</span><span class="params">(<span class="keyword">int</span>[][]ma)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.ma = ma;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Matrix <span class="title">cheng</span><span class="params">(Matrix a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n != a.m) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        Matrix ans= <span class="keyword">new</span> Matrix(m,a.n);</span><br><span class="line">        <span class="keyword">int</span> ansm = m,ansn = a.n;</span><br><span class="line">        <span class="keyword">int</span>[][]ansa = <span class="keyword">new</span> <span class="keyword">int</span>[ansm][ansn];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ansm; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ansn; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++) &#123;</span><br><span class="line">                    ansa[i][j] += ma[i][k]*a.ma[k][j];  </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans.ma = ansa;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                System.out.print(ma[i][j]+<span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw4;
+
+public class Matrix {
+    private int m,n;
+    protected int[][]ma;
+
+    public Matrix(int m,int n) {
+        this.m = m;
+        this.n = n;
+    }
+    public void setMa(int[][]ma) {
+        this.ma = ma;
+    }
+
+    public Matrix cheng(Matrix a) {
+        if(n != a.m) return null;
+        Matrix ans= new Matrix(m,a.n);
+        int ansm = m,ansn = a.n;
+        int[][]ansa = new int[ansm][ansn];
+        for(int i = 0; i &lt; ansm; i++) {
+            for(int j = 0; j &lt; ansn; j++) {
+                for(int k = 0; k &lt; n; k++) {
+                    ansa[i][j] += ma[i][k]*a.ma[k][j];  
+                }
+            }
+        }
+        ans.ma = ansa;
+        return ans;
+    }
+
+    public void print() {
+        for(int i = 0; i &lt; m; i++) {
+            for(int j = 0; j &lt; n; j++) {
+                System.out.print(ma[i][j]+&quot; &quot;);
+            }
+            System.out.println();
+        }
+    }
+}
+</code></pre>
 <p>Main类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw4;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">main_matrix</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.println(<span class="string">"请输入矩阵A的行列数："</span>);</span><br><span class="line">        <span class="keyword">int</span> am = scanner.nextInt();</span><br><span class="line">        <span class="keyword">int</span> an = scanner.nextInt();</span><br><span class="line">        System.out.println(<span class="string">"请输入矩阵A："</span>);</span><br><span class="line">        Matrix matrixA = <span class="keyword">new</span> Matrix(am, an);</span><br><span class="line">        <span class="keyword">int</span>[][]ma = <span class="keyword">new</span> <span class="keyword">int</span>[am][an];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; am; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; an; j++) &#123;</span><br><span class="line">                ma[i][j] = scanner.nextInt(); </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        matrixA.setMa(ma);</span><br><span class="line">        System.out.println(<span class="string">"请输入矩阵B的行列数："</span>);</span><br><span class="line">        <span class="keyword">int</span> bm = scanner.nextInt();</span><br><span class="line">        <span class="keyword">int</span> bn = scanner.nextInt();</span><br><span class="line">        System.out.println(<span class="string">"请输入矩阵B："</span>);</span><br><span class="line">        Matrix matrixB = <span class="keyword">new</span> Matrix(bm, bn);</span><br><span class="line">        <span class="keyword">int</span>[][]mb = <span class="keyword">new</span> <span class="keyword">int</span>[bm][bn];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; bm; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; bn; j++) &#123;</span><br><span class="line">                mb[i][j] = scanner.nextInt(); </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        matrixB.setMa(mb);</span><br><span class="line">        <span class="comment">//计算矩阵A乘矩阵B并打印结果</span></span><br><span class="line">        System.out.println(<span class="string">"A*B的结果为："</span>);</span><br><span class="line">        matrixA.cheng(matrixB).print();</span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw4;
+import java.util.*;
+public class main_matrix {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(&quot;请输入矩阵A的行列数：&quot;);
+        int am = scanner.nextInt();
+        int an = scanner.nextInt();
+        System.out.println(&quot;请输入矩阵A：&quot;);
+        Matrix matrixA = new Matrix(am, an);
+        int[][]ma = new int[am][an];
+        for(int i = 0; i &lt; am; i++) {
+            for(int j = 0; j &lt; an; j++) {
+                ma[i][j] = scanner.nextInt(); 
+            }
+        }
+        matrixA.setMa(ma);
+        System.out.println(&quot;请输入矩阵B的行列数：&quot;);
+        int bm = scanner.nextInt();
+        int bn = scanner.nextInt();
+        System.out.println(&quot;请输入矩阵B：&quot;);
+        Matrix matrixB = new Matrix(bm, bn);
+        int[][]mb = new int[bm][bn];
+        for(int i = 0; i &lt; bm; i++) {
+            for(int j = 0; j &lt; bn; j++) {
+                mb[i][j] = scanner.nextInt(); 
+            }
+        }
+        matrixB.setMa(mb);
+        //计算矩阵A乘矩阵B并打印结果
+        System.out.println(&quot;A*B的结果为：&quot;);
+        matrixA.cheng(matrixB).print();
+        scanner.close();
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -239,15 +313,116 @@
             </figure>
 <h3 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h3><p>设计一个程序，其中含有一个接口Shape(形状)，其中有求形状的面积的方法area()。再定义三个实现接口的类：三角型类、矩形类和圆类。在主方法中创建Shape类型的一维数组，它有三个元素，放置三个对象，分别表示三角形、矩形和圆，然后利用循环输出三个图形的面积。</p>
 <p>Shape接口：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">shape</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">double</span> <span class="title">area</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw4;
+
+public interface shape {
+    double area();
+}
+</code></pre>
 <p>Circle类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">circle</span> <span class="keyword">implements</span> <span class="title">shape</span> </span>&#123;</span><br><span class="line">	<span class="keyword">final</span> <span class="keyword">float</span> pi=<span class="number">3.14f</span>;</span><br><span class="line">	<span class="keyword">float</span> r;</span><br><span class="line">	circle()</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	circle(<span class="keyword">float</span> r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.r=r;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">area</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> pi*r*r;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw4;
+
+public class circle implements shape {
+    final float pi=3.14f;
+    float r;
+    circle()
+    {
+
+    }
+    circle(float r)
+    {
+        this.r=r;
+    }
+    public double area()
+    {
+        return pi*r*r;
+    }
+}
+</code></pre>
 <p>Rectangle类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">rectangle</span> <span class="keyword">implements</span> <span class="title">shape</span></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> w;</span><br><span class="line">	<span class="keyword">float</span> h;</span><br><span class="line">	rectangle()</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	rectangle(<span class="keyword">float</span> w,<span class="keyword">float</span> h)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.w=w;</span><br><span class="line">		<span class="keyword">this</span>.h=h;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">area</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> w*h;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw4;
+
+public class rectangle implements shape{
+    float w;
+    float h;
+    rectangle()
+    {
+
+    }
+    rectangle(float w,float h)
+    {
+        this.w=w;
+        this.h=h;
+    }
+    public double area()
+    {
+        return w*h;
+    }
+}
+</code></pre>
 <p>Square类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw4;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">square</span> <span class="keyword">implements</span> <span class="title">shape</span></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> a,b,c;</span><br><span class="line">	square()</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	square(<span class="keyword">float</span> a,<span class="keyword">float</span> b,<span class="keyword">float</span> c)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.a=a;</span><br><span class="line">		<span class="keyword">this</span>.b=b;</span><br><span class="line">		<span class="keyword">this</span>.c=c;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">area</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">float</span> p=(a+b+c)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">return</span> Math.sqrt(p*(p-a)*(p-b)*(p-c));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw4;
+import java.util.*;
+public class square implements shape{
+    float a,b,c;
+    square()
+    {
+
+    }
+    square(float a,float b,float c)
+    {
+        this.a=a;
+        this.b=b;
+        this.c=c;
+    }
+    public double area()
+    {
+        float p=(a+b+c)/2;
+        return Math.sqrt(p*(p-a)*(p-b)*(p-c));
+    }
+}
+</code></pre>
 <p>主类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw4;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">main_shape</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner s=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		shape shape[]=<span class="keyword">new</span> shape[<span class="number">3</span>];</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"请选择输入的图形：1、圆形，2、矩形，3、三角形："</span>);</span><br><span class="line">			<span class="keyword">int</span> x=s.nextInt();</span><br><span class="line">			<span class="keyword">if</span>(x==<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(<span class="string">"请输入圆形的半径："</span>);</span><br><span class="line">				shape[i]=<span class="keyword">new</span> circle(s.nextFloat());</span><br><span class="line">				System.out.println(<span class="string">"面积是："</span>+shape[i].area());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(x==<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(<span class="string">"请输入矩形宽和高："</span>);</span><br><span class="line">				shape[i]=<span class="keyword">new</span> rectangle(s.nextFloat(),s.nextFloat());</span><br><span class="line">				System.out.println(<span class="string">"面积是："</span>+shape[i].area());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(x==<span class="number">3</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(<span class="string">"请输入三角形a,b,c:"</span>);</span><br><span class="line">				shape[i]=<span class="keyword">new</span> square(s.nextFloat(),s.nextFloat(),s.nextFloat());</span><br><span class="line">				System.out.println(<span class="string">"面积是："</span>+shape[i].area());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(<span class="string">"非法输入，程序退出"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">				</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw4;
+import java.util.*;
+public class main_shape {
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        shape shape[]=new shape[3];
+        int i;
+        for(i=0;i&lt;3;i++)
+        {
+            System.out.println(&quot;请选择输入的图形：1、圆形，2、矩形，3、三角形：&quot;);
+            int x=s.nextInt();
+            if(x==1)
+            {
+                System.out.println(&quot;请输入圆形的半径：&quot;);
+                shape[i]=new circle(s.nextFloat());
+                System.out.println(&quot;面积是：&quot;+shape[i].area());
+            }
+            else if(x==2)
+            {
+                System.out.println(&quot;请输入矩形宽和高：&quot;);
+                shape[i]=new rectangle(s.nextFloat(),s.nextFloat());
+                System.out.println(&quot;面积是：&quot;+shape[i].area());
+            }
+            else if(x==3)
+            {
+                System.out.println(&quot;请输入三角形a,b,c:&quot;);
+                shape[i]=new square(s.nextFloat(),s.nextFloat(),s.nextFloat());
+                System.out.println(&quot;面积是：&quot;+shape[i].area());
+            }
+            else
+            {
+                System.out.println(&quot;非法输入，程序退出&quot;);
+                break;
+            }
+
+        }
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -258,9 +433,90 @@
 <h3 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h3><p>编一程序，在其中定义一个代表篮球队的类，它有放置队员姓名的向量并放入队员的姓名，再写两个方法：</p>
 <p>1）在向量中查找某人。若找到则输出“找到此人！”，否则输出“查无此人！”。</p>
 <p>2）删除队员。先查找该人，若找到则删除，否则输出“无此队员！”。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">basketball</span> </span>&#123;</span><br><span class="line">	String dy[]=<span class="keyword">new</span> String[<span class="number">10</span>];</span><br><span class="line">	basketball()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			dy[i]=<span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(dy[i]==<span class="keyword">null</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				dy[i]=name;</span><br><span class="line">				System.out.println(<span class="string">"插入成功"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(dy[i].equals(name))</span><br><span class="line">			&#123;</span><br><span class="line">				dy[i]=<span class="keyword">null</span>;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i==<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"查无此人"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.print(dy[i]+<span class="string">","</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw4;
+
+public class basketball {
+    String dy[]=new String[10];
+    basketball()
+    {
+        int i;
+        for(i=0;i&lt;10;i++)
+        {
+            dy[i]=null;
+        }
+    }
+    public void insert(String name)
+    {
+        int i;
+        for(i=0;i&lt;10;i++)
+        {
+            if(dy[i]==null)
+            {
+                dy[i]=name;
+                System.out.println(&quot;插入成功&quot;);
+                break;
+            }
+        }
+    }
+    public void delete(String name)
+    {
+        int i;
+        for(i=0;i&lt;10;i++)
+        {
+            if(dy[i].equals(name))
+            {
+                dy[i]=null;
+                System.out.println(&quot;删除成功&quot;);
+                break;
+            }
+        }
+        if(i==10)
+        {
+            System.out.println(&quot;查无此人&quot;);
+        }
+    }
+    public void show()
+    {
+        int i;
+        for(i=0;i&lt;10;i++)
+        {
+            System.out.print(dy[i]+&quot;,&quot;);
+        }
+    }
+}
+</code></pre>
 <p>主类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw4;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">main_basket</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner s=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		basketball b=<span class="keyword">new</span> basketball();</span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"输入1插入，2删除，其它退出"</span>);</span><br><span class="line">			<span class="keyword">int</span> x=s.nextInt();</span><br><span class="line">			<span class="keyword">if</span>(x==<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				b.insert(s.nextLine());</span><br><span class="line">				b.show();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(x==<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				b.delete(s.nextLine());</span><br><span class="line">				b.show();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				b.show();</span><br><span class="line">				System.out.println(<span class="string">"程序已退出"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw4;
+import java.util.*;
+public class main_basket {
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        basketball b=new basketball();
+        while(true)
+        {
+            System.out.println(&quot;输入1插入，2删除，其它退出&quot;);
+            int x=s.nextInt();
+            if(x==1)
+            {
+                b.insert(s.nextLine());
+                b.show();
+            }
+            else if(x==2)
+            {
+                b.delete(s.nextLine());
+                b.show();
+            }
+            else
+            {
+                b.show();
+                System.out.println(&quot;程序已退出&quot;);
+                break;
+            }
+        }
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -269,7 +525,35 @@
                 <div class="image-caption">lUzEl9.png</div>
             </figure>
 <h3 id="四、"><a href="#四、" class="headerlink" title="四、"></a>四、</h3><p>设计一个继承Vector类的队列类Queue，实现队列的先进先出功能, 类中含有两个方法：入队inqueue和出队outqueue(要充分利用Vector类的方法)。在主方法中创建一个队列类对象，然后依次完成 “111” 入队、“222”入队、出队一元素(输出到屏幕)、“333”入队，最后出队所有元素并且输出到屏幕。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw4;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">queue</span> <span class="keyword">extends</span> <span class="title">Vector</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inqueue</span><span class="params">(Object obj)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		addElement(obj);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">outqueue</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Object b=firstElement();</span><br><span class="line">		removeElementAt(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">return</span> b;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		queue q1=<span class="keyword">new</span> queue();</span><br><span class="line">		q1.inqueue(<span class="string">"111"</span>);</span><br><span class="line">		q1.inqueue(<span class="string">"222"</span>);</span><br><span class="line">		Object bb=q1.outqueue();</span><br><span class="line">		System.out.println(bb);</span><br><span class="line">		q1.inqueue(<span class="string">"333"</span>);</span><br><span class="line">		bb=q1.outqueue();</span><br><span class="line">		System.out.println(bb);</span><br><span class="line">		bb=q1.outqueue();</span><br><span class="line">		System.out.println(bb);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw4;
+import java.util.*;
+public class queue extends Vector{
+    public void inqueue(Object obj)
+    {
+        addElement(obj);
+    }
+    public Object outqueue()
+    {
+        Object b=firstElement();
+        removeElementAt(0);
+        return b;
+    }
+    public static void main(String[] args)
+    {
+        queue q1=new queue();
+        q1.inqueue(&quot;111&quot;);
+        q1.inqueue(&quot;222&quot;);
+        Object bb=q1.outqueue();
+        System.out.println(bb);
+        q1.inqueue(&quot;333&quot;);
+        bb=q1.outqueue();
+        System.out.println(bb);
+        bb=q1.outqueue();
+        System.out.println(bb);
+    }
+
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -278,7 +562,26 @@
                 <div class="image-caption">laSCnI.png</div>
             </figure>
 <h3 id="五、"><a href="#五、" class="headerlink" title="五、"></a>五、</h3><p>java.util包中有个类“Arrays”，它有个方法“sort(&lt;数组名&gt;)”，功能是将数组按升序排序。请编一程序，在其中创建一个数组，然后利用sort方法进行排序。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw2;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">seven</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner s=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入10个数"</span>);</span><br><span class="line">		<span class="keyword">int</span> a[]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]=s.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		Arrays.sort(a);</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.print(a[i]+<span class="string">"\t"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw2;
+import java.util.*;
+public class seven {
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        System.out.println(&quot;请输入10个数&quot;);
+        int a[]=new int[10];
+        int i;
+        for(i=0;i&lt;10;i++)
+        {
+            a[i]=s.nextInt();
+        }
+        Arrays.sort(a);
+        for(i=0;i&lt;10;i++)
+        {
+            System.out.print(a[i]+&quot;\t&quot;);
+        }
+    }
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -287,7 +590,32 @@
                 <div class="image-caption">laSMBq.png</div>
             </figure>
 <h3 id="六、"><a href="#六、" class="headerlink" title="六、"></a>六、</h3><p>编写一个让小朋友做十次加法的程序，要求程序中生成两个不大于50的随机正整数a和b，其中a由Math类的随机函数生成，b则利用机器当前时间的秒数和分数生成，在小朋友回答后要给出对错的判断。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw4;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">jisuanti</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			Scanner s=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">			LocalDateTime time=LocalDateTime.now();</span><br><span class="line">			<span class="keyword">int</span> a=(<span class="keyword">int</span>)(Math.random()*<span class="number">50</span>);</span><br><span class="line">			<span class="keyword">int</span> b=(time.getMinute()+time.getSecond())%<span class="number">50</span>;</span><br><span class="line">			System.out.println(a+<span class="string">"+"</span>+b+<span class="string">"="</span>);</span><br><span class="line">			<span class="keyword">if</span>(s.nextInt()==(a+b))</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(<span class="string">"yes"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(<span class="string">"no"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw4;
+import java.time.LocalDateTime;
+import java.util.*;
+public class jisuanti {
+    public static void main(String[] args)
+    {
+        int i=0;
+        while(i&lt;10)
+        {
+            Scanner s=new Scanner(System.in);
+            LocalDateTime time=LocalDateTime.now();
+            int a=(int)(Math.random()*50);
+            int b=(time.getMinute()+time.getSecond())%50;
+            System.out.println(a+&quot;+&quot;+b+&quot;=&quot;);
+            if(s.nextInt()==(a+b))
+            {
+                System.out.println(&quot;yes&quot;);
+            }
+            else
+            {
+                System.out.println(&quot;no&quot;);
+            }
+        }
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -295,7 +623,7 @@
                 </div>
                 <div class="image-caption">lapZa6.png</div>
             </figure>
-
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2020/01/03/java-4/">java第四次实验作业</a></li><li><a href="https://1187100546.github.io/2020/01/03/java-3/">java第三次实验作业</a></li><li><a href="https://1187100546.github.io/2019/11/29/java-fujia/">java继承实现多态的例子</a></li><li><a href="https://thelighter.github.io/2019/06/16/java-1/">java一键安装所有环境，vscode做到了！</a></li><li><a href="https://lailin.xyz/post/52826.html">java笔记1</a></li></ul></div>
         </div>
 
         <blockquote class="post-copyright">
@@ -303,7 +631,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2020-01-03T08:11:58.692Z" itemprop="dateUpdated">2020-01-03 16:11:58</time>
+    Last updated: <time datetime="2020-01-03T08:11:58.692Z" itemprop="dateUpdated">2020-01-03 16:11:58</time>
 </span><br>
 
 
@@ -482,7 +810,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

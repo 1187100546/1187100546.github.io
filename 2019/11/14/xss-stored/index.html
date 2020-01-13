@@ -153,7 +153,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -223,7 +223,29 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>DVWA的存储型xss。</p>
 <a id="more"></a>
-<h2 id="级别：low"><a href="#级别：low" class="headerlink" title="级别：low"></a>级别：low</h2><h3 id="Stored-XSS-Source"><a href="#Stored-XSS-Source" class="headerlink" title="Stored XSS Source"></a>Stored XSS Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = stripslashes( $message );</span><br><span class="line">    $message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="级别：low"><a href="#级别：low" class="headerlink" title="级别：low"></a>级别：low</h2><h3 id="Stored-XSS-Source"><a href="#Stored-XSS-Source" class="headerlink" title="Stored XSS Source"></a>Stored XSS Source</h3><pre><code class="lang-php">&lt;?php
+
+if( isset( $_POST[ &#39;btnSign&#39; ] ) ) {
+    // Get input
+    $message = trim( $_POST[ &#39;mtxMessage&#39; ] );
+    $name    = trim( $_POST[ &#39;txtName&#39; ] );
+
+    // Sanitize message input
+    $message = stripslashes( $message );
+    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Sanitize name input
+    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Update database
+    $query  = &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+
+    //mysql_close();
+}
+
+?&gt;
+</code></pre>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p> <code>isset()</code> 函数在php中用来检测变量是否设置，该函数返回的是布尔类型的值，即true/false </p>
 <p> <code>trim()</code> 函数作用为移除字符串两侧空白字符或其他预定义字符 </p>
 <p> <code>stripslashes()</code> 函数用于删除字符串中的反斜杠 </p>
@@ -231,8 +253,8 @@
 <p> 在代码中对message，name输入框内容  没有进行XSS方面的过滤和检查 </p>
 <p> 且通过  <code>query</code> 语句插入到数据库中。所以存在存储型XSS漏洞 </p>
 <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>由于name和message输入框均存在xss。但name输入框有字符限制，这里可以使用burpsuite抓包修改name输入框内容： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<figure class="image-bubble">
+<pre><code>&lt;script&gt;alert(document.cookie)&lt;/script&gt;
+</code></pre><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="https://s2.ax1x.com/2019/11/14/MUAK3Q.png" alt="MUAK3Q.png" title>
@@ -254,7 +276,32 @@
                 <div class="image-caption">MUA1un.png</div>
             </figure>
 <p><strong>由于提交的结果存储在数据库中，所以每次刷新页面，输入的恶意代码就会被执行一次 </strong></p>
-<h2 id="级别：medium"><a href="#级别：medium" class="headerlink" title="级别：medium"></a>级别：medium</h2><h3 id="Stored-XSS-Source-1"><a href="#Stored-XSS-Source-1" class="headerlink" title="Stored XSS Source"></a>Stored XSS Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = strip_tags( addslashes( $message ) );</span><br><span class="line">    $message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">    $message = htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $name );</span><br><span class="line">    $name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="级别：medium"><a href="#级别：medium" class="headerlink" title="级别：medium"></a>级别：medium</h2><h3 id="Stored-XSS-Source-1"><a href="#Stored-XSS-Source-1" class="headerlink" title="Stored XSS Source"></a>Stored XSS Source</h3><pre><code class="lang-php">
+&lt;?php
+
+if( isset( $_POST[ &#39;btnSign&#39; ] ) ) {
+    // Get input
+    $message = trim( $_POST[ &#39;mtxMessage&#39; ] );
+    $name    = trim( $_POST[ &#39;txtName&#39; ] );
+
+    // Sanitize message input
+    $message = strip_tags( addslashes( $message ) );
+    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+    $message = htmlspecialchars( $message );
+
+    // Sanitize name input
+    $name = str_replace( &#39;&lt;script&gt;&#39;, &#39;&#39;, $name );
+    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Update database
+    $query  = &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+
+    //mysql_close();
+}
+
+?&gt;
+</code></pre>
 <h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p> <code>strip_tags()</code> 函数剥去字符串中的 HTML、XML 以及 PHP 的标签，但允许使用 <code>&lt;b&gt;</code> 标签。 </p>
 <p> <code>addslashes()</code> 函数返回在预定义字符（单引号、双引号、反斜杠、NULL）之前添加反斜杠的字符串。 </p>
 <p> <code>htmlspecialchars()</code> 函数把预定义的字符&amp;、”、’、&lt;、&gt;转换为 HTML 实体，防止浏览器将其作为HTML元素 </p>
@@ -273,11 +320,35 @@
                 <div class="image-caption">MUmpy4.png</div>
             </figure>
 <p><strong>由于low级别已经注入过，所以打开medium级别会直接弹出cookie</strong></p>
-<h2 id="级别：high"><a href="#级别：high" class="headerlink" title="级别：high"></a>级别：high</h2><h3 id="Stored-XSS-Source-2"><a href="#Stored-XSS-Source-2" class="headerlink" title="Stored XSS Source"></a>Stored XSS Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = strip_tags( addslashes( $message ) );</span><br><span class="line">    $message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">    $message = htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = preg_replace( <span class="string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="string">''</span>, $name );</span><br><span class="line">    $name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="级别：high"><a href="#级别：high" class="headerlink" title="级别：high"></a>级别：high</h2><h3 id="Stored-XSS-Source-2"><a href="#Stored-XSS-Source-2" class="headerlink" title="Stored XSS Source"></a>Stored XSS Source</h3><pre><code class="lang-php">&lt;?php
+
+if( isset( $_POST[ &#39;btnSign&#39; ] ) ) {
+    // Get input
+    $message = trim( $_POST[ &#39;mtxMessage&#39; ] );
+    $name    = trim( $_POST[ &#39;txtName&#39; ] );
+
+    // Sanitize message input
+    $message = strip_tags( addslashes( $message ) );
+    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+    $message = htmlspecialchars( $message );
+
+    // Sanitize name input
+    $name = preg_replace( &#39;/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i&#39;, &#39;&#39;, $name );
+    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Update database
+    $query  = &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+
+    //mysql_close();
+}
+
+?&gt;
+</code></pre>
 <h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>和上面两个级别一样，抓包修改name内容即可，代码对name输入内容利用正则匹配删除所有关于<code>&lt;script&gt;</code>标签</p>
 <h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><p>抓包修改name内容为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;IMG src=1 onerror=alert(document.cookie)&gt;</span><br></pre></td></tr></table></figure>
-
+<pre><code>&lt;IMG src=1 onerror=alert(document.cookie)&gt;
+</code></pre><div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2019/11/14/xss-reflected/">DVWA--xss_reflected</a></li></ul></div>
         </div>
 
         <blockquote class="post-copyright">
@@ -285,7 +356,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2019-11-14T14:31:00.757Z" itemprop="dateUpdated">2019-11-14 22:31:00</time>
+    Last updated: <time datetime="2019-11-14T14:31:00.757Z" itemprop="dateUpdated">2019-11-14 22:31:00</time>
 </span><br>
 
 
@@ -464,7 +535,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

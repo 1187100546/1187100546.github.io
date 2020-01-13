@@ -157,7 +157,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -228,7 +228,31 @@
             <p>java实验二。</p>
 <a id="more"></a>
 <h3 id="问题1、"><a href="#问题1、" class="headerlink" title="问题1、"></a>问题1、</h3><p> 打印一个三角形的1~9的乘法表。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">chenfa</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.print(<span class="string">"*"</span>+<span class="string">"\t"</span>);</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= <span class="number">9</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.print(i+<span class="string">"\t"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="keyword">for</span>(x = <span class="number">1</span>;x &lt;= <span class="number">9</span>;x++)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.print(x+<span class="string">"\t"</span>);</span><br><span class="line">			<span class="keyword">for</span>(y = <span class="number">1</span>;y &lt;= x; y++)</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.print(x*y+<span class="string">"\t"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw2;
+
+public class chenfa {
+    public static void main(String[] args)
+    {
+        System.out.print(&quot;*&quot;+&quot;\t&quot;);
+        int i;
+        for(i = 1;i &lt;= 9;i++)
+        {
+            System.out.print(i+&quot;\t&quot;);
+        }
+        System.out.println();
+        int x,y;
+        for(x = 1;x &lt;= 9;x++)
+        {
+            System.out.print(x+&quot;\t&quot;);
+            for(y = 1;y &lt;= x; y++)
+            {
+                System.out.print(x*y+&quot;\t&quot;);
+            }
+            System.out.println();
+        }
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -237,7 +261,45 @@
                 <div class="image-caption">QSrMrt.png</div>
             </figure>
 <h3 id="问题2、"><a href="#问题2、" class="headerlink" title="问题2、"></a>问题2、</h3><p>编写一程序，将从键盘输入的每个月份数(整数)显示出其对应的英文，直至输入0结束，注意对非法数据的处理。  (while,switch语句)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw2;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">two</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner s=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入月份"</span>);</span><br><span class="line">		<span class="keyword">int</span> m;</span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			m=s.nextInt();</span><br><span class="line">			<span class="keyword">if</span>(m==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(<span class="string">"输入结束"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">switch</span>(m)</span><br><span class="line">			&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:System.out.println(<span class="string">"January"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>:System.out.println(<span class="string">"February"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:System.out.println(<span class="string">"March"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">4</span>:System.out.println(<span class="string">"April"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">5</span>:System.out.println(<span class="string">"May"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">6</span>:System.out.println(<span class="string">"June"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">7</span>:System.out.println(<span class="string">"July"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">8</span>:System.out.println(<span class="string">"August"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">9</span>:System.out.println(<span class="string">"September"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">10</span>:System.out.println(<span class="string">"October"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">11</span>:System.out.println(<span class="string">"November"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">12</span>:System.out.println(<span class="string">"December"</span>);<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">default</span>:System.out.println(<span class="string">"非法字符"</span>);<span class="keyword">break</span>;</span><br><span class="line">			</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw2;
+import java.util.*;
+public class two {
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        System.out.println(&quot;请输入月份&quot;);
+        int m;
+        while(true)
+        {
+            m=s.nextInt();
+            if(m==0)
+            {
+                System.out.println(&quot;输入结束&quot;);
+                break;
+            }
+            switch(m)
+            {
+            case 1:System.out.println(&quot;January&quot;);break;
+            case 2:System.out.println(&quot;February&quot;);break;
+            case 3:System.out.println(&quot;March&quot;);break;
+            case 4:System.out.println(&quot;April&quot;);break;
+            case 5:System.out.println(&quot;May&quot;);break;
+            case 6:System.out.println(&quot;June&quot;);break;
+            case 7:System.out.println(&quot;July&quot;);break;
+            case 8:System.out.println(&quot;August&quot;);break;
+            case 9:System.out.println(&quot;September&quot;);break;
+            case 10:System.out.println(&quot;October&quot;);break;
+            case 11:System.out.println(&quot;November&quot;);break;
+            case 12:System.out.println(&quot;December&quot;);break;
+            default:System.out.println(&quot;非法字符&quot;);break;
+
+            }
+        }
+
+
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -246,7 +308,31 @@
                 <div class="image-caption">QSrJPg.png</div>
             </figure>
 <h3 id="问题3、"><a href="#问题3、" class="headerlink" title="问题3、"></a>问题3、</h3><p>打印图案：一个由n行星花组成的三角形。如n=5时的图案为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw2;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">three</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner s=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n;</span><br><span class="line">		System.out.println(<span class="string">"请输入行数"</span>);</span><br><span class="line">		n=s.nextInt();</span><br><span class="line">		<span class="keyword">int</span> x,y,z;</span><br><span class="line">		<span class="keyword">for</span>(x=<span class="number">1</span>;x&lt;=n;x++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(y=<span class="number">1</span>;y&lt;=n-x;y++)</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.print(<span class="string">" "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span>(z=<span class="number">1</span>;z&lt;=x;z++)</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.print(<span class="string">"* "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw2;
+import java.util.*;
+public class three {
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        int n;
+        System.out.println(&quot;请输入行数&quot;);
+        n=s.nextInt();
+        int x,y,z;
+        for(x=1;x&lt;=n;x++)
+        {
+            for(y=1;y&lt;=n-x;y++)
+            {
+                System.out.print(&quot; &quot;);
+            }
+            for(z=1;z&lt;=x;z++)
+            {
+                System.out.print(&quot;* &quot;);
+            }
+            System.out.println();
+        }
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -255,7 +341,26 @@
                 <div class="image-caption">QSrrIU.png</div>
             </figure>
 <h3 id="问题4、"><a href="#问题4、" class="headerlink" title="问题4、"></a>问题4、</h3><p>打印出所有的“水仙花数”。所谓“水仙花数”是指一个三位数，其各位数字的立方和等于该数本身。例如153是一个“水仙花数”，因为153=13+53+33。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw2;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">four</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//Scanner s=new Scanner(System.in);</span></span><br><span class="line">		System.out.println(<span class="string">"水仙花数为："</span>);</span><br><span class="line">		<span class="keyword">int</span> x;</span><br><span class="line">		<span class="keyword">for</span>(x=<span class="number">100</span>;x&lt;=<span class="number">999</span>;x++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">double</span> sum;</span><br><span class="line">			sum=Math.pow(x/<span class="number">100</span>,<span class="number">3</span>)+Math.pow((x%<span class="number">100</span>)/<span class="number">10</span>,<span class="number">3</span>)+Math.pow(x%<span class="number">10</span>,<span class="number">3</span>);</span><br><span class="line">			<span class="keyword">if</span>(sum==x)</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(x);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw2;
+import java.util.*;
+public class four {
+    public static void main(String[] args)
+    {
+        //Scanner s=new Scanner(System.in);
+        System.out.println(&quot;水仙花数为：&quot;);
+        int x;
+        for(x=100;x&lt;=999;x++)
+        {
+            double sum;
+            sum=Math.pow(x/100,3)+Math.pow((x%100)/10,3)+Math.pow(x%10,3);
+            if(sum==x)
+            {
+                System.out.println(x);
+            }
+        }
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -264,7 +369,34 @@
                 <div class="image-caption">QSrveP.png</div>
             </figure>
 <h3 id="问题5、"><a href="#问题5、" class="headerlink" title="问题5、"></a>问题5、</h3><p>编写一个程序，从键盘读一个年份的数字，然后判断该年是否是闰年，如果是就输出“闰年”，如果不是就输出“非闰年”。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw2;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">five</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">panduan</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%<span class="number">400</span>==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		<span class="keyword">if</span>(x%<span class="number">420</span>==<span class="number">0</span>&amp;&amp;x%<span class="number">100</span>!=<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner s=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入年份"</span>);</span><br><span class="line">		<span class="keyword">int</span> year;</span><br><span class="line">		year=s.nextInt();</span><br><span class="line">		<span class="keyword">if</span>(panduan(year))</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(year+<span class="string">"年 是闰年"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(year+<span class="string">"年 是非闰年"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw2;
+import java.util.*;
+public class five {
+    static boolean panduan(int x)
+    {
+        if(x%400==0)
+            return true;
+        if(x%420==0&amp;&amp;x%100!=0)
+            return true;
+        return false;
+    }
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        System.out.println(&quot;请输入年份&quot;);
+        int year;
+        year=s.nextInt();
+        if(panduan(year))
+        {
+            System.out.println(year+&quot;年 是闰年&quot;);
+        }
+        else
+        {
+            System.out.println(year+&quot;年 是非闰年&quot;);
+        }
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -273,7 +405,24 @@
                 <div class="image-caption">QSskyn.png</div>
             </figure>
 <h3 id="问题6、"><a href="#问题6、" class="headerlink" title="问题6、"></a>问题6、</h3><p>统计个位数是6，并且能被3整除的五位数共有多少个。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">six</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> x;</span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(x=<span class="number">10000</span>;x&lt;=<span class="number">99999</span>;x++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(x%<span class="number">10</span>==<span class="number">6</span>&amp;&amp;x%<span class="number">3</span>==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				sum++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"个位数是6，并且能被3整除的五位数共有"</span>+sum+<span class="string">"个"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw2;
+
+public class six {
+    public static void main(String[] args)
+    {
+        int x;
+        int sum=0;
+        for(x=10000;x&lt;=99999;x++)
+        {
+            if(x%10==6&amp;&amp;x%3==0)
+            {
+                sum++;
+            }
+        }
+        System.out.println(&quot;个位数是6，并且能被3整除的五位数共有&quot;+sum+&quot;个&quot;);
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -282,7 +431,27 @@
                 <div class="image-caption">QSsKW4.png</div>
             </figure>
 <h3 id="问题7、"><a href="#问题7、" class="headerlink" title="问题7、"></a>问题7、</h3><p>编写一个程序，在其中建立一个有10个整数的数组，运行后从键盘输入10个数，然后输出其中的最小数。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw2;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">seven</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner s=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入10个数"</span>);</span><br><span class="line">		<span class="keyword">int</span> a[]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i]=s.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		Arrays.sort(a);</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.print(a[i]+<span class="string">"\t"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw2;
+import java.util.*;
+public class seven {
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        System.out.println(&quot;请输入10个数&quot;);
+        int a[]=new int[10];
+        int i;
+        for(i=0;i&lt;10;i++)
+        {
+            a[i]=s.nextInt();
+        }
+        Arrays.sort(a);
+        for(i=0;i&lt;10;i++)
+        {
+            System.out.print(a[i]+&quot;\t&quot;);
+        }
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -291,7 +460,32 @@
                 <div class="image-caption">QSsB6A.png</div>
             </figure>
 <h3 id="问题8、"><a href="#问题8、" class="headerlink" title="问题8、"></a>问题8、</h3><p>编写一个程序，在其中定义一个6´6的二维整型数组, 利用随机函数产生36个10~20之间的随机整数放入，然后将数组输出到屏幕上(6行6列格式)。最后计算出数组中对角线元素的平方根和。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw2;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">erweishuzu</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a[][]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">6</span>][<span class="number">6</span>];</span><br><span class="line">		<span class="keyword">int</span> i,j;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">6</span>;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				a[i][j]=(<span class="keyword">int</span>)(<span class="number">10</span>+Math.random()*<span class="number">10</span>);</span><br><span class="line">				System.out.print(a[i][j]+<span class="string">" "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">double</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> l;</span><br><span class="line">		<span class="keyword">for</span>(l=<span class="number">0</span>;l&lt;<span class="number">6</span>;l++)</span><br><span class="line">		&#123;</span><br><span class="line">			sum=sum+Math.sqrt(a[l][l])+Math.sqrt(a[<span class="number">5</span>-l][l]);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"平方根和为："</span>+sum);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw2;
+import java.util.*;
+public class erweishuzu {
+    public static void main(String[] args)
+    {
+        int a[][]=new int[6][6];
+        int i,j;
+        for(i=0;i&lt;6;i++)
+        {
+            for(j=0;j&lt;6;j++)
+            {
+                a[i][j]=(int)(10+Math.random()*10);
+                System.out.print(a[i][j]+&quot; &quot;);
+            }
+            System.out.println();
+        }
+        double sum=0;
+        int l;
+        for(l=0;l&lt;6;l++)
+        {
+            sum=sum+Math.sqrt(a[l][l])+Math.sqrt(a[5-l][l]);
+        }
+        System.out.println(&quot;平方根和为：&quot;+sum);
+    }
+}
+</code></pre>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -299,7 +493,7 @@
                 </div>
                 <div class="image-caption">QS6Qq1.png</div>
             </figure>
-
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2020/01/03/java-4/">java第四次实验作业</a></li><li><a href="https://1187100546.github.io/2020/01/03/java-3/">java第三次实验作业</a></li><li><a href="https://1187100546.github.io/2019/12/30/java-2/">java第二次实验作业</a></li><li><a href="https://thelighter.github.io/2019/06/16/java-1/">java一键安装所有环境，vscode做到了！</a></li><li><a href="https://lailin.xyz/post/52826.html">java笔记1</a></li></ul></div>
         </div>
 
         <blockquote class="post-copyright">
@@ -307,7 +501,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2019-11-26T12:30:11.154Z" itemprop="dateUpdated">2019-11-26 20:30:11</time>
+    Last updated: <time datetime="2019-11-26T12:30:11.154Z" itemprop="dateUpdated">2019-11-26 20:30:11</time>
 </span><br>
 
 
@@ -486,7 +680,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>

@@ -150,7 +150,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Zoeken">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -215,15 +215,127 @@
 <a id="more"></a>
 <p>写一个动物园程序，可以向里面添加动物，并显示是第几个该类型的动物，并统计动物园里共有多少动物。</p>
 <p>animal类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">animal</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">animal</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"动物园一共有"</span>+sum+<span class="string">"只动物"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package hw3;
+
+public class animal {
+    static int sum=0;
+    public animal()
+    {
+
+    }
+    public void show()
+    {
+        System.out.println(&quot;动物园一共有&quot;+sum+&quot;只动物&quot;);
+    }
+
+}
+</code></pre>
 <p>dog类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">dog</span> <span class="keyword">extends</span> <span class="title">animal</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> dog_sum=<span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">dog</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.sum++;</span><br><span class="line">		dog_sum++;</span><br><span class="line">		System.out.println(<span class="string">"我是狗，是第"</span>+dog_sum+<span class="string">"只狗"</span>);</span><br><span class="line">		<span class="keyword">super</span>.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-Java">package hw3;
+
+public class dog extends animal{
+    static int dog_sum=0;
+    public dog()
+    {
+
+    }
+    public void show()
+    {
+        super.sum++;
+        dog_sum++;
+        System.out.println(&quot;我是狗，是第&quot;+dog_sum+&quot;只狗&quot;);
+        super.show();
+    }
+}
+</code></pre>
 <p>cat类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">cat</span> <span class="keyword">extends</span> <span class="title">animal</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> cat_sum=<span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">cat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.sum++;</span><br><span class="line">		cat_sum++;</span><br><span class="line">		System.out.println(<span class="string">"我是猫，是第"</span>+cat_sum+<span class="string">"只猫"</span>);</span><br><span class="line">		<span class="keyword">super</span>.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-Java">package hw3;
+
+public class cat extends animal{
+    static int cat_sum=0;
+    public cat()
+    {
+
+    }
+    public void show()
+    {
+        super.sum++;
+        cat_sum++;
+        System.out.println(&quot;我是猫，是第&quot;+cat_sum+&quot;只猫&quot;);
+        super.show();
+    }
+}
+</code></pre>
 <p>pig类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">pig</span> <span class="keyword">extends</span> <span class="title">animal</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> pig_sum=<span class="number">0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">pig</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.sum++;</span><br><span class="line">		pig_sum++;</span><br><span class="line">		System.out.println(<span class="string">"我是猪，是第"</span>+pig_sum+<span class="string">"只猪"</span>);</span><br><span class="line">		<span class="keyword">super</span>.show();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-Java">package hw3;
+
+public class pig extends animal{
+    static int pig_sum=0;
+    public pig()
+    {
+
+    }
+    public void show()
+    {
+        super.sum++;
+        pig_sum++;
+        System.out.println(&quot;我是猪，是第&quot;+pig_sum+&quot;只猪&quot;);
+        super.show();
+    }
+
+}
+</code></pre>
 <p>主类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hw3;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">main_animal</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show_interface</span><span class="params">(animal sc)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		sc.show();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Scanner s=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		animal an=<span class="keyword">new</span> animal();</span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"请输入添加的动物类型(dog,cat,pig)(输入exit退出程序)："</span>);</span><br><span class="line">			String m=s.nextLine();</span><br><span class="line">			<span class="keyword">if</span>(m.equals(<span class="string">"exit"</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(<span class="string">"程序已退出"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">switch</span>(m)</span><br><span class="line">			&#123;</span><br><span class="line">			<span class="keyword">case</span>(<span class="string">"dog"</span>):</span><br><span class="line">			&#123;</span><br><span class="line">				an=<span class="keyword">new</span> dog();</span><br><span class="line">				show_interface(an);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">case</span>(<span class="string">"cat"</span>):</span><br><span class="line">			&#123;</span><br><span class="line">				an=<span class="keyword">new</span> cat();</span><br><span class="line">				show_interface(an);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">case</span>(<span class="string">"pig"</span>):</span><br><span class="line">			&#123;</span><br><span class="line">				an=<span class="keyword">new</span> pig();</span><br><span class="line">				show_interface(an);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">			&#123;</span><br><span class="line">				System.out.println(<span class="string">"非法字符,重新输入"</span>);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-Java">package hw3;
+import java.util.*;
+public class main_animal {
+    public static void show_interface(animal sc)
+    {
+        sc.show();
+    }
+    public static void main(String[] args)
+    {
+        Scanner s=new Scanner(System.in);
+        animal an=new animal();
+        while(true)
+        {
+            System.out.println(&quot;请输入添加的动物类型(dog,cat,pig)(输入exit退出程序)：&quot;);
+            String m=s.nextLine();
+            if(m.equals(&quot;exit&quot;))
+            {
+                System.out.println(&quot;程序已退出&quot;);
+                break;
+            }
+            switch(m)
+            {
+            case(&quot;dog&quot;):
+            {
+                an=new dog();
+                show_interface(an);
+                break;
+            }
+            case(&quot;cat&quot;):
+            {
+                an=new cat();
+                show_interface(an);
+                break;
+            }
+            case(&quot;pig&quot;):
+            {
+                an=new pig();
+                show_interface(an);
+                break;
+            }
+            default:
+            {
+                System.out.println(&quot;非法字符,重新输入&quot;);
+                break;
+            }
+            }
+        }
+    }
+}
+</code></pre>
 <p>运行结果:</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -231,7 +343,7 @@
                     <img src="https://s2.ax1x.com/2019/11/29/QkAELR.png" alt="QkAELR.png" title>
                 </div>
                 <div class="image-caption">QkAELR.png</div>
-            </figure>
+            </figure><div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2020/01/03/java-4/">java第四次实验作业</a></li><li><a href="https://1187100546.github.io/2020/01/03/java-3/">java第三次实验作业</a></li><li><a href="https://1187100546.github.io/2019/12/30/java-2/">java第二次实验作业</a></li><li><a href="https://thelighter.github.io/2019/06/16/java-1/">java一键安装所有环境，vscode做到了！</a></li><li><a href="https://lailin.xyz/post/52826.html">java笔记1</a></li></ul></div>
         </div>
 
         <blockquote class="post-copyright">
@@ -239,7 +351,7 @@
     <div class="content">
         
 <span class="post-time">
-    Laatste update: <time datetime="2019-11-29T01:28:20.834Z" itemprop="dateUpdated">2019-11-29 09:28:20</time>
+    Last updated: <time datetime="2019-11-29T01:28:20.834Z" itemprop="dateUpdated">2019-11-29 09:28:20</time>
 </span><br>
 
 
@@ -418,7 +530,7 @@
                     </span>
                     
                         <span>
-                            Deze blog valt onder de <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International Licentie</a>.
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>
