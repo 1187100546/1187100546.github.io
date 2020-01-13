@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>DVWA-Brute_Force暴力破解 | 花花的blog | 厚积薄发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="暴力破解">
+    <meta name="description" content="利用burpsuite暴力破解DVWA的Brute_Force。">
+<meta name="keywords" content="暴力破解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DVWA-Brute_Force暴力破解">
+<meta property="og:url" content="https://1187100546.github.io/2019/10/22/Brute_Force/index.html">
+<meta property="og:site_name" content="花花的blog">
+<meta property="og:description" content="利用burpsuite暴力破解DVWA的Brute_Force。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/dbGx16ywKJ32Y9t.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/oag5jxbHnJhIQy8.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/zeU52IaT8qSYhpN.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/jEcwLoTW9AgiKdR.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/OjQFxUDV3PBmiuE.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/TdNYEPaJ9vpGfeK.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/Opm7XKfaS1otTZE.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/837G4kexKdzlRaS.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/Gm5AEUr6lTiKd2Y.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/22/JFGd3PfibMpaTZ6.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/Qm0Bb8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/Qm022n.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/Qm0q2R.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QmB8s0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QmBtdU.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QmBrsx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QmBcdO.png">
+<meta property="og:updated_time" content="2019-12-02T06:34:45.840Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DVWA-Brute_Force暴力破解">
+<meta name="twitter:description" content="利用burpsuite暴力破解DVWA的Brute_Force。">
+<meta name="twitter:image" content="https://i.loli.net/2019/10/22/dbGx16ywKJ32Y9t.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="花花的blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/hua.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="/css/prism/prism-tomorrow-night.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-list-ul"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/OIP.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">huahua</h5>
+          <a href="mailto:1187100546@qq.com" title="1187100546@qq.com" class="mail">1187100546@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/1187100546"  >
+                <i class="icon icon-lg icon-github"></i>
+                github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-info-circle"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">DVWA-Brute_Force暴力破解</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">DVWA-Brute_Force暴力破解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-22T12:53:42.000Z" itemprop="datePublished" class="page-time">
+  2019-10-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/暴力破解/">暴力破解</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#级别：low"><span class="post-toc-number">1.</span> <span class="post-toc-text">级别：low</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、配置burpsuite"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一、配置burpsuite</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、寻找注入点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">二、寻找注入点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第一种："><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">第一种：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第二种："><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">第二种：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三种："><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">第三种：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第四种："><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">第四种：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三、攻击"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">三、攻击</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#级别：medium"><span class="post-toc-number">2.</span> <span class="post-toc-text">级别：medium</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Brute-Force-Source"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Brute Force Source</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#级别：high"><span class="post-toc-number">3.</span> <span class="post-toc-text">级别：high</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Brute-Force-Source-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Brute Force Source</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Brute_Force"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">DVWA-Brute_Force暴力破解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-22 20:53:42" datetime="2019-10-22T12:53:42.000Z"  itemprop="datePublished">2019-10-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/暴力破解/">暴力破解</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>利用burpsuite暴力破解DVWA的Brute_Force。</p>
+<a id="more"></a>
+<h2 id="级别：low"><a href="#级别：low" class="headerlink" title="级别：low"></a>级别：low</h2><h3 id="一、配置burpsuite"><a href="#一、配置burpsuite" class="headerlink" title="一、配置burpsuite"></a>一、配置burpsuite</h3><p>打开火狐浏览器，工具栏里找到preferences,找到network proxy,点击settings,填写如下配置</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/22/dbGx16ywKJ32Y9t.png" alt="~`KHUGAWJ8ZXHWWKAC``3~S.png" title>
+                </div>
+                <div class="image-caption">~`KHUGAWJ8ZXHWWKAC``3~S.png</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/22/oag5jxbHnJhIQy8.png" alt="DH136K_XS4P1DIU_UWK7_R5.png" title>
+                </div>
+                <div class="image-caption">DH136K_XS4P1DIU_UWK7_R5.png</div>
+            </figure>
+<p>打开burpsuite,勾选代理即可</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/22/zeU52IaT8qSYhpN.png" alt="2KIR_2_A1X2TVG54_Z_@C96.png" title>
+                </div>
+                <div class="image-caption">2KIR_2_A1X2TVG54_Z_@C96.png</div>
+            </figure>
+<p>先关闭proxy里的intercept，先不拦截</p>
+<h3 id="二、寻找注入点"><a href="#二、寻找注入点" class="headerlink" title="二、寻找注入点"></a>二、寻找注入点</h3><p>先进入DVWA页面，安全等级设置位low,再进入暴力破解的页面</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/22/jEcwLoTW9AgiKdR.png" alt="C0_0_CWB_ISDUO_RCNCS45I.png" title>
+                </div>
+                <div class="image-caption">C0_0_CWB_ISDUO_RCNCS45I.png</div>
+            </figure>
+<p>输入用户名</p>
+<pre><code class="lang-bash">admin
+</code></pre>
+<p>密码</p>
+<pre><code class="lang-bash">123
+</code></pre>
+<p>开启burp suite拦截，登陆</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/22/OjQFxUDV3PBmiuE.png" alt="H_HLQGD19_DF_ODPW_@385T.png" title>
+                </div>
+                <div class="image-caption">H_HLQGD19_DF_ODPW_@385T.png</div>
+            </figure>
+<p>选中全部内容，右键发送给intruder</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/22/TdNYEPaJ9vpGfeK.png" alt="2Y19__1WHZ__RQM@9K__BLX.png" title>
+                </div>
+                <div class="image-caption">2Y19__1WHZ__RQM@9K__BLX.png</div>
+            </figure>
+<p>点clear清除全部变量，选中123，点add，添加变量</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/22/Opm7XKfaS1otTZE.png" alt="O@P_AL@_P1IU`E~MU5A7X_Q.png" title>
+                </div>
+                <div class="image-caption">O@P_AL@_P1IU`E~MU5A7X_Q.png</div>
+            </figure>
+<p>在payloads里添加破解字典</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/22/837G4kexKdzlRaS.png" alt="0EA__K`9T_QD_WXGC7_1_@S.png" title>
+                </div>
+                <div class="image-caption">0EA__K`9T_QD_WXGC7_1_@S.png</div>
+            </figure>
+<p>下面就可以攻击了</p>
+<p>burp suite的攻击类型</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/22/Gm5AEUr6lTiKd2Y.png" alt="5C`_M8L_Q_D_X_AT_`___@J.png" title>
+                </div>
+                <div class="image-caption">5C`_M8L_Q_D_X_AT_`___@J.png</div>
+            </figure>
+<h4 id="第一种："><a href="#第一种：" class="headerlink" title="第一种："></a>第一种：</h4><p>Sniper标签 这个是我们最常用的，Sniper是狙击手的意思。这个模式会使用单一的payload【就是导入字典的payload】组。它会针对每个position中$$位置设置payload。这种攻击类型适合对常见漏洞中的请求参数单独地进行测试。攻击中的请求总数应该是position数量和payload数量的乘积。</p>
+<h4 id="第二种："><a href="#第二种：" class="headerlink" title="第二种："></a>第二种：</h4><p>Battering ram – 这一模式是使用单一的payload组。它会重复payload并且一次把所有相同的payload放入指定的位置中。这种攻击适合那种需要在请求中把相同的输入放到多个位置的情况。请求的总数是payload组中payload的总数。简单说就是一个playload字典同时应用到多个position中</p>
+<h4 id="第三种："><a href="#第三种：" class="headerlink" title="第三种："></a>第三种：</h4><p>Pitchfork – 这一模式是使用多个payload组。对于定义的位置可以使用不同的payload组。攻击会同步迭代所有的payload组，把payload放入每个定义的位置中。比如：position中A处有a字典，B处有b字典，则a【1】将会对应b【1】进行attack处理，这种攻击类型非常适合那种不同位置中需要插入不同但相关的输入的情况。请求的数量应该是最小的payload组中的payload数量</p>
+<h4 id="第四种："><a href="#第四种：" class="headerlink" title="第四种："></a>第四种：</h4><p>Cluster bomb – 这种模式会使用多个payload组。每个定义的位置中有不同的payload组。攻击会迭代每个payload组，每种payload组合都会被测试一遍。比如：position中A处有a字典，B处有b字典，则两个字典将会循环搭配组合进行attack处理这种攻击适用于那种位置中需要不同且不相关或者未知的输入的攻击。攻击请求的总数是各payload组中payload数量的乘积。</p>
+<h3 id="三、攻击"><a href="#三、攻击" class="headerlink" title="三、攻击"></a>三、攻击</h3><p>选择sniper攻击方式，开始攻击</p>
+<p>根据攻击结果的length来判断是否成功</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/10/22/JFGd3PfibMpaTZ6.png" alt="R_OTHC_P6_X_`_ZWAN_O_`I.png" title>
+                </div>
+                <div class="image-caption">R_OTHC_P6_X_`_ZWAN_O_`I.png</div>
+            </figure>
+<p>攻击成功，密码为password</p>
+<p><del>此法适用各个安全等级</del></p>
+<p><strong><code>之前说法有误，此法并不适合各个等级</code></strong></p>
+<h2 id="级别：medium"><a href="#级别：medium" class="headerlink" title="级别：medium"></a>级别：medium</h2><h3 id="Brute-Force-Source"><a href="#Brute-Force-Source" class="headerlink" title="Brute Force Source"></a>Brute Force Source</h3><pre><code class="lang-php">&lt;?php
+
+if( isset( $_GET[ &#39;Login&#39; ] ) ) {
+    // Sanitise username input
+    $user = $_GET[ &#39;username&#39; ];
+    $user = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $user ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Sanitise password input
+    $pass = $_GET[ &#39;password&#39; ];
+    $pass = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+    $pass = md5( $pass );
+
+    // Check the database
+    $query  = &quot;SELECT * FROM `users` WHERE user = &#39;$user&#39; AND password = &#39;$pass&#39;;&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+
+    if( $result &amp;&amp; mysqli_num_rows( $result ) == 1 ) {
+        // Get users details
+        $row    = mysqli_fetch_assoc( $result );
+        $avatar = $row[&quot;avatar&quot;];
+
+        // Login successful
+        echo &quot;&lt;p&gt;Welcome to the password protected area {$user}&lt;/p&gt;&quot;;
+        echo &quot;&lt;img src=\&quot;{$avatar}\&quot; /&gt;&quot;;
+    }
+    else {
+        // Login failed
+        sleep( 2 );
+        echo &quot;&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;&quot;;
+    }
+
+    ((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);
+}
+
+?&gt;
+</code></pre>
+<p>medium加了错误密码延迟，low级别的方法还是适用，就是花费时间更长</p>
+<h2 id="级别：high"><a href="#级别：high" class="headerlink" title="级别：high"></a>级别：high</h2><h3 id="Brute-Force-Source-1"><a href="#Brute-Force-Source-1" class="headerlink" title="Brute Force Source"></a>Brute Force Source</h3><pre><code class="lang-php">&lt;?php
+
+if( isset( $_GET[ &#39;Login&#39; ] ) ) {
+    // Check Anti-CSRF token
+    checkToken( $_REQUEST[ &#39;user_token&#39; ], $_SESSION[ &#39;session_token&#39; ], &#39;index.php&#39; );
+
+    // Sanitise username input
+    $user = $_GET[ &#39;username&#39; ];
+    $user = stripslashes( $user );
+    $user = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $user ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Sanitise password input
+    $pass = $_GET[ &#39;password&#39; ];
+    $pass = stripslashes( $pass );
+    $pass = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+    $pass = md5( $pass );
+
+    // Check database
+    $query  = &quot;SELECT * FROM `users` WHERE user = &#39;$user&#39; AND password = &#39;$pass&#39;;&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+
+    if( $result &amp;&amp; mysqli_num_rows( $result ) == 1 ) {
+        // Get users details
+        $row    = mysqli_fetch_assoc( $result );
+        $avatar = $row[&quot;avatar&quot;];
+
+        // Login successful
+        echo &quot;&lt;p&gt;Welcome to the password protected area {$user}&lt;/p&gt;&quot;;
+        echo &quot;&lt;img src=\&quot;{$avatar}\&quot; /&gt;&quot;;
+    }
+    else {
+        // Login failed
+        sleep( rand( 0, 3 ) );
+        echo &quot;&lt;pre&gt;&lt;br /&gt;Username and/or password incorrect.&lt;/pre&gt;&quot;;
+    }
+
+    ((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);
+}
+
+// Generate Anti-CSRF token
+generateSessionToken();
+
+?&gt;
+</code></pre>
+<p>加了 user_token 一个随机值，来防止用户多次提交</p>
+<p>抓包，选择Pitchfork攻击类型，添加爆破的参数 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2019/12/01/Qm0Bb8.png" alt="Qm0Bb8.png" title>
+                </div>
+                <div class="image-caption">Qm0Bb8.png</div>
+            </figure></p>
+<p>options中选择单线程</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2019/12/01/Qm022n.png" alt="Qm022n.png" title>
+                </div>
+                <div class="image-caption">Qm022n.png</div>
+            </figure>
+<p> Options中找到Rediections模块，选择always，允许重定向 </p>
+<p><img src="https://s2.ax1x.com/2019/12/01/Qm0q2R.png" alt="Qm0q2R.png"></p>
+<p> 在Options中找到Grep-Extract模块，点击Add，并设置筛选条件，得到user_token </p>
+<p><img src="https://s2.ax1x.com/2019/12/01/QmB8s0.png" alt="QmB8s0.png"></p>
+<p> 在Payloads中为选择的参数设置字典 </p>
+<p><img src="https://s2.ax1x.com/2019/12/01/QmBtdU.png" alt="QmBtdU.png"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2019/12/01/QmBrsx.png" alt="QmBrsx.png" title>
+                </div>
+                <div class="image-caption">QmBrsx.png</div>
+            </figure>
+<p>开始攻击</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s2.ax1x.com/2019/12/01/QmBcdO.png" alt="QmBcdO.png" title>
+                </div>
+                <div class="image-caption">QmBcdO.png</div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-12-02T06:34:45.840Z" itemprop="dateUpdated">2019-12-02 14:34:45</time>
+</span><br>
+
+
+        
+        文章发布地址：<a href="/2019/10/22/Brute_Force/" target="_blank" rel="external">https://1187100546.github.io/2019/10/22/Brute_Force/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://1187100546.github.io">
+            <img src="/img/avatar.jpg" alt="huahua">
+            huahua
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/暴力破解/">暴力破解</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/22/Brute_Force/&title=《DVWA-Brute_Force暴力破解》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/22/Brute_Force/&title=《DVWA-Brute_Force暴力破解》 — 花花的blog&source=利用burpsuite暴力破解DVWA的Brute_Force。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/22/Brute_Force/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DVWA-Brute_Force暴力破解》 — 花花的blog&url=https://1187100546.github.io/2019/10/22/Brute_Force/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/22/Brute_Force/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/10/23/算法实验2/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">算法实验（二）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/22/算法实验1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">算法实验（一）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment v" id="vcomments"></div>
+    <!-- <div class="comment" id="comment"></div> -->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script>
+    <!-- <script src="//t1.aixinxi.net/o_1c3n4pim01nl3jg91b6l1kjtkvsa.js"></script> -->
+    <!-- <script src="/js/Valine.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cat.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            av: AV,
+            // el: '#comments',
+            el: '#vcomments',
+            emoticon_url: 'https://abelsu7.top/alu', //表情图片网址
+            emoticon_list: ["赞一个.png","坐等.png","长草.png","阴暗.png","邪恶.png","小眼睛.png","想一想.png","献黄瓜.png","献花.png","喜极而泣.png","无语.png","无所谓.png","无奈.png","投降.png","深思.png","期待.png","狂汗.png","蜡烛.png","看不见.png","惊喜.png","击掌.png","欢呼.png","得意.png","不出所料.png","观察.png"],//表情图片文件名
+            // notify: 'false' == 'false',
+            // verify: 'false' == 'false',
+            // notify: 'false',
+            // verify: 'false',
+            notify: false,
+            verify: false,
+            appId: "xOsugK8HFYdHC2hNGosWRjdn-gzGzoHsz",
+            appKey: "Azvn66MvIyLs9e2BrEzuWDcC",
+            avatar: "mp",
+            placeholder: "Write a comment",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢支持！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-item switch">切换</span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+            <p>
+                
+                    <span>
+                        <a href="/atom.xml" target="_blank" class="rss" title="rss">
+                            <i class="icon icon-lg icon-rss"></i>
+                        </a>
+                    </span>
+                    
+                        <span>
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+                        </span>
+            </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                huahua &copy;
+                    
+                        2018 -
+                            
+                                2020
+            </span>
+            <span>
+                
+                        Power by
+                        <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+                        <a href="https://github.com/abelsu7/hexo-theme-indigo-plus" target="_blank">indigo plus</a>
+                        <p>Hosted by <a href="https://pages.github.com" target="_blank" style="font-weight: bold">Github Pages</a></p>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<a href="javascript:;" id="gobottom" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-comments"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/22/Brute_Force/&title=《DVWA-Brute_Force暴力破解》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/22/Brute_Force/&title=《DVWA-Brute_Force暴力破解》 — 花花的blog&source=利用burpsuite暴力破解DVWA的Brute_Force。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/22/Brute_Force/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DVWA-Brute_Force暴力破解》 — 花花的blog&url=https://1187100546.github.io/2019/10/22/Brute_Force/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/22/Brute_Force/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACO0lEQVR42u3aQW7DMAwF0dz/0i7QVYtG9nzSKWBqtAqcRNHTghFJvV54HN/j75OfY/Xuagb+W7cNGTJkPJZxnI7zqVefXH33HE8+v/yuDBkyNmDw6cgWrGYgi+PbJ0OGDBlkEWmQPT9onr+WIUOGjFrATWE8HMuQIUNGLYnlT/rJ6gdzcRkyZDyQkRbr//P1B/sbMmTIeAjjCEdaaKu1B+JVyZAhYzSDFL/IBYv0OJiW21A4liFDxlAGD3m1khlPYtNtfRNqZciQMZRxV4uRz0CKZeRdGTJk7MngtSxeFEsvYfBiH0piZciQMYKRBr5Ogawzw8UaZMiQsQ0j/eHOMfGuCxZvAq4MGTJGM9IyWS0c1y5wXMwpQ4aM0Yxa4pqmpv0yXPo3IEOGjEmMWouRHBBrLYdiIJYhQ8ZoBi/r81JausQam2+xDBkyns7oJ5x8pFvAS3syZMjYh1F7nbYk+8nwxYUwGTJkjGPw61ydlLV/+Cum2TJkyBjE6IQ5crGMXz7jFz7Qv4cMGTJGMPpXwfiT9EAZbIoMGTI2YNRK+efPeepbm//XzDJkyBjNqBXla+V+3gqtXeyQIUPGVMYRDrL0dCNqLQcZMmTsw0ivSpDyfVos4wutXdGQIUPGDAYPsrVS2l3tgYvSmwwZMjZg9I9rvFT3Ko2gEytDhoyNGbUgWzvqxWmzDBkyZIQ5cSc0k4Ng62goQ4aMxzJ4M4Bf8+IFO14LvAi4MmTIGMroNwb6Lcx+k0CGDBlDGV/hIKh2cN4/wQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/node-waves@0.7.6/src/js/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="/js/prism.min.js?v=1.7.2"></script>
+<script src="/js/prism-vim.min.js?v=1.7.2"></script>
+</body>
+</html>

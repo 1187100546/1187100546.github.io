@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>算法实验（二） | 花花的blog | 厚积薄发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="算法">
+    <meta name="description" content="算法实验二。">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法实验（二）">
+<meta property="og:url" content="https://1187100546.github.io/2019/10/23/算法实验2/index.html">
+<meta property="og:site_name" content="花花的blog">
+<meta property="og:description" content="算法实验二。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-09T09:08:30.501Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法实验（二）">
+<meta name="twitter:description" content="算法实验二。">
+    
+        <link rel="alternate" type="application/atom+xml" title="花花的blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/hua.jpg">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="/css/prism/prism-tomorrow-night.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-list-ul"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/OIP.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">huahua</h5>
+          <a href="mailto:1187100546@qq.com" title="1187100546@qq.com" class="mail">1187100546@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/1187100546"  >
+                <i class="icon icon-lg icon-github"></i>
+                github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-info-circle"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">算法实验（二）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">算法实验（二）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-23T09:00:40.000Z" itemprop="datePublished" class="page-time">
+  2019-10-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题-A-最长公共子序列"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题 A: 最长公共子序列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输入"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">样例输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输出"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">样例输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提示"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">提示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题-B-矩阵连乘"><span class="post-toc-number">2.</span> <span class="post-toc-text">问题 B: 矩阵连乘</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输入-1"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">样例输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输出-1"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">样例输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提示-1"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">提示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码-1"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题-C-01背包问题"><span class="post-toc-number">3.</span> <span class="post-toc-text">问题 C: 01背包问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出-2"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输入-2"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">样例输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输出-2"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">样例输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提示-2"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">提示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码-2"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题-D-最大子段和"><span class="post-toc-number">4.</span> <span class="post-toc-text">问题 D: 最大子段和</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述-3"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入-3"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出-3"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输入-3"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">样例输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输出-3"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">样例输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提示-3"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">提示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码-3"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题-E-汽水瓶【25】"><span class="post-toc-number">5.</span> <span class="post-toc-text">问题 E: 汽水瓶【25】</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述-4"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入-4"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出-4"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输入-4"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">样例输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例输出-4"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">样例输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提示-4"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">提示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码-4"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">代码</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-算法实验2"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">算法实验（二）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-23 17:00:40" datetime="2019-10-23T09:00:40.000Z"  itemprop="datePublished">2019-10-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>算法实验二。</p>
+<a id="more"></a>
+<h2 id="问题-A-最长公共子序列"><a href="#问题-A-最长公共子序列" class="headerlink" title="问题 A: 最长公共子序列"></a>问题 A: 最长公共子序列</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给你一个序列X和另一个序列Z，当Z中的所有元素都在X中存在，并且在X中的下标顺序是严格递增的，那么就把Z叫做X的子序列。<br>例如：Z=<a,b,f,c>是序列X=<a,b,c,f,b,c>的一个子序列，Z中的元素在X中的下标序列为<1,2,4,6>。<br>现给你两个序列X和Y，请问它们的最长公共子序列的长度是多少？</1,2,4,6></a,b,c,f,b,c></a,b,f,c></p>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>输入包含多组测试数据。每组输入占一行，为两个字符串，由若干个空格分隔。每个字符串的长度不超过100。</p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>对于每组输入，输出两个字符串的最长公共子序列的长度。</p>
+<h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>abcfbc abfcab
+programming contest 
+abcd mnp
+</code></pre><h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>4
+2
+0
+</code></pre><h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+/*void LCSlength(int m,int n,char *x,char *y,int  c[105][105],int b[105][105])
+{
+    int i,j;
+    for(i=1;i&lt;=m;i++)
+        c[i][0]=0;
+    for(i=1;i&lt;=n;i++)
+        c[0][i]=0;
+    for(i=1;i&lt;=m;i++)
+    {
+        for(j=1;j&lt;=n;j++)
+        {
+            if(x[i]==y[i])
+            {
+                c[i][j]=c[i-1][j-1]+1;
+                b[i][j]=1;
+            }
+            else if(c[i-1][j]&gt;=c[i][j-1])
+            {
+                c[i][j]=c[i-1][j];
+                b[i][j]=2;
+            }
+            else
+            {
+                c[i][j]=c[i][j-1];
+                b[i][j]=3;
+            }
+        }
+    }
+ }
+ */
+ int main()
+ {
+    char x[105],y[105];
+    int c[105][105];
+    while(cin&gt;&gt;x+1)
+    {
+        cin&gt;&gt;y+1;
+        int m=strlen(x+1);
+        int n=strlen(y+1);
+        for(int i=0;i&lt;=m;i++)
+            c[0][i]=0;
+        for(int i=0;i&lt;=n;i++)
+            c[i][0]=0;
+        /*for(int i=0;i&lt;=105;i++)
+        {
+            for(int j=0;j&lt;=105;j++)
+            {
+                c[i][j]=0;
+                b[i][j]=0;
+             }
+         }*/
+         for(int i=1;i&lt;=m;i++)
+         {
+            for(int j=1;j&lt;=n;j++)
+            {
+                if(x[i]==y[j])
+                    c[i][j]=c[i-1][j-1]+1;
+                else
+                    c[i][j]=max(c[i-1][j],c[i][j-1]);
+             }
+         }
+
+        //cout&lt;&lt;x+1&lt;&lt;y+1&lt;&lt;endl;
+        //cout&lt;&lt;m&lt;&lt;n&lt;&lt;endl;
+        cout&lt;&lt;c[m][n]&lt;&lt;endl;
+     }
+     return 0;
+ }
+</code></pre>
+<h2 id="问题-B-矩阵连乘"><a href="#问题-B-矩阵连乘" class="headerlink" title="问题 B: 矩阵连乘"></a>问题 B: 矩阵连乘</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定n个矩阵{A1,A2,…,An}，及m个矩阵连乘的表达式，判断每个矩阵连乘表达式是否满足矩阵乘法法则，如果满足，则计算矩阵的最小连乘次数，如果不满足输出“MengMengDa“。</p>
+<h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h3><p>输入数据由多组数据组成（不超过10组样例）。每组数据格式如下：<br>第一行是2个整数n (1≤n≤26)和m(1≤m≤3)，表示矩阵的个数。<br>接下来n行，每行有一个大写字母，表示矩阵的名字，后面有两个整数r和c，分别表示该矩阵的行数和列数，其中1&lt;r, c&lt;100。<br>第n+1行到第n+m行，每行是一个矩阵连乘的表达式(2&lt;=矩阵个数&lt;=100)。</p>
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><p>对于每个矩阵连乘表达式，如果运算不满足矩阵乘法法则的情况（即左矩阵列数与右矩阵的行数不同），则输出“MengMengDa”，否则输出最小矩阵连乘次数。</p>
+<p>数据保证结果不超过1e9。</p>
+<h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>3 2
+A 10 100
+B 5 50
+C 100 5
+ACB
+ABC
+</code></pre><h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>7500
+MengMengDa
+</code></pre><h3 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-c++">#include&lt;iostream&gt;
+#include&lt;string.h&gt;
+using namespace std;
+int m[105][105]={0};
+int p[200];
+int maxchain(int n)
+{
+    for(int i=1;i&lt;=n;i++)
+    {
+        m[i][i]=0;
+    }
+    for(int r=2;r&lt;=n;r++)
+    {
+        for(int i=1;i&lt;=n-r+1;i++)
+        {
+            int j=i+r-1;
+            m[i][j]=m[i+1][j]+p[i-1]*p[i]*p[j];
+            for(int k=i+1;k&lt;j;k++)
+            {
+                int t=m[i][k]+m[k+1][j]+p[i-1]*p[k]*p[j];
+                if(t&lt;m[i][j])
+                {
+                    m[i][j]=t;
+                }
+            }
+        }
+    }
+    return m[1][n];
+}
+int main()
+{
+    int n,m;
+    while(cin&gt;&gt;n&gt;&gt;m)
+    {
+
+        char chain[30];
+        int h[30];
+        int l[30];
+        for(int i=0;i&lt;n;i++)
+        {
+            cin&gt;&gt;chain[i]&gt;&gt;h[i]&gt;&gt;l[i];
+        }
+        char test[3][105];
+        for(int i=0;i&lt;m;i++)
+        {
+            cin&gt;&gt;test[i];
+        }
+        int key;
+        for(int i=0;i&lt;m;i++)
+        {
+            for(int j=0;j&lt;n;j++)
+            {
+                if(test[i][0]==chain[j])
+                {
+                    key=j;
+                    break;
+                }
+            }
+            p[0]=h[key];
+            p[1]=l[key];
+            int len=strlen(test[i]);
+            int flag=1;
+            for(int k=1;k&lt;len;k++)
+            {
+                for(int j=0;j&lt;n;j++)
+                {
+                    if(test[i][k]==chain[j])
+                    {
+                        key=j;
+                        break;
+                    }
+                }
+                if(p[k]==h[key])
+                {
+                    p[k+1]=l[key];
+                }
+                else
+                {
+                    cout&lt;&lt;&quot;MengMengDa&quot;&lt;&lt;endl;
+                    flag=0;
+                    break;
+                }
+            }
+            if(flag==1)
+            {
+                cout&lt;&lt;maxchain(len)&lt;&lt;endl;
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="问题-C-01背包问题"><a href="#问题-C-01背包问题" class="headerlink" title="问题 C: 01背包问题"></a>问题 C: 01背包问题</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>已知有N种物品和一个可容纳C重量的背包。每种物品i的重量为Wi，价值为Pi。那么，采用怎样的装包方法才会使装入背包物品的总价值最大。</p>
+<h3 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h3><p>包含多组测试数据。第一行为一个整数T(1&lt;=T&lt;=10)，代表测试数据个数。</p>
+<p>接下来有T组测试数据。每组测试数据第一行为背包的重量C(C&lt;10000)和物品个数N(N&lt;1000)。接下来的N行分别为物品的重量cost(1&lt;=cost&lt;=100)和价值val(1&lt;=val&lt;=3000000)。（注意：结果可能超过int范围）</p>
+<h3 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h3><p>对每组测试数据，输出其对应的所装物品的最大价值。</p>
+<h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>1
+10 5
+2 6
+2 3
+6 5
+5 4
+4 6
+</code></pre><h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>15
+</code></pre><h3 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+    long long w[10010],v[10010],dp[10010];
+    int t,m,n;
+    cin&gt;&gt;t;
+    while(t--)
+    {
+        cin&gt;&gt;m&gt;&gt;n;
+        for(int i=1;i&lt;=n;i++)
+        {
+            cin&gt;&gt;w[i]&gt;&gt;v[i];
+        }
+        memset(dp,0,sizeof(dp));
+        for(int i=1;i&lt;=n;i++)
+        {
+            for(int j=m;j&gt;=w[i];j--)
+            {
+                dp[j]=max(dp[j],dp[j-w[i]]+v[i]);
+            }
+        }
+        for(int i=m;i&gt;=2;i--)
+        {
+            if(dp[i]!=dp[i-1])
+            {
+                cout&lt;&lt;dp[i]&lt;&lt;endl;
+                break;
+            }
+        }
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="问题-D-最大子段和"><a href="#问题-D-最大子段和" class="headerlink" title="问题 D: 最大子段和"></a>问题 D: 最大子段和</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定n个整数组成的序列a1,a2,…an, 求子段和ai+ai+1+…+aj（子段可为空集）的最大值。</p>
+<h3 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h3><p>包含多组测试数据。第一行为一个整数T(1&lt;=T&lt;=20)，代表测试数据个数。</p>
+<p>每组测试数据第一行为一个整数n，代表有n个整数(1&lt;=n&lt;=10000)。</p>
+<p>接下来一行有n个数x(-1000&lt;=x&lt;=1000)。</p>
+<h3 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h3><p>输出其对应的最大子段和。</p>
+<h3 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>1
+6
+2 -11 4 13 -1 2
+</code></pre><h3 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>18
+</code></pre><h3 id="提示-3"><a href="#提示-3" class="headerlink" title="提示"></a>提示</h3><p>子段可为空集，答案为0</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int a[10010];
+int sum=0;
+int maxsum(int n)
+{
+    int b=0;
+    for(int i=0;i&lt;n;i++)
+    {
+        if(b&gt;0)
+        {
+            b+=a[i];
+        }
+        else
+        {
+            b=a[i];
+        }
+        if(b&gt;sum)
+        {
+            sum=b;
+        }
+    }
+}
+int main()
+{
+    int t;
+    cin&gt;&gt;t;
+    while(t--)
+    {
+        int k;
+        cin&gt;&gt;k;
+        for(int i=0;i&lt;k;i++)
+        {
+            cin&gt;&gt;a[i];
+        }
+        maxsum(k);
+        cout&lt;&lt;sum&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="问题-E-汽水瓶【25】"><a href="#问题-E-汽水瓶【25】" class="headerlink" title="问题 E: 汽水瓶【25】"></a>问题 E: 汽水瓶【25】</h2><h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p>有这样一道智力题：“某商店规定：三个空汽水瓶可以换一瓶汽水。小张手上有十个空汽水瓶，她最多可以换多少瓶汽水喝？”答案是5瓶，方法如下：先用9个空瓶子换3瓶汽水，喝掉3瓶满的，喝完以后4个空瓶子，用3个再换一瓶，喝掉这瓶满的，这时候剩2个空瓶子。然后你让老板先借给你一瓶汽水，喝掉这瓶满的，喝完以后用3个空瓶子换一瓶满的还给老板。如果小张手上有n个空汽水瓶，最多可以换多少瓶汽水喝？</p>
+<h3 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h3><p>输入文件最多包含10组测试数据，每个数据占一行，仅包含一个正整数n(1≤n≤100)，表示小张手上的空汽水瓶数。n=0表示输入结束，你的程序不应当处理这一行。</p>
+<h3 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h3><p>对于每组测试数据，输出一行，表示最多可以喝的汽水瓶数。如果一瓶也喝不到，输出 0</p>
+<h3 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h3><pre><code>3
+10
+81
+0
+</code></pre><h3 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h3><pre><code>1
+5
+40
+</code></pre><h3 id="提示-4"><a href="#提示-4" class="headerlink" title="提示"></a>提示</h3><h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><pre><code class="lang-c++">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+using namespace std;
+int main(){
+    int n,sum=0; 
+    while(cin&gt;&gt;n&amp;&amp;n!=0){
+        sum=0;
+        while(n&gt;2){
+            sum+=n/3;
+            n=(n%3)+(n/3);
+        }
+        if(n==2)    sum++;
+        cout&lt;&lt;sum&lt;&lt;endl;
+    }
+}
+</code></pre>
+<div><strong>🚩推荐阅读</strong>（由<a href="https://github.com/huiwang/hexo-recommended-posts">hexo文章推荐插件</a>驱动）<ul><li><a href="https://1187100546.github.io/2019/10/28/算法实验考试/">算法实验考试</a></li><li><a href="https://1187100546.github.io/2019/10/26/算法实验作业/">算法实验作业</a></li><li><a href="https://1187100546.github.io/2019/10/25/算法实验4/">算法实验（四）</a></li><li><a href="www.chunlife.top/2019/05/26/检查回文数/">检查回文数</a></li><li><a href="chunlife.top/2019/05/26/检查回文数/">检查回文数</a></li></ul></div>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-11-09T09:08:30.501Z" itemprop="dateUpdated">2019-11-09 17:08:30</time>
+</span><br>
+
+
+        
+        文章发布地址：<a href="/2019/10/23/算法实验2/" target="_blank" rel="external">https://1187100546.github.io/2019/10/23/算法实验2/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://1187100546.github.io">
+            <img src="/img/avatar.jpg" alt="huahua">
+            huahua
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/23/算法实验2/&title=《算法实验（二）》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/23/算法实验2/&title=《算法实验（二）》 — 花花的blog&source=算法实验二。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/23/算法实验2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法实验（二）》 — 花花的blog&url=https://1187100546.github.io/2019/10/23/算法实验2/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/23/算法实验2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/10/24/算法实验3/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">算法实验（三）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/10/22/Brute_Force/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">DVWA-Brute_Force暴力破解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment v" id="vcomments"></div>
+    <!-- <div class="comment" id="comment"></div> -->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script>
+    <!-- <script src="//t1.aixinxi.net/o_1c3n4pim01nl3jg91b6l1kjtkvsa.js"></script> -->
+    <!-- <script src="/js/Valine.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cat.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            av: AV,
+            // el: '#comments',
+            el: '#vcomments',
+            emoticon_url: 'https://abelsu7.top/alu', //表情图片网址
+            emoticon_list: ["赞一个.png","坐等.png","长草.png","阴暗.png","邪恶.png","小眼睛.png","想一想.png","献黄瓜.png","献花.png","喜极而泣.png","无语.png","无所谓.png","无奈.png","投降.png","深思.png","期待.png","狂汗.png","蜡烛.png","看不见.png","惊喜.png","击掌.png","欢呼.png","得意.png","不出所料.png","观察.png"],//表情图片文件名
+            // notify: 'false' == 'false',
+            // verify: 'false' == 'false',
+            // notify: 'false',
+            // verify: 'false',
+            notify: false,
+            verify: false,
+            appId: "xOsugK8HFYdHC2hNGosWRjdn-gzGzoHsz",
+            appKey: "Azvn66MvIyLs9e2BrEzuWDcC",
+            avatar: "mp",
+            placeholder: "Write a comment",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢支持！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatpay.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatpay.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-item switch">切换</span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+            <p>
+                
+                    <span>
+                        <a href="/atom.xml" target="_blank" class="rss" title="rss">
+                            <i class="icon icon-lg icon-rss"></i>
+                        </a>
+                    </span>
+                    
+                        <span>
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+                        </span>
+            </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                huahua &copy;
+                    
+                        2018 -
+                            
+                                2020
+            </span>
+            <span>
+                
+                        Power by
+                        <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+                        <a href="https://github.com/abelsu7/hexo-theme-indigo-plus" target="_blank">indigo plus</a>
+                        <p>Hosted by <a href="https://pages.github.com" target="_blank" style="font-weight: bold">Github Pages</a></p>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<a href="javascript:;" id="gobottom" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-comments"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/10/23/算法实验2/&title=《算法实验（二）》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/2019/10/23/算法实验2/&title=《算法实验（二）》 — 花花的blog&source=算法实验二。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/2019/10/23/算法实验2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法实验（二）》 — 花花的blog&url=https://1187100546.github.io/2019/10/23/算法实验2/&via=https://1187100546.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/2019/10/23/算法实验2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3aQZKjMAwF0Nz/0pltV80A/8tJ12Aeqy6KYD8WalnS6xVf7x/XzzvJ83//Nlnr9Y0LAwPjtoz36TVjJFts1734KBgYGA9gJEue/52Az7ebvP/wPgYGBkb56jYRTHgYGBgYs221CWV+AMbAwMCYHWJnIXL2/BfP4hgYGDdkzMpkv/P3V/obGBgYt2K8yytPE/N2Qh5eD3eFgYGxNSMPcHlClofUlbQPAwPjyYy2ZNYW2to0NL+DgYGxKyPZYrKtJFy2b8hLfhgYGHszVhK4hN02MleanRgYGE9gJBs9D6950GxbpFHgxsDAeDBj+NK4TNaG5sO1MDAwNmXk4w5FihbjZ2MW/3geAwPjAYwkvVsp5a8zLsp/GBgYWzPahWfF/dmwxazBgIGBsR8j/1n+VfI2wMr4xbCDioGBcXPGbNN50S0/1ubH14sMFwMDYzvG+phF/lFmhbbDN2BgYDyA0Ya8leGMfOSiOE5jYGBszWibkZ86M7Zva0M5BgbGfoy2KD+7MxsdK4Y8MDAwHsP4bKFt1p5MguxFwMXAwNiUkTcm262cr9IW2g4xGBgYmzLe5ZUH0/ZQmqSGF8U1DAyMTRltmGs3nbcEVkI2BgbGExizzSUtgTbdbKkYGBhPY7RjWyvp3cp/gEMkBgYGxvIz6xut50QwMDAwysDajmicf4ivBFwMDIz/npEcYs+Xbw+6syQSAwPjmYx2xCEZv0iWaQc4PtDUxMDAuB/jD90j2xljrswlAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/node-waves@0.7.6/src/js/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="/js/prism.min.js?v=1.7.2"></script>
+<script src="/js/prism-vim.min.js?v=1.7.2"></script>
+</body>
+</html>
