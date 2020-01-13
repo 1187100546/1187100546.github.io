@@ -1,3 +1,4 @@
+
 <footer id="footer">
     <div class="outer">
         <div id="footer-info">
@@ -5,28 +6,54 @@
                 <i class="fa fa-copyright"></i> 
                 <% if (theme.since && !isNaN(theme.since) && theme.since < date(new Date(), 'YYYY')) { %><%- theme.since%>-<% } %><%= date(new Date(), 'YYYY') %> <%= config.author || config.title %>
             </div>
+ 
+ 
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="<%= __('tooltip.Hexo') %>">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="<%= __('tooltip.Yelee') %>  v<%= theme.Yelee %>">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
+ 
+ 
         <% if (theme.visit_counter.on) { %>
+ 
+ 
             <div class="visit">
                 <% if (theme.visit_counter.site_visit) { %>
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="<%= __('visit_counter.site') %>"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                    <span style='display:inline'>
+                        <span id="site-visit" title="<%= __('visit_counter.site') %>"><i class="fa fa-user" aria-hidden="true"></i>本站总访问量<span id="busuanzi_value_site_pv"></span>次
                         </span>
                     </span>
                 <% } %>
+ 
+ 
                 <% if (theme.visit_counter.site_visit && theme.visit_counter.page_visit) { %>
                     <span>| </span>
                 <% } %>
+ 
+ 
                 <% if (theme.visit_counter.page_visit) { %>
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="<%= __('visit_counter.page') %>"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                    <span style='display:inline'>
+                        <span id="page-visit"  title="<%= __('visit_counter.page') %>"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i>本页面被访问<span id="busuanzi_value_page_pv"></span>次
                         </span>
                     </span>
                 <% } %>
+ 
+                <% if (theme.visit_counter.site_visit && theme.visit_counter.page_visit) { %>
+                    <span>| </span>
+                <% } %>
+ 
+ 
+                <% if (theme.visit_counter.page_visit) { %>
+                    <span style='display:inline'>
+                        <span id="page-visit"  title="<%= __('visit_counter.page') %>"><i class="fa fa-user" aria-hidden="true"></i>本站访客数<span id="busuanzi_value_site_uv"></span>人
+                        </span>
+                    </span>
+                <% } %>
+ 
+                
             </div>
         <% } %>
     </div>
 </footer>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
