@@ -41,8 +41,9 @@
     
         <link rel="alternate" type="application/atom+xml" title="花花的blog" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="/css/prism/prism-tomorrow-night.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -56,16 +57,16 @@
     <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
+        <i class="icon icon-lg icon-list-ul"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/back_blue.png)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+          <img src="/img/fong.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">huahua</h5>
-          <a href="mailto:1187100546@qq.com" title="1187100546@qq.com" class="mail">1187100546@qq.com</a>
+          <a href="mailto:abelsu7@gmail.com" title="abelsu7@gmail.com" class="mail">abelsu7@gmail.com</a>
         </hgroup>
       </div>
     </div>
@@ -80,36 +81,57 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives/"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                标签
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories/"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://https://github.com/1187100546" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about"  >
-                <i class="icon icon-lg icon-link"></i>
+              <a href="https://github.com/abelsu7"  >
+                <i class="icon icon-lg icon-github"></i>
+                代码
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books/"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies/"  >
+                <i class="icon icon-lg icon-film"></i>
+                影视
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/games/"  >
+                <i class="icon icon-lg icon-gamepad"></i>
+                游戏
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-info-circle"></i>
                 关于
               </a>
             </li>
@@ -131,7 +153,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -172,7 +194,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#级别：low"><span class="post-toc-number">1.</span> <span class="post-toc-text">级别：low</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Stored-XSS-Source"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Stored XSS Source</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#级别：medium"><span class="post-toc-number">2.</span> <span class="post-toc-text">级别：medium</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Stored-XSS-Source-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Stored XSS Source</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#级别：high"><span class="post-toc-number">3.</span> <span class="post-toc-text">级别：high</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Stored-XSS-Source-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Stored XSS Source</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法-2"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">方法</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#级别：low"><span class="post-toc-text">级别：low</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Stored-XSS-Source"><span class="post-toc-text">Stored XSS Source</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析"><span class="post-toc-text">分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法"><span class="post-toc-text">方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#级别：medium"><span class="post-toc-text">级别：medium</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Stored-XSS-Source-1"><span class="post-toc-text">Stored XSS Source</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析-1"><span class="post-toc-text">分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法-1"><span class="post-toc-text">方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#级别：high"><span class="post-toc-text">级别：high</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Stored-XSS-Source-2"><span class="post-toc-text">Stored XSS Source</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析-2"><span class="post-toc-text">分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法-2"><span class="post-toc-text">方法</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -196,6 +218,7 @@
 </span>
 
 
+            
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>DVWA的存储型xss。</p>
@@ -262,18 +285,18 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-11-14T14:31:00.757Z" itemprop="dateUpdated">2019-11-14 22:31:00</time>
+    最終更新：<time datetime="2019-11-14T14:31:00.757Z" itemprop="dateUpdated">2019-11-14 22:31:00</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/11/14/xss-stored/" target="_blank" rel="external">https://1187100546.github.io/2019/11/14/xss-stored/</a>
+        文章发布地址：<a href="/2019/11/14/xss-stored/" target="_blank" rel="external">https://1187100546.github.io/2019/11/14/xss-stored/</a>
         
     </div>
     
     <footer>
         <a href="https://1187100546.github.io">
-            <img src="/img/avatar.jpg" alt="huahua">
+            <img src="/img/fong.jpg" alt="huahua">
             huahua
         </a>
     </footer>
@@ -298,7 +321,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/11/14/xss-stored/&title=《DVWA--xss_stored》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/11/14/xss-stored/&title=《DVWA--xss_stored》 — 花花的blog&pic=https://1187100546.github.io/img/fong.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -386,27 +409,28 @@
 
 
 
+
 </article>
 
 <div id="reward" class="page-modal reward-lay">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
-        谢谢大爷~
+        感谢支持！
         <i class="icon icon-quote-right"></i>
     </h3>
     <div class="reward-content">
         
         <div class="reward-code">
-            <img id="rewardCode" src="/img/wechatpay.png" alt="打赏二维码">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
         </div>
         
         <label class="reward-toggle">
             <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechatpay.png" data-alipay="/img/alipay.jpg">
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item switch">切换</span>
                 <span class="reward-toggle-item alipay">支付宝</span>
             </div>
         </label>
@@ -431,18 +455,34 @@
 </p>
 
 
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
+            <p>
+                
+                    <span>
+                        <a href="/atom.xml" target="_blank" class="rss" title="rss">
+                            <i class="icon icon-lg icon-rss"></i>
+                        </a>
+                    </span>
+                    
+                        <span>
+                            このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a>
+                        </span>
+            </p>
     </div>
     <div class="bottom">
-        <p><span>huahua &copy; 2018 - 2020</span>
+        <p>
+            <span>
+                huahua &copy;
+                    
+                        2018 -
+                            
+                                2020
+            </span>
             <span>
                 
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+                        Power by
+                        <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+                        <a href="https://github.com/abelsu7/hexo-theme-indigo-plus" target="_blank">indigo plus</a>
+                        <p>Hosted by <a href="https://pages.github.com" target="_blank" style="font-weight: bold">Github Pages</a></p>
             </span>
         </p>
     </div>
@@ -451,13 +491,14 @@
     </main>
     <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<a href="javascript:;" id="gobottom" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-comments"></span></a>
 
 
 
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/11/14/xss-stored/&title=《DVWA--xss_stored》 — 花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/2019/11/14/xss-stored/&title=《DVWA--xss_stored》 — 花花的blog&pic=https://1187100546.github.io/img/fong.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -499,14 +540,14 @@
 
 
 
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/node-waves@0.7.6/src/js/waves.min.js"></script>
 <script>
 var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -526,7 +567,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 
@@ -537,24 +578,8 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 
 
 
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
-
-
+<script src="/js/prism.min.js?v=1.7.2"></script>
+<script src="/js/prism-vim.min.js?v=1.7.2"></script>
 </body>
 </html>

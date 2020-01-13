@@ -14,7 +14,7 @@
     
     
     
-    <title>分类: XSS攻击 | 花花的blog | 厚积薄发</title>
+    <title>Categories: xss攻击 | 花花的blog | 厚积薄发</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,7 +24,7 @@
     <meta name="description" content="我告诉你我喜欢你，并不是一定要和你在一起，只是希望今后的你，在遭遇人生低谷的时候，不要灰心，至少曾经有人被你的魅力所吸引，曾经是，以后也会是。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="花花的blog">
-<meta property="og:url" content="https://1187100546.github.io/categories/XSS攻击/index.html">
+<meta property="og:url" content="https://1187100546.github.io/categories/xss攻击/index.html">
 <meta property="og:site_name" content="花花的blog">
 <meta property="og:description" content="我告诉你我喜欢你，并不是一定要和你在一起，只是希望今后的你，在遭遇人生低谷的时候，不要灰心，至少曾经有人被你的魅力所吸引，曾经是，以后也会是。">
 <meta property="og:locale" content="zh-Hans">
@@ -34,8 +34,9 @@
     
         <link rel="alternate" type="application/atom+xml" title="花花的blog" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <link rel="stylesheet" href="/css/prism/prism-tomorrow-night.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -49,16 +50,16 @@
     <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
+        <i class="icon icon-lg icon-list-ul"></i>
     </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+    <div class="brand-wrap" style="background-image:url(/img/back_blue.png)">
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
+          <img src="/img/fong.jpg">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">huahua</h5>
-          <a href="mailto:1187100546@qq.com" title="1187100546@qq.com" class="mail">1187100546@qq.com</a>
+          <a href="mailto:abelsu7@gmail.com" title="abelsu7@gmail.com" class="mail">abelsu7@gmail.com</a>
         </hgroup>
       </div>
     </div>
@@ -73,36 +74,57 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives/"  >
                 <i class="icon icon-lg icon-archives"></i>
                 归档
               </a>
             </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/tags"  >
-                <i class="icon icon-lg icon-tags"></i>
-                标签
-              </a>
-            </li>
-        
             <li class="waves-block waves-effect active">
-              <a href="/categories"  >
+              <a href="/categories/"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://https://github.com/1187100546" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about"  >
-                <i class="icon icon-lg icon-link"></i>
+              <a href="https://github.com/abelsu7"  >
+                <i class="icon icon-lg icon-github"></i>
+                代码
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books/"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies/"  >
+                <i class="icon icon-lg icon-film"></i>
+                影视
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/games/"  >
+                <i class="icon icon-lg icon-gamepad"></i>
+                游戏
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-info-circle"></i>
                 关于
               </a>
             </li>
@@ -118,13 +140,13 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">分类: XSS攻击</div>
+        <div class="flex-col header-title ellipsis">Categories: xss攻击</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -140,8 +162,40 @@
 <header class="content-header categories-header">
 
     <div class="container fade-scale">
-        <h1 class="title">分类: XSS攻击</h1>
+        <h1 class="title">Categories: xss攻击</h1>
         <h5 class="subtitle">
+            
+                
+                    共计
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            2
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                     
+                    篇文章，继续努力
+                
             
         </h5>
     </div>
@@ -150,42 +204,42 @@
 <div class="tabs-bar container">
     <nav class="tags-list">
         <a href="/categories" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-            ">All</a>
+            ">全て</a>
         
 
-            <a href="/categories/暴力破解/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">暴力破解</a>
-
-        
-
-            <a href="/categories/密码学/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">密码学</a>
+            <a href="/categories/java/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">java</a>
 
         
 
-            <a href="/categories/XSS攻击/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">XSS攻击</a>
+            <a href="/categories/sql注入/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">sql注入</a>
 
         
 
-            <a href="/categories/渗透攻击/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">渗透攻击</a>
+            <a href="/categories/xss攻击/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">xss攻击</a>
 
         
 
-            <a href="/categories/java/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">java</a>
+            <a href="/categories/XSS攻击/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">XSS攻击</a>
 
         
 
-            <a href="/categories/记录/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">记录</a>
+            <a href="/categories/作业/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">作业</a>
 
         
 
-            <a href="/categories/xss攻击/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">xss攻击</a>
+            <a href="/categories/密码学/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">密码学</a>
 
         
 
-            <a href="/categories/sql注入/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">sql注入</a>
+            <a href="/categories/新闻点评/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">新闻点评</a>
 
         
 
-            <a href="/categories/新闻点评/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">新闻点评</a>
+            <a href="/categories/暴力破解/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">暴力破解</a>
+
+        
+
+            <a href="/categories/渗透攻击/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">渗透攻击</a>
 
         
 
@@ -197,7 +251,7 @@
 
         
 
-            <a href="/categories/作业/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">作业</a>
+            <a href="/categories/记录/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">记录</a>
 
         
     </nav>
@@ -219,10 +273,10 @@
             <div class="waterfall-item">
   <article class="article-card archive-article">
     <div class="post-meta">
-      <time class="post-time" title="2019-10-13 19:06:06" datetime="2019-10-13T11:06:06.000Z"  itemprop="datePublished">2019-10-13</time>
+      <time class="post-time" title="2019-11-14 21:12:02" datetime="2019-11-14T13:12:02.000Z"  itemprop="datePublished">2019-11-14</time>
 
       
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/XSS攻击/">XSS攻击</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/xss攻击/">xss攻击</a></li></ul>
 
 
 
@@ -232,7 +286,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/10/13/XSS攻击简单示例/">XSS攻击简单示例</a>
+      <a class="post-title-link" href="/2019/11/14/xss-stored/">DVWA--xss_stored</a>
     </h3>
   
 
@@ -241,7 +295,41 @@
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XSS攻击/">XSS攻击</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xss攻击/">xss攻击</a></li></ul>
+
+    </div>
+    
+  </article>
+</div>
+
+        
+
+            <div class="waterfall-item">
+  <article class="article-card archive-article">
+    <div class="post-meta">
+      <time class="post-time" title="2019-11-14 19:14:53" datetime="2019-11-14T11:14:53.000Z"  itemprop="datePublished">2019-11-14</time>
+
+      
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/xss攻击/">xss攻击</a></li></ul>
+
+
+
+    </div>
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/11/14/xss-reflected/">DVWA--xss_reflected</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xss攻击/">xss攻击</a></li></ul>
 
     </div>
     
@@ -268,18 +356,34 @@
 </p>
 
 
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
+            <p>
+                
+                    <span>
+                        <a href="/atom.xml" target="_blank" class="rss" title="rss">
+                            <i class="icon icon-lg icon-rss"></i>
+                        </a>
+                    </span>
+                    
+                        <span>
+                            このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a>
+                        </span>
+            </p>
     </div>
     <div class="bottom">
-        <p><span>huahua &copy; 2018 - 2020</span>
+        <p>
+            <span>
+                huahua &copy;
+                    
+                        2018 -
+                            
+                                2020
+            </span>
             <span>
                 
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+                        Power by
+                        <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+                        <a href="https://github.com/abelsu7/hexo-theme-indigo-plus" target="_blank">indigo plus</a>
+                        <p>Hosted by <a href="https://pages.github.com" target="_blank" style="font-weight: bold">Github Pages</a></p>
             </span>
         </p>
     </div>
@@ -288,13 +392,14 @@
     </main>
     <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<a href="javascript:;" id="gobottom" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-comments"></span></a>
 
 
 
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/categories/XSS攻击/&title=花花的blog&pic=https://1187100546.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://1187100546.github.io/categories/xss攻击/&title=花花的blog&pic=https://1187100546.github.io/img/fong.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -304,22 +409,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/categories/XSS攻击/&title=花花的blog&source=我告诉你我喜欢你，并不是一定要和你在一起，只是希望今后的你，在遭遇人生低谷的时候，不要灰心，至少曾经有人被你的魅力所吸引，曾经是，以后也会是。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://1187100546.github.io/categories/xss攻击/&title=花花的blog&source=我告诉你我喜欢你，并不是一定要和你在一起，只是希望今后的你，在遭遇人生低谷的时候，不要灰心，至少曾经有人被你的魅力所吸引，曾经是，以后也会是。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/categories/XSS攻击/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://1187100546.github.io/categories/xss攻击/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=花花的blog&url=https://1187100546.github.io/categories/XSS攻击/&via=https://1187100546.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=花花的blog&url=https://1187100546.github.io/categories/xss攻击/&via=https://1187100546.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/categories/XSS攻击/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://1187100546.github.io/categories/xss攻击/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -330,20 +435,20 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3awXLqQAwEwPz/T5PrewebGS2kyrvtExXAqH1QtJJ+fuLr9c919e79J6++e3+3D18YGBiPZbxur6vgrl6vPIj73736DAYGxjmMJI22Aa1kxTw2DAwMjISRhHJVLOYkDAwMjJxxH2gLTh4ZBgYGxkriS37g/vDZPqAPnMUxMDAeyGiD+8vXX5lvYGBgPIrxKq/251eOu0VUGBgYWzNmA8hZmTgMLh+IYmBgHMDIW2az2ixf/2oPuhgYGHszZqtd+SPIR6Gzlt9/FS4GBsamjJVliPagO/tvkCR6DAyMMxnfSJ3JWkY78sTAwDiBkXxhFkrUIAtSc9SAw8DA2JoR5ePRetbKsTYZgr7pHWJgYGzHaEu0JMm2iXiWpjEwME5g5CHOqJ8aCbxJ4hgYGFszVhpn603//Cp2RjAwMLZjtI2tvPW2cqytMRgYGFszkhu1xeJsVaJNx1GBiIGBsQVjNoZMQm8PtEuNPAwMjK0Zebjt4kVLmv29XrzAwMB4LKMt7NqW/Ww5ox6gYmBgHMNYCTEfcM6GAfV8AwMDYztGfuycpea83MwbbdHmCAYGxsMZr/Jqk+xs8SIpCuu6EgMD47GM2ciwBbTFYj4qqGEYGBiPZcyaXG06vg9iZdUMAwPjHMbKQtisrPzKWRwDAwOj3dpYaN7Vh1gMDAyMuNRLRp6zgeWb+2NgYBzAaEu6tg3XrnckbAwMjHMY7ZJWcuu8WXafuD881MTAwHge4xfB/NE/l+jO/wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3ay07EMAwF0Pn/nx42LJBQO9d2i2hyukKltDlZmPjxesXXO77y538/+fPO644LAwPjsYz8Y0efye+cv7O6HRgYGLsxjiJYwjhf7rVbdngfAwMD4zSk5uEyCccYGBgYE0by+SRBTTYFAwMDo3dcq4bOPBznofyCXBwDA+OBjLzq/vc/39LfwMDAeBTjXbzyElu10N9bz/ffYmBgLM2YF+sTXm9cI28zYGBg7MOYT1vlpbFek+ADDwMDY1FG3qScB815CD58MwYGxmaMecJZHRRLmqkfnsfAwFiaMWkMVI+DPd7tLUwMDIx/z0gKZ3ekppOhsUJ/FQMDYwlGXuSaFPSraW2CP+RhYGAsyqguOg+OvcZktTmKgYGxNqM3VDE59l01eIGBgbEPI0lTR6+Ok95qSQ4DA2MfRn5oqwbcSQuhMGaBgYGxDSMfxpospTc2EQ1wYGBgLM3ojVwkh7xqQtvbMgwMjH0Y1bZldXSjWrarptYYGBj7MJJlnTcA5qns6KiKgYGxAaM3PJHDqo2BapEOAwNjbUYvfU3CcRKs5yk0BgbG2ox38aoeHHttgzIbAwNjaca1LYHewbFXtmvCMDAwHsvIi1zV0JyXzKrU8n8PDAyMJRh5Y6A6ttUrxuWbjoGBgZGU25LCXLIpvS3DwMDAmBTUJr8tNy8xMDA2YOTp6CTi5QfHcvkPAwNjaUa1lpWPXPQGv3plOwwMjEUZX723hJr3bBDAAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
 
 
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/node-waves@0.7.6/src/js/waves.min.js"></script>
 <script>
 var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -363,7 +468,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 
@@ -374,24 +479,8 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
-
-
+<script src="/js/prism.min.js?v=1.7.2"></script>
+<script src="/js/prism-vim.min.js?v=1.7.2"></script>
 </body>
 </html>
