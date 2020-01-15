@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://1187100546.github.io/"/>
-  <updated>2020-01-15T03:38:39.987Z</updated>
+  <updated>2020-01-15T03:52:17.681Z</updated>
   <id>https://1187100546.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://1187100546.github.io/2020/01/14/lenet-5/"/>
     <id>https://1187100546.github.io/2020/01/14/lenet-5/</id>
     <published>2020-01-14T13:03:21.000Z</published>
-    <updated>2020-01-15T03:38:39.987Z</updated>
+    <updated>2020-01-15T03:52:17.681Z</updated>
     
     <content type="html"><![CDATA[<p>最近在写大创论文，涉及到神经网络结构分析，记录一下（第一次写期刊论文是真不会呀，作图工具都不知道，第一个想到的居然是PPT…..)</p><a id="more"></a><h2 id="Lenet-5基本结构"><a href="#Lenet-5基本结构" class="headerlink" title="Lenet-5基本结构"></a>Lenet-5基本结构</h2><script type="math/tex; mode=display">p_i=w_i\times x_j\times b</script>]]></content>
     
@@ -36,6 +36,10 @@
     
     
       <category term="CNN" scheme="https://1187100546.github.io/tags/CNN/"/>
+    
+      <category term="Deep Learning" scheme="https://1187100546.github.io/tags/Deep-Learning/"/>
+    
+      <category term="神经网络" scheme="https://1187100546.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
