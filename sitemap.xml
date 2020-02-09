@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://1187100546.github.io/%E5%85%B3%E4%BA%8E/index.html</loc>
+    <loc>https://1187100546.github.io/about/index.html</loc>
     
-    <lastmod>2020-02-09T08:28:19.321Z</lastmod>
+    <lastmod>2020-02-09T08:34:25.270Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://1187100546.github.io/warframe/index.html</loc>
+    
+    <lastmod>2020-02-09T08:32:29.641Z</lastmod>
     
   </url>
   
@@ -264,13 +271,6 @@
     <loc>https://1187100546.github.io/2019/10/10/hello-world/</loc>
     
     <lastmod>2019-10-10T11:51:33.986Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://1187100546.github.io/about/index.html</loc>
-    
-    <lastmod>2019-10-09T12:09:42.432Z</lastmod>
     
   </url>
   
