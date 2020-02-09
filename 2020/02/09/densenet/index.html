@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=2k">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-c712b7a04200ecfd05c79478adb18888_hd.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2020/02/09/1fbO5n.png">
-<meta property="og:updated_time" content="2020-02-09T07:40:46.543Z">
+<meta property="og:updated_time" content="2020-02-09T07:47:16.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DenseNet神经网络结构">
 <meta name="twitter:description" content="CVPR 2017最佳论文DenseNet，论文中提出的DenseNet（Dense Convolutional Network） 。">
@@ -147,7 +147,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -225,12 +225,12 @@
 <li><strong>更有效地利用了feature</strong> </li>
 <li><strong>一定程度上较少了参数数量</strong> </li>
 </ul>
-<h2 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h2><p>相比ResNet，DenseNet提出了一个更激进的密集连接机制：即互相连接所有的层，具体来说就是每个层都会接受其前面所有层作为其额外的输入。图1为ResNet网络的连接机制，作为对比，图2为DenseNet的密集连接机制。可以看到，ResNet是每个层与前面的某层（一般是2~3层）短路连接在一起，连接方式是通过元素级相加。而在DenseNet中，每个层都会与前面所有层在channel维度上连接（concat）在一起（这里各个层的特征图大小是相同的，后面会有说明），并作为下一层的输入。对于一个 <figure class="image-bubble">
+<h2 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h2><p>相比ResNet，DenseNet提出了一个更激进的密集连接机制：即互相连接所有的层，具体来说就是每个层都会接受其前面所有层作为其额外的输入。图1为ResNet网络的连接机制，作为对比，图2为DenseNet的密集连接机制。可以看到，ResNet是每个层与前面的某层（一般是2~3层）短路连接在一起，连接方式是通过元素级相加。而在DenseNet中，每个层都会与前面所有层在channel维度上连接（concat）在一起（这里各个层的特征图大小是相同的，后面会有说明），并作为下一层的输入。对于一个 L层的网络，DenseNet共包含 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BL%28L%2B1%29%7D%7B2%7D" alt="[公式]](https://www.zhihu.com/equation?tex=L) 层的网络，DenseNet共包含 ![" title>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BL%28L%2B1%29%7D%7B2%7D" alt title>
                 </div>
-                <div class="image-caption">[公式]](https://www.zhihu.com/equation?tex=L) 层的网络，DenseNet共包含 ![</div>
+                <div class="image-caption"></div>
             </figure> 个连接，相比ResNet，这是一种密集连接。而且DenseNet是直接concat来自不同层的特征图，这可以实现特征重用，提升效率，这一特点是DenseNet与ResNet最主要的区别。 </p>
 <p><img src="https://s2.ax1x.com/2020/02/09/1foPQe.png" alt="1foPQe.png"></p>
 <p><center> 图1 ResNet网络的短路连接机制（其中+代表的是元素级相加操作） </center><br><figure class="image-bubble">
@@ -974,7 +974,7 @@ with tf.Session() as sess:
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2020-02-09T07:40:46.543Z" itemprop="dateUpdated">2020-02-09 15:40:46</time>
+    最后更新时间：<time datetime="2020-02-09T07:47:16.042Z" itemprop="dateUpdated">2020-02-09 15:47:16</time>
 </span><br>
 
 
@@ -1183,7 +1183,7 @@ with tf.Session() as sess:
                     </span>
                     
                         <span>
-                            本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a>
+                            博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a>
                         </span>
             </p>
     </div>
