@@ -29,30 +29,21 @@
 <meta property="og:site_name" content="花花的blog">
 <meta property="og:description" content="CVPR 2017最佳论文DenseNet，论文中提出的DenseNet（Dense Convolutional Network） 。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cfrac%7BL%28L%2B1%29%7D%7B2%7D">
 <meta property="og:image" content="https://s2.ax1x.com/2020/02/09/1foPQe.png">
 <meta property="og:image" content="https://s2.ax1x.com/2020/02/09/1foX6g.png">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=l">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=%5C%5Cx_l+%3D+H_l%28x_%7Bl-1%7D%29">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=%5C%5Cx_l+%3D+H_l%28x_%7Bl-1%7D%29+%2B+x_%7Bl-1%7D">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=%5C%5Cx_l+%3D+H_l%28%5Bx_0%2C+x_1%2C+...%2C+x_%7Bl-1%7D%5D%29">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=l-1">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=x_2">
 <meta property="og:image" content="https://pic4.zhimg.com/80/v2-0b28a49f274da9bd8dec2dccddf1ec53_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=k">
 <meta property="og:image" content="https://pic4.zhimg.com/80/v2-7114e1583347944ea287b9552202b0ab_hd.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=4k">
 <meta property="og:image" content="https://pic1.zhimg.com/v2-4de2c07f516b030b864181c79734dc8c_r.jpg">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Ctheta%3D0.5">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=%7BL%3D40%2C+k%3D12%7D">
-<meta property="og:image" content="https://www.zhihu.com/equation?tex=2k">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-c712b7a04200ecfd05c79478adb18888_hd.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2020/02/09/1fbO5n.png">
-<meta property="og:updated_time" content="2020-02-09T07:49:23.481Z">
+<meta property="og:updated_time" content="2020-02-09T08:13:48.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DenseNet神经网络结构">
 <meta name="twitter:description" content="CVPR 2017最佳论文DenseNet，论文中提出的DenseNet（Dense Convolutional Network） 。">
-<meta name="twitter:image" content="https://www.zhihu.com/equation?tex=%5Cfrac%7BL%28L%2B1%29%7D%7B2%7D">
+<meta name="twitter:image" content="https://s2.ax1x.com/2020/02/09/1foPQe.png">
     
         <link rel="alternate" type="application/atom+xml" title="花花的blog" href="/atom.xml">
     
@@ -225,28 +216,16 @@
 <li><strong>更有效地利用了feature</strong> </li>
 <li><strong>一定程度上较少了参数数量</strong> </li>
 </ul>
-<h2 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h2><p>相比ResNet，DenseNet提出了一个更激进的密集连接机制：即互相连接所有的层，具体来说就是每个层都会接受其前面所有层作为其额外的输入。图1为ResNet网络的连接机制，作为对比，图2为DenseNet的密集连接机制。可以看到，ResNet是每个层与前面的某层（一般是2~3层）短路连接在一起，连接方式是通过元素级相加。而在DenseNet中，每个层都会与前面所有层在channel维度上连接（concat）在一起（这里各个层的特征图大小是相同的，后面会有说明），并作为下一层的输入。对于一个 L层的网络，DenseNet共包含 <figure class="image-bubble">
+<h2 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h2><p>相比ResNet，DenseNet提出了一个更激进的密集连接机制：即互相连接所有的层，具体来说就是每个层都会接受其前面所有层作为其额外的输入。图1为ResNet网络的连接机制，作为对比，图2为DenseNet的密集连接机制。可以看到，ResNet是每个层与前面的某层（一般是2~3层）短路连接在一起，连接方式是通过元素级相加。而在DenseNet中，每个层都会与前面所有层在channel维度上连接（concat）在一起（这里各个层的特征图大小是相同的，后面会有说明），并作为下一层的输入。对于一个 L层的网络，DenseNet共包含(L(L+1))/2个连接，相比ResNet，这是一种密集连接。而且DenseNet是直接concat来自不同层的特征图，这可以实现特征重用，提升效率，这一特点是DenseNet与ResNet最主要的区别。 </p>
+<p><img src="https://s2.ax1x.com/2020/02/09/1foPQe.png" alt="图1 ResNet网络的短路连接机制（其中+代表的是元素级相加操作）"></p>
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BL%28L%2B1%29%7D%7B2%7D" alt title>
+                    <img src="https://s2.ax1x.com/2020/02/09/1foX6g.png" alt="图1 ResNet网络的短路连接机制（其中+代表的是元素级相加操作）" title>
                 </div>
-                <div class="image-caption"></div>
-            </figure>个连接，相比ResNet，这是一种密集连接。而且DenseNet是直接concat来自不同层的特征图，这可以实现特征重用，提升效率，这一特点是DenseNet与ResNet最主要的区别。 </p>
-<p><img src="https://s2.ax1x.com/2020/02/09/1foPQe.png" alt="1foPQe.png"></p>
-<p><center> 图1 ResNet网络的短路连接机制（其中+代表的是元素级相加操作） </center><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2020/02/09/1foX6g.png" alt="1foX6g.png" title>
-                </div>
-                <div class="image-caption">1foX6g.png</div>
-            </figure></p>
-<p><center> 图2 DenseNet网络的密集连接机制（其中c代表的是channel级连接操作）</center><br> 如果用公式表示的话，传统的网络在 <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://www.zhihu.com/equation?tex=l" alt="[公式]" title>
-                </div>
-                <div class="image-caption">[公式]</div>
-            </figure> 层的输出为：<br><figure class="image-bubble">
+                <div class="image-caption">图1 ResNet网络的短路连接机制（其中+代表的是元素级相加操作）</div>
+            </figure>
+<p> 如果用公式表示的话，传统的网络在 L 层的输出为：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="https://www.zhihu.com/equation?tex=%5C%5Cx_l+%3D+H_l%28x_%7Bl-1%7D%29" alt title>
@@ -267,64 +246,22 @@
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
-<p>其中，上面的 <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://www.zhihu.com/equation?tex=l-1" alt="](https://www.zhihu.com/equation?tex=H_l%28%5Ccdot%29) 代表是非线性转化函数（non-liear transformation），它是一个组合操作，其可能包括一系列的BN(Batch Normalization)，ReLU，Pooling及Conv操作。注意这里 ![[公式]](https://www.zhihu.com/equation?tex=l) 层与 ![[公式]" title>
-                </div>
-                <div class="image-caption">](https://www.zhihu.com/equation?tex=H_l%28%5Ccdot%29) 代表是非线性转化函数（non-liear transformation），它是一个组合操作，其可能包括一系列的BN(Batch Normalization)，ReLU，Pooling及Conv操作。注意这里 ![[公式]](https://www.zhihu.com/equation?tex=l) 层与 ![[公式]</div>
-            </figure> 层之间可能实际上包含多个卷积层。</p>
-<p>DenseNet的前向过程如图3所示，可以更直观地理解其密集连接方式，比如 <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://www.zhihu.com/equation?tex=x_2" alt="[公式]](https://www.zhihu.com/equation?tex=h_3) 的输入不仅包括来自 ![[公式]](https://www.zhihu.com/equation?tex=h_2) 的 ![[公式]](https://www.zhihu.com/equation?tex=x_2) ，还包括前面两层的 ![[公式]](https://www.zhihu.com/equation?tex=x_1) 和 ![[公式]" title>
-                </div>
-                <div class="image-caption">[公式]](https://www.zhihu.com/equation?tex=h_3) 的输入不仅包括来自 ![[公式]](https://www.zhihu.com/equation?tex=h_2) 的 ![[公式]](https://www.zhihu.com/equation?tex=x_2) ，还包括前面两层的 ![[公式]](https://www.zhihu.com/equation?tex=x_1) 和 ![[公式]</div>
-            </figure> ，它们是在channel维度上连接在一起的。</p>
+<p>其中，上面的 <strong>H~L~(.)</strong>代表是非线性转化函数（non-liear transformation），它是一个组合操作，其可能包括一系列的BN(Batch Normalization)，ReLU，Pooling及Conv操作。注意这里 <strong>L</strong>层与<strong>L-1</strong> 层之间可能实际上包含多个卷积层。</p>
+<p>DenseNet的前向过程如图3所示，可以更直观地理解其密集连接方式，比如 <strong>h~3~</strong> 的输入不仅包括来自<strong>h~2~</strong> 的<strong>x~2~</strong>，还包括前面两层的 <strong>x~1~</strong>和 <strong>x~2~</strong> ，它们是在channel维度上连接在一起的。</p>
 <h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p> 如图所示，DenseNet的网络结构主要由DenseBlock和Transition组成。 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://pic4.zhimg.com/80/v2-0b28a49f274da9bd8dec2dccddf1ec53_hd.jpg" alt="img" title>
+                    <img src="https://pic4.zhimg.com/80/v2-0b28a49f274da9bd8dec2dccddf1ec53_hd.jpg" alt title>
                 </div>
-                <div class="image-caption">img</div>
+                <div class="image-caption"></div>
             </figure> </p>
-<p>在DenseBlock中，各个层的特征图大小一致，可以在channel维度上连接。DenseBlock中的非线性组合函数 <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://www.zhihu.com/equation?tex=k" alt="[公式]](https://www.zhihu.com/equation?tex=H%28%5Ccdot%29) 采用的是**BN+ReLU+3x3 Conv**的结构，如图所示。另外值得注意的一点是，与ResNet不同，所有DenseBlock中各个层卷积之后均输出 ![[公式]](https://www.zhihu.com/equation?tex=k) 个特征图，即得到的特征图的channel数为 ![[公式]](https://www.zhihu.com/equation?tex=k) ，或者说采用 ![[公式]](https://www.zhihu.com/equation?tex=k) 个卷积核。 ![[公式]](https://www.zhihu.com/equation?tex=k) 在DenseNet称为growth rate，这是一个超参数。一般情况下使用较小的 ![[公式]](https://www.zhihu.com/equation?tex=k) （比如12），就可以得到较佳的性能。假定输入层的特征图的channel数为 ![[公式]](https://www.zhihu.com/equation?tex=k_0) ，那么 ![[公式]](https://www.zhihu.com/equation?tex=l) 层输入的channel数为 ![[公式]](https://www.zhihu.com/equation?tex=k_0%2Bk%28l-1%29) ，因此随着层数增加，尽管 ![[公式]](https://www.zhihu.com/equation?tex=k) 设定得较小，DenseBlock的输入会非常多，不过这是由于特征重用所造成的，每个层仅有 ![[公式]" title>
-                </div>
-                <div class="image-caption">[公式]](https://www.zhihu.com/equation?tex=H%28%5Ccdot%29) 采用的是**BN+ReLU+3x3 Conv**的结构，如图所示。另外值得注意的一点是，与ResNet不同，所有DenseBlock中各个层卷积之后均输出 ![[公式]](https://www.zhihu.com/equation?tex=k) 个特征图，即得到的特征图的channel数为 ![[公式]](https://www.zhihu.com/equation?tex=k) ，或者说采用 ![[公式]](https://www.zhihu.com/equation?tex=k) 个卷积核。 ![[公式]](https://www.zhihu.com/equation?tex=k) 在DenseNet称为growth rate，这是一个超参数。一般情况下使用较小的 ![[公式]](https://www.zhihu.com/equation?tex=k) （比如12），就可以得到较佳的性能。假定输入层的特征图的channel数为 ![[公式]](https://www.zhihu.com/equation?tex=k_0) ，那么 ![[公式]](https://www.zhihu.com/equation?tex=l) 层输入的channel数为 ![[公式]](https://www.zhihu.com/equation?tex=k_0%2Bk%28l-1%29) ，因此随着层数增加，尽管 ![[公式]](https://www.zhihu.com/equation?tex=k) 设定得较小，DenseBlock的输入会非常多，不过这是由于特征重用所造成的，每个层仅有 ![[公式]</div>
-            </figure> 个特征是自己独有的。</p>
-<p> <img src="https://pic4.zhimg.com/80/v2-7114e1583347944ea287b9552202b0ab_hd.jpg" alt="img"> </p>
-<p>由于后面层的输入会非常大，DenseBlock内部可以采用bottleneck层来减少计算量，主要是原有的结构中增加1x1 Conv，如图所示，即<strong>BN+ReLU+1x1 Conv+BN+ReLU+3x3 Conv</strong>，称为DenseNet-B结构。其中1x1 Conv得到 <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://www.zhihu.com/equation?tex=4k" alt="[公式]" title>
-                </div>
-                <div class="image-caption">[公式]</div>
-            </figure> 个特征图它起到的作用是降低特征数量，从而提升计算效率。 </p>
+<p>在DenseBlock中，各个层的特征图大小一致，可以在channel维度上连接。DenseBlock中的非线性组合函数 <strong>H(.)</strong> 采用的是<strong>BN+ReLU+3x3 Conv</strong>的结构，如图所示。另外值得注意的一点是，与ResNet不同，所有DenseBlock中各个层卷积之后均输出<strong>K</strong>个特征图，即得到的特征图的channel数为<strong>K</strong>，或者说采用<strong>K</strong>个卷积核，<strong>K</strong>在DenseNet称为growth rate，这是一个超参数。一般情况下使用较小的<strong>K</strong>（比如12），就可以得到较佳的性能。假定输入层的特征图的channel数为<strong>K~0~</strong>，那么<strong>L</strong>层输入的channel数为<strong>k~0~+k(L-1)</strong>，因此随着层数增加，尽管<strong>K</strong>设定得较小，DenseBlock的输入会非常多，不过这是由于特征重用所造成的，每个层仅有<strong>K</strong>个特征是自己独有的。</p>
+<p> <img src="https://pic4.zhimg.com/80/v2-7114e1583347944ea287b9552202b0ab_hd.jpg" alt> </p>
+<p>由于后面层的输入会非常大，DenseBlock内部可以采用bottleneck层来减少计算量，主要是原有的结构中增加1x1 Conv，如图所示，即<strong>BN+ReLU+1x1 Conv+BN+ReLU+3x3 Conv</strong>，称为DenseNet-B结构。其中1x1 Conv得到<strong>4K</strong>个特征图它起到的作用是降低特征数量，从而提升计算效率。 </p>
 <p><img src="https://pic1.zhimg.com/v2-4de2c07f516b030b864181c79734dc8c_r.jpg" alt="preview"> </p>
-<p>对于Transition层，它主要是连接两个相邻的DenseBlock，并且降低特征图大小。Transition层包括一个1x1的卷积和2x2的AvgPooling，结构为<strong>BN+ReLU+1x1 Conv+2x2 AvgPooling</strong>。另外，Transition层可以起到压缩模型的作用。假定Transition的上接DenseBlock得到的特征图channels数为 <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://www.zhihu.com/equation?tex=%5Ctheta%3D0.5" alt="[公式]](https://www.zhihu.com/equation?tex=m) ，Transition层可以产生 ![[公式]](https://www.zhihu.com/equation?tex=%5Clfloor%5Ctheta+m%5Crfloor) 个特征（通过卷积层），其中 ![[公式]](https://www.zhihu.com/equation?tex=%5Ctheta+%5Cin+%280%2C1%5D) 是压缩系数（compression rate）。当 ![[公式]](https://www.zhihu.com/equation?tex=%5Ctheta%3D1) 时，特征个数经过Transition层没有变化，即无压缩，而当压缩系数小于1时，这种结构称为DenseNet-C，文中使用 ![[公式]" title>
-                </div>
-                <div class="image-caption">[公式]](https://www.zhihu.com/equation?tex=m) ，Transition层可以产生 ![[公式]](https://www.zhihu.com/equation?tex=%5Clfloor%5Ctheta+m%5Crfloor) 个特征（通过卷积层），其中 ![[公式]](https://www.zhihu.com/equation?tex=%5Ctheta+%5Cin+%280%2C1%5D) 是压缩系数（compression rate）。当 ![[公式]](https://www.zhihu.com/equation?tex=%5Ctheta%3D1) 时，特征个数经过Transition层没有变化，即无压缩，而当压缩系数小于1时，这种结构称为DenseNet-C，文中使用 ![[公式]</div>
-            </figure> 。对于使用bottleneck层的DenseBlock结构和压缩系数小于1的Transition组合结构称为DenseNet-BC。</p>
-<p>DenseNet共在三个图像分类数据集（CIFAR，SVHN和ImageNet）上进行测试。对于前两个数据集，其输入图片大小为 <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://www.zhihu.com/equation?tex=%7BL%3D40%2C+k%3D12%7D" alt="[公式]](https://www.zhihu.com/equation?tex=32%5Ctimes+32) ，所使用的DenseNet在进入第一个DenseBlock之前，首先进行进行一次3x3卷积（stride=1），卷积核数为16（对于DenseNet-BC为 ![[公式]](https://www.zhihu.com/equation?tex=2k) ）。DenseNet共包含三个DenseBlock，各个模块的特征图大小分别为 ![[公式]](https://www.zhihu.com/equation?tex=32%5Ctimes+32) ， ![[公式]](https://www.zhihu.com/equation?tex=16%5Ctimes+16) 和 ![[公式]](https://www.zhihu.com/equation?tex=8%5Ctimes+8) ，每个DenseBlock里面的层数相同。最后的DenseBlock之后是一个global AvgPooling层，然后送入一个softmax分类器。注意，在DenseNet中，所有的3x3卷积均采用padding=1的方式以保证特征图大小维持不变。对于基本的DenseNet，使用如下三种网络配置： ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D40%2C+k%3D12%5C%7D) , ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D100%2C+k%3D12%5C%7D) ， ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D40%2C+k%3D24%5C%7D) 。而对于DenseNet-BC结构，使用如下三种网络配置： ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D100%2C+k%3D12%5C%7D) , ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D250%2C+k%3D24%5C%7D) ， ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D190%2C+k%3D40%5C%7D) 。这里的 ![[公式]](https://www.zhihu.com/equation?tex=L) 指的是网络总层数（网络深度），一般情况下，我们只把带有训练参数的层算入其中，而像Pooling这样的无参数层不纳入统计中，此外BN层尽管包含参数但是也不单独统计，而是可以计入它所附属的卷积层。对于普通的 ![[公式]" title>
-                </div>
-                <div class="image-caption">[公式]](https://www.zhihu.com/equation?tex=32%5Ctimes+32) ，所使用的DenseNet在进入第一个DenseBlock之前，首先进行进行一次3x3卷积（stride=1），卷积核数为16（对于DenseNet-BC为 ![[公式]](https://www.zhihu.com/equation?tex=2k) ）。DenseNet共包含三个DenseBlock，各个模块的特征图大小分别为 ![[公式]](https://www.zhihu.com/equation?tex=32%5Ctimes+32) ， ![[公式]](https://www.zhihu.com/equation?tex=16%5Ctimes+16) 和 ![[公式]](https://www.zhihu.com/equation?tex=8%5Ctimes+8) ，每个DenseBlock里面的层数相同。最后的DenseBlock之后是一个global AvgPooling层，然后送入一个softmax分类器。注意，在DenseNet中，所有的3x3卷积均采用padding=1的方式以保证特征图大小维持不变。对于基本的DenseNet，使用如下三种网络配置： ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D40%2C+k%3D12%5C%7D) , ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D100%2C+k%3D12%5C%7D) ， ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D40%2C+k%3D24%5C%7D) 。而对于DenseNet-BC结构，使用如下三种网络配置： ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D100%2C+k%3D12%5C%7D) , ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D250%2C+k%3D24%5C%7D) ， ![[公式]](https://www.zhihu.com/equation?tex=%5C%7BL%3D190%2C+k%3D40%5C%7D) 。这里的 ![[公式]](https://www.zhihu.com/equation?tex=L) 指的是网络总层数（网络深度），一般情况下，我们只把带有训练参数的层算入其中，而像Pooling这样的无参数层不纳入统计中，此外BN层尽管包含参数但是也不单独统计，而是可以计入它所附属的卷积层。对于普通的 ![[公式]</div>
-            </figure> 网络，除去第一个卷积层、2个Transition中卷积层以及最后的Linear层，共剩余36层，均分到三个DenseBlock可知每个DenseBlock包含12层。其它的网络配置同样可以算出各个DenseBlock所含层数。</p>
-<p>对于ImageNet数据集，图片输入大小为 <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://www.zhihu.com/equation?tex=2k" alt="[公式]](https://www.zhihu.com/equation?tex=224%5Ctimes+224) ，网络结构采用包含4个DenseBlock的DenseNet-BC，其首先是一个stride=2的7x7卷积层（卷积核数为 ![[公式]" title>
-                </div>
-                <div class="image-caption">[公式]](https://www.zhihu.com/equation?tex=224%5Ctimes+224) ，网络结构采用包含4个DenseBlock的DenseNet-BC，其首先是一个stride=2的7x7卷积层（卷积核数为 ![[公式]</div>
-            </figure> ），然后是一个stride=2的3x3 MaxPooling层，后面才进入DenseBlock。ImageNet数据集所采用的网络配置如表所示：</p>
+<p>对于Transition层，它主要是连接两个相邻的DenseBlock，并且降低特征图大小。Transition层包括一个1x1的卷积和2x2的AvgPooling，结构为<strong>BN+ReLU+1x1 Conv+2x2 AvgPooling</strong>。另外，Transition层可以起到压缩模型的作用。假定Transition的上接DenseBlock得到的特征图channels数为<strong>m</strong>，Transition层可以产生<strong>[θm]</strong>个特征（通过卷积层），其中<strong>θ∈（0，1]</strong>是压缩系数（compression rate）。当<strong>θ=1</strong>时，特征个数经过Transition层没有变化，即无压缩，而当压缩系数小于1时，这种结构称为DenseNet-C，对于使用bottleneck层的DenseBlock结构和压缩系数小于1的Transition组合结构称为DenseNet-BC。</p>
+<p>DenseNet共在三个图像分类数据集（CIFAR，SVHN和ImageNet）上进行测试。对于前两个数据集，其输入图片大小为<strong>32×32</strong>，所使用的DenseNet在进入第一个DenseBlock之前，首先进行进行一次3x3卷积（stride=1），卷积核数为16（对于DenseNet-BC为<strong>2K</strong>）。DenseNet共包含三个DenseBlock，各个模块的特征图大小分别为<strong>32×32</strong>，<strong>16×16</strong>和<strong>8×8</strong>，每个DenseBlock里面的层数相同。最后的DenseBlock之后是一个global AvgPooling层，然后送入一个softmax分类器。注意，在DenseNet中，所有的3x3卷积均采用padding=1的方式以保证特征图大小维持不变。对于基本的DenseNet，使用如下三种网络配置：<strong>{L=40，k=12},{L=100,k=12},{L=40,k=24}</strong>。而对于DenseNet-BC结构，使用如下三种网络配置：<strong>{L=100，k=12},{L=250,k=24},{L=250,k=40}</strong> 。这里的<strong>L</strong>指的是网络总层数（网络深度），一般情况下，我们只把带有训练参数的层算入其中，而像Pooling这样的无参数层不纳入统计中，此外BN层尽管包含参数但是也不单独统计，而是可以计入它所附属的卷积层。对于普通的<strong>L=40,k=12</strong>网络，除去第一个卷积层、2个Transition中卷积层以及最后的Linear层，共剩余36层，均分到三个DenseBlock可知每个DenseBlock包含12层。其它的网络配置同样可以算出各个DenseBlock所含层数。</p>
+<p>对于ImageNet数据集，图片输入大小为<strong>224×224</strong>，网络结构采用包含4个DenseBlock的DenseNet-BC，其首先是一个stride=2的7x7卷积层（卷积核数为<strong>2K</strong>），然后是一个<strong>stride</strong>=2的3x3 MaxPooling层，后面才进入DenseBlock。ImageNet数据集所采用的网络配置如表所示：</p>
 <p> <img src="https://pic1.zhimg.com/80/v2-c712b7a04200ecfd05c79478adb18888_hd.jpg" alt="img"> </p>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><pre><code class="lang-python">import tensorflow as tf
 from tflearn.layers.conv import global_avg_pool
@@ -974,7 +911,7 @@ with tf.Session() as sess:
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-02-09T07:49:23.481Z" itemprop="dateUpdated">2020-02-09 15:49:23</time>
+    Last updated: <time datetime="2020-02-09T08:13:48.517Z" itemprop="dateUpdated">2020-02-09 16:13:48</time>
 </span><br>
 
 
