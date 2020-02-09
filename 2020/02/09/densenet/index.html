@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=2k">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-c712b7a04200ecfd05c79478adb18888_hd.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2020/02/09/1fbO5n.png">
-<meta property="og:updated_time" content="2020-02-09T07:32:26.459Z">
+<meta property="og:updated_time" content="2020-02-09T07:40:46.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DenseNet神经网络结构">
 <meta name="twitter:description" content="CVPR 2017最佳论文DenseNet，论文中提出的DenseNet（Dense Convolutional Network） 。">
@@ -147,7 +147,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -228,23 +228,19 @@
 <h2 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h2><p>相比ResNet，DenseNet提出了一个更激进的密集连接机制：即互相连接所有的层，具体来说就是每个层都会接受其前面所有层作为其额外的输入。图1为ResNet网络的连接机制，作为对比，图2为DenseNet的密集连接机制。可以看到，ResNet是每个层与前面的某层（一般是2~3层）短路连接在一起，连接方式是通过元素级相加。而在DenseNet中，每个层都会与前面所有层在channel维度上连接（concat）在一起（这里各个层的特征图大小是相同的，后面会有说明），并作为下一层的输入。对于一个 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BL%28L%2B1%29%7D%7B2%7D" alt="[公式]](https://www.zhihu.com/equation?tex=L) 层的网络，DenseNet共包含 ![[公式]" title>
+                    <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BL%28L%2B1%29%7D%7B2%7D" alt="[公式]](https://www.zhihu.com/equation?tex=L) 层的网络，DenseNet共包含 ![" title>
                 </div>
-                <div class="image-caption">[公式]](https://www.zhihu.com/equation?tex=L) 层的网络，DenseNet共包含 ![[公式]</div>
+                <div class="image-caption">[公式]](https://www.zhihu.com/equation?tex=L) 层的网络，DenseNet共包含 ![</div>
             </figure> 个连接，相比ResNet，这是一种密集连接。而且DenseNet是直接concat来自不同层的特征图，这可以实现特征重用，提升效率，这一特点是DenseNet与ResNet最主要的区别。 </p>
 <p><img src="https://s2.ax1x.com/2020/02/09/1foPQe.png" alt="1foPQe.png"></p>
-<center> 图1 ResNet网络的短路连接机制（其中+代表的是元素级相加操作） </center>
-
-<figure class="image-bubble">
+<p><center> 图1 ResNet网络的短路连接机制（其中+代表的是元素级相加操作） </center><br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="https://s2.ax1x.com/2020/02/09/1foX6g.png" alt="1foX6g.png" title>
                 </div>
                 <div class="image-caption">1foX6g.png</div>
-            </figure>
-<center> 图2 DenseNet网络的密集连接机制（其中c代表的是channel级连接操作）</center>
-
-<p> 如果用公式表示的话，传统的网络在 <figure class="image-bubble">
+            </figure></p>
+<p><center> 图2 DenseNet网络的密集连接机制（其中c代表的是channel级连接操作）</center><br> 如果用公式表示的话，传统的网络在 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="https://www.zhihu.com/equation?tex=l" alt="[公式]" title>
@@ -961,9 +957,9 @@ with tf.Session() as sess:
 <h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://s2.ax1x.com/2020/02/09/1fbO5n.png" alt="1fbO5n.png" title>
+                    <img src="https://s2.ax1x.com/2020/02/09/1fbO5n.png" alt="准确率和loss值" title>
                 </div>
-                <div class="image-caption">1fbO5n.png</div>
+                <div class="image-caption">准确率和loss值</div>
             </figure>
 <p>不得不说还是很强大的。</p>
 <p><strong>参考连接</strong></p>
@@ -978,7 +974,7 @@ with tf.Session() as sess:
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2020-02-09T07:32:26.459Z" itemprop="dateUpdated">2020-02-09 15:32:26</time>
+    Last updated: <time datetime="2020-02-09T07:40:46.543Z" itemprop="dateUpdated">2020-02-09 15:40:46</time>
 </span><br>
 
 
@@ -1187,7 +1183,7 @@ with tf.Session() as sess:
                     </span>
                     
                         <span>
-                            このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a>
+                            This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
                         </span>
             </p>
     </div>
