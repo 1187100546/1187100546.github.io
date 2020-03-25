@@ -23,6 +23,9 @@ menu:
   github:
     text: github
     url: https://github.com/1187100546
+  gamepad:
+    text: warframe
+    url: /warframe/
   info-circle:
     text: 关于
     url: /about/
