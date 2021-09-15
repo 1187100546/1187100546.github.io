@@ -187,5 +187,5 @@ prism:
   theme: tomorrow-night
 
 # footer.ejs 中 Hosted by 后的链接
-host_link: https://pages.github.com
+host_link: https://page.github.com
 host_name: Github Pages
